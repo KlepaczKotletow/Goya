@@ -1,0 +1,50 @@
+{
+  "count": 177,
+  "sun": 98,
+  "optical": 79,
+  "genders": [
+    "Damskie",
+    "Męskie",
+    "Unisex",
+    "Dziecięce"
+  ],
+  "shapes": [
+    "Kocie",
+    "Sportowe",
+    "Okrągłe",
+    "Nerdy",
+    "Muchy",
+    "Prostokątne",
+    "Aviator",
+    "Kwadratowe",
+    "Pozostałe",
+    "Owalne"
+  ],
+  "frameColors": [
+    "Czarny",
+    "Wielokolorowy",
+    "Złoty",
+    "Różowe złoto",
+    "Brązowy",
+    "Grafitowy",
+    "Szylkret",
+    "Srebrny",
+    "Szary",
+    "Transparentny",
+    "Żółty",
+    "Niebieski",
+    "Fioletowy",
+    "Zielony",
+    "Granatowy",
+    "Czerwony",
+    "Różowy",
+    "Biały",
+    "Pomarańczowy",
+    "Beżowy"
+  ],
+  "priceWooRange": [
+    79,
+    199
+  ],
+  "generatedAt": "2026-06-20T18:49:46.532Z"
+}
