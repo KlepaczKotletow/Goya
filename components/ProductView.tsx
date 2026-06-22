@@ -89,7 +89,10 @@ export function ProductView({ product }: { product: Product }) {
   useEffect(() => {
     const el = ctaRef.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setShowBar(!e.isIntersecting), { rootMargin: "0px 0px -45% 0px" });
+    const io = new IntersectionObserver(
+      ([e]) => setShowBar(!e.isIntersecting && e.boundingClientRect.top < 0),
+      { rootMargin: "0px" },
+    );
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -265,7 +268,6 @@ export function ProductView({ product }: { product: Product }) {
               <HeartIcon filled={wished} />
             </button>
           </div>
-          <div ref={ctaRef} className="h-px" />
 
           {/* express pay */}
           <div className="mt-4">
@@ -281,6 +283,7 @@ export function ProductView({ product }: { product: Product }) {
               </button>
             </div>
           </div>
+          <div ref={ctaRef} className="h-px" />
 
           {/* in the box */}
           <div className="mt-7 rounded-[16px] border border-line bg-paper p-5">

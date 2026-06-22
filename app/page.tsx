@@ -120,8 +120,8 @@ export default function Home() {
       {/* CATEGORY SPLIT */}
       <section className="wrap grid gap-5 pb-16 md:grid-cols-2 md:pb-24">
         {[
-          { p: sun, href: "/przeciwsloneczne", label: "Przeciwsłoneczne", sub: `${facets.sun} modeli z polaryzacją`, tint: "#d8cab2" },
-          { p: optical, href: "/korekcyjne", label: "Korekcyjne", sub: `${facets.optical} oprawek na każdy dzień`, tint: "#cdd2c2" },
+          { p: sun, href: "/przeciwsloneczne", label: "Przeciwsłoneczne", sub: `${facets.sun} modeli z polaryzacją`, tint: "#e0d4bb" },
+          { p: optical, href: "/korekcyjne", label: "Korekcyjne", sub: `${facets.optical} oprawek na każdy dzień`, tint: "#ddd1bd" },
         ].map((c) => (
           <Reveal key={c.href}>
             <Link href={c.href} className="group relative block overflow-hidden rounded-[22px]">

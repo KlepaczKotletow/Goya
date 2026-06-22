@@ -9,7 +9,7 @@ export function imageAt(images: { src: string }[], i: number): string | null {
 }
 
 // Light warm color fields so white-bg packshots (and thin metal frames) read clearly under mix-blend-multiply.
-const FIELD_TINTS = ["#f1e9dc", "#e8ece1", "#f2ebdf", "#ede5d6", "#f1e7df", "#e8ece2"];
+const FIELD_TINTS = ["#f0e9db", "#efe7d8", "#f2ebde", "#ece4d4", "#f1e6dd", "#eee6d4"];
 export function fieldTint(seed: number): string {
   return FIELD_TINTS[Math.abs(seed) % FIELD_TINTS.length];
 }

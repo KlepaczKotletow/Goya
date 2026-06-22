@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart";
 import { Header } from "@/components/Header";
@@ -7,18 +6,6 @@ import { Footer } from "@/components/Footer";
 import { CartDrawer } from "@/components/CartDrawer";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { SITE } from "@/content/site";
-
-const display = Fraunces({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-display",
-  display: "swap",
-  style: ["normal", "italic"],
-});
-const sans = Inter({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-sans",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://goya.pl"),
@@ -30,7 +17,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pl" className={`${display.variable} ${sans.variable} h-full`}>
+    <html lang="pl" className="h-full">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Inter:wght@400..700&display=swap"
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <CartProvider>
           <ScrollProgress />
