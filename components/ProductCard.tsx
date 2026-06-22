@@ -25,6 +25,8 @@ export function ProductCard({ product, priority = false }: { product: Product; p
   const meta = [product.shape ? SHAPE_LABELS[product.shape] ?? product.shape : "Okulary", product.gender].filter(Boolean).join(" · ");
   const colors = product.frameColors.slice(0, 5);
   const tint = fieldTint(product.id);
+  // Variable products need a color/variant choice → send to the PDP instead of an ambiguous line.
+  const hasVariants = product.variations.length > 1;
 
   return (
     <div className="group relative">
@@ -69,15 +71,21 @@ export function ProductCard({ product, priority = false }: { product: Product; p
             </span>
           )}
           <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-all duration-300 ease-out [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 max-md:hidden">
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                add({ slug: product.slug, name: product.name, price, image: img });
-              }}
-              className="w-full rounded-full bg-ink py-3 text-xs font-medium tracking-wide text-paper shadow-lg transition hover:bg-rust"
-            >
-              Dodaj do koszyka
-            </button>
+            {hasVariants ? (
+              <span className="block w-full rounded-full bg-ink py-3 text-center text-xs font-medium tracking-wide text-paper shadow-lg transition group-hover:bg-rust">
+                Wybierz model
+              </span>
+            ) : (
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  add({ slug: product.slug, name: product.name, price, image: img });
+                }}
+                className="w-full rounded-full bg-ink py-3 text-xs font-medium tracking-wide text-paper shadow-lg transition hover:bg-rust"
+              >
+                Dodaj do koszyka
+              </button>
+            )}
           </div>
         </div>
       </Link>
@@ -107,12 +115,21 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           ))}
         </div>
       )}
-      <button
-        onClick={() => add({ slug: product.slug, name: product.name, price, image: img })}
-        className="mt-3 w-full rounded-full border border-ink/15 py-2.5 text-xs font-medium tracking-wide text-ink transition hover:border-ink hover:bg-ink hover:text-paper md:hidden"
-      >
-        Dodaj do koszyka
-      </button>
+      {hasVariants ? (
+        <Link
+          href={`/okulary/${product.slug}`}
+          className="mt-3 block w-full rounded-full border border-ink/15 py-2.5 text-center text-xs font-medium tracking-wide text-ink transition hover:border-ink hover:bg-ink hover:text-paper md:hidden"
+        >
+          Wybierz model
+        </Link>
+      ) : (
+        <button
+          onClick={() => add({ slug: product.slug, name: product.name, price, image: img })}
+          className="mt-3 w-full rounded-full border border-ink/15 py-2.5 text-xs font-medium tracking-wide text-ink transition hover:border-ink hover:bg-ink hover:text-paper md:hidden"
+        >
+          Dodaj do koszyka
+        </button>
+      )}
     </div>
   );
 }

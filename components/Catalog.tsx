@@ -18,11 +18,13 @@ export function Catalog({
   lockCategory,
   title,
   subtitle,
+  intro,
 }: {
   products: Product[];
   lockCategory?: "sun" | "optical";
   title: string;
   subtitle?: string;
+  intro?: string;
 }) {
   const sp = useSearchParams();
   const router = useRouter();
@@ -162,6 +164,7 @@ export function Catalog({
       <header className="mb-8">
         <p className="eyebrow">{subtitle}</p>
         <h1 className="mt-2 font-display text-4xl md:text-5xl">{title}</h1>
+        {intro && <p className="mt-4 max-w-2xl leading-relaxed text-ink-soft">{intro}</p>}
       </header>
 
       <div className="grid gap-10 md:grid-cols-[240px_1fr]">

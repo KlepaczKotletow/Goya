@@ -2,14 +2,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/types";
 import { premiumPrice, compareAtPrice, discountPct, formatPLN } from "@/lib/pricing";
 import { useCart } from "@/lib/cart";
 import { Accordion } from "./Accordion";
 import { Stars } from "./Stars";
-import { HeartIcon, AppleIcon, GPayIcon, CheckIcon, TruckIcon, ReturnIcon, ShieldIcon, SunIcon } from "./icons";
-import { SHAPE_LABELS, CATEGORY_LABELS, INCLUDED } from "@/content/site";
+import { HeartIcon, CheckIcon, TruckIcon, ReturnIcon, ShieldIcon, SunIcon } from "./icons";
+import { SHAPE_LABELS, CATEGORY_LABELS, INCLUDED, SITE } from "@/content/site";
 import { cn, fieldTint } from "@/lib/utils";
 
 function lifestyleFor(p: Product): string {
@@ -22,6 +23,7 @@ type GItem = { src: string; alt: string; lifestyle: boolean };
 
 export function ProductView({ product }: { product: Product }) {
   const { add, setOpen, toggleWish, isWished } = useCart();
+  const router = useRouter();
   const price = premiumPrice(product.priceWoo);
   const compareAt = compareAtPrice(price);
   const pct = discountPct(price, compareAt);
@@ -29,6 +31,7 @@ export function ProductView({ product }: { product: Product }) {
   const rating = 4.6 + (product.id % 4) * 0.1;
   const reviewCount = 60 + (product.id % 200);
   const wished = isWished(product.slug);
+  const inStock = product.stockStatus === "instock";
 
   const variantOptions = useMemo(
     () => product.variations.map((v) => ({ id: v.id, label: v.attributes.map((a) => a.option).join(" / ") || v.sku || "Wariant", image: v.image })),
@@ -38,14 +41,16 @@ export function ProductView({ product }: { product: Product }) {
   const selected = product.variations.find((v) => v.id === variantId) ?? null;
 
   const gallery: GItem[] = useMemo(() => {
-    const items: GItem[] = [{ src: lifestyleFor(product), alt: `${product.name} — Goya`, lifestyle: true }];
+    const items: GItem[] = [];
     const seen = new Set<string>();
+    // Lead with the real product packshot(s) — the lifestyle shot is a secondary slide.
     product.images.forEach((im) => {
       if (!seen.has(im.src)) {
         seen.add(im.src);
         items.push({ src: im.src, alt: im.alt || product.name, lifestyle: false });
       }
     });
+    items.push({ src: lifestyleFor(product), alt: `${product.name} — Goya`, lifestyle: true });
     product.variations.forEach((v) => {
       if (v.image && !seen.has(v.image)) {
         seen.add(v.image);
@@ -81,6 +86,20 @@ export function ProductView({ product }: { product: Product }) {
       variant: variantLabel ?? null,
     });
     setOpen(true);
+  };
+
+  const buyNow = () => {
+    const variantLabel = selected ? variantOptions.find((o) => o.id === selected.id)?.label : null;
+    add({
+      key: `${product.slug}-${selected?.id ?? "x"}`,
+      slug: product.slug,
+      name: product.name,
+      price,
+      image: (selected?.image ?? product.images[0]?.src) || null,
+      variant: variantLabel ?? null,
+    });
+    setOpen(false);
+    router.push("/kasa");
   };
 
   // floating bar visibility
@@ -155,7 +174,7 @@ export function ProductView({ product }: { product: Product }) {
       title: "Dostawa i zwroty",
       content: (
         <ul className="space-y-1.5">
-          <li>Darmowa wysyłka od 199 zł (kurier lub paczkomat).</li>
+          <li>Darmowa wysyłka (kurier lub paczkomat).</li>
           <li>Wysyłka w 1–2 dni robocze.</li>
           <li>30 dni na zwrot bez podawania przyczyny.</li>
           <li>24 miesiące gwarancji.</li>
@@ -241,7 +260,7 @@ export function ProductView({ product }: { product: Product }) {
 
           {variantOptions.length > 1 && (
             <div className="mt-6">
-              <p className="eyebrow mb-3">Wariant{selected ? <span className="ml-1 normal-case tracking-normal text-ink">· {variantOptions.find((o) => o.id === selected.id)?.label}</span> : null}</p>
+              <p className="eyebrow mb-3">Kolor{selected ? <span className="ml-1 normal-case tracking-normal text-ink">· {variantOptions.find((o) => o.id === selected.id)?.label}</span> : null}</p>
               <div className="flex flex-wrap gap-3">
                 {variantOptions.map((o) => (
                   <button
@@ -260,29 +279,38 @@ export function ProductView({ product }: { product: Product }) {
           )}
 
           {/* CTA */}
-          <div className="mt-7 flex gap-3">
-            <button onClick={addToBag} className="flex-1 rounded-full bg-terracotta py-4 text-sm font-medium text-paper transition hover:bg-rust">
-              Dodaj do koszyka — {formatPLN(price)}
-            </button>
-            <button onClick={() => toggleWish(product.slug)} aria-label="Dodaj do ulubionych" className={cn("grid h-[52px] w-[52px] shrink-0 place-items-center rounded-full border transition", wished ? "border-terracotta text-terracotta" : "border-ink/25 hover:border-ink")}>
-              <HeartIcon filled={wished} />
-            </button>
-          </div>
-
-          {/* express pay */}
-          <div className="mt-4">
-            <div className="mb-2.5 flex items-center gap-3 text-xs text-stone">
-              <span className="h-px flex-1 bg-line" /> lub zapłać szybko <span className="h-px flex-1 bg-line" />
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <button onClick={addToBag} className="flex h-11 items-center justify-center gap-1.5 rounded-full bg-ink text-sm font-medium text-paper transition hover:opacity-90">
-                <AppleIcon /> Pay
+          {inStock ? (
+            <>
+              <div className="mt-7 flex gap-3">
+                <button onClick={addToBag} className="flex-1 rounded-full bg-terracotta py-4 text-sm font-medium text-paper transition hover:bg-rust">
+                  Dodaj do koszyka — {formatPLN(price)}
+                </button>
+                <button onClick={() => toggleWish(product.slug)} aria-label="Dodaj do ulubionych" className={cn("grid h-[52px] w-[52px] shrink-0 place-items-center rounded-full border transition", wished ? "border-terracotta text-terracotta" : "border-ink/25 hover:border-ink")}>
+                  <HeartIcon filled={wished} />
+                </button>
+              </div>
+              <button onClick={buyNow} className="mt-3 w-full rounded-full border border-ink py-3.5 text-sm font-medium text-ink transition hover:bg-ink hover:text-paper">
+                Kup teraz
               </button>
-              <button onClick={addToBag} className="flex h-11 items-center justify-center rounded-full border border-ink/20 bg-paper transition hover:border-ink/40">
-                <GPayIcon />
-              </button>
+            </>
+          ) : (
+            <div className="mt-7">
+              <div className="flex gap-3">
+                <button disabled aria-disabled className="flex-1 cursor-not-allowed rounded-full bg-stone/25 py-4 text-sm font-medium text-stone">
+                  Chwilowo niedostępne
+                </button>
+                <button onClick={() => toggleWish(product.slug)} aria-label="Dodaj do ulubionych" className={cn("grid h-[52px] w-[52px] shrink-0 place-items-center rounded-full border transition", wished ? "border-terracotta text-terracotta" : "border-ink/25 hover:border-ink")}>
+                  <HeartIcon filled={wished} />
+                </button>
+              </div>
+              <a
+                href={`mailto:${SITE.email}?subject=${encodeURIComponent(`Dostępność: Goya ${product.name}`)}`}
+                className="mt-3 inline-block text-sm link-underline"
+              >
+                Powiadom mnie o dostępności
+              </a>
             </div>
-          </div>
+          )}
           <div ref={ctaRef} className="h-px" />
 
           {/* in the box */}
@@ -309,7 +337,7 @@ export function ProductView({ product }: { product: Product }) {
 
           {/* delivery rows */}
           <div className="mt-6 grid gap-3 text-sm">
-            <div className="flex items-center gap-3"><TruckIcon className="shrink-0 text-stone" /> Darmowa wysyłka od 199 zł · wysyłka 1–2 dni</div>
+            <div className="flex items-center gap-3"><TruckIcon className="shrink-0 text-stone" /> Darmowa wysyłka · wysyłka 1–2 dni</div>
             <div className="flex items-center gap-3"><ReturnIcon className="shrink-0 text-stone" /> 30 dni na łatwy zwrot</div>
             <div className="flex items-center gap-3"><ShieldIcon className="shrink-0 text-stone" /> 24 miesiące gwarancji</div>
           </div>
@@ -323,7 +351,7 @@ export function ProductView({ product }: { product: Product }) {
 
       {/* FLOATING ADD-TO-CART BAR (floating + split) */}
       <AnimatePresence>
-        {showBar && (
+        {showBar && inStock && (
           <motion.div
             initial={{ y: 120, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -344,8 +372,8 @@ export function ProductView({ product }: { product: Product }) {
               <button onClick={addToBag} className="flex h-12 flex-1 items-center justify-center rounded-full bg-terracotta px-5 text-sm font-medium text-paper transition hover:bg-rust sm:flex-none sm:px-7">
                 Dodaj do koszyka
               </button>
-              <button onClick={addToBag} aria-label="Apple Pay" className="flex h-12 items-center justify-center gap-1.5 rounded-full bg-ink px-5 text-sm font-medium text-paper transition hover:opacity-90 sm:px-7">
-                <AppleIcon /> Pay
+              <button onClick={buyNow} className="flex h-12 items-center justify-center rounded-full bg-ink px-5 text-sm font-medium text-paper transition hover:opacity-90 sm:px-7">
+                Kup teraz
               </button>
             </div>
           </motion.div>
