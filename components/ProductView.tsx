@@ -104,17 +104,17 @@ export function ProductView({ product }: { product: Product }) {
   const badges = (
     product.category === "sun"
       ? [
-          { icon: <SunIcon className="text-mar" />, label: "UV400" },
-          product.polarized ? { icon: <CheckIcon className="text-mar" />, label: "Polaryzacja" } : null,
-          product.uv ? { icon: <SunIcon className="text-mar" />, label: `Filtr ${product.uv}` } : null,
-          { icon: <ShieldIcon className="text-mar" />, label: "Certyfikat CE" },
+          { icon: <SunIcon className="text-mar" />, label: "UV400", note: "Pełna ochrona UVA/UVB" },
+          product.polarized ? { icon: <CheckIcon className="text-mar" />, label: "Polaryzacja", note: "Bez odblasków" } : null,
+          product.uv ? { icon: <SunIcon className="text-mar" />, label: `Filtr ${product.uv}`, note: "Na pełne słońce" } : null,
+          { icon: <ShieldIcon className="text-mar" />, label: "Certyfikat CE", note: "PN-EN ISO 12312-1" },
         ]
       : [
-          { icon: <CheckIcon className="text-mar" />, label: "Lekka oprawa" },
-          { icon: <CheckIcon className="text-mar" />, label: "Na soczewki korekcyjne" },
-          { icon: <ShieldIcon className="text-mar" />, label: "Certyfikat CE" },
+          { icon: <CheckIcon className="text-mar" />, label: "Lekka oprawa", note: "Komfort na cały dzień" },
+          { icon: <CheckIcon className="text-mar" />, label: "Pod korekcję", note: "Gotowa na Twoje soczewki" },
+          { icon: <ShieldIcon className="text-mar" />, label: "Certyfikat CE", note: "PN-EN ISO 12312-1" },
         ]
-  ).filter(Boolean) as { icon: React.ReactNode; label: string }[];
+  ).filter(Boolean) as { icon: React.ReactNode; label: string; note: string }[];
 
   const specRows = (
     [
@@ -294,23 +294,27 @@ export function ProductView({ product }: { product: Product }) {
 
           {/* in the box */}
           <div className="mt-7 rounded-[6px] border border-line bg-paper p-5">
-            <p className="eyebrow mb-3">W zestawie — gratis</p>
-            <ul className="space-y-2.5">
+            <p className="eyebrow mb-1.5">W zestawie</p>
+            <p className="mb-3 text-xs text-ink-soft">Wszystko, czego potrzebujesz — w cenie produktu.</p>
+            <ul className="space-y-3">
               {INCLUDED.map((it) => (
-                <li key={it.label} className="flex items-start gap-3 text-sm">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blask text-mar"><CheckIcon className="h-3.5 w-3.5" /></span>
-                  <span><span className="text-ink">{it.label}</span> <span className="text-stone">· {it.note}</span></span>
+                <li key={it.label} className="flex items-center gap-3 text-sm">
+                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blask text-mar"><CheckIcon className="h-3.5 w-3.5" /></span>
+                  <span className="min-w-0 flex-1"><span className="text-ink">{it.label}</span> <span className="hidden text-stone sm:inline">· {it.note}</span></span>
+                  <span className="shrink-0 rounded-[2px] bg-agawa/10 px-2 py-1 text-[0.6rem] font-bold uppercase tracking-[0.08em] text-agawa">Gratis</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* spec badges */}
-          <div className="mt-5 flex flex-wrap gap-2">
+          {/* spec badges — icon cards */}
+          <div className="mt-5 grid grid-cols-2 gap-2.5">
             {badges.map((b) => (
-              <span key={b.label} className="inline-flex items-center gap-1.5 rounded-[2px] border border-line bg-paper px-3 py-1.5 text-xs">
-                {b.icon} {b.label}
-              </span>
+              <div key={b.label} className="flex flex-col items-center gap-1.5 rounded-[6px] border border-line bg-paper px-3 py-4 text-center">
+                <span className="mb-1 grid h-11 w-11 place-items-center rounded-full bg-blask">{b.icon}</span>
+                <span className="text-sm font-semibold leading-tight">{b.label}</span>
+                <span className="text-xs leading-tight text-ink-soft">{b.note}</span>
+              </div>
             ))}
           </div>
 
@@ -336,7 +340,7 @@ export function ProductView({ product }: { product: Product }) {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 120, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-0 bottom-0 z-40 px-3 pb-3 sm:pb-5"
+            className="fixed inset-x-0 bottom-0 z-40 px-3 pb-3 max-md:hidden sm:pb-5"
           >
             <div className="mx-auto flex max-w-2xl items-center gap-2 rounded-[8px] bg-bg/95 p-2 shadow-[0_22px_55px_-12px_rgba(18,48,63,0.5)] ring-1 ring-line backdrop-blur sm:gap-3 sm:p-2.5">
               <div className="relative ml-1 hidden h-12 w-12 shrink-0 overflow-hidden rounded-[4px] bg-paper sm:block">
@@ -358,6 +362,32 @@ export function ProductView({ product }: { product: Product }) {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* ALWAYS-ON MOBILE PURCHASE BAR — add to cart + express pay in the thumb zone */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-bg/95 px-3 pb-[max(env(safe-area-inset-bottom),0.75rem)] pt-2.5 backdrop-blur md:hidden">
+        <div className="flex items-stretch gap-2">
+          <button
+            onClick={addToBag}
+            className="min-h-[52px] flex-1 rounded-[2px] bg-mar px-3 text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-mar-deep"
+          >
+            Dodaj do koszyka
+          </button>
+          <button
+            onClick={addToBag}
+            aria-label="Zapłać przez Apple Pay"
+            className="flex min-h-[52px] items-center justify-center gap-1 rounded-[2px] bg-ink px-4 text-sm font-medium text-bg transition hover:opacity-90"
+          >
+            <AppleIcon /> Pay
+          </button>
+          <button
+            onClick={addToBag}
+            aria-label="Zapłać przez Google Pay"
+            className="flex min-h-[52px] items-center justify-center rounded-[2px] border border-ink/20 bg-paper px-3 transition hover:border-ink/40"
+          >
+            <GPayIcon />
+          </button>
+        </div>
+      </div>
     </>
   );
 }

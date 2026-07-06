@@ -52,7 +52,7 @@ export default async function Page({ params }: Params) {
   };
 
   return (
-    <div className="pb-24">
+    <div className="pb-36 md:pb-24">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ProductView product={product} />
       {related.length > 0 && (
