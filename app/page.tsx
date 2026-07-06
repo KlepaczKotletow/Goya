@@ -174,8 +174,8 @@ export default function Home() {
           <Reveal>
             <div className="relative aspect-[4/3] overflow-hidden rounded-[6px]">
               <Image
-                src="/hero/collection-luz.jpg"
-                alt="Hiszpańskie światło na białej ścianie"
+                src="/hero/tech-macro.jpg"
+                alt="Polaryzacyjna soczewka Goya z lustrzanym odbiciem w pełnym słońcu"
                 fill
                 sizes="(max-width:768px) 100vw, 50vw"
                 className="object-cover"
