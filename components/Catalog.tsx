@@ -50,6 +50,15 @@ export function Catalog({
   const [drawer, setDrawer] = useState(false);
   const drawerRef = useDialog<HTMLDivElement>(drawer, () => setDrawer(false));
 
+  // Floating filter trigger once the toolbar scrolls away (mobile).
+  const [showFab, setShowFab] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowFab(window.scrollY > 480);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   // Write state -> URL, remembering the query string we produced.
   const spString = sp.toString();
   const lastWritten = useRef(spString);
@@ -248,6 +257,21 @@ export function Catalog({
           )}
         </div>
       </div>
+
+      <AnimatePresence>
+        {showFab && !drawer && (
+          <motion.button
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 80, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            onClick={() => setDrawer(true)}
+            className="fixed bottom-4 left-1/2 z-30 flex min-h-[48px] -translate-x-1/2 items-center gap-2 rounded-[2px] bg-mar px-6 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-white shadow-[0_18px_44px_-12px_rgba(18,48,63,0.65)] md:hidden"
+          >
+            Filtry{activeCount > 0 ? ` (${activeCount})` : ""} · {filtered.length}
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {drawer && (

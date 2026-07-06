@@ -11,6 +11,14 @@ import { Geotag } from "@/components/Geotag";
 import { ArrowIcon } from "@/components/icons";
 import { COLLECTIONS, REASSURANCE, TECH_SPECS, REVIEWS } from "@/content/site";
 
+/* Lookbook — each photo links to the collection whose frames it shows. */
+const LOOKBOOK = [
+  { src: "/hero/lifestyle-muchy-w.jpg", geo: ["Cala d'Or", "18:44"], label: "Vela", href: "/przeciwsloneczne?shape=Muchy" },
+  { src: "/hero/lifestyle-nerdy-m.jpg", geo: ["Ronda", "17:21"], label: "Nerdy", href: "/okulary?shape=Nerdy" },
+  { src: "/hero/lifestyle-okragle-w.jpg", geo: ["Palamós", "10:05"], label: "Luna", href: "/okulary?shape=Okr%C4%85g%C5%82e" },
+  { src: "/hero/lifestyle-prostokatne-w.jpg", geo: ["Vejer", "16:02"], label: "Faro", href: "/okulary?shape=Prostok%C4%85tne" },
+];
+
 /* Art-directed hero: 16:9 golden-hour promenade on desktop, 9:16 rooftop portrait on mobile. */
 function HeroPicture() {
   const common = { alt: "Goya — okulary przeciwsłoneczne w hiszpańskim świetle", sizes: "100vw" };
@@ -123,11 +131,14 @@ export default function Home() {
                 className="group grid min-h-[64px] grid-cols-[2.2rem_1fr_auto] items-center gap-3 border-b border-line py-4 pr-1 transition-colors duration-300 hover:bg-blask md:grid-cols-[3rem_1fr_1fr_auto] md:py-5"
               >
                 <span className="geotag text-stone">0{i + 1}</span>
-                <span className="font-display text-3xl italic leading-none tracking-tight md:text-[2.6rem]">
-                  {c.name}
-                  <span className="ml-3 hidden align-middle text-xs not-italic tracking-normal text-stone lg:inline">
-                    ({c.meaning})
+                <span className="min-w-0">
+                  <span className="font-display text-3xl italic leading-none tracking-tight md:text-[2.6rem]">
+                    {c.name}
+                    <span className="ml-3 hidden align-middle text-xs not-italic tracking-normal text-stone lg:inline">
+                      ({c.meaning})
+                    </span>
                   </span>
+                  <span className="mt-1.5 block truncate text-xs text-ink-soft md:hidden">{c.tagline}</span>
                 </span>
                 <span className="hidden text-sm text-ink-soft md:block">{c.tagline}</span>
                 <span className="flex items-center gap-2 text-sm text-stone">
@@ -284,6 +295,39 @@ export default function Home() {
             </Link>
           </Reveal>
         ))}
+      </section>
+
+      {/* LOOKBOOK — Goya w kadrze */}
+      <section className="wrap pb-14 md:pb-24">
+        <Reveal className="mb-8 flex items-end justify-between gap-4">
+          <div>
+            <p className="eyebrow">Lookbook · Lato 2026</p>
+            <h2 className="mt-3 text-4xl md:text-5xl">Goya w kadrze</h2>
+          </div>
+        </Reveal>
+        <div className="hide-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 sm:-mx-9 sm:px-9 md:mx-0 md:grid md:grid-cols-4 md:gap-5 md:overflow-visible md:px-0">
+          {LOOKBOOK.map((l, i) => (
+            <Reveal key={l.src} delay={i * 0.05} className="w-[70%] shrink-0 snap-start md:w-auto">
+              <Link href={l.href} className="group block">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-[6px]">
+                  <Image
+                    src={l.src}
+                    alt={`Goya — ${l.label}`}
+                    fill
+                    sizes="(max-width:768px) 70vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-mar-deep/50 via-transparent to-transparent" />
+                  <Geotag place={l.geo[0]} time={l.geo[1]} className="bottom-auto top-4" />
+                  <span className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 font-display text-lg italic text-white">
+                    {l.label}
+                    <ArrowIcon className="opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       {/* PAS ZAUFANIA */}

@@ -16,8 +16,14 @@ import { cn } from "@/lib/utils";
 const LIFESTYLE = [
   { src: "/hero/sun-men.jpg", category: "sun", gender: "Męskie", shapes: ["Aviator"] },
   { src: "/hero/sun-women.jpg", category: "sun", gender: "Damskie", shapes: ["Kocie"] },
-  { src: "/hero/optical-men.jpg", category: "optical", gender: "Męskie", shapes: ["Prostokątne", "Kwadratowe"] },
+  { src: "/hero/optical-men.jpg", category: "optical", gender: "Męskie", shapes: ["Prostokątne"] },
   { src: "/hero/optical-women.jpg", category: "optical", gender: "Damskie", shapes: ["Okrągłe", "Owalne"] },
+  { src: "/hero/lifestyle-muchy-w.jpg", category: "sun", gender: "Damskie", shapes: ["Muchy"] },
+  { src: "/hero/lifestyle-nerdy-m.jpg", category: "sun", gender: "Męskie", shapes: ["Nerdy"] },
+  { src: "/hero/lifestyle-okragle-w.jpg", category: "sun", gender: "Damskie", shapes: ["Okrągłe"] },
+  { src: "/hero/lifestyle-prostokatne-w.jpg", category: "sun", gender: "Damskie", shapes: ["Prostokątne"] },
+  { src: "/hero/lifestyle-aviator-w.jpg", category: "sun", gender: "Damskie", shapes: ["Aviator"] },
+  { src: "/hero/lifestyle-prostokatne-m.jpg", category: "sun", gender: "Męskie", shapes: ["Prostokątne"] },
 ] as const;
 
 function lifestyleFor(p: Product): string | null {
