@@ -11,6 +11,8 @@ export type Product = {
   id: number;
   slug: string;
   name: string;
+  /** Original factory code, e.g. "G 15217" — kept for search and support. */
+  code: string;
   fullName: string;
   type: "simple" | "variable";
   category: "sun" | "optical";

@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const p = getProduct(slug);
   if (!p) return {};
-  const desc = `${p.name} — ${p.shape ?? "okulary"} ${p.category === "sun" ? "przeciwsłoneczne z polaryzacją i UV400" : "korekcyjne"} marki Goya.`;
+  const desc = `Goya ${p.name} (${p.code}) — ${p.shape ?? "okulary"} ${p.category === "sun" ? "przeciwsłoneczne z polaryzacją i UV400" : "korekcyjne"}.`;
   return {
     title: p.name,
     description: desc,
@@ -38,6 +38,7 @@ export default async function Page({ params }: Params) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: `Goya ${product.name}`,
+    sku: product.code,
     category: CATEGORY_LABELS[product.category],
     image: product.images.map((i) => i.src),
     brand: { "@type": "Brand", name: "Goya" },

@@ -12,10 +12,19 @@ import { HeartIcon, AppleIcon, GPayIcon, CheckIcon, TruckIcon, ReturnIcon, Shiel
 import { SHAPE_LABELS, CATEGORY_LABELS, INCLUDED } from "@/content/site";
 import { cn } from "@/lib/utils";
 
-function lifestyleFor(p: Product): string {
-  const g = p.gender === "Męskie" ? "men" : "women";
-  const kind = p.category === "optical" ? "optical" : "sun";
-  return `/hero/${kind}-${g}.jpg`;
+/* Campaign photos show specific frames — attach one only when it plausibly matches the product. */
+const LIFESTYLE = [
+  { src: "/hero/sun-men.jpg", category: "sun", gender: "Męskie", shapes: ["Aviator"] },
+  { src: "/hero/sun-women.jpg", category: "sun", gender: "Damskie", shapes: ["Kocie"] },
+  { src: "/hero/optical-men.jpg", category: "optical", gender: "Męskie", shapes: ["Prostokątne", "Kwadratowe"] },
+  { src: "/hero/optical-women.jpg", category: "optical", gender: "Damskie", shapes: ["Okrągłe", "Owalne"] },
+] as const;
+
+function lifestyleFor(p: Product): string | null {
+  const match = LIFESTYLE.find(
+    (l) => l.category === p.category && l.gender === p.gender && !!p.shape && (l.shapes as readonly string[]).includes(p.shape),
+  );
+  return match?.src ?? null;
 }
 
 type GItem = { src: string; alt: string; lifestyle: boolean };
@@ -37,7 +46,9 @@ export function ProductView({ product }: { product: Product }) {
   const selected = product.variations.find((v) => v.id === variantId) ?? null;
 
   const gallery: GItem[] = useMemo(() => {
-    const items: GItem[] = [{ src: lifestyleFor(product), alt: `${product.name} — Goya`, lifestyle: true }];
+    const items: GItem[] = [];
+    const lifestyle = lifestyleFor(product);
+    if (lifestyle) items.push({ src: lifestyle, alt: `${product.name} — Goya`, lifestyle: true });
     const seen = new Set<string>();
     product.images.forEach((im) => {
       if (!seen.has(im.src)) {
@@ -113,6 +124,7 @@ export function ProductView({ product }: { product: Product }) {
 
   const specRows = (
     [
+      ["Kod modelu", product.code],
       ["Fason", product.shape ? SHAPE_LABELS[product.shape] ?? product.shape : null],
       ["Płeć", product.gender],
       ["Materiał", product.material],

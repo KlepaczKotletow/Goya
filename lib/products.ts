@@ -1,8 +1,15 @@
 import data from "@/data/products.json";
 import facetsData from "@/data/facets.json";
+import namesData from "@/data/names.json";
 import type { Product, Facets } from "./types";
 
-const products = data as unknown as Product[];
+// Soulful Spanish names replace factory codes; the code stays on Product.code.
+const NAMES = namesData as Record<string, string>;
+const products: Product[] = (data as unknown as Omit<Product, "code">[]).map((p) => ({
+  ...p,
+  code: p.name,
+  name: NAMES[String(p.id)] ?? p.name,
+}));
 export const facets = facetsData as unknown as Facets;
 
 export function getAllProducts(): Product[] {

@@ -89,7 +89,7 @@ export function Catalog({
       if (shapes.length && !(p.shape && shapes.includes(p.shape))) return false;
       if (colors.length && !p.frameColors.some((c) => colors.includes(c))) return false;
       if (q) {
-        const hay = `${p.name} ${p.fullName} ${p.shape ?? ""} ${p.frameColors.join(" ")} ${p.gender ?? ""}`.toLowerCase();
+        const hay = `${p.name} ${p.code} ${p.fullName} ${p.shape ?? ""} ${p.frameColors.join(" ")} ${p.gender ?? ""}`.toLowerCase();
         if (!hay.includes(q.toLowerCase())) return false;
       }
       return true;
