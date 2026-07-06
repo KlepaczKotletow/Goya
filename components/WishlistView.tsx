@@ -15,7 +15,7 @@ export function WishlistView({ products }: { products: Product[] }) {
       {items.length === 0 ? (
         <div className="py-20 text-center">
           <p className="text-stone">Nie masz jeszcze ulubionych modeli.</p>
-          <Link href="/okulary" className="mt-5 inline-block rounded-full bg-ink px-7 py-3 text-sm text-paper transition hover:bg-rust">
+          <Link href="/okulary" className="mt-5 inline-block rounded-[2px] bg-mar px-7 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-mar-deep">
             Przeglądaj okulary
           </Link>
         </div>

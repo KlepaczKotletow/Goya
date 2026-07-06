@@ -1,138 +1,282 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import Link from "next/link";
-import { getBestsellers, getByCategory, facets } from "@/lib/products";
-import { imageAt } from "@/lib/utils";
+import { getAllProducts, getBestsellers, facets } from "@/lib/products";
+import { plural } from "@/lib/utils";
+import { premiumPrice, formatPLN } from "@/lib/pricing";
 import { ButtonLink } from "@/components/Button";
-import { ProductGrid } from "@/components/ProductGrid";
+import { ProductRail } from "@/components/ProductRail";
 import { Reveal } from "@/components/Reveal";
 import { RiseWord } from "@/components/RiseWord";
-import { Marquee } from "@/components/Marquee";
+import { Geotag } from "@/components/Geotag";
 import { ArrowIcon } from "@/components/icons";
-import { SHAPE_LABELS, REASSURANCE } from "@/content/site";
+import { COLLECTIONS, REASSURANCE, TECH_SPECS, REVIEWS } from "@/content/site";
 
-const LOOKBOOK = [
-  { src: "/hero/sun-women.jpg", label: "Przeciwsłoneczne", href: "/przeciwsloneczne" },
-  { src: "/hero/optical-men.jpg", label: "Korekcyjne", href: "/korekcyjne" },
-  { src: "/hero/sun-men.jpg", label: "Męskie", href: "/okulary?gender=M%C4%99skie" },
-  { src: "/hero/optical-women.jpg", label: "Damskie", href: "/okulary?gender=Damskie" },
-];
+/* Art-directed hero: 16:9 golden-hour promenade on desktop, 9:16 rooftop portrait on mobile. */
+function HeroPicture() {
+  const common = { alt: "Goya — okulary przeciwsłoneczne w hiszpańskim świetle", sizes: "100vw" };
+  const {
+    props: { srcSet: desktop },
+  } = getImageProps({ ...common, width: 2000, height: 1125, src: "/hero/hero-luz.jpg" });
+  const {
+    props: { srcSet: mobile, alt, ...rest },
+  } = getImageProps({ ...common, width: 1125, height: 2000, src: "/hero/hero-luz-mobile.jpg" });
+  return (
+    <picture>
+      <source media="(min-width: 768px)" srcSet={desktop} />
+      <img
+        {...rest}
+        srcSet={mobile}
+        alt={alt}
+        loading="eager"
+        fetchPriority="high"
+        className="absolute inset-0 h-full w-full object-cover object-[50%_38%] md:object-[62%_center]"
+      />
+    </picture>
+  );
+}
 
 export default function Home() {
+  const all = getAllProducts();
   const bestsellers = getBestsellers(8);
-  const hero = bestsellers[0];
-  const heroImg = hero ? imageAt(hero.images, 0) : null;
-  const sun = getByCategory("sun", 1)[0];
-  const optical = getByCategory("optical", 1)[0];
-  const shapeTiles = ["Aviator", "Kocie", "Prostokątne", "Okrągłe", "Muchy", "Nerdy"]
-    .map((s) => ({ shape: s, product: getBestsellers(200).find((p) => p.shape === s && imageAt(p.images, 0)) }))
-    .filter((t) => t.product);
+  const sunPicks = bestsellers.filter((p) => p.category === "sun").slice(0, 2);
+  const collections = COLLECTIONS.map((c) => ({
+    ...c,
+    count: all.filter(
+      (p) => (!c.category || p.category === c.category) && (!c.shape || p.shape === c.shape),
+    ).length,
+  }));
 
   return (
     <>
-      {/* HERO — sky / freedom */}
-      <section className="relative h-[90vh] min-h-[560px] w-full overflow-hidden">
-        <Image src="/hero/sky-hero.jpg" alt="Goya — okulary z polaryzacją" fill priority sizes="100vw" className="object-cover object-[72%_center]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/45 via-ink/10 to-transparent" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="wrap w-full">
-            <div className="max-w-2xl">
-              <Reveal immediate>
-                <p className="text-[0.72rem] uppercase tracking-[0.25em] text-paper/90">Polaryzacja · UV400</p>
-              </Reveal>
-              <h1 className="mt-4 font-display text-[clamp(3.4rem,9.5vw,7rem)] leading-[0.84] text-paper [text-shadow:0_2px_30px_rgba(20,20,30,0.28)]">
-                <RiseWord delay={0.08}>Patrz</RiseWord>
-                <br />
-                <RiseWord delay={0.18} className="italic text-terracotta">szerzej.</RiseWord>
-              </h1>
-              <Reveal immediate delay={0.3}>
-                <p className="mt-6 max-w-md text-lg leading-relaxed text-paper/90">
-                  Polaryzacyjne soczewki tną odblaski i wyostrzają każdy detal. Lekkie oprawy projektowane w Polsce — od 349 zł.
-                </p>
-              </Reveal>
-              <Reveal immediate delay={0.38}>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <ButtonLink href="/okulary" variant="accent" size="lg">Odkryj kolekcję</ButtonLink>
-                  <Link href="/przeciwsloneczne" className="inline-flex h-12 items-center justify-center rounded-full border border-paper/60 px-8 text-[0.95rem] font-medium text-paper transition hover:bg-paper hover:text-ink">
-                    Przeciwsłoneczne
-                  </Link>
-                </div>
-              </Reveal>
+      {/* HERO — Światło i luz */}
+      <section className="relative">
+        <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-auto md:h-[86svh] md:min-h-[600px]">
+          <HeroPicture />
+          <div className="absolute inset-0 hidden bg-gradient-to-r from-mar-deep/45 via-mar-deep/10 to-transparent md:block" />
+          <Geotag place="Cadaqués" time="19:42" />
+          {/* Desktop copy over the photo */}
+          <div className="absolute inset-0 hidden items-end md:flex">
+            <div className="wrap w-full pb-16">
+              <div className="max-w-2xl">
+                <Reveal immediate>
+                  <p className="geotag text-white/90">Polaryzacja · UV400 · Zaprojektowane w Polsce</p>
+                </Reveal>
+                <h1 className="mt-4 text-[clamp(3.2rem,7.5vw,6.2rem)] leading-[0.98] text-white [text-shadow:0_2px_28px_rgba(18,48,63,0.35)]">
+                  <RiseWord delay={0.08}>Światło</RiseWord>{" "}
+                  <RiseWord delay={0.18} className="italic">i luz.</RiseWord>
+                </h1>
+                <Reveal immediate delay={0.3}>
+                  <p className="mt-5 max-w-md text-lg leading-relaxed text-white/90">
+                    Okulary z polaryzacją i UV400 w standardzie — na miasto, podróż i długie popołudnia na słońcu. Od 349 zł.
+                  </p>
+                </Reveal>
+                <Reveal immediate delay={0.38}>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <ButtonLink href="/#kolekcje" variant="accent" size="lg">Poznaj kolekcje</ButtonLink>
+                    <ButtonLink
+                      href="/przeciwsloneczne"
+                      size="lg"
+                      className="border border-white/60 bg-transparent text-white hover:bg-white hover:text-ink"
+                    >
+                      Przeciwsłoneczne
+                    </ButtonLink>
+                  </div>
+                </Reveal>
+              </div>
             </div>
           </div>
         </div>
-
-        {hero && heroImg && (
-          <div className="absolute bottom-10 right-[6%] z-10 hidden md:block">
-            <Reveal immediate delay={0.5}>
-              <div className="w-64 rounded-[22px] border border-white/30 bg-white/15 p-4 text-paper shadow-[0_24px_60px_-18px_rgba(20,20,30,0.6)] backdrop-blur-md">
-                <div className="flex items-center gap-3">
-                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-[14px] bg-paper">
-                    <Image src={heroImg} alt={hero.name} fill sizes="56px" className="object-contain p-1.5" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="truncate font-display text-lg leading-tight">Goya {hero.name}</p>
-                    <p className="text-xs text-paper/80">Polaryzacja · UV400</p>
-                  </div>
-                </div>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="text-sm">od <strong>349 zł</strong></span>
-                  <Link href={`/okulary/${hero.slug}`} className="rounded-full bg-paper px-4 py-1.5 text-xs font-medium text-ink transition hover:bg-terracotta hover:text-paper">Zobacz</Link>
-                </div>
-              </div>
-            </Reveal>
+        {/* Mobile copy below the photo, on solid ivory */}
+        <div className="wrap pb-2 pt-7 md:hidden">
+          <p className="geotag text-stone">Polaryzacja · UV400 · Zaprojektowane w Polsce</p>
+          <h1 className="mt-3 text-[clamp(2.9rem,13vw,3.6rem)] leading-[1]">
+            Światło <span className="italic">i luz.</span>
+          </h1>
+          <p className="mt-4 max-w-md leading-relaxed text-ink-soft">
+            Okulary z polaryzacją i UV400 w standardzie — na miasto, podróż i długie popołudnia na słońcu. Od 349 zł.
+          </p>
+          <div className="mt-6 grid grid-cols-1 gap-2.5">
+            <ButtonLink href="/#kolekcje" variant="accent" size="lg" className="w-full">Poznaj kolekcje</ButtonLink>
+            <ButtonLink href="/przeciwsloneczne" variant="outline" size="lg" className="w-full">Przeciwsłoneczne</ButtonLink>
           </div>
-        )}
+        </div>
       </section>
 
-      <Marquee items={["Filtr polaryzacyjny", "UV400", "Zaprojektowane w Polsce", "30 dni na zwrot", "Lekkie oprawy", "Darmowa wysyłka od 199 zł"]} />
+      <div className="wrap mt-10 md:mt-0"><hr className="horizon" /></div>
 
-      {/* BESTSELLERS */}
-      <section className="wrap py-16 md:py-24">
-        <Reveal className="mb-10 flex items-end justify-between gap-4">
+      {/* SPIS KOLEKCJI — magazine table of contents */}
+      <section id="kolekcje" className="wrap scroll-mt-24 py-14 md:py-24">
+        <Reveal className="mb-8 flex items-end justify-between gap-4 md:mb-12">
+          <div>
+            <p className="eyebrow">Kolekcje · Lato 2026</p>
+            <h2 className="mt-3 text-4xl md:text-5xl">Spis treści lata</h2>
+          </div>
+          <p className="hidden max-w-[15rem] text-right text-sm text-ink-soft sm:block">
+            Sześć kolekcji nazwanych po hiszpańsku — jak wakacje, które się nie kończą.
+          </p>
+        </Reveal>
+        <div className="border-t border-line">
+          {collections.map((c, i) => (
+            <Reveal key={c.name} delay={i * 0.04}>
+              <Link
+                href={c.href}
+                className="group grid min-h-[64px] grid-cols-[2.2rem_1fr_auto] items-center gap-3 border-b border-line py-4 pr-1 transition-colors duration-300 hover:bg-blask md:grid-cols-[3rem_1fr_1fr_auto] md:py-5"
+              >
+                <span className="geotag text-stone">0{i + 1}</span>
+                <span className="font-display text-3xl italic leading-none tracking-tight md:text-[2.6rem]">
+                  {c.name}
+                  <span className="ml-3 hidden align-middle text-xs not-italic tracking-normal text-stone lg:inline">
+                    ({c.meaning})
+                  </span>
+                </span>
+                <span className="hidden text-sm text-ink-soft md:block">{c.tagline}</span>
+                <span className="flex items-center gap-2 text-sm text-stone">
+                  <span className="tabular-nums">{c.count} {plural(c.count, "model", "modele", "modeli")}</span>
+                  <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1 group-hover:text-mar" />
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* BESTSELLERY — snap rail */}
+      <section className="wrap pb-16 md:pb-24">
+        <Reveal className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="eyebrow">Najczęściej wybierane</p>
-            <h2 className="mt-3 font-display text-4xl md:text-5xl">Bestsellery</h2>
+            <h2 className="mt-3 text-4xl md:text-5xl">Bestsellery</h2>
           </div>
-          <Link href="/okulary" className="hidden items-center gap-1.5 text-sm link-underline sm:inline-flex">
+          <Link href="/okulary" className="link-underline hidden items-center gap-1.5 text-sm sm:inline-flex">
             Zobacz wszystkie <ArrowIcon />
           </Link>
         </Reveal>
-        <ProductGrid products={bestsellers} priorityCount={4} stagger />
+        <ProductRail products={bestsellers} priorityCount={2} />
+        <Link href="/okulary" className="link-underline mt-6 inline-flex items-center gap-1.5 text-sm sm:hidden">
+          Zobacz wszystkie <ArrowIcon />
+        </Link>
       </section>
 
-      {/* EDITORIAL LIFESTYLE BAND */}
-      <section className="wrap pb-16 md:pb-24">
-        <Reveal>
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[24px] sm:aspect-[16/10]">
-            <Image src="/hero/campaign-terrace.jpg" alt="Goya — w prawdziwym życiu" fill sizes="(max-width:1320px) 100vw, 1320px" className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
-            <div className="absolute bottom-0 max-w-lg p-7 md:p-12">
-              <h2 className="font-display text-3xl leading-[1.05] text-paper md:text-5xl">Zaprojektowane na prawdziwe życie.</h2>
-              <p className="mt-3 max-w-sm text-paper/85">
-                Od porannych dojazdów po wakacyjne popołudnia — okulary, które chronią i dobrze wyglądają.
-              </p>
-              <ButtonLink href="/okulary" variant="accent" className="mt-6">Zobacz kolekcję</ButtonLink>
+      {/* TECHNIKA BEZ WYKŁADU */}
+      <section className="border-y border-line bg-paper">
+        <div className="wrap grid items-center gap-10 py-14 md:grid-cols-2 md:gap-14 md:py-24">
+          <Reveal>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[6px]">
+              <Image
+                src="/hero/collection-luz.jpg"
+                alt="Hiszpańskie światło na białej ścianie"
+                fill
+                sizes="(max-width:768px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <Geotag place="Altea" time="16:10" />
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="eyebrow">Technika bez wykładu</p>
+            <h2 className="mt-3 text-3xl leading-[1.05] md:text-[2.6rem]">
+              Polaryzacja i UV400 <span className="italic">w każdej parze.</span>
+            </h2>
+            <dl className="mt-7 border-t border-line">
+              {TECH_SPECS.map((s) => (
+                <div key={s.label} className="grid grid-cols-[minmax(8rem,auto)_1fr] gap-4 border-b border-line py-3.5 text-sm">
+                  <dt className="font-semibold">{s.label}</dt>
+                  <dd className="text-ink-soft">{s.value}</dd>
+                </div>
+              ))}
+            </dl>
+            <ButtonLink href="/o-marce" variant="ghost" className="mt-5 px-0">
+              Jak działa polaryzacja <ArrowIcon />
+            </ButtonLink>
+          </Reveal>
+        </div>
       </section>
 
-      {/* CATEGORY SPLIT */}
-      <section className="wrap grid gap-5 pb-16 md:grid-cols-2 md:pb-24">
+      {/* REPORTAŻ — godzina złota (dark) */}
+      <section className="bg-mar-deep text-bg">
+        <div className="wrap py-14 md:py-24">
+          <Reveal className="mb-8 md:mb-10">
+            <p className="geotag text-sol">Reportaż · Costa de la Luz</p>
+            <h2 className="mt-4 max-w-3xl text-3xl leading-[1.08] text-bg md:text-[2.9rem]">
+              „Godzina złota trwa tu <span className="italic text-sol">cały dzień</span> — szkoda mrużyć oczy.”
+            </h2>
+          </Reveal>
+          <Reveal>
+            <div className="relative overflow-hidden rounded-[6px]">
+              <div className="relative aspect-[4/5] sm:aspect-[16/9]">
+                <Image
+                  src="/hero/campaign-terrace.jpg"
+                  alt="Kolacja na tarasie nad morzem o zachodzie słońca"
+                  fill
+                  sizes="(max-width:1320px) 100vw, 1320px"
+                  className="object-cover"
+                />
+              </div>
+              <Geotag place="Tarifa" time="20:37" />
+              {/* Shoppable chips */}
+              <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
+                {sunPicks.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/okulary/${p.slug}`}
+                    className="flex min-h-[44px] items-center gap-2 rounded-[2px] bg-bg/95 px-3.5 py-2 text-ink shadow-lg backdrop-blur transition hover:bg-bg"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-sol" />
+                    <span className="text-xs font-semibold">{p.name}</span>
+                    <span className="font-display text-xs">{formatPLN(premiumPrice(p.priceWoo))}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="mt-8">
+              <ButtonLink
+                href="/przeciwsloneczne"
+                size="lg"
+                className="border border-bg/50 bg-transparent text-bg hover:bg-bg hover:text-ink"
+              >
+                Zobacz przeciwsłoneczne
+              </ButtonLink>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* DWA ŚWIATY — sun / optical doors */}
+      <section className="wrap grid gap-5 py-14 md:grid-cols-2 md:py-24">
         {[
-          { p: sun, href: "/przeciwsloneczne", label: "Przeciwsłoneczne", sub: `${facets.sun} modeli z polaryzacją`, tint: "#e0d4bb" },
-          { p: optical, href: "/korekcyjne", label: "Korekcyjne", sub: `${facets.optical} oprawek na każdy dzień`, tint: "#ddd1bd" },
-        ].map((c) => (
-          <Reveal key={c.href}>
-            <Link href={c.href} className="group relative block overflow-hidden rounded-[22px]">
-              <div className="relative flex aspect-[4/3] items-end" style={{ backgroundColor: c.tint }}>
-                {c.p && imageAt(c.p.images, 0) && (
-                  <Image src={imageAt(c.p.images, 0) as string} alt={c.label} fill sizes="(max-width:768px) 100vw, 50vw" className="object-contain p-12 mix-blend-multiply transition-transform duration-700 ease-out group-hover:scale-105" />
-                )}
-                <div className="relative z-10 p-7">
-                  <h3 className="font-display text-3xl md:text-4xl">{c.label}</h3>
-                  <p className="mt-1 text-sm text-ink/70">{c.sub}</p>
-                  <span className="mt-3 inline-flex w-fit items-center gap-1.5 text-sm font-medium">
+          {
+            img: "/hero/sun-men.jpg",
+            label: "Przeciwsłoneczne",
+            sub: `${facets.sun} modeli z polaryzacją`,
+            href: "/przeciwsloneczne",
+            geo: ["Mallorca", "19:05"],
+          },
+          {
+            img: "/hero/optical-women.jpg",
+            label: "Korekcyjne · Alba",
+            sub: `${facets.optical} oprawek na każdy dzień`,
+            href: "/korekcyjne",
+            geo: ["Nerja", "10:15"],
+          },
+        ].map((c, i) => (
+          <Reveal key={c.href} delay={i * 0.06}>
+            <Link href={c.href} className="group relative block overflow-hidden rounded-[6px]">
+              <div className="relative aspect-[4/5] md:aspect-[3/4]">
+                <Image
+                  src={c.img}
+                  alt={c.label}
+                  fill
+                  sizes="(max-width:768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-mar-deep/70 via-mar-deep/10 to-transparent" />
+                <Geotag place={c.geo[0]} time={c.geo[1]} className="bottom-auto top-4" />
+                <div className="absolute bottom-0 p-6 text-white md:p-8">
+                  <h3 className="text-3xl md:text-4xl">{c.label}</h3>
+                  <p className="mt-1 text-sm text-white/80">{c.sub}</p>
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-[0.08em]">
                     Odkryj <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
                 </div>
@@ -142,83 +286,33 @@ export default function Home() {
         ))}
       </section>
 
-      {/* LOOKBOOK */}
-      <section className="border-y border-line bg-paper py-16 md:py-24">
-        <div className="wrap">
-          <Reveal className="mb-10">
-            <p className="eyebrow">Lookbook</p>
-            <h2 className="mt-3 font-display text-4xl md:text-5xl">Goya w kadrze</h2>
-          </Reveal>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {LOOKBOOK.map((l, i) => (
-              <Reveal key={l.src} delay={i * 0.06}>
-                <Link href={l.href} className="group block">
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-[16px]">
-                    <Image src={l.src} alt={l.label} fill sizes="(max-width:768px) 50vw, 25vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/55 to-transparent" />
-                    <span className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 font-display text-xl text-paper">
-                      {l.label} <ArrowIcon className="opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SHOP BY SHAPE */}
-      <section className="wrap py-16 md:py-24">
-        <Reveal className="mb-10">
-          <p className="eyebrow">Po kształcie</p>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl">Znajdź swój fason</h2>
-        </Reveal>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-          {shapeTiles.map((t, i) => (
-            <Reveal key={t.shape} delay={i * 0.05}>
-              <Link href={`/okulary?shape=${encodeURIComponent(t.shape)}`} className="group block">
-                <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-[var(--radius)] bg-linen">
-                  <Image src={imageAt(t.product!.images, 0) as string} alt={t.shape} fill sizes="(max-width:768px) 50vw, 16vw" className="object-contain p-6 mix-blend-multiply transition-transform duration-500 ease-out group-hover:scale-110" />
-                </div>
-                <p className="mt-3 text-center font-display text-lg">{SHAPE_LABELS[t.shape] ?? t.shape}</p>
-              </Link>
+      {/* PAS ZAUFANIA */}
+      <section className="border-y border-line bg-paper">
+        <div className="wrap grid grid-cols-2 gap-x-6 gap-y-8 py-10 md:grid-cols-4 md:py-12">
+          {REASSURANCE.map((r, i) => (
+            <Reveal key={r.title} delay={i * 0.05}>
+              <p className="text-sm font-semibold">{r.title}</p>
+              <p className="mt-1.5 text-xs leading-relaxed text-ink-soft">{r.text}</p>
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* BRAND TEASER with campaign image */}
-      <section className="border-t border-line bg-paper">
-        <div className="wrap grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
-          <Reveal>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[24px]">
-              <Image src="/hero/campaign-duo.jpg" alt="Goya — para w okularach" fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover" />
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="eyebrow">Nasza historia</p>
-            <h2 className="mt-4 font-display text-4xl leading-[1.04] md:text-[3rem]">
-              Dobre okulary nie&nbsp;muszą kosztować <span className="italic text-terracotta">fortuny</span>.
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-ink-soft">
-              Goya powstała z prostego przekonania: jakość soczewek, lekkość oprawy i czysty design powinny być dostępne bez
-              dopłaty za metkę. Każdy model dobieramy pod realne twarze i realne życie.
-            </p>
-            <ButtonLink href="/o-marce" variant="ghost" className="mt-5 px-0">
-              Poznaj markę <ArrowIcon />
-            </ButtonLink>
-          </Reveal>
+      {/* OPINIE JAK CYTATY */}
+      <section className="wrap py-14 md:py-24">
+        <Reveal className="mb-8 md:mb-12">
+          <p className="eyebrow">Opinie</p>
+          <h2 className="mt-3 text-4xl md:text-5xl">Z listów do redakcji</h2>
+        </Reveal>
+        <div className="grid gap-x-14 gap-y-10 md:grid-cols-2">
+          {REVIEWS.map((r, i) => (
+            <Reveal key={r.name} delay={i * 0.05}>
+              <hr className="horizon mb-6" />
+              <blockquote className="font-display text-xl italic leading-snug md:text-2xl">„{r.text}”</blockquote>
+              <p className="mt-4 text-sm text-stone">{r.name} · {r.city}</p>
+            </Reveal>
+          ))}
         </div>
-      </section>
-
-      {/* REASSURANCE */}
-      <section className="wrap grid grid-cols-2 gap-x-6 gap-y-10 py-14 md:grid-cols-4">
-        {REASSURANCE.map((r, i) => (
-          <Reveal key={r.title} delay={i * 0.06}>
-            <p className="font-display text-xl">{r.title}</p>
-            <p className="mt-2 text-sm leading-relaxed text-ink-soft">{r.text}</p>
-          </Reveal>
-        ))}
       </section>
     </>
   );

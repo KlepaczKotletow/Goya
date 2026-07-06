@@ -6,17 +6,17 @@ type Variant = "primary" | "accent" | "outline" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-wide transition-all duration-300 ease-out disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-[2px] font-semibold uppercase tracking-[0.08em] transition-all duration-300 ease-out disabled:cursor-not-allowed disabled:opacity-50";
 const variants: Record<Variant, string> = {
-  primary: "bg-ink text-paper hover:bg-rust",
-  accent: "bg-terracotta text-paper hover:bg-rust",
-  outline: "border border-ink/25 text-ink hover:bg-ink hover:text-paper hover:border-ink",
-  ghost: "text-ink hover:text-terracotta",
+  primary: "bg-ink text-bg hover:bg-mar",
+  accent: "bg-mar text-white hover:bg-mar-deep",
+  outline: "border border-ink/30 text-ink hover:border-ink hover:bg-ink hover:text-bg",
+  ghost: "text-ink hover:text-mar",
 };
 const sizes: Record<Size, string> = {
-  sm: "h-9 px-4 text-sm",
-  md: "h-11 px-6 text-sm",
-  lg: "h-12 px-8 text-[0.95rem]",
+  sm: "h-10 px-4 text-[0.68rem]",
+  md: "h-12 px-7 text-[0.72rem]",
+  lg: "h-[52px] px-9 text-[0.75rem]",
 };
 
 type Common = { variant?: Variant; size?: Size; className?: string; children: ReactNode };

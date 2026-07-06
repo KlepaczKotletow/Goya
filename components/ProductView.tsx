@@ -10,7 +10,7 @@ import { Accordion } from "./Accordion";
 import { Stars } from "./Stars";
 import { HeartIcon, AppleIcon, GPayIcon, CheckIcon, TruckIcon, ReturnIcon, ShieldIcon, SunIcon } from "./icons";
 import { SHAPE_LABELS, CATEGORY_LABELS, INCLUDED } from "@/content/site";
-import { cn, fieldTint } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 function lifestyleFor(p: Product): string {
   const g = p.gender === "Męskie" ? "men" : "women";
@@ -25,7 +25,6 @@ export function ProductView({ product }: { product: Product }) {
   const price = premiumPrice(product.priceWoo);
   const compareAt = compareAtPrice(price);
   const pct = discountPct(price, compareAt);
-  const tint = fieldTint(product.id);
   const rating = 4.6 + (product.id % 4) * 0.1;
   const reviewCount = 60 + (product.id % 200);
   const wished = isWished(product.slug);
@@ -100,15 +99,15 @@ export function ProductView({ product }: { product: Product }) {
   const badges = (
     product.category === "sun"
       ? [
-          { icon: <SunIcon className="text-terracotta" />, label: "UV400" },
-          product.polarized ? { icon: <CheckIcon className="text-terracotta" />, label: "Polaryzacja" } : null,
-          product.uv ? { icon: <SunIcon className="text-terracotta" />, label: `Filtr ${product.uv}` } : null,
-          { icon: <ShieldIcon className="text-terracotta" />, label: "Certyfikat CE" },
+          { icon: <SunIcon className="text-mar" />, label: "UV400" },
+          product.polarized ? { icon: <CheckIcon className="text-mar" />, label: "Polaryzacja" } : null,
+          product.uv ? { icon: <SunIcon className="text-mar" />, label: `Filtr ${product.uv}` } : null,
+          { icon: <ShieldIcon className="text-mar" />, label: "Certyfikat CE" },
         ]
       : [
-          { icon: <CheckIcon className="text-terracotta" />, label: "Lekka oprawa" },
-          { icon: <CheckIcon className="text-terracotta" />, label: "Na soczewki korekcyjne" },
-          { icon: <ShieldIcon className="text-terracotta" />, label: "Certyfikat CE" },
+          { icon: <CheckIcon className="text-mar" />, label: "Lekka oprawa" },
+          { icon: <CheckIcon className="text-mar" />, label: "Na soczewki korekcyjne" },
+          { icon: <ShieldIcon className="text-mar" />, label: "Certyfikat CE" },
         ]
   ).filter(Boolean) as { icon: React.ReactNode; label: string }[];
 
@@ -169,7 +168,7 @@ export function ProductView({ product }: { product: Product }) {
       <div className="wrap grid gap-8 py-6 md:grid-cols-2 md:gap-14 md:py-12">
         {/* GALLERY */}
         <div className="md:sticky md:top-28 md:self-start">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] md:aspect-square" style={{ backgroundColor: shown?.lifestyle ? "transparent" : tint }}>
+          <div className={cn("relative aspect-[4/5] overflow-hidden rounded-[6px] md:aspect-square", !shown?.lifestyle && "bg-paper ring-1 ring-ink/[0.06]")}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={shown?.src ?? "x"}
@@ -180,24 +179,27 @@ export function ProductView({ product }: { product: Product }) {
                 className="absolute inset-0"
               >
                 {shown && shown.lifestyle ? (
-                  <Image src={shown.src} alt={shown.alt} fill priority sizes="(max-width:768px) 100vw, 45vw" className="object-cover" />
+                  <Image src={shown.src} alt={shown.alt} fill loading="eager" fetchPriority="high" sizes="(max-width:768px) 100vw, 45vw" className="object-cover" />
                 ) : (
-                  shown && <Image src={shown.src} alt={shown.alt} fill priority sizes="(max-width:768px) 100vw, 45vw" className="object-contain p-10 mix-blend-multiply" />
+                  shown && <Image src={shown.src} alt={shown.alt} fill loading="eager" sizes="(max-width:768px) 100vw, 45vw" className="object-contain p-10 mix-blend-multiply" />
                 )}
               </motion.div>
             </AnimatePresence>
             {pct > 0 && (
-              <span className="absolute left-4 top-4 z-10 rounded-full bg-terracotta px-3 py-1 text-xs font-semibold text-paper">−{pct}%</span>
+              <span className="absolute left-4 top-4 z-10 rounded-[2px] bg-terra px-2.5 py-1 text-xs font-semibold text-white">−{pct}%</span>
             )}
           </div>
           {gallery.length > 1 && (
-            <div className="mt-3 flex gap-3 overflow-x-auto hide-scrollbar">
+            <div className="hide-scrollbar mt-3 flex gap-3 overflow-x-auto">
               {gallery.map((g, i) => (
                 <button
                   key={g.src}
                   onClick={() => setActive(i)}
-                  className={cn("relative h-20 w-20 shrink-0 overflow-hidden rounded-[12px] ring-1 transition", active === i ? "ring-ink" : "ring-line hover:ring-ink/40")}
-                  style={{ backgroundColor: g.lifestyle ? "transparent" : tint }}
+                  className={cn(
+                    "relative h-20 w-20 shrink-0 overflow-hidden rounded-[4px] ring-1 transition",
+                    active === i ? "ring-mar" : "ring-line hover:ring-mar/50",
+                    !g.lifestyle && "bg-paper",
+                  )}
                 >
                   {g.lifestyle ? (
                     <Image src={g.src} alt="" fill sizes="80px" className="object-cover" />
@@ -220,7 +222,7 @@ export function ProductView({ product }: { product: Product }) {
             </Link>
           </nav>
           <p className="eyebrow mt-3">{CATEGORY_LABELS[product.category]}</p>
-          <h1 className="mt-1.5 font-display text-4xl md:text-5xl">{product.name}</h1>
+          <h1 className="mt-1.5 text-4xl md:text-5xl">{product.name}</h1>
 
           <div className="mt-3 flex items-center gap-2 text-sm">
             <Stars rating={rating} />
@@ -229,11 +231,11 @@ export function ProductView({ product }: { product: Product }) {
           </div>
 
           <div className="mt-5 flex items-end gap-3">
-            <span className="text-3xl font-medium tabular-nums">{formatPLN(price)}</span>
+            <span className="font-display text-3xl">{formatPLN(price)}</span>
             {pct > 0 && (
               <>
-                <span className="pb-1 text-lg text-stone line-through tabular-nums">{formatPLN(compareAt)}</span>
-                <span className="mb-1.5 rounded-full bg-terracotta/12 px-2 py-0.5 text-xs font-semibold text-terracotta">−{pct}%</span>
+                <span className="pb-1 text-lg text-ink-soft tabular-nums line-through decoration-ink-soft/50">{formatPLN(compareAt)}</span>
+                <span className="mb-1.5 rounded-[2px] bg-terra px-2 py-0.5 text-xs font-semibold text-white">−{pct}%</span>
               </>
             )}
           </div>
@@ -249,8 +251,7 @@ export function ProductView({ product }: { product: Product }) {
                     onClick={() => setVariantId(o.id)}
                     aria-label={o.label}
                     title={o.label}
-                    className={cn("relative h-16 w-16 overflow-hidden rounded-[12px] ring-1 transition", variantId === o.id ? "ring-2 ring-ink" : "ring-line hover:ring-ink/50")}
-                    style={{ backgroundColor: tint }}
+                    className={cn("relative h-16 w-16 overflow-hidden rounded-[4px] bg-paper ring-1 transition", variantId === o.id ? "ring-2 ring-mar" : "ring-line hover:ring-mar/50")}
                   >
                     {o.image ? <Image src={o.image} alt="" fill sizes="64px" className="object-contain p-1.5 mix-blend-multiply" /> : <span className="grid h-full w-full place-items-center text-[0.6rem] text-stone">{o.label}</span>}
                   </button>
@@ -261,10 +262,10 @@ export function ProductView({ product }: { product: Product }) {
 
           {/* CTA */}
           <div className="mt-7 flex gap-3">
-            <button onClick={addToBag} className="flex-1 rounded-full bg-terracotta py-4 text-sm font-medium text-paper transition hover:bg-rust">
+            <button onClick={addToBag} className="min-h-[52px] flex-1 rounded-[2px] bg-mar text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-mar-deep">
               Dodaj do koszyka — {formatPLN(price)}
             </button>
-            <button onClick={() => toggleWish(product.slug)} aria-label="Dodaj do ulubionych" className={cn("grid h-[52px] w-[52px] shrink-0 place-items-center rounded-full border transition", wished ? "border-terracotta text-terracotta" : "border-ink/25 hover:border-ink")}>
+            <button onClick={() => toggleWish(product.slug)} aria-label="Dodaj do ulubionych" className={cn("grid h-[52px] w-[52px] shrink-0 place-items-center rounded-[2px] border transition", wished ? "border-terra text-terra" : "border-ink/25 hover:border-ink")}>
               <HeartIcon filled={wished} />
             </button>
           </div>
@@ -275,10 +276,10 @@ export function ProductView({ product }: { product: Product }) {
               <span className="h-px flex-1 bg-line" /> lub zapłać szybko <span className="h-px flex-1 bg-line" />
             </div>
             <div className="grid grid-cols-2 gap-3">
-              <button onClick={addToBag} className="flex h-11 items-center justify-center gap-1.5 rounded-full bg-ink text-sm font-medium text-paper transition hover:opacity-90">
+              <button onClick={addToBag} className="flex h-11 items-center justify-center gap-1.5 rounded-[2px] bg-ink text-sm font-medium text-bg transition hover:opacity-90">
                 <AppleIcon /> Pay
               </button>
-              <button onClick={addToBag} className="flex h-11 items-center justify-center rounded-full border border-ink/20 bg-paper transition hover:border-ink/40">
+              <button onClick={addToBag} className="flex h-11 items-center justify-center rounded-[2px] border border-ink/20 bg-paper transition hover:border-ink/40">
                 <GPayIcon />
               </button>
             </div>
@@ -286,12 +287,12 @@ export function ProductView({ product }: { product: Product }) {
           <div ref={ctaRef} className="h-px" />
 
           {/* in the box */}
-          <div className="mt-7 rounded-[16px] border border-line bg-paper p-5">
+          <div className="mt-7 rounded-[6px] border border-line bg-paper p-5">
             <p className="eyebrow mb-3">W zestawie — gratis</p>
             <ul className="space-y-2.5">
               {INCLUDED.map((it) => (
                 <li key={it.label} className="flex items-start gap-3 text-sm">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-terracotta/12 text-terracotta"><CheckIcon className="h-3.5 w-3.5" /></span>
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blask text-mar"><CheckIcon className="h-3.5 w-3.5" /></span>
                   <span><span className="text-ink">{it.label}</span> <span className="text-stone">· {it.note}</span></span>
                 </li>
               ))}
@@ -301,7 +302,7 @@ export function ProductView({ product }: { product: Product }) {
           {/* spec badges */}
           <div className="mt-5 flex flex-wrap gap-2">
             {badges.map((b) => (
-              <span key={b.label} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-paper px-3 py-1.5 text-xs">
+              <span key={b.label} className="inline-flex items-center gap-1.5 rounded-[2px] border border-line bg-paper px-3 py-1.5 text-xs">
                 {b.icon} {b.label}
               </span>
             ))}
@@ -321,7 +322,7 @@ export function ProductView({ product }: { product: Product }) {
         </div>
       </div>
 
-      {/* FLOATING ADD-TO-CART BAR (floating + split) */}
+      {/* FLOATING ADD-TO-CART BAR */}
       <AnimatePresence>
         {showBar && (
           <motion.div
@@ -331,20 +332,20 @@ export function ProductView({ product }: { product: Product }) {
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-x-0 bottom-0 z-40 px-3 pb-3 sm:pb-5"
           >
-            <div className="mx-auto flex max-w-2xl items-center gap-2 rounded-full bg-bg/95 p-2 shadow-[0_22px_55px_-12px_rgba(38,34,31,0.5)] ring-1 ring-line backdrop-blur sm:gap-3 sm:p-2.5">
-              <div className="relative ml-1 hidden h-12 w-12 shrink-0 overflow-hidden rounded-full sm:block" style={{ backgroundColor: tint }}>
+            <div className="mx-auto flex max-w-2xl items-center gap-2 rounded-[8px] bg-bg/95 p-2 shadow-[0_22px_55px_-12px_rgba(18,48,63,0.5)] ring-1 ring-line backdrop-blur sm:gap-3 sm:p-2.5">
+              <div className="relative ml-1 hidden h-12 w-12 shrink-0 overflow-hidden rounded-[4px] bg-paper sm:block">
                 {product.images[0]?.src && <Image src={product.images[0].src} alt="" fill sizes="48px" className="object-contain p-1 mix-blend-multiply" />}
               </div>
               <div className="hidden min-w-0 flex-1 pl-1 sm:block">
                 <p className="truncate font-display text-base leading-tight">{product.name}</p>
-                <p className="text-xs tabular-nums text-stone">
-                  {formatPLN(price)} {pct > 0 && <span className="ml-1 line-through">{formatPLN(compareAt)}</span>}
+                <p className="font-display text-xs text-ink-soft">
+                  {formatPLN(price)} {pct > 0 && <span className="ml-1 line-through opacity-60">{formatPLN(compareAt)}</span>}
                 </p>
               </div>
-              <button onClick={addToBag} className="flex h-12 flex-1 items-center justify-center rounded-full bg-terracotta px-5 text-sm font-medium text-paper transition hover:bg-rust sm:flex-none sm:px-7">
+              <button onClick={addToBag} className="flex h-12 flex-1 items-center justify-center rounded-[2px] bg-mar px-5 text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-mar-deep sm:flex-none sm:px-7">
                 Dodaj do koszyka
               </button>
-              <button onClick={addToBag} aria-label="Apple Pay" className="flex h-12 items-center justify-center gap-1.5 rounded-full bg-ink px-5 text-sm font-medium text-paper transition hover:opacity-90 sm:px-7">
+              <button onClick={addToBag} aria-label="Apple Pay" className="flex h-12 items-center justify-center gap-1.5 rounded-[2px] bg-ink px-5 text-sm font-medium text-bg transition hover:opacity-90 sm:px-7">
                 <AppleIcon /> Pay
               </button>
             </div>

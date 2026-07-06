@@ -1,9 +1,9 @@
 export const SITE = {
   name: "Goya",
   domain: "goya.pl",
-  tagline: "Spójrz inaczej.",
+  tagline: "Światło i luz.",
   shortIntro:
-    "Polska marka okularów z filtrem polaryzacyjnym. Czysty design, soczewki, które naprawdę chronią, i cena bez metki za logo.",
+    "Polska marka okularów z filtrem polaryzacyjnym. Kolekcje inspirowane hiszpańskim światłem — na miasto, podróż i długie popołudnia na słońcu.",
   email: "kontakt@goya.pl",
   instagram: "https://instagram.com",
 };
@@ -11,9 +11,67 @@ export const SITE = {
 export const NAV = [
   { label: "Przeciwsłoneczne", href: "/przeciwsloneczne" },
   { label: "Korekcyjne", href: "/korekcyjne" },
+  { label: "Kolekcje", href: "/#kolekcje" },
   { label: "Damskie", href: "/okulary?gender=Damskie" },
   { label: "Męskie", href: "/okulary?gender=M%C4%99skie" },
   { label: "O marce", href: "/o-marce" },
+];
+
+// Collections — short Spanish vacation words, each mapped to a real catalog facet.
+export type Collection = {
+  name: string;
+  meaning: string;
+  tagline: string;
+  href: string;
+  shape?: string;
+  category?: "sun" | "optical";
+};
+
+export const COLLECTIONS: Collection[] = [
+  {
+    name: "Sol",
+    meaning: "słońce",
+    tagline: "Aviatory — klasyka pod pełnym słońcem.",
+    href: "/przeciwsloneczne?shape=Aviator",
+    shape: "Aviator",
+    category: "sun",
+  },
+  {
+    name: "Luna",
+    meaning: "księżyc",
+    tagline: "Okrągłe jak księżyc nad zatoką.",
+    href: "/okulary?shape=Okr%C4%85g%C5%82e",
+    shape: "Okrągłe",
+  },
+  {
+    name: "Brisa",
+    meaning: "bryza",
+    tagline: "Kocia linia, lekka jak wieczorna bryza.",
+    href: "/okulary?shape=Kocie",
+    shape: "Kocie",
+  },
+  {
+    name: "Vela",
+    meaning: "żagiel",
+    tagline: "Muchy postawione jak żagiel — kurs na lato.",
+    href: "/przeciwsloneczne?shape=Muchy",
+    shape: "Muchy",
+    category: "sun",
+  },
+  {
+    name: "Faro",
+    meaning: "latarnia",
+    tagline: "Prostokątne oprawy — prosta linia, pewny kierunek.",
+    href: "/okulary?shape=Prostok%C4%85tne",
+    shape: "Prostokątne",
+  },
+  {
+    name: "Alba",
+    meaning: "świt",
+    tagline: "Korekcyjne — czyste światło na co dzień.",
+    href: "/korekcyjne",
+    category: "optical",
+  },
 ];
 
 export const SHAPE_LABELS: Record<string, string> = {
@@ -57,11 +115,19 @@ export const COLOR_HEX: Record<string, string> = {
   Beżowy: "#d8c4a3",
 };
 
+// Trust bar — one hairline row, factual.
 export const REASSURANCE = [
-  { title: "Filtr polaryzacyjny", text: "Realna redukcja odblasków — nie tylko ciemniejsze szkło." },
-  { title: "100% ochrona UV400", text: "Pełna bariera dla promieni UVA i UVB w każdej parze." },
-  { title: "Polska marka", text: "Projektujemy i kompletujemy Goyę w Polsce." },
   { title: "30 dni na zwrot", text: "Przymierz w domu. Nie pasują — odsyłasz bez pytań." },
+  { title: "Darmowa wysyłka od 199 zł", text: "Kurier lub paczkomat, wysyłka w 1–2 dni robocze." },
+  { title: "24 miesiące gwarancji", text: "Karta gwarancyjna dołączona do każdej pary." },
+  { title: "Etui i ściereczka w zestawie", text: "Twarde etui i mikrofibra — bez dopłat." },
+];
+
+// Technika bez wykładu — three factual lines instead of marketing prose.
+export const TECH_SPECS = [
+  { label: "Filtr polaryzacyjny", value: "wycina odblaski od wody, śniegu i jezdni" },
+  { label: "UV400", value: "pełna bariera UVA i UVB w każdej parze" },
+  { label: "Certyfikat CE", value: "norma PN-EN ISO 12312-1" },
 ];
 
 // What's in the box

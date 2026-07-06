@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useDialog } from "@/lib/useDialog";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/types";
 import { ProductGrid } from "./ProductGrid";
@@ -8,10 +9,22 @@ import { ColorSwatch } from "./ColorSwatch";
 import { CloseIcon } from "./icons";
 import { SHAPE_LABELS } from "@/content/site";
 import { premiumPrice } from "@/lib/pricing";
-import { cn } from "@/lib/utils";
+import { cn, plural } from "@/lib/utils";
 
 type Sort = "popular" | "price-asc" | "price-desc";
 const unique = (arr: (string | null)[]) => [...new Set(arr.filter(Boolean) as string[])];
+
+const Group = ({ label, children }: { label: string; children: React.ReactNode }) => (
+  <div className="border-b border-line py-5">
+    <p className="eyebrow mb-3">{label}</p>
+    {children}
+  </div>
+);
+const Pill = ({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) => (
+  <button onClick={onClick} className={cn("min-h-[40px] rounded-[2px] border px-3.5 py-1.5 text-sm transition-colors", active ? "border-mar bg-mar text-white" : "border-ink/20 text-ink hover:border-mar")}>
+    {children}
+  </button>
+);
 
 export function Catalog({
   products,
@@ -35,7 +48,11 @@ export function Catalog({
   const [sort, setSort] = useState<Sort>(() => ((sp.get("sort") as Sort) || "popular"));
   const [q, setQ] = useState<string>(() => sp.get("q") ?? "");
   const [drawer, setDrawer] = useState(false);
+  const drawerRef = useDialog<HTMLDivElement>(drawer, () => setDrawer(false));
 
+  // Write state -> URL, remembering the query string we produced.
+  const spString = sp.toString();
+  const lastWritten = useRef(spString);
   useEffect(() => {
     const params = new URLSearchParams();
     genders.forEach((g) => params.append("gender", g));
@@ -45,8 +62,21 @@ export function Catalog({
     if (sort !== "popular") params.set("sort", sort);
     if (q) params.set("q", q);
     const qs = params.toString();
+    lastWritten.current = qs;
     router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
   }, [genders, shapes, colors, category, sort, q, lockCategory, pathname, router]);
+
+  // Adopt external query-only navigation (nav/collection links, header search) into state —
+  // App Router does not remount this component when only the query string changes.
+  useEffect(() => {
+    if (spString === lastWritten.current) return;
+    setGenders(sp.getAll("gender"));
+    setShapes(sp.getAll("shape"));
+    setColors(sp.getAll("color"));
+    if (!lockCategory) setCategory(sp.get("category") ?? "");
+    setSort(((sp.get("sort") as Sort) || "popular"));
+    setQ(sp.get("q") ?? "");
+  }, [spString, sp, lockCategory]);
 
   const facetGenders = useMemo(() => unique(products.map((p) => p.gender)), [products]);
   const facetShapes = useMemo(() => unique(products.map((p) => p.shape)), [products]);
@@ -98,18 +128,6 @@ export function Catalog({
     setQ("");
   };
 
-  const Group = ({ label, children }: { label: string; children: React.ReactNode }) => (
-    <div className="border-b border-line py-5">
-      <p className="eyebrow mb-3">{label}</p>
-      {children}
-    </div>
-  );
-  const Pill = ({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) => (
-    <button onClick={onClick} className={cn("rounded-full border px-3.5 py-1.5 text-sm transition-colors", active ? "border-ink bg-ink text-paper" : "border-ink/20 text-ink hover:border-ink")}>
-      {children}
-    </button>
-  );
-
   const Filters = (
     <div>
       {!lockCategory && (
@@ -146,7 +164,7 @@ export function Catalog({
               key={c}
               onClick={() => toggle(colors, setColors, c)}
               title={c}
-              className={cn("flex items-center gap-2 rounded-full border py-1 pl-1 pr-3 text-sm transition-colors", colors.includes(c) ? "border-ink" : "border-ink/15 hover:border-ink/40")}
+              className={cn("flex min-h-[36px] items-center gap-2 rounded-full border py-1 pl-1 pr-3 text-sm transition-colors", colors.includes(c) ? "border-mar" : "border-ink/15 hover:border-mar/50")}
             >
               <ColorSwatch name={c} size={20} />
               <span className="text-xs">{c}</span>
@@ -170,7 +188,7 @@ export function Catalog({
             <div className="flex items-center justify-between">
               <span className="text-sm text-stone">{filtered.length} z {products.length}</span>
               {activeCount > 0 && (
-                <button onClick={clearAll} className="text-xs text-terracotta hover:underline">Wyczyść ({activeCount})</button>
+                <button onClick={clearAll} className="text-xs text-mar hover:underline">Wyczyść ({activeCount})</button>
               )}
             </div>
             {Filters}
@@ -179,11 +197,11 @@ export function Catalog({
 
         <div>
           <div className="mb-5 flex items-center justify-between gap-3">
-            <button onClick={() => setDrawer(true)} className="flex items-center gap-2 rounded-full border border-ink/20 px-4 py-2 text-sm md:hidden">
-              Filtry {activeCount > 0 && <span className="grid h-5 w-5 place-items-center rounded-full bg-terracotta text-[0.65rem] text-paper">{activeCount}</span>}
+            <button onClick={() => setDrawer(true)} className="flex min-h-[44px] items-center gap-2 rounded-[2px] border border-ink/20 px-4 py-2 text-sm md:hidden">
+              Filtry {activeCount > 0 && <span className="grid h-5 w-5 place-items-center rounded-full bg-sol text-[0.65rem] font-bold text-ink">{activeCount}</span>}
             </button>
-            <span className="hidden text-sm text-stone md:inline">{filtered.length} modeli</span>
-            <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="rounded-full border border-ink/20 bg-transparent px-4 py-2 text-sm outline-none">
+            <span className="hidden text-sm text-stone md:inline">{filtered.length} {plural(filtered.length, "model", "modele", "modeli")}</span>
+            <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} aria-label="Sortowanie" className="min-h-[44px] rounded-[2px] border border-ink/20 bg-transparent px-4 py-2 text-base outline-none md:text-sm">
               <option value="popular">Popularne</option>
               <option value="price-asc">Cena: rosnąco</option>
               <option value="price-desc">Cena: malejąco</option>
@@ -202,13 +220,13 @@ export function Catalog({
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.2 }}
                     onClick={() => removeChip(chip)}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-linen px-3 py-1.5 text-xs text-ink hover:bg-clay/60"
+                    className="inline-flex min-h-[36px] items-center gap-1.5 rounded-[2px] bg-blask px-3 py-1.5 text-xs text-ink hover:bg-sol/35"
                   >
                     {chip.label} <span className="text-stone">✕</span>
                   </motion.button>
                 ))}
               </AnimatePresence>
-              <button onClick={clearAll} className="text-xs text-terracotta hover:underline">Wyczyść wszystko</button>
+              <button onClick={clearAll} className="text-xs text-mar hover:underline">Wyczyść wszystko</button>
             </div>
           )}
 
@@ -225,7 +243,7 @@ export function Catalog({
             <div className="py-24 text-center">
               <p className="font-display text-2xl">Brak wyników</p>
               <p className="mt-2 text-stone">Spróbuj zmienić filtry.</p>
-              <button onClick={clearAll} className="mt-5 rounded-full bg-ink px-6 py-3 text-sm text-paper">Wyczyść filtry</button>
+              <button onClick={clearAll} className="mt-5 rounded-[2px] bg-mar px-6 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-white">Wyczyść filtry</button>
             </div>
           )}
         </div>
@@ -236,7 +254,12 @@ export function Catalog({
           <>
             <motion.div className="fixed inset-0 z-50 bg-ink/40 md:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setDrawer(false)} />
             <motion.div
-              className="fixed bottom-0 left-0 z-50 max-h-[85vh] w-full overflow-y-auto rounded-t-[20px] bg-bg p-6 md:hidden"
+              ref={drawerRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Filtry"
+              tabIndex={-1}
+              className="fixed bottom-0 left-0 z-50 max-h-[85vh] w-full overflow-y-auto rounded-t-[10px] bg-bg p-6 outline-none md:hidden"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
@@ -244,14 +267,14 @@ export function Catalog({
             >
               <div className="mb-2 flex items-center justify-between">
                 <h2 className="font-display text-2xl">Filtry</h2>
-                <button onClick={() => setDrawer(false)} className="p-1.5 text-stone"><CloseIcon /></button>
+                <button onClick={() => setDrawer(false)} aria-label="Zamknij" className="-mr-2 flex h-11 w-11 items-center justify-center text-stone"><CloseIcon /></button>
               </div>
               {Filters}
               <div className="sticky bottom-0 mt-4 flex gap-3 bg-bg pt-3">
                 {activeCount > 0 && (
-                  <button onClick={clearAll} className="flex-1 rounded-full border border-ink/25 py-3 text-sm">Wyczyść</button>
+                  <button onClick={clearAll} className="min-h-[48px] flex-1 rounded-[2px] border border-ink/25 py-3 text-sm">Wyczyść</button>
                 )}
-                <button onClick={() => setDrawer(false)} className="flex-1 rounded-full bg-ink py-3 text-sm text-paper">Pokaż {filtered.length}</button>
+                <button onClick={() => setDrawer(false)} className="min-h-[48px] flex-1 rounded-[2px] bg-mar py-3 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-white">Pokaż {filtered.length}</button>
               </div>
             </motion.div>
           </>

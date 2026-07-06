@@ -9,7 +9,7 @@ import { SITE } from "@/content/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://goya.pl"),
-  title: { default: "Goya — Okulary z polaryzacją", template: "%s · Goya" },
+  title: { default: "Goya — Światło i luz. Okulary z polaryzacją", template: "%s · Goya" },
   description: SITE.shortIntro,
   openGraph: { title: "Goya", description: SITE.shortIntro, type: "website", locale: "pl_PL", siteName: "Goya" },
   icons: { icon: "/favicon.svg" },
@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Inter:wght@400..700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
         />
       </head>
       <body className="flex min-h-full flex-col">

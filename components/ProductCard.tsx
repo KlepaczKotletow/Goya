@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/lib/types";
 import { premiumPrice, formatPLN } from "@/lib/pricing";
-import { imageAt, fieldTint } from "@/lib/utils";
+import { imageAt } from "@/lib/utils";
 import { useCart } from "@/lib/cart";
 import { SHAPE_LABELS, COLOR_HEX } from "@/content/site";
 
@@ -24,23 +24,20 @@ export function ProductCard({ product, priority = false }: { product: Product; p
   const price = premiumPrice(product.priceWoo);
   const meta = [product.shape ? SHAPE_LABELS[product.shape] ?? product.shape : "Okulary", product.gender].filter(Boolean).join(" · ");
   const colors = product.frameColors.slice(0, 5);
-  const tint = fieldTint(product.id);
 
   return (
     <div className="group relative">
       <Link href={`/okulary/${product.slug}`} className="block">
-        <div
-          className="relative aspect-square overflow-hidden rounded-[var(--radius)] ring-1 ring-black/[0.04] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_26px_44px_-26px_rgba(38,34,31,0.45)]"
-          style={{ backgroundColor: tint }}
-        >
+        <div className="relative aspect-square overflow-hidden rounded-[6px] bg-paper ring-1 ring-ink/[0.06] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_26px_44px_-26px_rgba(18,48,63,0.4)]">
           {img && (
             <Image
               src={img}
               alt={product.images[0]?.alt || product.name}
               fill
-              sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
+              sizes="(max-width:640px) 72vw, (max-width:1024px) 42vw, 25vw"
               className={`object-contain p-6 mix-blend-multiply transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.05] ${hasSecond ? "group-hover:opacity-0" : ""}`}
-              priority={priority}
+              loading={priority ? "eager" : "lazy"}
+              fetchPriority={priority ? "high" : undefined}
             />
           )}
           {hasSecond && (
@@ -48,7 +45,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
               src={img2 as string}
               alt=""
               fill
-              sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
+              sizes="(max-width:640px) 72vw, (max-width:1024px) 42vw, 25vw"
               className="absolute inset-0 object-contain p-6 mix-blend-multiply opacity-0 transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.05] group-hover:opacity-100"
             />
           )}
@@ -58,23 +55,23 @@ export function ProductCard({ product, priority = false }: { product: Product; p
               toggleWish(product.slug);
             }}
             aria-label={wished ? "Usuń z ulubionych" : "Dodaj do ulubionych"}
-            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-paper/80 text-ink backdrop-blur transition hover:bg-paper"
-            style={{ color: wished ? "var(--color-terracotta)" : undefined }}
+            className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full bg-bg/85 text-ink backdrop-blur transition hover:bg-bg"
+            style={{ color: wished ? "var(--color-terra)" : undefined }}
           >
             <Heart filled={wished} />
           </button>
           {product.category === "sun" && product.polarized && (
-            <span className="absolute left-3 top-3 rounded-full bg-ink/85 px-2.5 py-1 text-[0.6rem] uppercase tracking-wider text-paper">
+            <span className="absolute left-3 top-3 rounded-[2px] bg-mar-deep/90 px-2.5 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.1em] text-bg">
               Polaryzacja
             </span>
           )}
-          <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-all duration-300 ease-out [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 max-md:hidden">
+          <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-all duration-300 ease-out max-md:hidden [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100">
             <button
               onClick={(e) => {
                 e.preventDefault();
                 add({ slug: product.slug, name: product.name, price, image: img });
               }}
-              className="w-full rounded-full bg-ink py-3 text-xs font-medium tracking-wide text-paper shadow-lg transition hover:bg-rust"
+              className="w-full rounded-[2px] bg-mar py-3 text-[0.66rem] font-semibold uppercase tracking-[0.1em] text-white shadow-lg transition hover:bg-mar-deep"
             >
               Dodaj do koszyka
             </button>
@@ -88,7 +85,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           </Link>
           <p className="mt-0.5 truncate text-xs text-stone">{meta}</p>
         </div>
-        <span className="shrink-0 pt-0.5 text-sm tabular-nums">{formatPLN(price)}</span>
+        <span className="shrink-0 pt-0.5 font-display text-[1.02rem]">{formatPLN(price)}</span>
       </div>
       {colors.length > 1 && (
         <div className="mt-2 flex items-center gap-1.5">
@@ -109,7 +106,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
       )}
       <button
         onClick={() => add({ slug: product.slug, name: product.name, price, image: img })}
-        className="mt-3 w-full rounded-full border border-ink/15 py-2.5 text-xs font-medium tracking-wide text-ink transition hover:border-ink hover:bg-ink hover:text-paper md:hidden"
+        className="mt-3 min-h-[44px] w-full rounded-[2px] border border-ink/20 py-2.5 text-[0.66rem] font-semibold uppercase tracking-[0.1em] text-ink transition hover:border-mar hover:bg-mar hover:text-white md:hidden"
       >
         Dodaj do koszyka
       </button>
