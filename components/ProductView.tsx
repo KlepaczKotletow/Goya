@@ -11,26 +11,14 @@ import { Stars } from "./Stars";
 import { HeartIcon, AppleIcon, GPayIcon, CheckIcon, TruckIcon, ReturnIcon, ShieldIcon, SunIcon } from "./icons";
 import { SHAPE_LABELS, CATEGORY_LABELS, INCLUDED } from "@/content/site";
 import { cn } from "@/lib/utils";
+import pdpPhotos from "@/data/pdp-photos.json";
 
-/* Campaign photos show specific frames — attach one only when it plausibly matches the product. */
-const LIFESTYLE = [
-  { src: "/hero/sun-men.jpg", category: "sun", gender: "Męskie", shapes: ["Aviator"] },
-  { src: "/hero/sun-women.jpg", category: "sun", gender: "Damskie", shapes: ["Kocie"] },
-  { src: "/hero/optical-men.jpg", category: "optical", gender: "Męskie", shapes: ["Prostokątne"] },
-  { src: "/hero/optical-women.jpg", category: "optical", gender: "Damskie", shapes: ["Okrągłe", "Owalne"] },
-  { src: "/hero/lifestyle-muchy-w.jpg", category: "sun", gender: "Damskie", shapes: ["Muchy"] },
-  { src: "/hero/lifestyle-nerdy-m.jpg", category: "sun", gender: "Męskie", shapes: ["Nerdy"] },
-  { src: "/hero/lifestyle-okragle-w.jpg", category: "sun", gender: "Damskie", shapes: ["Okrągłe"] },
-  { src: "/hero/lifestyle-prostokatne-w.jpg", category: "sun", gender: "Damskie", shapes: ["Prostokątne"] },
-  { src: "/hero/lifestyle-aviator-w.jpg", category: "sun", gender: "Damskie", shapes: ["Aviator"] },
-  { src: "/hero/lifestyle-prostokatne-m.jpg", category: "sun", gender: "Męskie", shapes: ["Prostokątne"] },
-] as const;
+/* On-model photos generated from the product's own packshot (exact frame), keyed by slug.
+   No heuristic matching — a PDP shows a person photo only if it depicts this exact product. */
+const PDP_PHOTOS = pdpPhotos as Record<string, string>;
 
 function lifestyleFor(p: Product): string | null {
-  const match = LIFESTYLE.find(
-    (l) => l.category === p.category && l.gender === p.gender && !!p.shape && (l.shapes as readonly string[]).includes(p.shape),
-  );
-  return match?.src ?? null;
+  return PDP_PHOTOS[p.slug] ?? null;
 }
 
 type GItem = { src: string; alt: string; lifestyle: boolean };
