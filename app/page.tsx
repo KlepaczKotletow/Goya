@@ -7,15 +7,9 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { Reveal } from "@/components/Reveal";
 import { RiseWord } from "@/components/RiseWord";
 import { Marquee } from "@/components/Marquee";
+import { LookbookFeed } from "@/components/LookbookFeed";
 import { ArrowIcon } from "@/components/icons";
 import { SHAPE_LABELS, REASSURANCE } from "@/content/site";
-
-const LOOKBOOK = [
-  { src: "/hero/sun-women.jpg", label: "Przeciwsłoneczne", href: "/przeciwsloneczne" },
-  { src: "/hero/optical-men.jpg", label: "Korekcyjne", href: "/korekcyjne" },
-  { src: "/hero/sun-men.jpg", label: "Męskie", href: "/okulary?gender=M%C4%99skie" },
-  { src: "/hero/optical-women.jpg", label: "Damskie", href: "/okulary?gender=Damskie" },
-];
 
 export default function Home() {
   const bestsellers = getBestsellers(8);
@@ -142,30 +136,8 @@ export default function Home() {
         ))}
       </section>
 
-      {/* LOOKBOOK */}
-      <section className="border-y border-line bg-paper py-16 md:py-24">
-        <div className="wrap">
-          <Reveal className="mb-10">
-            <p className="eyebrow">Lookbook</p>
-            <h2 className="mt-3 font-display text-4xl md:text-5xl">Goya w kadrze</h2>
-          </Reveal>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {LOOKBOOK.map((l, i) => (
-              <Reveal key={l.src} delay={i * 0.06}>
-                <Link href={l.href} className="group block">
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-[16px]">
-                    <Image src={l.src} alt={l.label} fill sizes="(max-width:768px) 50vw, 25vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/55 to-transparent" />
-                    <span className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 font-display text-xl text-paper">
-                      {l.label} <ArrowIcon className="opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* LOOKBOOK — Instagram-style UGC feed */}
+      <LookbookFeed />
 
       {/* SHOP BY SHAPE */}
       <section className="wrap py-16 md:py-24">

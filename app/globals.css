@@ -63,6 +63,31 @@
   .link-underline:hover { background-size: 100% 1px; }
   .hide-scrollbar::-webkit-scrollbar { display: none; }
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Instagram-style horizontal rail — buttery momentum + snap on touch */
+  .ig-rail {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;      /* iOS momentum */
+    overscroll-behavior-x: contain;         /* don't chain to page / back-swipe */
+    scroll-padding-inline: 1.25rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .ig-rail::-webkit-scrollbar { display: none; }
+  .ig-rail > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+  @media (min-width: 640px) {
+    .ig-rail { scroll-padding-inline: 2.25rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ig-rail { scroll-snap-type: none; scroll-behavior: auto; }
+  }
 }
 
 @media (min-width: 640px) {

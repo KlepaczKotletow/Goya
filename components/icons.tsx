@@ -39,6 +39,12 @@ export const ReturnIcon = ({ className }: P) => (
 export const SunIcon = ({ className }: P) => (
   <svg width="20" height="20" viewBox="0 0 24 24" className={className} {...s}><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19" /></svg>
 );
+export const InstagramIcon = ({ className }: P) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" className={className} {...s}><rect x="3" y="3" width="18" height="18" rx="5.5" /><circle cx="12" cy="12" r="4" /><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" /></svg>
+);
+export const GlassesIcon = ({ className }: P) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" className={className} {...s}><circle cx="6" cy="13" r="3.2" /><circle cx="18" cy="13" r="3.2" /><path d="M9.2 12.4c.9-1 4.7-1 5.6 0M3 11.5 4.4 9H6M21 11.5 19.6 9H18" /></svg>
+);
 export const StarIcon = ({ className, filled = true }: P & { filled?: boolean }) => (
   <svg width="16" height="16" viewBox="0 0 24 24" className={className} fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.4">
     <path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" />
