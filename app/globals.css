@@ -21,7 +21,10 @@
 }
 
 @layer base {
-  html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+  /* No global smooth scroll: it makes Next's scroll-to-top on navigation
+     animate from the old offset, which looks like the page loads at the
+     bottom and then scrolls up. scroll-padding-top keeps anchor offsets. */
+  html { scroll-padding-top: 6rem; }
   body {
     background-color: var(--color-bg);
     color: var(--color-ink);
@@ -74,11 +77,6 @@
 
 @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .animate-spin-slow { animation: spin-slow 26s linear infinite; }
-
-/* TEMP-VERIFY: simulate the exact :focus-visible outline geometry unconditionally */
-summary { outline: 2px solid red !important; outline-offset: 3px !important; }
-h1 { outline: 2px solid blue !important; outline-offset: 3px !important; }
-/* END TEMP-VERIFY */
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
