@@ -38,10 +38,13 @@ export function ProductView({ product }: { product: Product }) {
   const selected = product.variations.find((v) => v.id === variantId) ?? null;
 
   const gallery: GItem[] = useMemo(() => {
-    const items: GItem[] = [{ src: lifestyleFor(product), alt: `${product.name} — Goya`, lifestyle: true }];
+    // Only real product photography for THIS product. A generic lifestyle model
+    // shot is shared across ~44 products of the same gender+category and shows a
+    // different pair of glasses, so it must never appear on a product's gallery.
+    const items: GItem[] = [];
     const seen = new Set<string>();
     product.images.forEach((im) => {
-      if (!seen.has(im.src)) {
+      if (im.src && !seen.has(im.src)) {
         seen.add(im.src);
         items.push({ src: im.src, alt: im.alt || product.name, lifestyle: false });
       }
@@ -52,6 +55,10 @@ export function ProductView({ product }: { product: Product }) {
         items.push({ src: v.image, alt: product.name, lifestyle: false });
       }
     });
+    // Fallback only if a product has no photos at all (none currently do).
+    if (items.length === 0) {
+      items.push({ src: lifestyleFor(product), alt: `${product.name} — Goya`, lifestyle: true });
+    }
     return items;
   }, [product]);
 
@@ -168,7 +175,7 @@ export function ProductView({ product }: { product: Product }) {
     <>
       <div className="wrap grid gap-8 py-6 md:grid-cols-2 md:gap-14 md:py-12">
         {/* GALLERY */}
-        <div className="md:sticky md:top-28 md:self-start">
+        <div className="min-w-0 md:sticky md:top-28 md:self-start">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] md:aspect-square" style={{ backgroundColor: shown?.lifestyle ? "transparent" : tint }}>
             <AnimatePresence mode="wait">
               <motion.div
