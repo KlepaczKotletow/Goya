@@ -75,6 +75,11 @@
 @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .animate-spin-slow { animation: spin-slow 26s linear infinite; }
 
+/* TEMP-VERIFY: simulate the exact :focus-visible outline geometry unconditionally */
+summary { outline: 2px solid red !important; outline-offset: 3px !important; }
+h1 { outline: 2px solid blue !important; outline-offset: 3px !important; }
+/* END TEMP-VERIFY */
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   html { scroll-behavior: auto; }

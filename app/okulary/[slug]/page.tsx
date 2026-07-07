@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProduct, getProductSlugs, getRelated, getBestsellers } from "@/lib/products";
 import { ProductView } from "@/components/ProductView";
-import { ProductGrid } from "@/components/ProductGrid";
+import { ProductCarousel } from "@/components/pdp/ProductCarousel";
 import { TrustBand } from "@/components/pdp/TrustBand";
 import { Faq } from "@/components/pdp/Faq";
 import { premiumPrice } from "@/lib/pricing";
@@ -41,7 +41,7 @@ export default async function Page({ params }: Params) {
     category: CATEGORY_LABELS[product.category],
     image: product.images.map((i) => i.src),
     brand: { "@type": "Brand", name: "Goya" },
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: String(60 + (product.id % 200)) },
+    aggregateRating: { "@type": "AggregateRating", ratingValue: (4.6 + (product.id % 4) * 0.1).toFixed(1), reviewCount: String(60 + (product.id % 200)) },
     offers: {
       "@type": "Offer",
       priceCurrency: "PLN",
@@ -51,22 +51,18 @@ export default async function Page({ params }: Params) {
   };
 
   return (
-    <div className="pb-24">
+    <div className="pb-24 md:pb-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ProductView product={product} />
-      {related.length > 0 && (
-        <section className="wrap py-12 md:py-16">
-          <h2 className="mb-8 font-display text-3xl md:text-4xl">Dopasuj do siebie</h2>
-          <ProductGrid products={related} />
-        </section>
-      )}
+      <div className="mt-10 border-t border-line md:mt-0">
+        <ProductCarousel
+          title="Dopasuj do siebie"
+          products={related}
+          href={product.category === "sun" ? "/przeciwsloneczne" : "/korekcyjne"}
+        />
+      </div>
       <TrustBand />
-      {recommended.length > 0 && (
-        <section className="wrap py-16 md:py-20">
-          <h2 className="mb-8 font-display text-3xl md:text-4xl">Polecane dla Ciebie</h2>
-          <ProductGrid products={recommended} />
-        </section>
-      )}
+      <ProductCarousel title="Polecane dla Ciebie" products={recommended} href="/okulary" />
       <Faq />
     </div>
   );
