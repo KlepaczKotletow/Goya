@@ -185,6 +185,11 @@ export function ProductView({ product }: { product: Product }) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute inset-0"
+                // The opacity/scale animation isolates this layer, so the image's
+                // mix-blend-multiply can't reach the container's tint behind it.
+                // Repeat the tint here so a slow-loading white packshot still
+                // multiplies to tint instead of flashing a white square.
+                style={{ backgroundColor: shown?.lifestyle ? "transparent" : tint }}
               >
                 {shown && shown.lifestyle ? (
                   <Image src={shown.src} alt={shown.alt} fill priority sizes="(max-width:768px) 100vw, 45vw" className="object-cover" />
