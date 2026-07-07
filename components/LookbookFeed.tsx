@@ -11,7 +11,7 @@ import { GlassesIcon, ArrowIcon } from "./icons";
 type Shot = { src: string; model: string; slug: string; alt: string };
 
 const SHOTS: Shot[] = [
-  { src: "/ugc/ugc-duo.jpg", model: "G 193", slug: "goya-g-193-cz-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Para w czarnych prostokątnych okularach przeciwsłonecznych Goya G 193, uśmiech w słońcu" },
+  { src: "/ugc/ugc-duo.jpg", model: "G 193", slug: "goya-g-193-cz-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w czarnych prostokątnych okularach przeciwsłonecznych Goya G 193, uśmiech w słońcu" },
   { src: "/ugc/ugc-cafe.jpg", model: "G 1905", slug: "goya-g1905-c1-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Mężczyzna w złotych aviatorach Goya G 1905 przy oknie kawiarni" },
   { src: "/ugc/ugc-oversized.jpg", model: "G 185", slug: "goya-g-185-cz-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w dużych okularach przeciwsłonecznych Goya G 185 na tarasie kawiarni" },
   { src: "/ugc/ugc-mirror.jpg", model: "G 164", slug: "goya-g-164-cz-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w czarnych prostokątnych okularach Goya G 164 — selfie w lustrze" },
