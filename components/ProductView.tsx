@@ -54,6 +54,8 @@ export function ProductView({ product }: { product: Product }) {
   }, [product]);
 
   const [active, setActive] = useState(0);
+  const [slide, setSlide] = useState(0); // active slide in the mobile swipe gallery
+  const railRef = useRef<HTMLDivElement>(null);
   const firstVariantRun = useRef(true);
   useEffect(() => {
     if (firstVariantRun.current) {
@@ -62,9 +64,33 @@ export function ProductView({ product }: { product: Product }) {
     }
     if (selected?.image) {
       const idx = gallery.findIndex((g) => g.src === selected.image);
-      if (idx >= 0) setActive(idx);
+      if (idx >= 0) {
+        setActive(idx);
+        const rail = railRef.current;
+        if (rail) rail.scrollTo({ left: idx * rail.clientWidth, behavior: "smooth" });
+      }
     }
   }, [variantId, selected, gallery]);
+
+  // mobile swipe gallery: keep dot pagination in sync with the scrolled slide
+  useEffect(() => {
+    const rail = railRef.current;
+    if (!rail) return;
+    const slides = Array.from(rail.children).filter((c): c is HTMLElement => c instanceof HTMLElement);
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const i = slides.indexOf(e.target as HTMLElement);
+            if (i >= 0) setSlide(i);
+          }
+        });
+      },
+      { root: rail, threshold: 0.6 },
+    );
+    slides.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, [gallery.length]);
 
   const shown = gallery[Math.min(active, gallery.length - 1)];
 
@@ -167,37 +193,63 @@ export function ProductView({ product }: { product: Product }) {
       <div className="wrap grid gap-8 py-6 md:grid-cols-2 md:gap-14 md:py-12">
         {/* GALLERY */}
         <div className="md:sticky md:top-28 md:self-start">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] md:aspect-square" style={{ backgroundColor: tint }}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={shown?.src ?? "x"}
-                initial={{ opacity: 0, scale: 1.02 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0"
-              >
-                {shown && <Image src={shown.src} alt={shown.alt} fill priority sizes="(max-width:768px) 100vw, 45vw" className="object-contain p-10 mix-blend-multiply" />}
-              </motion.div>
-            </AnimatePresence>
-            {pct > 0 && (
-              <span className="absolute left-4 top-4 z-10 rounded-full bg-terracotta px-3 py-1 text-xs font-semibold text-paper">−{pct}%</span>
+          {/* MOBILE — Instagram-style full-bleed swipe gallery with dot pagination */}
+          <div className="md:hidden">
+            <div className="relative -mx-5">
+              <div ref={railRef} className="ig-rail" style={{ scrollPaddingLeft: 0, scrollPaddingRight: 0 }}>
+                {gallery.map((g, i) => (
+                  <div key={g.src} className="relative aspect-[4/5] w-full shrink-0 basis-full" style={{ backgroundColor: tint }}>
+                    <Image src={g.src} alt={g.alt} fill priority={i === 0} sizes="100vw" className="object-contain p-8 mix-blend-multiply" />
+                  </div>
+                ))}
+              </div>
+              {pct > 0 && (
+                <span className="absolute left-6 top-4 z-10 rounded-full bg-terracotta px-3 py-1 text-xs font-semibold text-paper">−{pct}%</span>
+              )}
+            </div>
+            {gallery.length > 1 && (
+              <div className="mt-3 flex justify-center gap-1.5">
+                {gallery.map((g, i) => (
+                  <span key={g.src} className={cn("h-1.5 rounded-full transition-all duration-300", i === slide ? "w-5 bg-ink" : "w-1.5 bg-ink/25")} />
+                ))}
+              </div>
             )}
           </div>
-          {gallery.length > 1 && (
-            <div className="mt-3 flex gap-3 overflow-x-auto hide-scrollbar">
-              {gallery.map((g, i) => (
-                <button
-                  key={g.src}
-                  onClick={() => setActive(i)}
-                  className={cn("relative h-20 w-20 shrink-0 overflow-hidden rounded-[12px] ring-1 transition", active === i ? "ring-ink" : "ring-line hover:ring-ink/40")}
-                  style={{ backgroundColor: tint }}
+
+          {/* DESKTOP — main image + thumbnails */}
+          <div className="hidden md:block">
+            <div className="relative aspect-square overflow-hidden rounded-[20px]" style={{ backgroundColor: tint }}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={shown?.src ?? "x"}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0"
                 >
-                  <Image src={g.src} alt="" fill sizes="80px" className="object-contain p-2 mix-blend-multiply" />
-                </button>
-              ))}
+                  {shown && <Image src={shown.src} alt={shown.alt} fill priority sizes="45vw" className="object-contain p-10 mix-blend-multiply" />}
+                </motion.div>
+              </AnimatePresence>
+              {pct > 0 && (
+                <span className="absolute left-4 top-4 z-10 rounded-full bg-terracotta px-3 py-1 text-xs font-semibold text-paper">−{pct}%</span>
+              )}
             </div>
-          )}
+            {gallery.length > 1 && (
+              <div className="mt-3 flex gap-3 overflow-x-auto hide-scrollbar">
+                {gallery.map((g, i) => (
+                  <button
+                    key={g.src}
+                    onClick={() => setActive(i)}
+                    className={cn("relative h-20 w-20 shrink-0 overflow-hidden rounded-[12px] ring-1 transition", active === i ? "ring-ink" : "ring-line hover:ring-ink/40")}
+                    style={{ backgroundColor: tint }}
+                  >
+                    <Image src={g.src} alt="" fill sizes="80px" className="object-contain p-2 mix-blend-multiply" />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* INFO */}
