@@ -12,13 +12,11 @@ import { HeartIcon, AppleIcon, GPayIcon, CheckIcon, TruckIcon, ReturnIcon, Shiel
 import { SHAPE_LABELS, CATEGORY_LABELS, INCLUDED } from "@/content/site";
 import { cn, fieldTint } from "@/lib/utils";
 
-function lifestyleFor(p: Product): string {
-  const g = p.gender === "Męskie" ? "men" : "women";
-  const kind = p.category === "optical" ? "optical" : "sun";
-  return `/hero/${kind}-${g}.jpg`;
-}
-
-type GItem = { src: string; alt: string; lifestyle: boolean };
+// PDP galleries show ONLY real product packshots + variation images.
+// Never inject generic lifestyle/person photos here — they show a fixed pair of
+// glasses that won't match most products (owner: "if the glasses are not the same,
+// we cannot show them on product pages"). Lifestyle imagery lives on home/lookbook only.
+type GItem = { src: string; alt: string };
 
 export function ProductView({ product }: { product: Product }) {
   const { add, setOpen, toggleWish, isWished } = useCart();
@@ -38,18 +36,18 @@ export function ProductView({ product }: { product: Product }) {
   const selected = product.variations.find((v) => v.id === variantId) ?? null;
 
   const gallery: GItem[] = useMemo(() => {
-    const items: GItem[] = [{ src: lifestyleFor(product), alt: `${product.name} — Goya`, lifestyle: true }];
+    const items: GItem[] = [];
     const seen = new Set<string>();
     product.images.forEach((im) => {
       if (!seen.has(im.src)) {
         seen.add(im.src);
-        items.push({ src: im.src, alt: im.alt || product.name, lifestyle: false });
+        items.push({ src: im.src, alt: im.alt || product.name });
       }
     });
     product.variations.forEach((v) => {
       if (v.image && !seen.has(v.image)) {
         seen.add(v.image);
-        items.push({ src: v.image, alt: product.name, lifestyle: false });
+        items.push({ src: v.image, alt: product.name });
       }
     });
     return items;
@@ -169,7 +167,7 @@ export function ProductView({ product }: { product: Product }) {
       <div className="wrap grid gap-8 py-6 md:grid-cols-2 md:gap-14 md:py-12">
         {/* GALLERY */}
         <div className="md:sticky md:top-28 md:self-start">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] md:aspect-square" style={{ backgroundColor: shown?.lifestyle ? "transparent" : tint }}>
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] md:aspect-square" style={{ backgroundColor: tint }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={shown?.src ?? "x"}
@@ -179,11 +177,7 @@ export function ProductView({ product }: { product: Product }) {
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute inset-0"
               >
-                {shown && shown.lifestyle ? (
-                  <Image src={shown.src} alt={shown.alt} fill priority sizes="(max-width:768px) 100vw, 45vw" className="object-cover" />
-                ) : (
-                  shown && <Image src={shown.src} alt={shown.alt} fill priority sizes="(max-width:768px) 100vw, 45vw" className="object-contain p-10 mix-blend-multiply" />
-                )}
+                {shown && <Image src={shown.src} alt={shown.alt} fill priority sizes="(max-width:768px) 100vw, 45vw" className="object-contain p-10 mix-blend-multiply" />}
               </motion.div>
             </AnimatePresence>
             {pct > 0 && (
@@ -197,13 +191,9 @@ export function ProductView({ product }: { product: Product }) {
                   key={g.src}
                   onClick={() => setActive(i)}
                   className={cn("relative h-20 w-20 shrink-0 overflow-hidden rounded-[12px] ring-1 transition", active === i ? "ring-ink" : "ring-line hover:ring-ink/40")}
-                  style={{ backgroundColor: g.lifestyle ? "transparent" : tint }}
+                  style={{ backgroundColor: tint }}
                 >
-                  {g.lifestyle ? (
-                    <Image src={g.src} alt="" fill sizes="80px" className="object-cover" />
-                  ) : (
-                    <Image src={g.src} alt="" fill sizes="80px" className="object-contain p-2 mix-blend-multiply" />
-                  )}
+                  <Image src={g.src} alt="" fill sizes="80px" className="object-contain p-2 mix-blend-multiply" />
                 </button>
               ))}
             </div>
