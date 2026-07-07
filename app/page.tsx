@@ -305,7 +305,7 @@ export default function Home() {
             <h2 className="mt-3 text-4xl md:text-5xl">Goya w kadrze</h2>
           </div>
         </Reveal>
-        <div className="hide-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 sm:-mx-9 sm:px-9 md:mx-0 md:grid md:grid-cols-4 md:gap-5 md:overflow-visible md:px-0">
+        <div className="hide-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-5 px-5 sm:-mx-9 sm:scroll-pl-9 sm:px-9 md:mx-0 md:grid md:grid-cols-4 md:gap-5 md:overflow-visible md:px-0">
           {LOOKBOOK.map((l, i) => (
             <Reveal key={l.src} delay={i * 0.05} className="w-[70%] shrink-0 snap-start md:w-auto">
               <Link href={l.href} className="group block">

@@ -20,7 +20,7 @@ export function ProductRail({ products, priorityCount = 0 }: { products: Product
       <div
         ref={ref}
         onScroll={onScroll}
-        className="hide-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:-mx-9 sm:px-9 md:gap-6"
+        className="hide-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-5 px-5 pb-2 sm:-mx-9 sm:scroll-pl-9 sm:px-9 md:gap-6"
       >
         {products.map((p, i) => (
           <div key={p.slug} className="w-[72%] shrink-0 snap-start sm:w-[42%] md:w-[31%] lg:w-[23.2%]">
