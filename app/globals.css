@@ -13,15 +13,24 @@
   --color-rust: #be5f3d;
   --color-sage: #7c8471;
 
-  --font-sans: "Google Sans Flex", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Google Sans Flex", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-secondary: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--ff-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--ff-display), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-secondary: var(--ff-sans), ui-sans-serif, system-ui, sans-serif;
 
   --radius: 16px;
+
+  /* Warm elevation ladder — one consistent light source, tinted to the espresso hue */
+  --shadow-card: 0 1px 2px rgba(38, 34, 31, 0.05);
+  --shadow-lift: 0 26px 44px -26px rgba(38, 34, 31, 0.45);
+  --shadow-pop: 0 12px 26px -10px rgba(38, 34, 31, 0.55);
+  --shadow-gallery: 0 1px 2px rgba(38, 34, 31, 0.05), 0 18px 40px -24px rgba(38, 34, 31, 0.22);
 }
 
 @layer base {
-  html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+  /* No global smooth scroll: it makes Next's scroll-to-top on navigation
+     animate from the old offset, which looks like the page loads at the
+     bottom and then scrolls up. scroll-padding-top keeps anchor offsets. */
+  html { scroll-padding-top: 6rem; }
   body {
     background-color: var(--color-bg);
     color: var(--color-ink);
@@ -30,15 +39,27 @@
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
+  /* Faint paper grain over exposed cream only — sits above the bg, below all in-flow content */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
   ::selection { background: var(--color-terracotta); color: var(--color-paper); }
   a { color: inherit; text-decoration: none; }
   h1, h2, h3 {
     font-family: var(--font-display);
     font-weight: 500;
-    letter-spacing: -0.022em;
-    line-height: 1;
+    line-height: 1.05;
     text-wrap: balance;
   }
+  h1 { letter-spacing: -0.035em; }
+  h2 { letter-spacing: -0.026em; }
+  h3 { letter-spacing: -0.014em; line-height: 1.12; }
   button { cursor: pointer; }
   :focus-visible { outline: 2px solid var(--color-terracotta); outline-offset: 3px; border-radius: 4px; }
 }
@@ -63,6 +84,31 @@
   .link-underline:hover { background-size: 100% 1px; }
   .hide-scrollbar::-webkit-scrollbar { display: none; }
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Instagram-style horizontal rail — buttery momentum + snap on touch */
+  .ig-rail {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;      /* iOS momentum */
+    overscroll-behavior-x: contain;         /* don't chain to page / back-swipe */
+    scroll-padding-inline: 1.25rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .ig-rail::-webkit-scrollbar { display: none; }
+  .ig-rail > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+  @media (min-width: 640px) {
+    .ig-rail { scroll-padding-inline: 2.25rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ig-rail { scroll-snap-type: none; scroll-behavior: auto; }
+  }
 }
 
 @media (min-width: 640px) {

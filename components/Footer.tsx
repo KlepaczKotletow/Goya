@@ -11,14 +11,27 @@ const cols = [
       { label: "Wszystkie okulary", href: "/okulary" },
       { label: "Przeciwsłoneczne", href: "/przeciwsloneczne" },
       { label: "Korekcyjne", href: "/korekcyjne" },
-      { label: "Bestsellery", href: "/okulary?sort=popular" },
+      { label: "Okulary Aviator", href: "/kolekcje/okulary-aviator" },
+      { label: "Okulary kocie oko", href: "/kolekcje/okulary-kocie-oko" },
+      { label: "Polaryzacyjne", href: "/kolekcje/okulary-polaryzacyjne" },
     ],
   },
   {
-    title: "Marka",
+    title: "Marka i poradnik",
     links: [
       { label: "O Goya", href: "/o-marce" },
+      { label: "Poradnik", href: "/poradnik" },
+      { label: "Jak dobrać okulary", href: "/poradnik/jak-dobrac-okulary-do-ksztaltu-twarzy" },
+      { label: "Polaryzacja a UV400", href: "/poradnik/polaryzacja-czy-uv400" },
       { label: "Ulubione", href: "/ulubione" },
+    ],
+  },
+  {
+    title: "Informacje",
+    links: [
+      { label: "Regulamin", href: "/regulamin" },
+      { label: "Polityka prywatności", href: "/polityka-prywatnosci" },
+      { label: "Dostawa i zwroty", href: "/zwroty" },
     ],
   },
 ];
@@ -27,7 +40,7 @@ export function Footer() {
   const [sent, setSent] = useState(false);
   return (
     <footer className="mt-24 border-t border-line bg-paper">
-      <div className="wrap grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1.4fr]">
+      <div className="wrap grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr_1.4fr]">
         <div>
           <p className="font-display text-3xl">{SITE.name}</p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-soft">{SITE.shortIntro}</p>
@@ -65,11 +78,19 @@ export function Footer() {
               </button>
             </form>
           )}
+          <p className="mt-2.5 text-[0.7rem] leading-snug text-stone">
+            Zapisując się akceptujesz <Link href="/polityka-prywatnosci" className="link-underline">Politykę prywatności</Link>.
+          </p>
         </div>
       </div>
-      <div className="wrap flex flex-col items-center justify-between gap-2 border-t border-line py-6 text-xs text-stone md:flex-row">
+      <div className="wrap flex flex-col items-center justify-between gap-3 border-t border-line py-6 text-xs text-stone md:flex-row">
         <p>© {new Date().getFullYear()} {SITE.name}. Zaprojektowane w Polsce.</p>
-        <p>Wersja pokazowa — bez płatności i wysyłki.</p>
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+          <Link href="/regulamin" className="transition hover:text-ink">Regulamin</Link>
+          <Link href="/polityka-prywatnosci" className="transition hover:text-ink">Prywatność</Link>
+          <a href={`mailto:${SITE.email}`} className="transition hover:text-ink">Kontakt</a>
+          <span>Wersja pokazowa</span>
+        </div>
       </div>
     </footer>
   );

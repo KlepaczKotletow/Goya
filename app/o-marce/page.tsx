@@ -6,15 +6,17 @@ import { facets } from "@/lib/products";
 import { TRUST_STATS } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "O marce",
-  description: "Goya — polska marka okularów. Prawdziwa polaryzacja, czysty design i uczciwa cena.",
+  title: "O marce Goya — polska marka okularów z polaryzacją",
+  description:
+    "Goya to polska marka okularów: prawdziwy filtr polaryzacyjny i UV400, czysty design i uczciwa cena bez dopłaty za logo. Poznaj naszą historię.",
+  alternates: { canonical: "/o-marce" },
 };
 
 const values = [
-  { t: "Polaryzacja, nie marketing", d: "Każdy model przeciwsłoneczny ma realny filtr polaryzacyjny — mniej odblasków, większy kontrast, mniej zmęczone oczy." },
-  { t: "UV400 w standardzie", d: "Pełna ochrona przed promieniowaniem UVA i UVB — w każdej parze, bez wyjątków." },
-  { t: "Uczciwa cena", d: "Płacisz za soczewki, oprawę i projekt — nie za logo. To nasza zasada od pierwszego modelu." },
-  { t: "Zaprojektowane w Polsce", d: "Fasony dobieramy pod realne twarze i realne życie — od miasta po wakacje." },
+  { t: "Polaryzacja, nie marketing", d: "Każdy model przeciwsłoneczny ma realny filtr polaryzacyjny - mniej odblasków, większy kontrast, mniej zmęczone oczy." },
+  { t: "UV400 w standardzie", d: "Pełna ochrona przed promieniowaniem UVA i UVB - w każdej parze, bez wyjątków." },
+  { t: "Uczciwa cena", d: "Płacisz za soczewki, oprawę i projekt - nie za logo. To nasza zasada od pierwszego modelu." },
+  { t: "Zaprojektowane w Polsce", d: "Fasony dobieramy pod realne twarze i realne życie - od miasta po wakacje." },
 ];
 
 export default function Page() {
@@ -29,13 +31,13 @@ export default function Page() {
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-soft">
             Goya to polska marka okularów stworzona wokół jednego przekonania: jakość soczewek, lekkość oprawy i czysty,
-            ponadczasowy design powinny być dostępne bez dopłaty za metkę. Nie ścigamy się na logotypy — projektujemy
+            ponadczasowy design powinny być dostępne bez dopłaty za metkę. Nie ścigamy się na logotypy - projektujemy
             okulary, które dobrze wyglądają, dobrze chronią i dobrze leżą.
           </p>
         </Reveal>
         <Reveal delay={0.1}>
           <div className="relative aspect-[4/5] overflow-hidden rounded-[24px]">
-            <Image src="/hero/campaign-duo.jpg" alt="Goya — para w okularach" fill sizes="(max-width:768px) 100vw, 45vw" className="object-cover" />
+            <Image src="/hero/campaign-duo.jpg" alt="Goya - para w okularach" fill sizes="(max-width:768px) 100vw, 45vw" className="object-cover" />
           </div>
         </Reveal>
       </section>
@@ -44,7 +46,7 @@ export default function Page() {
       <section className="wrap pb-16 md:pb-24">
         <Reveal>
           <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] sm:aspect-[16/9]">
-            <Image src="/hero/campaign-terrace.jpg" alt="Goya — w prawdziwym życiu" fill sizes="(max-width:1320px) 100vw, 1320px" className="object-cover" />
+            <Image src="/hero/campaign-terrace.jpg" alt="Goya - w prawdziwym życiu" fill sizes="(max-width:1320px) 100vw, 1320px" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/55 to-transparent" />
             <p className="absolute bottom-0 max-w-md p-7 font-display text-2xl text-paper md:p-10 md:text-4xl">
               Okulary na pełne słońce i całe lato.
@@ -78,7 +80,7 @@ export default function Page() {
       <section className="wrap grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
         <Reveal>
           <div className="relative aspect-[4/5] overflow-hidden rounded-[24px]">
-            <Image src="/hero/sun-women.jpg" alt="Goya — okulary z polaryzacją" fill sizes="(max-width:768px) 100vw, 45vw" className="object-cover" />
+            <Image src="/hero/sun-women.jpg" alt="Goya - okulary z polaryzacją" fill sizes="(max-width:768px) 100vw, 45vw" className="object-cover" />
           </div>
         </Reveal>
         <Reveal delay={0.1}>
