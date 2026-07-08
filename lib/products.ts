@@ -1,8 +1,15 @@
 import data from "@/data/products.json";
 import facetsData from "@/data/facets.json";
+import { MODEL_NAMES } from "@/content/model-names";
 import type { Product, Facets } from "./types";
 
-const products = data as unknown as Product[];
+// Swap the imported WooCommerce SKU names ("G 9496") for Goya's Mediterranean
+// model names ("Lince"), keeping the original SKU as `code` for traceability.
+// See scripts/rename-models.mjs and docs/model-names.md for the full directory.
+const products = (data as unknown as Product[]).map((p) => {
+  const name = MODEL_NAMES[p.id];
+  return name ? { ...p, code: p.name, name } : p;
+});
 export const facets = facetsData as unknown as Facets;
 
 export function getAllProducts(): Product[] {

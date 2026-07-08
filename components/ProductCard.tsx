@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/lib/types";
-import { premiumPrice, formatPLN } from "@/lib/pricing";
+import { premiumPrice, compareAtPrice, discountPct, formatPLN } from "@/lib/pricing";
 import { imageAt, fieldTint } from "@/lib/utils";
 import { useCart } from "@/lib/cart";
 import { SHAPE_LABELS, COLOR_HEX } from "@/content/site";
@@ -22,6 +22,8 @@ export function ProductCard({ product, priority = false }: { product: Product; p
   const hasSecond = Boolean(img2 && img2 !== img);
   const wished = isWished(product.slug);
   const price = premiumPrice(product.priceWoo);
+  const compareAt = compareAtPrice(price);
+  const pct = discountPct(price, compareAt);
   const meta = [product.shape ? SHAPE_LABELS[product.shape] ?? product.shape : "Okulary", product.gender].filter(Boolean).join(" · ");
   const colors = product.frameColors.slice(0, 5);
   const tint = fieldTint(product.id);
@@ -63,11 +65,18 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           >
             <Heart filled={wished} />
           </button>
-          {product.category === "sun" && product.polarized && (
-            <span className="absolute left-3 top-3 rounded-full bg-ink/85 px-2.5 py-1 text-[0.6rem] uppercase tracking-wider text-paper">
-              Polaryzacja
-            </span>
-          )}
+          <div className="absolute left-3 top-3 flex flex-col items-start gap-1.5">
+            {pct > 0 && (
+              <span className="rounded-full bg-terracotta px-2.5 py-1 text-[0.6rem] font-semibold tracking-wide text-paper">
+                −{pct}%
+              </span>
+            )}
+            {product.category === "sun" && product.polarized && (
+              <span className="rounded-full bg-ink/85 px-2.5 py-1 text-[0.6rem] uppercase tracking-wider text-paper">
+                Polaryzacja
+              </span>
+            )}
+          </div>
           <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-all duration-300 ease-out [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 max-md:hidden">
             <button
               onClick={(e) => {
@@ -88,7 +97,12 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           </Link>
           <p className="mt-0.5 truncate text-xs text-stone">{meta}</p>
         </div>
-        <span className="shrink-0 pt-0.5 text-sm tabular-nums">{formatPLN(price)}</span>
+        <div className="flex shrink-0 flex-col items-end pt-0.5 leading-tight">
+          <span className="text-sm tabular-nums">{formatPLN(price)}</span>
+          {pct > 0 && (
+            <span className="text-xs text-stone line-through tabular-nums">{formatPLN(compareAt)}</span>
+          )}
+        </div>
       </div>
       {colors.length > 1 && (
         <div className="mt-2 flex items-center gap-1.5">

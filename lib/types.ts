@@ -11,6 +11,7 @@ export type Product = {
   id: number;
   slug: string;
   name: string;
+  code?: string; // original WooCommerce SKU-style name, kept for traceability
   fullName: string;
   type: "simple" | "variable";
   category: "sun" | "optical";

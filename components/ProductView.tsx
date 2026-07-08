@@ -30,6 +30,16 @@ export function ProductView({ product }: { product: Product }) {
   const reviewCount = 60 + (product.id % 200);
   const wished = isWished(product.slug);
 
+  // Show ONE device-appropriate express-pay button: Apple Pay on Apple hardware, Google Pay elsewhere.
+  // `null` before mount → render the neutral (Apple-styled) default so SSR and first client render match.
+  const [applePay, setApplePay] = useState<boolean | null>(null);
+  useEffect(() => {
+    const ua = navigator.userAgent || "";
+    const plat = navigator.platform || "";
+    setApplePay(/iPhone|iPad|iPod|Macintosh|Mac OS X/i.test(ua) || /iPhone|iPad|iPod|Mac/i.test(plat));
+  }, []);
+  const gpay = applePay === false;
+
   const variantOptions = useMemo(
     () => product.variations.map((v) => ({ id: v.id, label: v.attributes.map((a) => a.option).join(" / ") || v.sku || "Wariant", image: v.image })),
     [product],
@@ -121,6 +131,7 @@ export function ProductView({ product }: { product: Product }) {
       ["Szerokość frontu", product.dims.frontWidth ? `${product.dims.frontWidth} mm` : null],
       ["Wysokość soczewki", product.dims.lensHeight ? `${product.dims.lensHeight} mm` : null],
       ["Długość zausznika", product.dims.templeLength ? `${product.dims.templeLength} mm` : null],
+      ["Kod modelu", product.code ?? null],
     ] as [string, string | null][]
   ).filter((r): r is [string, string] => Boolean(r[1]));
 
@@ -274,14 +285,16 @@ export function ProductView({ product }: { product: Product }) {
             <div className="mb-2.5 flex items-center gap-3 text-xs text-stone">
               <span className="h-px flex-1 bg-line" /> lub zapłać szybko <span className="h-px flex-1 bg-line" />
             </div>
-            <div className="grid grid-cols-2 gap-3">
-              <button onClick={addToBag} className="flex h-11 items-center justify-center gap-1.5 rounded-full bg-ink text-sm font-medium text-paper transition hover:opacity-90">
-                <AppleIcon /> Pay
-              </button>
-              <button onClick={addToBag} className="flex h-11 items-center justify-center rounded-full border border-ink/20 bg-paper transition hover:border-ink/40">
-                <GPayIcon />
-              </button>
-            </div>
+            <button
+              onClick={addToBag}
+              aria-label={gpay ? "Zapłać przez Google Pay" : "Zapłać przez Apple Pay"}
+              className={cn(
+                "flex h-11 w-full items-center justify-center gap-1.5 rounded-full text-sm font-medium transition",
+                gpay ? "border border-ink/20 bg-paper hover:border-ink/40" : "bg-ink text-paper hover:opacity-90",
+              )}
+            >
+              {gpay ? <GPayIcon /> : <><AppleIcon /> Pay</>}
+            </button>
           </div>
           <div ref={ctaRef} className="h-px" />
 
@@ -344,8 +357,15 @@ export function ProductView({ product }: { product: Product }) {
               <button onClick={addToBag} className="flex h-12 flex-1 items-center justify-center rounded-full bg-terracotta px-5 text-sm font-medium text-paper transition hover:bg-rust sm:flex-none sm:px-7">
                 Dodaj do koszyka
               </button>
-              <button onClick={addToBag} aria-label="Apple Pay" className="flex h-12 items-center justify-center gap-1.5 rounded-full bg-ink px-5 text-sm font-medium text-paper transition hover:opacity-90 sm:px-7">
-                <AppleIcon /> Pay
+              <button
+                onClick={addToBag}
+                aria-label={gpay ? "Google Pay" : "Apple Pay"}
+                className={cn(
+                  "flex h-12 items-center justify-center gap-1.5 rounded-full px-5 text-sm font-medium transition sm:px-7",
+                  gpay ? "border border-ink/20 bg-paper hover:border-ink/40" : "bg-ink text-paper hover:opacity-90",
+                )}
+              >
+                {gpay ? <GPayIcon /> : <><AppleIcon /> Pay</>}
               </button>
             </div>
           </motion.div>
