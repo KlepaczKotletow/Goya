@@ -211,35 +211,29 @@ export function CartDrawer() {
                     <p className="pb-1 text-xs text-stone">z VAT · darmowa wysyłka</p>
                   </div>
 
-                  {/* Express checkout — device-aware one-tap */}
-                  <Link
-                    href="/kasa"
-                    onClick={() => setOpen(false)}
-                    aria-label={isApple ? "Zapłać z Apple Pay" : "Zapłać z Google Pay"}
-                    className="mt-4 flex h-12 w-full items-center justify-center rounded-full bg-ink text-paper transition-transform duration-200 ease-out hover:-translate-y-px active:scale-[0.99]"
-                  >
-                    <PayLogo isApple={isApple} />
-                  </Link>
-
-                  <div className="my-2.5 flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.15em] text-stone/70">
-                    <span className="h-px flex-1 bg-line" /> lub <span className="h-px flex-1 bg-line" />
+                  {/* Checkout (60%) + express pay (40%) on one axis — compact footer */}
+                  <div className="mt-3.5 flex gap-2.5">
+                    <Link
+                      href="/kasa"
+                      onClick={() => setOpen(false)}
+                      className={cn(
+                        "group flex h-[3.4rem] flex-[3] items-center justify-center gap-2 rounded-full bg-terracotta text-[0.95rem] font-medium text-paper",
+                        "shadow-[0_10px_28px_-10px_rgba(217,119,87,0.6)] transition-all duration-300 ease-out",
+                        "hover:-translate-y-px hover:bg-rust active:scale-[0.99]",
+                      )}
+                    >
+                      Przejdź do kasy
+                      <ArrowIcon className="h-4 w-4 shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" />
+                    </Link>
+                    <Link
+                      href="/kasa"
+                      onClick={() => setOpen(false)}
+                      aria-label={isApple ? "Zapłać z Apple Pay" : "Zapłać z Google Pay"}
+                      className="flex h-[3.4rem] flex-[2] items-center justify-center rounded-full bg-ink text-paper transition-transform duration-200 ease-out hover:-translate-y-px active:scale-[0.99]"
+                    >
+                      <PayLogo isApple={isApple} />
+                    </Link>
                   </div>
-
-                  {/* Primary CTA — button-in-button, magnetic hover */}
-                  <Link
-                    href="/kasa"
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      "group flex h-[3.4rem] w-full items-center justify-between rounded-full bg-terracotta pl-6 pr-2 text-paper",
-                      "shadow-[0_10px_28px_-10px_rgba(217,119,87,0.6)] transition-all duration-300 ease-out",
-                      "hover:-translate-y-px hover:bg-rust active:scale-[0.99]",
-                    )}
-                  >
-                    <span className="text-[0.98rem] font-medium">Przejdź do kasy</span>
-                    <span className="grid h-10 w-10 place-items-center rounded-full bg-paper/20 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
-                      <ArrowIcon className="h-4 w-4" />
-                    </span>
-                  </Link>
 
                   <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[0.7rem] text-stone">
                     <ShieldIcon className="h-3.5 w-3.5" />
