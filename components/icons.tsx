@@ -40,7 +40,7 @@ export const SunIcon = ({ className }: P) => (
   <svg width="20" height="20" viewBox="0 0 24 24" className={className} {...s}><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19" /></svg>
 );
 export const StarIcon = ({ className, filled = true }: P & { filled?: boolean }) => (
-  <svg width="16" height="16" viewBox="0 0 24 24" className={className} fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.4">
+  <svg width="16" height="16" viewBox="0 0 24 24" className={className} fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.6">
     <path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" />
   </svg>
 );

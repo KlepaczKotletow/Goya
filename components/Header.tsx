@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { NAV, SITE } from "@/content/site";
 import { useCart } from "@/lib/cart";
 import { cn } from "@/lib/utils";
@@ -23,6 +23,7 @@ export function Header() {
   const [menu, setMenu] = useState(false);
   const [search, setSearch] = useState(false);
   const [q, setQ] = useState("");
+  const reduce = useReducedMotion();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -68,12 +69,20 @@ export function Header() {
             <button className="-ml-2 p-2 md:hidden" onClick={() => setMenu(true)} aria-label="Menu">
               <BurgerIcon />
             </button>
-            <nav className="hidden items-center gap-7 text-sm md:flex">
-              {NAV.slice(0, 3).map((n) => (
-                <Link key={n.href} href={n.href} className="link-underline">
-                  {n.label}
-                </Link>
-              ))}
+            <nav className="hidden items-center gap-5 text-sm md:flex lg:gap-6">
+              {NAV.slice(0, 4).map((n) => {
+                const active = !n.href.includes("?") && pathname === n.href;
+                return (
+                  <Link
+                    key={n.href}
+                    href={n.href}
+                    aria-current={active ? "page" : undefined}
+                    className={cn("link-underline whitespace-nowrap", active && "text-terracotta [background-size:100%_1px]")}
+                  >
+                    {n.label}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 
@@ -127,9 +136,9 @@ export function Header() {
             <motion.div className="fixed inset-0 z-50 bg-ink/40 backdrop-blur-sm md:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMenu(false)} />
             <motion.div
               className="fixed left-0 top-0 z-50 flex h-full w-[82%] max-w-sm flex-col bg-bg p-6 md:hidden"
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
+              initial={reduce ? { opacity: 0 } : { x: "-100%" }}
+              animate={reduce ? { opacity: 1 } : { x: 0 }}
+              exit={reduce ? { opacity: 0 } : { x: "-100%" }}
               transition={{ type: "tween", duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="mb-8 flex items-center justify-between">
@@ -139,11 +148,19 @@ export function Header() {
                 </button>
               </div>
               <nav className="flex flex-col gap-1">
-                {NAV.map((n) => (
-                  <Link key={n.href} href={n.href} className="border-b border-line py-3.5 font-display text-2xl">
-                    {n.label}
-                  </Link>
-                ))}
+                {NAV.map((n) => {
+                  const active = !n.href.includes("?") && pathname === n.href;
+                  return (
+                    <Link
+                      key={n.href}
+                      href={n.href}
+                      aria-current={active ? "page" : undefined}
+                      className={cn("border-b border-line py-3.5 font-display text-2xl", active && "text-terracotta")}
+                    >
+                      {n.label}
+                    </Link>
+                  );
+                })}
               </nav>
               <p className="mt-auto text-sm text-stone">{SITE.tagline}</p>
             </motion.div>

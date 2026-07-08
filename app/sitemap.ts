@@ -3,7 +3,7 @@ import { getProductSlugs } from "@/lib/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://goya.pl";
-  const routes = ["", "/okulary", "/przeciwsloneczne", "/korekcyjne", "/o-marce", "/ulubione"].map((r) => ({
+  const routes = ["", "/okulary", "/przeciwsloneczne", "/korekcyjne", "/o-marce", "/ulubione", "/regulamin", "/polityka-prywatnosci", "/zwroty"].map((r) => ({
     url: `${base}${r}`,
     changeFrequency: "weekly" as const,
     priority: r === "" ? 1 : 0.7,

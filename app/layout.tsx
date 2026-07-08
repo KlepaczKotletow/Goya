@@ -9,7 +9,7 @@ import { SITE } from "@/content/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://goya.pl"),
-  title: { default: "Goya — Okulary z polaryzacją", template: "%s · Goya" },
+  title: { default: "Goya - Okulary z polaryzacją", template: "%s · Goya" },
   description: SITE.shortIntro,
   openGraph: { title: "Goya", description: SITE.shortIntro, type: "website", locale: "pl_PL", siteName: "Goya" },
   icons: { icon: "/favicon.svg" },
@@ -27,10 +27,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="flex min-h-full flex-col">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:text-paper"
+        >
+          Przejdź do treści
+        </a>
         <CartProvider>
           <ScrollProgress />
           <Header />
-          <main className="flex-1">{children}</main>
+          <main id="main" tabIndex={-1} className="flex-1 outline-none">{children}</main>
           <Footer />
           <CartDrawer />
         </CartProvider>

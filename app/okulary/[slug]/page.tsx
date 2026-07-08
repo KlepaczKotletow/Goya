@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const p = getProduct(slug);
   if (!p) return {};
-  const desc = `${p.name} — ${p.shape ?? "okulary"} ${p.category === "sun" ? "przeciwsłoneczne z polaryzacją i UV400" : "korekcyjne"} marki Goya.`;
+  const desc = `${p.name} - ${p.shape ?? "okulary"} ${p.category === "sun" ? "przeciwsłoneczne z polaryzacją i UV400" : "korekcyjne"} marki Goya.`;
   return {
     title: p.name,
     description: desc,

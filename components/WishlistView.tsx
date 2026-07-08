@@ -1,23 +1,29 @@
 "use client";
-import Link from "next/link";
 import { useCart } from "@/lib/cart";
 import type { Product } from "@/lib/types";
 import { ProductGrid } from "./ProductGrid";
+import { ButtonLink } from "./Button";
+import { HeartIcon } from "./icons";
 
 export function WishlistView({ products }: { products: Product[] }) {
   const { wishlist, hydrated } = useCart();
-  if (!hydrated) return <div className="wrap min-h-[40vh] py-24" />;
-  const items = products.filter((p) => wishlist.includes(p.slug));
+  const items = hydrated ? products.filter((p) => wishlist.includes(p.slug)) : [];
   return (
     <div className="wrap py-12 md:py-16">
       <p className="eyebrow">Twoja lista</p>
       <h1 className="mt-2 font-display text-4xl md:text-5xl">Ulubione</h1>
-      {items.length === 0 ? (
-        <div className="py-20 text-center">
-          <p className="text-stone">Nie masz jeszcze ulubionych modeli.</p>
-          <Link href="/okulary" className="mt-5 inline-block rounded-full bg-ink px-7 py-3 text-sm text-paper transition hover:bg-rust">
-            Przeglądaj okulary
-          </Link>
+      {!hydrated ? (
+        <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="aspect-square animate-pulse rounded-[16px] bg-linen" />
+          ))}
+        </div>
+      ) : items.length === 0 ? (
+        <div className="flex flex-col items-center py-24 text-center">
+          <HeartIcon className="h-10 w-10 text-clay" />
+          <p className="mt-5 font-display text-2xl md:text-3xl">Twoja lista jest pusta</p>
+          <p className="mt-2 max-w-sm text-ink-soft">Zapisuj modele sercem - wrócą tutaj, gdy będziesz gotów wybrać.</p>
+          <ButtonLink href="/okulary" variant="accent" size="lg" className="mt-7">Przeglądaj okulary</ButtonLink>
         </div>
       ) : (
         <div className="mt-8">

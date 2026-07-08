@@ -7,7 +7,8 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { Reveal } from "@/components/Reveal";
 import { RiseWord } from "@/components/RiseWord";
 import { Marquee } from "@/components/Marquee";
-import { ArrowIcon } from "@/components/icons";
+import { Seal } from "@/components/Seal";
+import { ArrowIcon, SunIcon, ShieldIcon, CheckIcon, ReturnIcon } from "@/components/icons";
 import { SHAPE_LABELS, REASSURANCE } from "@/content/site";
 
 const LOOKBOOK = [
@@ -29,9 +30,9 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO — sky / freedom */}
+      {/* HERO - sky / freedom */}
       <section className="relative h-[90vh] min-h-[560px] w-full overflow-hidden">
-        <Image src="/hero/sky-hero.jpg" alt="Goya — okulary z polaryzacją" fill priority sizes="100vw" className="object-cover object-[72%_center]" />
+        <Image src="/hero/sky-hero.jpg" alt="Goya - okulary z polaryzacją" fill priority sizes="100vw" className="object-cover object-[72%_center]" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/45 via-ink/10 to-transparent" />
         <div className="absolute inset-0 flex items-center">
           <div className="wrap w-full">
@@ -46,7 +47,7 @@ export default function Home() {
               </h1>
               <Reveal immediate delay={0.3}>
                 <p className="mt-6 max-w-md text-lg leading-relaxed text-paper/90">
-                  Polaryzacyjne soczewki tną odblaski i wyostrzają każdy detal. Lekkie oprawy projektowane w Polsce — od 349 zł.
+                  Polaryzacyjne soczewki tną odblaski i wyostrzają każdy detal. Lekkie oprawy projektowane w Polsce - od 349 zł.
                 </p>
               </Reveal>
               <Reveal immediate delay={0.38}>
@@ -64,7 +65,7 @@ export default function Home() {
         {hero && heroImg && (
           <div className="absolute bottom-10 right-[6%] z-10 hidden md:block">
             <Reveal immediate delay={0.5}>
-              <div className="w-64 rounded-[22px] border border-white/30 bg-white/15 p-4 text-paper shadow-[0_24px_60px_-18px_rgba(20,20,30,0.6)] backdrop-blur-md">
+              <div className="w-64 rounded-[22px] border border-white/25 bg-[rgba(250,249,245,0.14)] p-4 text-paper shadow-[0_24px_60px_-18px_rgba(38,34,31,0.6)] ring-1 ring-inset ring-white/10 backdrop-blur-md">
                 <div className="flex items-center gap-3">
                   <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-[14px] bg-paper">
                     <Image src={heroImg} alt={hero.name} fill sizes="56px" className="object-contain p-1.5" />
@@ -82,6 +83,13 @@ export default function Home() {
             </Reveal>
           </div>
         )}
+
+        {/* Signature - the rotating Goya seal */}
+        <div className="absolute bottom-10 left-[6%] z-10 hidden lg:block">
+          <Reveal immediate delay={0.6}>
+            <Seal className="h-28 w-28 text-paper/85" letterSizeClassName="text-3xl" />
+          </Reveal>
+        </div>
       </section>
 
       <Marquee items={["Filtr polaryzacyjny", "UV400", "Zaprojektowane w Polsce", "30 dni na zwrot", "Lekkie oprawy", "Darmowa wysyłka od 199 zł"]} />
@@ -104,12 +112,12 @@ export default function Home() {
       <section className="wrap pb-16 md:pb-24">
         <Reveal>
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[24px] sm:aspect-[16/10]">
-            <Image src="/hero/campaign-terrace.jpg" alt="Goya — w prawdziwym życiu" fill sizes="(max-width:1320px) 100vw, 1320px" className="object-cover" />
+            <Image src="/hero/campaign-terrace.jpg" alt="Goya - w prawdziwym życiu" fill sizes="(max-width:1320px) 100vw, 1320px" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
             <div className="absolute bottom-0 max-w-lg p-7 md:p-12">
               <h2 className="font-display text-3xl leading-[1.05] text-paper md:text-5xl">Zaprojektowane na prawdziwe życie.</h2>
               <p className="mt-3 max-w-sm text-paper/85">
-                Od porannych dojazdów po wakacyjne popołudnia — okulary, które chronią i dobrze wyglądają.
+                Od porannych dojazdów po wakacyjne popołudnia - okulary, które chronią i dobrze wyglądają.
               </p>
               <ButtonLink href="/okulary" variant="accent" className="mt-6">Zobacz kolekcję</ButtonLink>
             </div>
@@ -120,12 +128,12 @@ export default function Home() {
       {/* CATEGORY SPLIT */}
       <section className="wrap grid gap-5 pb-16 md:grid-cols-2 md:pb-24">
         {[
-          { p: sun, href: "/przeciwsloneczne", label: "Przeciwsłoneczne", sub: `${facets.sun} modeli z polaryzacją`, tint: "#e0d4bb" },
-          { p: optical, href: "/korekcyjne", label: "Korekcyjne", sub: `${facets.optical} oprawek na każdy dzień`, tint: "#ddd1bd" },
+          { p: sun, href: "/przeciwsloneczne", label: "Przeciwsłoneczne", sub: `${facets.sun} modeli z polaryzacją`, tint: "radial-gradient(120% 100% at 30% 0%, #e3ddd0, #d9cfbc)" },
+          { p: optical, href: "/korekcyjne", label: "Korekcyjne", sub: `${facets.optical} oprawek na każdy dzień`, tint: "radial-gradient(120% 100% at 30% 0%, #ece7dc, #e7e2d6)" },
         ].map((c) => (
           <Reveal key={c.href}>
             <Link href={c.href} className="group relative block overflow-hidden rounded-[22px]">
-              <div className="relative flex aspect-[4/3] items-end" style={{ backgroundColor: c.tint }}>
+              <div className="relative flex aspect-[4/3] items-end" style={{ background: c.tint }}>
                 {c.p && imageAt(c.p.images, 0) && (
                   <Image src={imageAt(c.p.images, 0) as string} alt={c.label} fill sizes="(max-width:768px) 100vw, 50vw" className="object-contain p-12 mix-blend-multiply transition-transform duration-700 ease-out group-hover:scale-105" />
                 )}
@@ -147,7 +155,8 @@ export default function Home() {
         <div className="wrap">
           <Reveal className="mb-10">
             <p className="eyebrow">Lookbook</p>
-            <h2 className="mt-3 font-display text-4xl md:text-5xl">Goya w kadrze</h2>
+            <h2 className="mt-3 font-display text-4xl md:text-6xl">Goya w kadrze</h2>
+            <p className="mt-3 max-w-md text-ink-soft">Prawdziwi ludzie, prawdziwe światło - okulary w codziennym kadrze.</p>
           </Reveal>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {LOOKBOOK.map((l, i) => (
@@ -171,7 +180,8 @@ export default function Home() {
       <section className="wrap py-16 md:py-24">
         <Reveal className="mb-10">
           <p className="eyebrow">Po kształcie</p>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl">Znajdź swój fason</h2>
+          <h2 className="mt-3 font-display text-3xl md:text-4xl">Znajdź swój fason</h2>
+          <p className="mt-3 max-w-md text-ink-soft">Sześć fasonów dopasowanych do kształtu twarzy.</p>
         </Reveal>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
           {shapeTiles.map((t, i) => (
@@ -192,7 +202,7 @@ export default function Home() {
         <div className="wrap grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
           <Reveal>
             <div className="relative aspect-[4/5] overflow-hidden rounded-[24px]">
-              <Image src="/hero/campaign-duo.jpg" alt="Goya — para w okularach" fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover" />
+              <Image src="/hero/campaign-duo.jpg" alt="Goya - para w okularach" fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover" />
             </div>
           </Reveal>
           <Reveal delay={0.1}>
@@ -211,14 +221,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* REASSURANCE */}
-      <section className="wrap grid grid-cols-2 gap-x-6 gap-y-10 py-14 md:grid-cols-4">
-        {REASSURANCE.map((r, i) => (
-          <Reveal key={r.title} delay={i * 0.06}>
-            <p className="font-display text-xl">{r.title}</p>
-            <p className="mt-2 text-sm leading-relaxed text-ink-soft">{r.text}</p>
-          </Reveal>
-        ))}
+      {/* REASSURANCE - trust band */}
+      <section className="border-t border-line bg-paper">
+        <div className="wrap grid grid-cols-2 gap-x-6 gap-y-10 py-16 md:grid-cols-4 md:gap-x-0 md:divide-x md:divide-line">
+          {REASSURANCE.map((r, i) => {
+            const Icon = [SunIcon, ShieldIcon, CheckIcon, ReturnIcon][i] ?? CheckIcon;
+            return (
+              <Reveal key={r.title} delay={i * 0.06} className="md:px-8 md:first:pl-0 md:last:pr-0">
+                <Icon className="text-terracotta" />
+                <p className="mt-3 font-display text-lg">{r.title}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{r.text}</p>
+              </Reveal>
+            );
+          })}
+        </div>
       </section>
     </>
   );

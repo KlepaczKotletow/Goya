@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { Product } from "@/lib/types";
 import { premiumPrice, compareAtPrice, discountPct, formatPLN } from "@/lib/pricing";
 import { useCart } from "@/lib/cart";
@@ -10,7 +10,7 @@ import { Accordion } from "./Accordion";
 import { Stars } from "./Stars";
 import { HeartIcon, AppleIcon, GPayIcon, CheckIcon, TruckIcon, ReturnIcon, ShieldIcon, SunIcon } from "./icons";
 import { SHAPE_LABELS, CATEGORY_LABELS, INCLUDED } from "@/content/site";
-import { cn, fieldTint } from "@/lib/utils";
+import { cn, fieldTint, humanizeCaps } from "@/lib/utils";
 
 function lifestyleFor(p: Product): string {
   const g = p.gender === "Męskie" ? "men" : "women";
@@ -22,6 +22,7 @@ type GItem = { src: string; alt: string; lifestyle: boolean };
 
 export function ProductView({ product }: { product: Product }) {
   const { add, setOpen, toggleWish, isWished } = useCart();
+  const reduce = useReducedMotion();
   const price = premiumPrice(product.priceWoo);
   const compareAt = compareAtPrice(price);
   const pct = discountPct(price, compareAt);
@@ -38,7 +39,7 @@ export function ProductView({ product }: { product: Product }) {
   const selected = product.variations.find((v) => v.id === variantId) ?? null;
 
   const gallery: GItem[] = useMemo(() => {
-    const items: GItem[] = [{ src: lifestyleFor(product), alt: `${product.name} — Goya`, lifestyle: true }];
+    const items: GItem[] = [{ src: lifestyleFor(product), alt: `${product.name} - Goya`, lifestyle: true }];
     const seen = new Set<string>();
     product.images.forEach((im) => {
       if (!seen.has(im.src)) {
@@ -130,7 +131,7 @@ export function ProductView({ product }: { product: Product }) {
       content: (() => {
         const paras = (product.description || "")
           .split(/\n+/)
-          .map((x) => x.trim())
+          .map((x) => humanizeCaps(x.trim()))
           .filter((x) => x.length > 1)
           .slice(0, 4);
         if (!paras.length)
@@ -151,17 +152,6 @@ export function ProductView({ product }: { product: Product }) {
         </dl>
       ),
     },
-    {
-      title: "Dostawa i zwroty",
-      content: (
-        <ul className="space-y-1.5">
-          <li>Darmowa wysyłka od 199 zł (kurier lub paczkomat).</li>
-          <li>Wysyłka w 1–2 dni robocze.</li>
-          <li>30 dni na zwrot bez podawania przyczyny.</li>
-          <li>24 miesiące gwarancji.</li>
-        </ul>
-      ),
-    },
   ];
 
   return (
@@ -169,7 +159,7 @@ export function ProductView({ product }: { product: Product }) {
       <div className="wrap grid gap-8 py-6 md:grid-cols-2 md:gap-14 md:py-12">
         {/* GALLERY */}
         <div className="md:sticky md:top-28 md:self-start">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] md:aspect-square" style={{ backgroundColor: shown?.lifestyle ? "transparent" : tint }}>
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] shadow-gallery ring-1 ring-ink/[0.04] md:aspect-square" style={{ backgroundColor: shown?.lifestyle ? "transparent" : tint }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={shown?.src ?? "x"}
@@ -237,7 +227,29 @@ export function ProductView({ product }: { product: Product }) {
               </>
             )}
           </div>
-          <p className="mt-1.5 text-sm text-ink-soft">{product.category === "sun" ? "Cena zawiera filtr polaryzacyjny i pełną ochronę UV400." : "Lekka oprawa korekcyjna — gotowa na Twoje soczewki korekcyjne."}</p>
+          <p className="mt-1.5 text-sm text-ink-soft">{product.category === "sun" ? "Cena zawiera filtr polaryzacyjny i pełną ochronę UV400." : "Lekka oprawa korekcyjna - gotowa na Twoje soczewki korekcyjne."}</p>
+
+          {product.dims.frontWidth ? (() => {
+            const w = product.dims.frontWidth;
+            const seg = w < 134 ? 0 : w <= 142 ? 1 : 2;
+            const labels = ["Wąskie", "Uniwersalne", "Szerokie"];
+            return (
+              <div className="mt-6">
+                <div className="flex items-baseline justify-between">
+                  <p className="eyebrow">Szerokość dopasowania</p>
+                  <p className="text-xs tabular-nums text-stone">Front {w} mm</p>
+                </div>
+                <div className="mt-2.5 grid grid-cols-3 gap-1.5">
+                  {labels.map((l, i) => (
+                    <div key={l} className="text-center">
+                      <div className={cn("h-1.5 rounded-full transition-colors", i === seg ? "bg-terracotta" : "bg-line")} />
+                      <p className={cn("mt-1.5 text-xs", i === seg ? "font-medium text-ink" : "text-stone")}>{l}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })() : null}
 
           {variantOptions.length > 1 && (
             <div className="mt-6">
@@ -261,8 +273,8 @@ export function ProductView({ product }: { product: Product }) {
 
           {/* CTA */}
           <div className="mt-7 flex gap-3">
-            <button onClick={addToBag} className="flex-1 rounded-full bg-terracotta py-4 text-sm font-medium text-paper transition hover:bg-rust">
-              Dodaj do koszyka — {formatPLN(price)}
+            <button onClick={addToBag} className="flex-1 rounded-full bg-terracotta py-4 text-sm font-medium text-paper transition hover:bg-rust active:scale-[0.99]">
+              Dodaj do koszyka - {formatPLN(price)}
             </button>
             <button onClick={() => toggleWish(product.slug)} aria-label="Dodaj do ulubionych" className={cn("grid h-[52px] w-[52px] shrink-0 place-items-center rounded-full border transition", wished ? "border-terracotta text-terracotta" : "border-ink/25 hover:border-ink")}>
               <HeartIcon filled={wished} />
@@ -275,10 +287,10 @@ export function ProductView({ product }: { product: Product }) {
               <span className="h-px flex-1 bg-line" /> lub zapłać szybko <span className="h-px flex-1 bg-line" />
             </div>
             <div className="grid grid-cols-2 gap-3">
-              <button onClick={addToBag} className="flex h-11 items-center justify-center gap-1.5 rounded-full bg-ink text-sm font-medium text-paper transition hover:opacity-90">
+              <button onClick={addToBag} className="flex h-11 items-center justify-center gap-1.5 rounded-full bg-ink text-sm font-medium text-paper transition hover:opacity-90 active:scale-[0.98]">
                 <AppleIcon /> Pay
               </button>
-              <button onClick={addToBag} className="flex h-11 items-center justify-center rounded-full border border-ink/20 bg-paper transition hover:border-ink/40">
+              <button onClick={addToBag} className="flex h-11 items-center justify-center rounded-full border border-ink/20 bg-paper transition hover:border-ink/40 active:scale-[0.98]">
                 <GPayIcon />
               </button>
             </div>
@@ -287,7 +299,7 @@ export function ProductView({ product }: { product: Product }) {
 
           {/* in the box */}
           <div className="mt-7 rounded-[16px] border border-line bg-paper p-5">
-            <p className="eyebrow mb-3">W zestawie — gratis</p>
+            <p className="eyebrow mb-3">W zestawie - gratis</p>
             <ul className="space-y-2.5">
               {INCLUDED.map((it) => (
                 <li key={it.label} className="flex items-start gap-3 text-sm">
@@ -307,11 +319,11 @@ export function ProductView({ product }: { product: Product }) {
             ))}
           </div>
 
-          {/* delivery rows */}
-          <div className="mt-6 grid gap-3 text-sm">
-            <div className="flex items-center gap-3"><TruckIcon className="shrink-0 text-stone" /> Darmowa wysyłka od 199 zł · wysyłka 1–2 dni</div>
-            <div className="flex items-center gap-3"><ReturnIcon className="shrink-0 text-stone" /> 30 dni na łatwy zwrot</div>
-            <div className="flex items-center gap-3"><ShieldIcon className="shrink-0 text-stone" /> 24 miesiące gwarancji</div>
+          {/* delivery strip */}
+          <div className="mt-6 divide-y divide-line rounded-[16px] border border-line text-sm">
+            <div className="flex items-center gap-3 px-4 py-3"><TruckIcon className="shrink-0 text-terracotta" /> Darmowa wysyłka od 199 zł · wysyłka 1-2 dni</div>
+            <div className="flex items-center gap-3 px-4 py-3"><ReturnIcon className="shrink-0 text-terracotta" /> 30 dni na łatwy zwrot</div>
+            <div className="flex items-center gap-3 px-4 py-3"><ShieldIcon className="shrink-0 text-terracotta" /> 24 miesiące gwarancji</div>
           </div>
 
           {/* accordions */}
@@ -325,9 +337,9 @@ export function ProductView({ product }: { product: Product }) {
       <AnimatePresence>
         {showBar && (
           <motion.div
-            initial={{ y: 120, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 120, opacity: 0 }}
+            initial={reduce ? { opacity: 0 } : { y: 120, opacity: 0 }}
+            animate={reduce ? { opacity: 1 } : { y: 0, opacity: 1 }}
+            exit={reduce ? { opacity: 0 } : { y: 120, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-x-0 bottom-0 z-40 px-3 pb-3 sm:pb-5"
           >
