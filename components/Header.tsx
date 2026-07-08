@@ -72,7 +72,7 @@ export function Header() {
           scrolled ? "border-b border-line bg-bg/90 backdrop-blur-md" : "border-b border-transparent bg-bg",
         )}
       >
-        <div className={cn("wrap flex items-center justify-between gap-4 transition-[height] duration-300", scrolled ? "h-14 md:h-16" : "h-16 md:h-20")}>
+        <div className={cn("wrap relative flex items-center justify-between gap-4 transition-[height] duration-300", scrolled ? "h-14 md:h-16" : "h-16 md:h-20")}>
           <div className="flex items-center gap-2 md:w-1/3">
             <button className="-ml-2 p-2 md:hidden" onClick={() => setMenu(true)} aria-label="Menu">
               <BurgerIcon />
@@ -94,7 +94,7 @@ export function Header() {
             </nav>
           </div>
 
-          <Link href="/" className={cn("font-display tracking-tight transition-all duration-300 md:w-1/3 md:text-center", scrolled ? "text-xl md:text-2xl" : "text-2xl md:text-[1.9rem]")}>
+          <Link href="/" aria-label={SITE.name} className={cn("absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display tracking-tight transition-all duration-300", scrolled ? "text-xl md:text-2xl" : "text-2xl md:text-[1.9rem]")}>
             {SITE.name}
           </Link>
 
