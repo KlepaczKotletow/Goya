@@ -128,12 +128,14 @@ export default function Home() {
         ].map((c) => (
           <Reveal key={c.href}>
             <Link href={c.href} className="group relative block overflow-hidden rounded-[22px]">
-              <div className="relative flex aspect-[4/3] items-end" style={{ background: c.tint }}>
-                {c.p && imageAt(c.p.images, 0) && (
-                  <Image src={imageAt(c.p.images, 0) as string} alt={c.label} fill sizes="(max-width:768px) 100vw, 50vw" className="object-contain p-12 mix-blend-multiply transition-transform duration-700 ease-out group-hover:scale-105" />
-                )}
-                <div className="relative z-10 p-7">
-                  <h3 className="font-display text-3xl md:text-4xl">{c.label}</h3>
+              <div className="flex aspect-[4/3] flex-col" style={{ background: c.tint }}>
+                <div className="relative min-h-0 flex-1">
+                  {c.p && imageAt(c.p.images, 0) && (
+                    <Image src={imageAt(c.p.images, 0) as string} alt={c.label} fill sizes="(max-width:768px) 100vw, 50vw" className="object-contain p-7 md:p-10 mix-blend-multiply transition-transform duration-700 ease-out group-hover:scale-105" />
+                  )}
+                </div>
+                <div className="p-6 sm:p-7">
+                  <h3 className="font-display text-2xl sm:text-3xl md:text-4xl">{c.label}</h3>
                   <p className="mt-1 text-sm text-ink/70">{c.sub}</p>
                   <span className="mt-3 inline-flex w-fit items-center gap-1.5 text-sm font-medium">
                     Odkryj <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />

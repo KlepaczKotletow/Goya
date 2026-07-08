@@ -60,18 +60,11 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           >
             <HeartIcon filled={wished} className="h-[17px] w-[17px]" />
           </button>
-          <div className="absolute left-3 top-3 flex flex-col items-start gap-1.5">
-            {pct > 0 && (
-              <span className="rounded-full bg-terracotta px-2.5 py-1 text-[0.6rem] font-semibold tracking-wide text-paper">
-                −{pct}%
-              </span>
-            )}
-            {product.category === "sun" && product.polarized && (
-              <span className="rounded-full bg-ink/85 px-2.5 py-1 text-[0.6rem] uppercase tracking-wider text-paper">
-                Polaryzacja
-              </span>
-            )}
-          </div>
+          {pct > 0 && (
+            <span className="absolute left-3 top-3 rounded-full bg-terracotta px-2.5 py-1 text-[0.6rem] font-semibold tracking-wide text-paper">
+              −{pct}%
+            </span>
+          )}
           <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-all duration-300 ease-out [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 max-md:hidden">
             {hasVariants ? (
               <span className="block w-full rounded-full bg-ink py-3 text-center text-xs font-medium tracking-wide text-paper shadow-lg transition group-hover:bg-rust">

@@ -15,7 +15,7 @@ export function ProductCarousel({ title, products, href }: { title: string; prod
         )}
       </div>
       <div className="wrap">
-        <div className="hide-scrollbar -mx-5 flex snap-x gap-4 overflow-x-auto px-5 pb-1 sm:-mx-9 sm:px-9">
+        <div className="hide-scrollbar -mx-5 flex snap-x scroll-pl-5 gap-4 overflow-x-auto px-5 pb-1 sm:-mx-9 sm:scroll-pl-9 sm:px-9">
           {products.map((p) => (
             <div key={p.slug} className="w-[72%] shrink-0 snap-start sm:w-[46%] md:w-[31%] lg:w-[23.5%]">
               <ProductCard product={p} />
