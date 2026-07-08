@@ -4,24 +4,33 @@ import { Reveal } from "./Reveal";
 import { GlassesIcon, ArrowIcon } from "./icons";
 
 // Real-people / UGC shots — "this is how you wear them".
-// Each card links to the CONCRETE model shown in the photo. Matches were made by
-// visually comparing each frame against real packshots (see match/ montages);
-// the two frames with no catalog equivalent were re-shot wearing the real model
-// (packshot-referenced) so the photo genuinely matches the linked product.
+// Each card links to the CONCRETE model shown in the photo. Every frame is
+// generated packshot-referenced (nano_banana_2, the real product image as the
+// reference) so the person genuinely wears the exact model you can buy.
+// Labels use the model's display name (matches the PDP).
 type Shot = { src: string; model: string; slug: string; alt: string };
 
 const SHOTS: Shot[] = [
-  { src: "/ugc/ugc-duo.jpg", model: "G 193", slug: "goya-g-193-cz-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w czarnych prostokątnych okularach przeciwsłonecznych Goya G 193, uśmiech w słońcu" },
-  { src: "/ugc/ugc-cafe.jpg", model: "G 1905", slug: "goya-g1905-c1-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Mężczyzna w złotych aviatorach Goya G 1905 przy oknie kawiarni" },
-  { src: "/ugc/ugc-oversized.jpg", model: "G 185", slug: "goya-g-185-cz-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w dużych okularach przeciwsłonecznych Goya G 185 na tarasie kawiarni" },
-  { src: "/ugc/ugc-mirror.jpg", model: "G 164", slug: "goya-g-164-cz-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w czarnych prostokątnych okularach Goya G 164 — selfie w lustrze" },
-  { src: "/ugc/ugc-car.jpg", model: "G 15217", slug: "goya-g-15217-cz-okulary-przeciwsloneczne-kocie-oczy-z-filtrem-polaryzacyjnym", alt: "Kobieta w okularach kocie oczy Goya G 15217 w samochodzie" },
-  { src: "/ugc/ugc-street.jpg", model: "G 93304", slug: "goya-okulary-korekcyjne-g-93304-c2", alt: "Mężczyzna w przezroczystych okrągłych oprawkach korekcyjnych Goya G 93304 na ulicy" },
-  { src: "/ugc/ugc-beach.jpg", model: "A 0736", slug: "goya-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym-goya-a-0736", alt: "Kobieta w okrągłych okularach przeciwsłonecznych Goya A 0736 na plaży o zachodzie słońca" },
-  { src: "/ugc/ugc-tortoise.jpg", model: "G 1000", slug: "goya-okulary-przeciwsloneczne-z-filtrem-uv-g-1000-br", alt: "Mężczyzna w brązowych prostokątnych okularach przeciwsłonecznych Goya G 1000 na ulicy" },
-  { src: "/ugc/ugc-round.jpg", model: "G 942115", slug: "goya-okulary-korekcyjne-g-942115-c1", alt: "Kobieta w okrągłych złotych oprawkach korekcyjnych Goya G 942115 przy herbacie" },
-  { src: "/ugc/ugc-park.jpg", model: "G 182", slug: "goya-g-182-zx-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w bursztynowych okularach przeciwsłonecznych Goya G 182 w parku" },
-  { src: "/ugc/ugc-sofa.jpg", model: "G 89087", slug: "goya-okulary-korekcyjne-g-89087-c3", alt: "Mężczyzna w czarnych okrągłych oprawkach korekcyjnych Goya G 89087 w domu" },
+  { src: "/ugc/ugc-terrace.jpg", model: "Almendra", slug: "goya-g-205-z-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w brązowych okularach kocie oczy Goya Almendra na słonecznym tarasie kawiarni" },
+  { src: "/ugc/ugc-marina.jpg", model: "Noble", slug: "goya-g-189-czm-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Mężczyzna w czarnych sportowych okularach przeciwsłonecznych Goya Noble w marinie przy żaglówkach" },
+  { src: "/ugc/ugc-rooftop.jpg", model: "Trigo", slug: "goya-g-195-cz-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w dużych okularach muchy Goya Trigo na dachu o zachodzie słońca" },
+  { src: "/ugc/ugc-street.jpg", model: "Chispa", slug: "goya-okulary-korekcyjne-g-93304-c2", alt: "Mężczyzna w przezroczystych okrągłych oprawkach korekcyjnych Goya Chispa na ulicy" },
+  { src: "/ugc/ugc-pool.jpg", model: "Luz", slug: "goya-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym-goya-a-0711", alt: "Kobieta w brązowych kwadratowych okularach przeciwsłonecznych Goya Luz przy basenie" },
+  { src: "/ugc/ugc-cafe.jpg", model: "Tossa", slug: "goya-g1905-c1-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Mężczyzna w złotych aviatorach Goya Tossa przy oknie kawiarni" },
+  { src: "/ugc/ugc-citystreet.jpg", model: "Céfiro", slug: "goya-g-172-br-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w brązowych prostokątnych okularach przeciwsłonecznych Goya Céfiro na miejskiej ulicy" },
+  { src: "/ugc/ugc-mountain.jpg", model: "Ronda", slug: "okulary-przeciwsloneczne-polaryzacyjne-dla-kierowcow-pilotki-lustrzanki-goya-g-217-n", alt: "Mężczyzna w lustrzanych aviatorach Goya Ronda na górskim punkcie widokowym" },
+  { src: "/ugc/ugc-oversized.jpg", model: "Miel", slug: "goya-g-185-cz-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w dużych okularach przeciwsłonecznych Goya Miel na tarasie kawiarni" },
+  { src: "/ugc/ugc-roadtrip.jpg", model: "Vuelo", slug: "okulary-przeciwsloneczne-polaryzacyjne-dla-kierowcow-goya-g-55007-br", alt: "Mężczyzna w brązowych aviatorach Goya Vuelo przy zabytkowym aucie na nadmorskiej drodze" },
+  { src: "/ugc/ugc-market.jpg", model: "Brisa", slug: "goya-g-183-zx-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w okrągłych okularach przeciwsłonecznych Goya Brisa na targu kwiatowym" },
+  { src: "/ugc/ugc-round.jpg", model: "Tarifa", slug: "goya-okulary-korekcyjne-g-942115-c1", alt: "Kobieta w okrągłych złotych oprawkach korekcyjnych Goya Tarifa przy herbacie" },
+  { src: "/ugc/ugc-window.jpg", model: "Azahar", slug: "okulary-przeciwsloneczne-polaryzacyjne-kujonki-goya-g-221", alt: "Kobieta w okularach przeciwsłonecznych Goya Azahar w kawiarni przy oknie" },
+  { src: "/ugc/ugc-car.jpg", model: "Amapola", slug: "goya-g-15217-cz-okulary-przeciwsloneczne-kocie-oczy-z-filtrem-polaryzacyjnym", alt: "Kobieta w okularach kocie oczy Goya Amapola w samochodzie" },
+  { src: "/ugc/ugc-sofa.jpg", model: "Jávea", slug: "goya-okulary-korekcyjne-g-89087-c3", alt: "Mężczyzna w czarnych okrągłych oprawkach korekcyjnych Goya Jávea w domu" },
+  { src: "/ugc/ugc-tortoise.jpg", model: "Lumbre", slug: "goya-okulary-przeciwsloneczne-z-filtrem-uv-g-1000-br", alt: "Mężczyzna w brązowych prostokątnych okularach przeciwsłonecznych Goya Lumbre na ulicy" },
+  { src: "/ugc/ugc-beach.jpg", model: "Verbena", slug: "goya-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym-goya-a-0736", alt: "Kobieta w okrągłych okularach przeciwsłonecznych Goya Verbena na plaży o zachodzie słońca" },
+  { src: "/ugc/ugc-duo.jpg", model: "Getaria", slug: "goya-g-193-cz-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w czarnych prostokątnych okularach przeciwsłonecznych Goya Getaria, uśmiech w słońcu" },
+  { src: "/ugc/ugc-mirror.jpg", model: "Poniente", slug: "goya-g-164-cz-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w czarnych prostokątnych okularach Goya Poniente — selfie w lustrze" },
+  { src: "/ugc/ugc-park.jpg", model: "Aire", slug: "goya-g-182-zx-okulary-przeciwsloneczne-z-filtrem-polaryzacyjnym", alt: "Kobieta w bursztynowych okularach przeciwsłonecznych Goya Aire w parku" },
 ];
 
 const hrefFor = (s: Shot) => `/okulary/${s.slug}`;
