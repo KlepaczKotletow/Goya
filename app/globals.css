@@ -21,7 +21,10 @@
 }
 
 @layer base {
-  html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+  /* No global smooth scroll: it makes Next's scroll-to-top on navigation
+     animate from the old offset, which looks like the page loads at the
+     bottom and then scrolls up. scroll-padding-top keeps anchor offsets. */
+  html { scroll-padding-top: 6rem; }
   body {
     background-color: var(--color-bg);
     color: var(--color-ink);

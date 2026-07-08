@@ -79,10 +79,10 @@ export const TRUST_STATS = [
 ];
 
 export const REVIEWS = [
-  { name: "Magda K.", city: "Warszawa", rating: 5, text: "Świetna jakość za tę cenę. Polaryzacja robi ogromną różnicę w słońcu — zero odblasków za kierownicą." },
-  { name: "Tomek W.", city: "Kraków", rating: 5, text: "Lekkie, dobrze leżą, etui naprawdę solidne. Wysyłka błyskawiczna, następnego dnia." },
-  { name: "Ola S.", city: "Gdańsk", rating: 5, text: "Dokładnie jak na zdjęciach. Modne i wygodne — już druga para z Goya." },
-  { name: "Piotr M.", city: "Wrocław", rating: 4, text: "Jakość trzyma poziom, ceny uczciwe. Polecam każdemu, kto szuka dobrych okularów bez przepłacania." },
+  { name: "Magda K.", city: "Warszawa", rating: 5, title: "Świetna jakość, polecam", text: "Świetna jakość za tę cenę. Polaryzacja robi ogromną różnicę w słońcu — zero odblasków za kierownicą." },
+  { name: "Tomek W.", city: "Kraków", rating: 5, title: "Wysyłka błyskawiczna", text: "Lekkie, dobrze leżą, etui naprawdę solidne. Wysyłka błyskawiczna, następnego dnia." },
+  { name: "Ola S.", city: "Gdańsk", rating: 5, title: "Modne i wygodne", text: "Dokładnie jak na zdjęciach. Modne i wygodne — już druga para z Goya." },
+  { name: "Piotr M.", city: "Wrocław", rating: 4, title: "Uczciwe ceny", text: "Jakość trzyma poziom, ceny uczciwe. Polecam każdemu, kto szuka dobrych okularów bez przepłacania." },
 ];
 
 export const FAQS = [
