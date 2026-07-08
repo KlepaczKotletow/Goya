@@ -17,7 +17,7 @@ function Badge({ n }: { n: number }) {
 }
 
 export function Header() {
-  const { count, setOpen, wishlist } = useCart();
+  const { count, setOpen, wishlist, hydrated } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menu, setMenu] = useState(false);
@@ -28,13 +28,21 @@ export function Header() {
 
   useEffect(() => {
     let last = window.scrollY;
-    const onScroll = () => {
+    let ticking = false;
+    const update = () => {
       const y = window.scrollY;
       setScrolled(y > 16);
       setHidden(y > 180 && y > last && !menu && !search);
       last = y;
+      ticking = false;
     };
-    onScroll();
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [menu, search]);
@@ -54,7 +62,7 @@ export function Header() {
   return (
     <>
       <div className="bg-ink px-4 py-2 text-center text-[0.72rem] tracking-wider text-paper">
-        Darmowa wysyłka od 199 zł &nbsp;·&nbsp; 30 dni na zwrot &nbsp;·&nbsp; Polaryzacja w każdej parze
+        Darmowa wysyłka &nbsp;·&nbsp; 30 dni na zwrot &nbsp;·&nbsp; Polaryzacja w każdej parze
       </div>
       <header
         className={cn(
@@ -87,11 +95,11 @@ export function Header() {
             </button>
             <Link href="/ulubione" className="relative p-2 transition hover:text-terracotta" aria-label="Ulubione">
               <HeartIcon />
-              {wishlist.length > 0 && <Badge n={wishlist.length} />}
+              {hydrated && wishlist.length > 0 && <Badge n={wishlist.length} />}
             </Link>
             <button className="relative p-2 transition hover:text-terracotta" onClick={() => setOpen(true)} aria-label="Koszyk">
               <BagIcon />
-              {count > 0 && <Badge n={count} />}
+              {hydrated && count > 0 && <Badge n={count} />}
             </button>
           </div>
         </div>

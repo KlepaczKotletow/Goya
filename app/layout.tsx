@@ -1,32 +1,57 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CartDrawer } from "@/components/CartDrawer";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { SITE } from "@/content/site";
+import { JsonLd } from "@/components/JsonLd";
+import { organizationLd, webSiteLd } from "@/lib/seo";
+import { SITE, SITE_URL } from "@/content/site";
+
+// Self-hosted via next/font (no render-blocking external stylesheet, no layout shift).
+// latin-ext subset is required for Polish diacritics (ą ć ę ł ń ó ś ż ź).
+const display = Plus_Jakarta_Sans({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--ff-display",
+  display: "swap",
+});
+const sans = Inter({
+  subsets: ["latin", "latin-ext"],
+  variable: "--ff-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://goya.pl"),
-  title: { default: "Goya — Okulary z polaryzacją", template: "%s · Goya" },
+  metadataBase: new URL(SITE_URL),
+  title: { default: "Goya — Okulary przeciwsłoneczne z polaryzacją i UV400", template: "%s · Goya" },
   description: SITE.shortIntro,
-  openGraph: { title: "Goya", description: SITE.shortIntro, type: "website", locale: "pl_PL", siteName: "Goya" },
+  alternates: { canonical: "/" },
+  applicationName: SITE.name,
+  openGraph: {
+    title: "Goya — Okulary z polaryzacją",
+    description: SITE.shortIntro,
+    type: "website",
+    locale: "pl_PL",
+    siteName: SITE.name,
+    url: SITE_URL,
+  },
+  twitter: { card: "summary_large_image", title: "Goya — Okulary z polaryzacją", description: SITE.shortIntro },
   icons: { icon: "/favicon.svg" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pl" className="h-full">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Inter:wght@400..700&display=swap"
-        />
-      </head>
+    <html lang="pl" className={`h-full ${display.variable} ${sans.variable}`}>
       <body className="flex min-h-full flex-col">
+        <JsonLd data={[organizationLd(), webSiteLd()]} />
         <CartProvider>
           <ScrollProgress />
           <Header />

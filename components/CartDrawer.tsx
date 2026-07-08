@@ -86,11 +86,16 @@ export function CartDrawer() {
                     <span className="text-stone">Suma</span>
                     <span className="text-lg tabular-nums">{formatPLN(subtotal)}</span>
                   </div>
-                  <button className="mt-4 w-full rounded-full bg-terracotta py-3.5 text-sm font-medium text-paper transition hover:bg-rust">
+                  <p className="mt-1 text-right text-xs text-sage">Darmowa wysyłka</p>
+                  <Link
+                    href="/kasa"
+                    onClick={() => setOpen(false)}
+                    className="mt-3 block w-full rounded-full bg-terracotta py-3.5 text-center text-sm font-medium text-paper transition hover:bg-rust"
+                  >
                     Przejdź do kasy
-                  </button>
+                  </Link>
                   <p className="mt-2.5 text-center text-[0.7rem] text-stone">
-                    Płatności online wkrótce — to wersja pokazowa sklepu.
+                    Darmowa wysyłka · 30 dni na zwrot · bezpieczne zakupy.
                   </p>
                 </footer>
               </>

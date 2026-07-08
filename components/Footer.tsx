@@ -11,13 +11,18 @@ const cols = [
       { label: "Wszystkie okulary", href: "/okulary" },
       { label: "Przeciwsłoneczne", href: "/przeciwsloneczne" },
       { label: "Korekcyjne", href: "/korekcyjne" },
-      { label: "Bestsellery", href: "/okulary?sort=popular" },
+      { label: "Okulary Aviator", href: "/kolekcje/okulary-aviator" },
+      { label: "Okulary kocie oko", href: "/kolekcje/okulary-kocie-oko" },
+      { label: "Polaryzacyjne", href: "/kolekcje/okulary-polaryzacyjne" },
     ],
   },
   {
-    title: "Marka",
+    title: "Marka i poradnik",
     links: [
       { label: "O Goya", href: "/o-marce" },
+      { label: "Poradnik", href: "/poradnik" },
+      { label: "Jak dobrać okulary", href: "/poradnik/jak-dobrac-okulary-do-ksztaltu-twarzy" },
+      { label: "Polaryzacja a UV400", href: "/poradnik/polaryzacja-czy-uv400" },
       { label: "Ulubione", href: "/ulubione" },
     ],
   },
@@ -69,7 +74,7 @@ export function Footer() {
       </div>
       <div className="wrap flex flex-col items-center justify-between gap-2 border-t border-line py-6 text-xs text-stone md:flex-row">
         <p>© {new Date().getFullYear()} {SITE.name}. Zaprojektowane w Polsce.</p>
-        <p>Wersja pokazowa — bez płatności i wysyłki.</p>
+        <p>Polaryzacja · UV400 · Darmowa wysyłka i 30 dni na zwrot.</p>
       </div>
     </footer>
   );

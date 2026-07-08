@@ -9,12 +9,13 @@ import { RiseWord } from "@/components/RiseWord";
 import { Marquee } from "@/components/Marquee";
 import { ArrowIcon } from "@/components/icons";
 import { SHAPE_LABELS, REASSURANCE } from "@/content/site";
+import { SHAPE_COLLECTION } from "@/lib/collections";
 
 const LOOKBOOK = [
   { src: "/hero/sun-women.jpg", label: "Przeciwsłoneczne", href: "/przeciwsloneczne" },
   { src: "/hero/optical-men.jpg", label: "Korekcyjne", href: "/korekcyjne" },
-  { src: "/hero/sun-men.jpg", label: "Męskie", href: "/okulary?gender=M%C4%99skie" },
-  { src: "/hero/optical-women.jpg", label: "Damskie", href: "/okulary?gender=Damskie" },
+  { src: "/hero/sun-men.jpg", label: "Męskie", href: "/kolekcje/okulary-meskie" },
+  { src: "/hero/optical-women.jpg", label: "Damskie", href: "/kolekcje/okulary-damskie" },
 ];
 
 export default function Home() {
@@ -84,7 +85,7 @@ export default function Home() {
         )}
       </section>
 
-      <Marquee items={["Filtr polaryzacyjny", "UV400", "Zaprojektowane w Polsce", "30 dni na zwrot", "Lekkie oprawy", "Darmowa wysyłka od 199 zł"]} />
+      <Marquee items={["Filtr polaryzacyjny", "UV400", "Zaprojektowane w Polsce", "30 dni na zwrot", "Lekkie oprawy", "Darmowa wysyłka"]} />
 
       {/* BESTSELLERS */}
       <section className="wrap py-16 md:py-24">
@@ -176,7 +177,7 @@ export default function Home() {
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
           {shapeTiles.map((t, i) => (
             <Reveal key={t.shape} delay={i * 0.05}>
-              <Link href={`/okulary?shape=${encodeURIComponent(t.shape)}`} className="group block">
+              <Link href={`/kolekcje/${SHAPE_COLLECTION[t.shape] ?? "okulary-aviator"}`} className="group block">
                 <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-[var(--radius)] bg-linen">
                   <Image src={imageAt(t.product!.images, 0) as string} alt={t.shape} fill sizes="(max-width:768px) 50vw, 16vw" className="object-contain p-6 mix-blend-multiply transition-transform duration-500 ease-out group-hover:scale-110" />
                 </div>

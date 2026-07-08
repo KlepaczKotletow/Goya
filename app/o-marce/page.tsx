@@ -6,8 +6,10 @@ import { facets } from "@/lib/products";
 import { TRUST_STATS } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "O marce",
-  description: "Goya — polska marka okularów. Prawdziwa polaryzacja, czysty design i uczciwa cena.",
+  title: "O marce Goya — polska marka okularów z polaryzacją",
+  description:
+    "Goya to polska marka okularów: prawdziwy filtr polaryzacyjny i UV400, czysty design i uczciwa cena bez dopłaty za logo. Poznaj naszą historię.",
+  alternates: { canonical: "/o-marce" },
 };
 
 const values = [

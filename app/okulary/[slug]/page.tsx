@@ -5,7 +5,8 @@ import { ProductView } from "@/components/ProductView";
 import { ProductCarousel } from "@/components/pdp/ProductCarousel";
 import { TrustBand } from "@/components/pdp/TrustBand";
 import { Faq } from "@/components/pdp/Faq";
-import { premiumPrice } from "@/lib/pricing";
+import { JsonLd } from "@/components/JsonLd";
+import { productLd, breadcrumbLd, faqPageLd, productMetaDescription } from "@/lib/seo";
 import { CATEGORY_LABELS } from "@/content/site";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -18,11 +19,18 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const p = getProduct(slug);
   if (!p) return {};
-  const desc = `${p.name} — ${p.shape ?? "okulary"} ${p.category === "sun" ? "przeciwsłoneczne z polaryzacją i UV400" : "korekcyjne"} marki Goya.`;
+  const desc = productMetaDescription(p);
   return {
-    title: p.name,
+    title: `${p.name} — okulary ${p.category === "sun" ? "przeciwsłoneczne" : "korekcyjne"} Goya`,
     description: desc,
-    openGraph: { title: `Goya ${p.name}`, description: desc, images: p.images[0]?.src ? [p.images[0].src] : [] },
+    alternates: { canonical: `/okulary/${slug}` },
+    openGraph: {
+      title: `Goya ${p.name}`,
+      description: desc,
+      url: `/okulary/${slug}`,
+      type: "website",
+      images: p.images[0]?.src ? [p.images[0].src] : [],
+    },
   };
 }
 
@@ -32,27 +40,17 @@ export default async function Page({ params }: Params) {
   if (!product) notFound();
   const related = getRelated(product, 4);
   const recommended = getBestsellers(8).filter((p) => p.slug !== product.slug).slice(0, 4);
-  const price = premiumPrice(product.priceWoo);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: `Goya ${product.name}`,
-    category: CATEGORY_LABELS[product.category],
-    image: product.images.map((i) => i.src),
-    brand: { "@type": "Brand", name: "Goya" },
-    aggregateRating: { "@type": "AggregateRating", ratingValue: (4.6 + (product.id % 4) * 0.1).toFixed(1), reviewCount: String(60 + (product.id % 200)) },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "PLN",
-      price,
-      availability: product.stockStatus === "instock" ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-    },
-  };
+  const categoryPath = product.category === "sun" ? "/przeciwsloneczne" : "/korekcyjne";
+  const crumbs = [
+    { name: "Strona główna", path: "/" },
+    { name: CATEGORY_LABELS[product.category], path: categoryPath },
+    { name: product.name, path: `/okulary/${slug}` },
+  ];
 
   return (
     <div className="pb-24 md:pb-10">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd data={[productLd(product), breadcrumbLd(crumbs), faqPageLd()]} />
       <ProductView product={product} />
       <div className="mt-10 border-t border-line md:mt-0">
         <ProductCarousel
