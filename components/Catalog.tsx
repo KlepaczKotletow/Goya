@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { Product } from "@/lib/types";
 import { ProductGrid } from "./ProductGrid";
 import { ColorSwatch } from "./ColorSwatch";
-import { CloseIcon } from "./icons";
+import { CloseIcon, ChevronIcon, SearchIcon } from "./icons";
 import { SHAPE_LABELS } from "@/content/site";
 import { premiumPrice } from "@/lib/pricing";
 import { cn } from "@/lib/utils";
@@ -19,16 +19,19 @@ export function Catalog({
   title,
   subtitle,
   intro,
+  hideHeader,
 }: {
   products: Product[];
   lockCategory?: "sun" | "optical";
   title: string;
   subtitle?: string;
   intro?: string;
+  hideHeader?: boolean;
 }) {
   const sp = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
+  const reduce = useReducedMotion();
 
   const [genders, setGenders] = useState<string[]>(() => sp.getAll("gender"));
   const [shapes, setShapes] = useState<string[]>(() => sp.getAll("shape"));
@@ -160,12 +163,14 @@ export function Catalog({
   );
 
   return (
-    <div className="wrap py-10 md:py-14">
-      <header className="mb-8">
-        <p className="eyebrow">{subtitle}</p>
-        <h1 className="mt-2 font-display text-4xl md:text-5xl">{title}</h1>
-        {intro && <p className="mt-4 max-w-2xl leading-relaxed text-ink-soft">{intro}</p>}
-      </header>
+    <div className={cn("wrap", hideHeader ? "pb-10 md:pb-14" : "py-10 md:py-14")}>
+      {!hideHeader && (
+        <header className="mb-8">
+          <p className="eyebrow">{subtitle}</p>
+          <h1 className="mt-2 font-display text-4xl md:text-5xl">{title}</h1>
+          {intro && <p className="mt-4 max-w-2xl leading-relaxed text-ink-soft">{intro}</p>}
+        </header>
+      )}
 
       <div className="grid gap-10 md:grid-cols-[240px_1fr]">
         <aside className="hidden md:block">
@@ -185,12 +190,15 @@ export function Catalog({
             <button onClick={() => setDrawer(true)} className="flex items-center gap-2 rounded-full border border-ink/20 px-4 py-2 text-sm md:hidden">
               Filtry {activeCount > 0 && <span className="grid h-5 w-5 place-items-center rounded-full bg-terracotta text-[0.65rem] text-paper">{activeCount}</span>}
             </button>
-            <span className="hidden text-sm text-stone md:inline">{filtered.length} modeli</span>
-            <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="rounded-full border border-ink/20 bg-transparent px-4 py-2 text-sm outline-none">
-              <option value="popular">Popularne</option>
-              <option value="price-asc">Cena: rosnąco</option>
-              <option value="price-desc">Cena: malejąco</option>
-            </select>
+            <span className="text-sm text-stone">{filtered.length} modeli</span>
+            <div className="relative">
+              <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="appearance-none rounded-full border border-ink/20 bg-transparent py-2 pl-4 pr-9 text-sm">
+                <option value="popular">Popularne</option>
+                <option value="price-asc">Cena: rosnąco</option>
+                <option value="price-desc">Cena: malejąco</option>
+              </select>
+              <ChevronIcon className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone" />
+            </div>
           </div>
 
           {activeChips.length > 0 && (
@@ -205,9 +213,11 @@ export function Catalog({
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.2 }}
                     onClick={() => removeChip(chip)}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-linen px-3 py-1.5 text-xs text-ink hover:bg-clay/60"
+                    aria-label={`Usuń filtr: ${chip.label}`}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-linen py-1.5 pl-3 pr-2.5 text-xs text-ink transition-colors hover:bg-clay/60"
                   >
-                    {chip.label} <span className="text-stone">✕</span>
+                    {chip.type === "color" && <ColorSwatch name={chip.val} size={14} />}
+                    {chip.label} <CloseIcon className="h-3 w-3 text-stone" />
                   </motion.button>
                 ))}
               </AnimatePresence>
@@ -226,9 +236,10 @@ export function Catalog({
             </motion.div>
           ) : (
             <div className="py-24 text-center">
+              <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-linen text-stone"><SearchIcon /></div>
               <p className="font-display text-2xl">Brak wyników</p>
               <p className="mt-2 text-stone">Spróbuj zmienić filtry.</p>
-              <button onClick={clearAll} className="mt-5 rounded-full bg-ink px-6 py-3 text-sm text-paper">Wyczyść filtry</button>
+              <button onClick={clearAll} className="mt-5 rounded-full bg-ink px-6 py-3 text-sm text-paper transition hover:bg-rust active:scale-[0.98]">Wyczyść filtry</button>
             </div>
           )}
         </div>
@@ -240,9 +251,9 @@ export function Catalog({
             <motion.div className="fixed inset-0 z-50 bg-ink/40 md:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setDrawer(false)} />
             <motion.div
               className="fixed bottom-0 left-0 z-50 max-h-[85vh] w-full overflow-y-auto rounded-t-[20px] bg-bg p-6 md:hidden"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
+              initial={reduce ? { opacity: 0 } : { y: "100%" }}
+              animate={reduce ? { opacity: 1 } : { y: 0 }}
+              exit={reduce ? { opacity: 0 } : { y: "100%" }}
               transition={{ type: "tween", duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="mb-2 flex items-center justify-between">

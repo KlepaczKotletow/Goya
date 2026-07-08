@@ -51,11 +51,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pl" className={`h-full ${display.variable} ${sans.variable}`}>
       <body className="flex min-h-full flex-col">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:text-paper"
+        >
+          Przejdź do treści
+        </a>
         <JsonLd data={[organizationLd(), webSiteLd()]} />
         <CartProvider>
           <ScrollProgress />
           <Header />
-          <main className="flex-1">{children}</main>
+          <main id="main" tabIndex={-1} className="flex-1 outline-none">{children}</main>
           <Footer />
           <CartDrawer />
         </CartProvider>

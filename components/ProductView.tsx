@@ -300,6 +300,28 @@ export function ProductView({ product }: { product: Product }) {
             </p>
           </div>
 
+          {product.dims.frontWidth ? (() => {
+            const w = product.dims.frontWidth;
+            const seg = w < 134 ? 0 : w <= 142 ? 1 : 2;
+            const labels = ["Wąskie", "Uniwersalne", "Szerokie"];
+            return (
+              <div className="mt-6">
+                <div className="flex items-baseline justify-between">
+                  <p className="eyebrow">Szerokość dopasowania</p>
+                  <p className="text-xs tabular-nums text-stone">Front {w} mm</p>
+                </div>
+                <div className="mt-2.5 grid grid-cols-3 gap-1.5">
+                  {labels.map((l, i) => (
+                    <div key={l} className="text-center">
+                      <div className={cn("h-1.5 rounded-full transition-colors", i === seg ? "bg-terracotta" : "bg-line")} />
+                      <p className={cn("mt-1.5 text-xs", i === seg ? "font-medium text-ink" : "text-stone")}>{l}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })() : null}
+
           {variantOptions.length > 1 && (
             <div className="mt-6">
               <p className="text-xs text-stone">

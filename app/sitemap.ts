@@ -15,6 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/korekcyjne`, changeFrequency: "weekly", priority: 0.9, lastModified: catalogMod },
     { url: `${base}/poradnik`, changeFrequency: "monthly", priority: 0.6, lastModified: catalogMod },
     { url: `${base}/o-marce`, changeFrequency: "yearly", priority: 0.5, lastModified: catalogMod },
+    { url: `${base}/regulamin`, changeFrequency: "yearly", priority: 0.3, lastModified: catalogMod },
+    { url: `${base}/polityka-prywatnosci`, changeFrequency: "yearly", priority: 0.3, lastModified: catalogMod },
+    { url: `${base}/zwroty`, changeFrequency: "yearly", priority: 0.3, lastModified: catalogMod },
   ];
 
   const collections: MetadataRoute.Sitemap = listCollections().map((c) => ({

@@ -2,13 +2,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCart } from "@/lib/cart";
 import { formatPLN } from "@/lib/pricing";
 import { CloseIcon } from "./icons";
 
 export function CartDrawer() {
   const { open, setOpen, lines, remove, setQty, subtotal, count } = useCart();
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -29,10 +30,10 @@ export function CartDrawer() {
             onClick={() => setOpen(false)}
           />
           <motion.aside
-            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-bg shadow-2xl"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
+            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-line bg-bg shadow-[-40px_0_80px_-32px_rgba(38,34,31,0.28)]"
+            initial={reduce ? { opacity: 0 } : { x: "100%" }}
+            animate={reduce ? { opacity: 1 } : { x: 0 }}
+            exit={reduce ? { opacity: 0 } : { x: "100%" }}
             transition={{ type: "tween", duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >
             <header className="flex items-center justify-between border-b border-line px-5 py-4">
@@ -55,15 +56,34 @@ export function CartDrawer() {
               </div>
             ) : (
               <>
+                {(() => {
+                  const FREE = 199;
+                  const remaining = Math.max(0, FREE - subtotal);
+                  const pct = Math.min(100, (subtotal / FREE) * 100);
+                  return (
+                    <div className="border-b border-line px-5 py-3.5">
+                      <p className="text-xs text-ink-soft">
+                        {remaining > 0 ? (
+                          <>Do darmowej wysyłki brakuje <span className="font-medium tabular-nums text-ink">{formatPLN(remaining)}</span></>
+                        ) : (
+                          <>Wysyłka gratis - odblokowana</>
+                        )}
+                      </p>
+                      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-linen">
+                        <div className="h-full rounded-full bg-terracotta transition-[width] duration-500 ease-out" style={{ width: `${pct}%` }} />
+                      </div>
+                    </div>
+                  );
+                })()}
                 <div className="flex-1 overflow-y-auto px-5">
                   {lines.map((l) => (
                     <div key={l.key} className="flex gap-3 border-b border-line/70 py-4">
-                      <div className="relative h-20 w-20 shrink-0 rounded-[10px] bg-paper">
+                      <Link href={`/okulary/${l.slug}`} onClick={() => setOpen(false)} className="relative h-20 w-20 shrink-0 overflow-hidden rounded-[10px] bg-paper">
                         {l.image && <Image src={l.image} alt={l.name} fill className="object-contain p-1.5" sizes="80px" />}
-                      </div>
+                      </Link>
                       <div className="flex flex-1 flex-col">
                         <div className="flex justify-between gap-2">
-                          <p className="font-display text-[1.05rem] leading-tight">{l.name}</p>
+                          <Link href={`/okulary/${l.slug}`} onClick={() => setOpen(false)} className="link-underline font-display text-[1.05rem] leading-tight">{l.name}</Link>
                           <button onClick={() => remove(l.key)} className="text-xs text-stone hover:text-terracotta">
                             Usuń
                           </button>

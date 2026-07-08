@@ -4,6 +4,7 @@ import { getByCategory } from "@/lib/products";
 import { Catalog } from "@/components/Catalog";
 import { JsonLd } from "@/components/JsonLd";
 import { itemListLd } from "@/lib/seo";
+import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Okulary korekcyjne — oprawki damskie i męskie",
@@ -12,22 +13,22 @@ export const metadata: Metadata = {
   alternates: { canonical: "/korekcyjne" },
 };
 
-const INTRO =
-  "Oprawki korekcyjne Goya to lekkie konstrukcje gotowe na montaż Twoich soczewek korekcyjnych. Wybierz fason i kolor — od klasycznych prostokątnych po kobiece kocie oko — i wykończysz oprawę u swojego optyka.";
-
 export default function Page() {
   const products = getByCategory("optical");
   return (
     <>
       <JsonLd data={itemListLd(products, { name: "Okulary korekcyjne Goya", path: "/korekcyjne" })} />
+      <section className="wrap pt-10 md:pt-14">
+        <Reveal>
+          <p className="eyebrow">Kolekcja</p>
+          <h1 className="mt-2 font-display text-4xl md:text-6xl">Korekcyjne</h1>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink-soft">
+            Lekkie, dobrze wyważone oprawki na co dzień - gotowe na Twoje soczewki korekcyjne. Projektujemy je pod realne twarze i realne życie.
+          </p>
+        </Reveal>
+      </section>
       <Suspense>
-        <Catalog
-          products={products}
-          lockCategory="optical"
-          title="Korekcyjne"
-          subtitle={`${products.length} modeli · lekkie oprawki`}
-          intro={INTRO}
-        />
+        <Catalog products={products} lockCategory="optical" title="Korekcyjne" subtitle={`${products.length} oprawek`} hideHeader />
       </Suspense>
     </>
   );

@@ -6,14 +6,7 @@ import { premiumPrice, compareAtPrice, discountPct, formatPLN } from "@/lib/pric
 import { imageAt, fieldTint } from "@/lib/utils";
 import { useCart } from "@/lib/cart";
 import { SHAPE_LABELS, COLOR_HEX } from "@/content/site";
-
-function Heart({ filled }: { filled: boolean }) {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.6">
-      <path d="M12 21s-7.4-4.55-10-9.3C.4 8.4 2 5 5.2 5c2 0 3.3 1.05 3.9 2.05.6 1 .9 1 .9 1s.3 0 .9-1C11.5 6.05 12.8 5 14.8 5 18 5 19.6 8.4 18 11.7 15.4 16.45 12 21 12 21z" />
-    </svg>
-  );
-}
+import { HeartIcon } from "./icons";
 
 export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
   const { toggleWish, isWished, add } = useCart();
@@ -34,7 +27,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
     <div className="group relative">
       <Link href={`/okulary/${product.slug}`} className="block">
         <div
-          className="relative aspect-square overflow-hidden rounded-[var(--radius)] ring-1 ring-black/[0.04] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_26px_44px_-26px_rgba(38,34,31,0.45)]"
+          className="relative aspect-square overflow-hidden rounded-[var(--radius)] shadow-card ring-1 ring-ink/[0.06] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-lift"
           style={{ backgroundColor: tint }}
         >
           {img && (
@@ -65,7 +58,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
             className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-paper/80 text-ink backdrop-blur transition hover:bg-paper"
             style={{ color: wished ? "var(--color-terracotta)" : undefined }}
           >
-            <Heart filled={wished} />
+            <HeartIcon filled={wished} className="h-[17px] w-[17px]" />
           </button>
           <div className="absolute left-3 top-3 flex flex-col items-start gap-1.5">
             {pct > 0 && (
