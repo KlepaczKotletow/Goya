@@ -63,6 +63,37 @@
   .link-underline:hover { background-size: 100% 1px; }
   .hide-scrollbar::-webkit-scrollbar { display: none; }
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Oversized poster headline — tight, dramatic, edge-to-edge */
+  .display-poster {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 0.82;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  /* Outlined display type for kinetic / layered poster moments */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.4px currentColor;
+    paint-order: stroke fill;
+  }
+  @media (min-width: 768px) {
+    .text-outline { -webkit-text-stroke-width: 2px; }
+  }
+}
+
+/* Cinematic film grain — sits over full-bleed imagery for depth.
+   Pure CSS via an inline fractal-noise SVG; non-interactive. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @media (min-width: 640px) {
@@ -74,6 +105,13 @@
 
 @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .animate-spin-slow { animation: spin-slow 26s linear infinite; }
+
+@keyframes scroll-cue {
+  0% { transform: translate(-50%, 0); opacity: 0; }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { transform: translate(-50%, 200%); opacity: 0; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
