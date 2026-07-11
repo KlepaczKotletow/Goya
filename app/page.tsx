@@ -103,6 +103,33 @@ export default function Home() {
         <ProductGrid products={bestsellers} priorityCount={4} stagger />
       </section>
 
+      {/* LOOKBOOK — "Tak się je nosi" UGC feed */}
+      <LookbookFeed />
+
+      {/* BRAND TEASER — "Nasza historia" */}
+      <section className="border-t border-line bg-paper">
+        <div className="wrap grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
+          <Reveal>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[24px]">
+              <Image src="/hero/campaign-duo.jpg" alt="Goya - para w okularach" fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover" />
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="eyebrow">Nasza historia</p>
+            <h2 className="mt-4 font-display text-4xl leading-[1.04] md:text-[3rem]">
+              Dobre okulary nie&nbsp;muszą kosztować <span className="italic text-terracotta">fortuny</span>.
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+              Goya powstała z prostego przekonania: jakość soczewek, lekkość oprawy i czysty design powinny być dostępne bez
+              dopłaty za metkę. Każdy model dobieramy pod realne twarze i realne życie.
+            </p>
+            <ButtonLink href="/o-marce" variant="ghost" className="mt-5 px-0">
+              Poznaj markę <ArrowIcon />
+            </ButtonLink>
+          </Reveal>
+        </div>
+      </section>
+
       {/* EDITORIAL LIFESTYLE BAND */}
       <section className="wrap pb-16 md:pb-24">
         <Reveal>
@@ -147,9 +174,6 @@ export default function Home() {
         ))}
       </section>
 
-      {/* LOOKBOOK — Instagram-style UGC feed */}
-      <LookbookFeed />
-
       {/* SHOP BY SHAPE */}
       <section className="wrap py-16 md:py-24">
         <Reveal className="mb-10">
@@ -168,30 +192,6 @@ export default function Home() {
               </Link>
             </Reveal>
           ))}
-        </div>
-      </section>
-
-      {/* BRAND TEASER with campaign image */}
-      <section className="border-t border-line bg-paper">
-        <div className="wrap grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
-          <Reveal>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[24px]">
-              <Image src="/hero/campaign-duo.jpg" alt="Goya - para w okularach" fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover" />
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="eyebrow">Nasza historia</p>
-            <h2 className="mt-4 font-display text-4xl leading-[1.04] md:text-[3rem]">
-              Dobre okulary nie&nbsp;muszą kosztować <span className="italic text-terracotta">fortuny</span>.
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-ink-soft">
-              Goya powstała z prostego przekonania: jakość soczewek, lekkość oprawy i czysty design powinny być dostępne bez
-              dopłaty za metkę. Każdy model dobieramy pod realne twarze i realne życie.
-            </p>
-            <ButtonLink href="/o-marce" variant="ghost" className="mt-5 px-0">
-              Poznaj markę <ArrowIcon />
-            </ButtonLink>
-          </Reveal>
         </div>
       </section>
 

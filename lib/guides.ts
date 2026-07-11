@@ -16,6 +16,8 @@ export type GuideDef = {
   description: string;
   /** ISO month for visible "Ostatnia aktualizacja" + dateModified freshness signal. */
   updated: string;
+  /** ISO month the guide first went live — drives a distinct datePublished (falls back to `updated`). */
+  published?: string;
   lead: string;
   sections: GuideSection[];
   faqs?: { q: string; a: string }[];
@@ -34,6 +36,7 @@ export const GUIDES: GuideDef[] = [
     description:
       "Jak dobrać okulary i oprawki do kształtu twarzy: okrągłej, kwadratowej, owalnej, pociągłej i w kształcie serca. Prosta zasada kontrastu + dopasowane modele Goya.",
     updated: "2026-06",
+    published: "2026-02",
     lead: "Najprostsza zasada doboru okularów brzmi: oprawa powinna kontrastować z kształtem twarzy. Do miękkich, okrągłych rysów pasują fasony kanciaste; do twarzy kanciastej — oprawy zaokrąglone. Poniżej znajdziesz konkretne rekomendacje dla każdego kształtu twarzy oraz dopasowane modele Goya.",
     sections: [
       {
@@ -74,6 +77,7 @@ export const GUIDES: GuideDef[] = [
     description:
       "Jakie okulary do okrągłej twarzy? Prostokątne, kwadratowe i aviatory dodają struktury i optycznie wyszczuplają. Zobacz dopasowane modele Goya.",
     updated: "2026-06",
+    published: "2026-03",
     lead: "Okrągła twarz ma miękkie linie i zbliżoną szerokość oraz długość. Aby dodać jej struktury i optycznie ją wyszczuplić, wybieraj oprawy kanciaste i kątowe — prostokątne, kwadratowe oraz aviatory. Unikaj małych, okrągłych oprawek, które podkreślają krągłość.",
     sections: [
       {
@@ -99,6 +103,7 @@ export const GUIDES: GuideDef[] = [
     description:
       "Jakie okulary do kwadratowej twarzy? Okrągłe, owalne i kocie oko łagodzą wyraźną żuchwę. Zobacz dopasowane modele Goya.",
     updated: "2026-06",
+    published: "2026-03",
     lead: "Kwadratowa twarz ma szeroką, wyraźną żuchwę i kanciaste rysy. Aby je złagodzić, wybieraj oprawy zaokrąglone — okrągłe, owalne i kocie oko. Delikatne, krzywe linie zmiękczają kąty i dodają twarzy harmonii.",
     sections: [
       {
@@ -124,6 +129,7 @@ export const GUIDES: GuideDef[] = [
     description:
       "Owalna twarz to najbardziej uniwersalny kształt — pasuje do niej większość opraw. Zobacz polecane fasony Goya: aviatory, prostokątne, kocie oko.",
     updated: "2026-06",
+    published: "2026-04",
     lead: "Owalna twarz ma zrównoważone proporcje i łagodne linie, dlatego pasuje do niej najwięcej fasonów. Kluczem jest zachowanie naturalnej równowagi: wybieraj oprawy o szerokości zbliżonej do najszerszego punktu twarzy i unikaj ekstremalnie dużych modeli.",
     sections: [
       {
@@ -145,6 +151,7 @@ export const GUIDES: GuideDef[] = [
     description:
       "Jakie okulary do pociągłej, podłużnej twarzy? Duże, głębokie oprawy — muchy i kwadratowe — optycznie skracają twarz. Zobacz modele Goya.",
     updated: "2026-06",
+    published: "2026-04",
     lead: "Pociągła (podłużna) twarz jest wyraźnie dłuższa niż szersza. Aby optycznie ją skrócić, wybieraj oprawy duże i głębokie w pionie — muchy oraz szerokie, kwadratowe fasony. Dodatkowy akcent na górze oprawy lub szersze zauszniki „przecinają” długość twarzy.",
     sections: [
       {
@@ -170,6 +177,7 @@ export const GUIDES: GuideDef[] = [
     description:
       "Twarz w kształcie serca ma szerokie czoło i wąską brodę. Aviatory i owalne oprawy równoważą proporcje. Zobacz dopasowane modele Goya.",
     updated: "2026-06",
+    published: "2026-05",
     lead: "Twarz w kształcie serca ma szersze czoło i zwężającą się ku dole brodę. Aby zrównoważyć proporcje, wybieraj oprawy lekkie u góry i delikatnie zaokrąglone — aviatory, owalne i subtelne kocie oko. Dobrze działają fasony o szerokości zbliżonej do żuchwy.",
     sections: [
       {
@@ -195,6 +203,7 @@ export const GUIDES: GuideDef[] = [
     description:
       "Polaryzacja a UV400 to dwie różne rzeczy: UV400 chroni zdrowie oczu, polaryzacja zwiększa komfort i tnie odblaski. Wyjaśniamy różnicę i kategorie filtrów.",
     updated: "2026-06",
+    published: "2026-02",
     lead: "To dwie zupełnie różne funkcje, często mylone. UV400 to ochrona zdrowotna — bariera dla promieniowania UVA i UVB. Polaryzacja to komfort widzenia — filtr, który eliminuje odblaski. Dobre okulary przeciwsłoneczne mają jedno i drugie. Wszystkie przeciwsłoneczne Goya łączą polaryzację z pełną ochroną UV400.",
     sections: [
       {

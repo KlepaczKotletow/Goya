@@ -3,7 +3,7 @@
 // not just rich snippets — so coverage here directly affects organic + AI visibility.
 import type { Product } from "./types";
 import { premiumPrice } from "./pricing";
-import { SITE, SITE_URL, absUrl } from "@/content/site";
+import { SITE, SITE_URL, absUrl, SOCIALS } from "@/content/site";
 import { CATEGORY_LABELS, SHAPE_LABELS, FAQS } from "@/content/site";
 
 /** Collapse scraped WooCommerce whitespace/markup into a clean single-paragraph string. */
@@ -39,7 +39,7 @@ export function organizationLd() {
     email: SITE.email,
     foundingDate: SITE.founded,
     description: SITE.shortIntro,
-    sameAs: [SITE.instagram].filter(Boolean),
+    sameAs: SOCIALS.map((sN) => sN.href),
     areaServed: "PL",
   };
 }

@@ -7,6 +7,7 @@ import { NAV, SITE } from "@/content/site";
 import { useCart } from "@/lib/cart";
 import { cn } from "@/lib/utils";
 import { SearchIcon, BagIcon, HeartIcon, BurgerIcon, CloseIcon } from "./icons";
+import { SocialLinks } from "./SocialLinks";
 
 function Badge({ n }: { n: number }) {
   return (
@@ -78,14 +79,18 @@ export function Header() {
               <BurgerIcon />
             </button>
             <nav className="hidden items-center gap-5 text-sm md:flex lg:gap-6">
-              {NAV.slice(0, 4).map((n) => {
+              {NAV.map((n, i) => {
                 const active = !n.href.includes("?") && pathname === n.href;
                 return (
                   <Link
                     key={n.href}
                     href={n.href}
                     aria-current={active ? "page" : undefined}
-                    className={cn("link-underline whitespace-nowrap", active && "text-terracotta [background-size:100%_1px]")}
+                    className={cn(
+                      "link-underline whitespace-nowrap",
+                      i >= 4 && "hidden lg:inline-block",
+                      active && "text-terracotta [background-size:100%_1px]",
+                    )}
                   >
                     {n.label}
                   </Link>
@@ -170,7 +175,10 @@ export function Header() {
                   );
                 })}
               </nav>
-              <p className="mt-auto text-sm text-stone">{SITE.tagline}</p>
+              <div className="mt-auto">
+                <SocialLinks />
+                <p className="mt-4 text-sm text-stone">{SITE.tagline}</p>
+              </div>
             </motion.div>
           </>
         )}

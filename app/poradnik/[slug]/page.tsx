@@ -8,6 +8,7 @@ import { FaqList } from "@/components/FaqList";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbLd, faqPageLd } from "@/lib/seo";
 import { SITE, absUrl } from "@/content/site";
+import { ArrowIcon } from "@/components/icons";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -29,7 +30,16 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: g.title,
     description: g.description,
     alternates: { canonical: `/poradnik/${slug}` },
-    openGraph: { title: g.title, description: g.description, url: `/poradnik/${slug}`, type: "article" },
+    openGraph: {
+      title: g.title,
+      description: g.description,
+      url: `/poradnik/${slug}`,
+      type: "article",
+      publishedTime: `${g.published ?? g.updated}-01`,
+      modifiedTime: `${g.updated}-01`,
+      authors: [SITE.name],
+      section: "Poradnik",
+    },
   };
 }
 
@@ -38,9 +48,20 @@ export default async function Page({ params }: Params) {
   const g = getGuide(slug);
   if (!g) notFound();
 
-  const { iso, pretty } = updatedLabel(g.updated);
+  const { iso: modifiedIso, pretty } = updatedLabel(g.updated);
+  const publishedIso = updatedLabel(g.published ?? g.updated).iso;
+  const canonical = absUrl(`/poradnik/${slug}`);
+  const ogImage = absUrl(`/poradnik/${slug}/opengraph-image`);
+  const orgId = `${absUrl("/")}#organization`;
+  const wordCount = [g.lead, ...g.sections.flatMap((sec) => [sec.h2, ...sec.body])].join(" ").trim().split(/\s+/).length;
+
   const products = guideProducts(g);
   const related = (g.relatedCollections ?? []).map(getCollection).filter(Boolean);
+  const relatedGuides = [
+    ...listGuides().filter((x) => x.slug !== g.slug && x.kind === "pillar"),
+    ...listGuides().filter((x) => x.slug !== g.slug && x.kind === "face-shape"),
+    ...listGuides().filter((x) => x.slug !== g.slug && x.kind === "article"),
+  ].slice(0, 4);
 
   const crumbs = [
     { name: "Strona główna", path: "/" },
@@ -48,22 +69,24 @@ export default async function Page({ params }: Params) {
     { name: g.h1, path: `/poradnik/${slug}` },
   ];
 
-  const articleLd = {
+  const blogPostingLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: g.h1,
     description: g.description,
     inLanguage: "pl-PL",
-    datePublished: iso,
-    dateModified: iso,
-    author: { "@type": "Organization", name: SITE.name },
-    publisher: { "@id": `${absUrl("/")}#organization` },
-    mainEntityOfPage: absUrl(`/poradnik/${slug}`),
+    datePublished: publishedIso,
+    dateModified: modifiedIso,
+    author: { "@id": orgId },
+    publisher: { "@id": orgId },
+    image: ogImage,
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+    wordCount,
   };
 
   return (
     <article className="wrap py-8 md:py-12">
-      <JsonLd data={[articleLd, breadcrumbLd(crumbs), ...(g.faqs ? [faqPageLd(g.faqs)] : [])]} />
+      <JsonLd data={[blogPostingLd, breadcrumbLd(crumbs), ...(g.faqs ? [faqPageLd(g.faqs)] : [])]} />
 
       <nav aria-label="Okruszki" className="text-xs text-stone">
         {crumbs.map((c, i) => (
@@ -121,6 +144,22 @@ export default async function Page({ params }: Params) {
         <section className="mt-14 max-w-3xl">
           <h2 className="mb-5 font-display text-2xl md:text-3xl">Najczęstsze pytania</h2>
           <FaqList items={g.faqs} />
+        </section>
+      )}
+
+      {relatedGuides.length > 0 && (
+        <section className="mt-14 max-w-3xl border-t border-line pt-10">
+          <h2 className="mb-5 font-display text-2xl md:text-3xl">Powiązane poradniki</h2>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {relatedGuides.map((r) => (
+              <li key={r.slug}>
+                <Link href={`/poradnik/${r.slug}`} className="group flex items-start gap-2 text-ink-soft transition hover:text-ink">
+                  <ArrowIcon className="mt-1 shrink-0 transition-transform group-hover:translate-x-1" />
+                  <span>{r.h1}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 

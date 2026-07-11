@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { SITE } from "@/content/site";
 import { ArrowIcon } from "./icons";
+import { SocialLinks } from "./SocialLinks";
 
 const cols = [
   {
@@ -44,6 +45,7 @@ export function Footer() {
         <div>
           <p className="font-display text-3xl">{SITE.name}</p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-soft">{SITE.shortIntro}</p>
+          <SocialLinks className="mt-5" />
         </div>
         {cols.map((c) => (
           <div key={c.title}>
