@@ -15,6 +15,7 @@ import { SITE, SITE_URL } from "@/content/site";
 const display = Plus_Jakarta_Sans({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--ff-display",
   display: "swap",
 });

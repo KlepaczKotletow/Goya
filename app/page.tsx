@@ -35,7 +35,7 @@ export default function Home() {
               <Reveal immediate>
                 <p className="text-[0.72rem] uppercase tracking-[0.25em] text-paper/90">Polaryzacja · UV400</p>
               </Reveal>
-              <h1 className="mt-4 font-display text-[clamp(3.4rem,9.5vw,7rem)] leading-[0.84] text-paper [text-shadow:0_2px_30px_rgba(20,20,30,0.28)]">
+              <h1 className="mt-4 font-display text-[clamp(3.4rem,9.5vw,7rem)] leading-[0.84] text-paper">
                 <RiseWord delay={0.08}>Patrz</RiseWord>
                 <br />
                 <RiseWord delay={0.18} className="italic text-terracotta">szerzej.</RiseWord>
