@@ -42,6 +42,9 @@ export const SunIcon = ({ className }: P) => (
 export const InstagramIcon = ({ className }: P) => (
   <svg width="18" height="18" viewBox="0 0 24 24" className={className} {...s}><rect x="3" y="3" width="18" height="18" rx="5.5" /><circle cx="12" cy="12" r="4" /><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" /></svg>
 );
+export const TikTokIcon = ({ className }: P) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" className={className} {...s}><path d="M14 4c.3 2.3 1.8 4 4 4.2" /><path d="M14 4v10.2a3.4 3.4 0 1 1-3-3.38" /></svg>
+);
 export const GlassesIcon = ({ className }: P) => (
   <svg width="20" height="20" viewBox="0 0 24 24" className={className} {...s}><circle cx="6" cy="13" r="3.2" /><circle cx="18" cy="13" r="3.2" /><path d="M9.2 12.4c.9-1 4.7-1 5.6 0M3 11.5 4.4 9H6M21 11.5 19.6 9H18" /></svg>
 );

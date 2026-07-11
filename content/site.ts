@@ -13,9 +13,15 @@ export const SITE = {
   shortIntro:
     "Polska marka okularów z filtrem polaryzacyjnym. Czysty design, soczewki, które naprawdę chronią, i cena bez metki za logo.",
   email: "kontakt@goya.pl",
-  instagram: "https://instagram.com",
   founded: "2019",
 };
+
+// Social profiles. Placeholder handles — swap for the real Goya URLs at launch.
+// Rendered by <SocialLinks /> (footer + mobile menu) and fed into Organization JSON-LD `sameAs`.
+export const SOCIALS: { platform: "instagram" | "tiktok"; label: string; href: string }[] = [
+  { platform: "instagram", label: "Instagram", href: "https://www.instagram.com/goya" },
+  { platform: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@goya" },
+];
 
 export const NAV = [
   { label: "Przeciwsłoneczne", href: "/przeciwsloneczne" },

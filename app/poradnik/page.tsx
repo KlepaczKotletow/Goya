@@ -4,6 +4,7 @@ import { listGuides } from "@/lib/guides";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbLd } from "@/lib/seo";
 import { ArrowIcon } from "@/components/icons";
+import { absUrl } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Poradnik — jak dobrać okulary",
@@ -21,10 +22,25 @@ export default function Page() {
   return (
     <div className="wrap py-10 md:py-14">
       <JsonLd
-        data={breadcrumbLd([
-          { name: "Strona główna", path: "/" },
-          { name: "Poradnik", path: "/poradnik" },
-        ])}
+        data={[
+          breadcrumbLd([
+            { name: "Strona główna", path: "/" },
+            { name: "Poradnik", path: "/poradnik" },
+          ]),
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Poradnik Goya",
+            url: absUrl("/poradnik"),
+            numberOfItems: guides.length,
+            itemListElement: guides.map((g, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              url: absUrl(`/poradnik/${g.slug}`),
+              name: g.h1,
+            })),
+          },
+        ]}
       />
       <header className="max-w-2xl">
         <p className="eyebrow">Poradnik</p>
