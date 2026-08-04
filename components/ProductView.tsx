@@ -217,7 +217,11 @@ export function ProductView({ product }: { product: Product }) {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   className="absolute inset-0"
+                  style={{ backgroundColor: tint }}
                 >
+                  {/* Tint must live ON the animated layer: animating opacity creates a stacking
+                      context that isolates mix-blend-multiply from any backdrop outside it,
+                      flashing the raw white packshot during the crossfade. */}
                   {shown && <Image src={shown.src} alt={shown.alt} fill priority sizes="45vw" className="object-contain p-10 mix-blend-multiply" />}
                 </motion.div>
               </AnimatePresence>
@@ -299,28 +303,6 @@ export function ProductView({ product }: { product: Product }) {
               <span><strong className="font-semibold">Wysyłka jutro</strong> przy zamówieniu do 14:00</span>
             </p>
           </div>
-
-          {product.dims.frontWidth ? (() => {
-            const w = product.dims.frontWidth;
-            const seg = w < 134 ? 0 : w <= 142 ? 1 : 2;
-            const labels = ["Wąskie", "Uniwersalne", "Szerokie"];
-            return (
-              <div className="mt-6">
-                <div className="flex items-baseline justify-between">
-                  <p className="eyebrow">Szerokość dopasowania</p>
-                  <p className="text-xs tabular-nums text-stone">Front {w} mm</p>
-                </div>
-                <div className="mt-2.5 grid grid-cols-3 gap-1.5">
-                  {labels.map((l, i) => (
-                    <div key={l} className="text-center">
-                      <div className={cn("h-1.5 rounded-full transition-colors", i === seg ? "bg-terracotta" : "bg-line")} />
-                      <p className={cn("mt-1.5 text-xs", i === seg ? "font-medium text-ink" : "text-stone")}>{l}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })() : null}
 
           {variantOptions.length > 1 && (
             <div className="mt-6">
@@ -439,6 +421,27 @@ export function ProductView({ product }: { product: Product }) {
                   </span>
                   <ChevronIcon className="shrink-0 text-stone transition-transform duration-300 group-open:rotate-180" />
                 </summary>
+                {product.dims.frontWidth ? (() => {
+                  const w = product.dims.frontWidth;
+                  const seg = w < 134 ? 0 : w <= 142 ? 1 : 2;
+                  const labels = ["Wąskie", "Uniwersalne", "Szerokie"];
+                  return (
+                    <div className="border-t border-line px-5 pb-4 pt-4">
+                      <div className="flex items-baseline justify-between">
+                        <p className="eyebrow">Szerokość dopasowania</p>
+                        <p className="text-xs tabular-nums text-stone">Front {w} mm</p>
+                      </div>
+                      <div className="mt-2.5 grid grid-cols-3 gap-1.5">
+                        {labels.map((l, i) => (
+                          <div key={l} className="text-center">
+                            <div className={cn("h-1.5 rounded-full transition-colors", i === seg ? "bg-terracotta" : "bg-line")} />
+                            <p className={cn("mt-1.5 text-xs", i === seg ? "font-medium text-ink" : "text-stone")}>{l}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })() : null}
                 <dl className="grid grid-cols-1 border-t border-line px-5 pb-4 pt-2 sm:grid-cols-2 sm:gap-x-8">
                   {specRows.map(([k, v]) => (
                     <div key={k} className="flex items-baseline justify-between gap-3 border-b border-line/60 py-2.5 last:border-0">

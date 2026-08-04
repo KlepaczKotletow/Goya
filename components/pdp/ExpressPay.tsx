@@ -4,9 +4,9 @@ import { AppleIcon, GPayIcon } from "../icons";
 
 type ApplePayWindow = Window & { ApplePaySession?: { canMakePayments?: () => boolean } };
 
-// Google Pay by default; Apple Pay only where it can actually be used:
-// Safari exposing a working ApplePaySession, iPhone/iPod, or iPadOS 13+
-// (which reports a desktop "Macintosh" UA but is touch-capable).
+// Brand-based: any Apple hardware (iPhone/iPad/Mac — regardless of browser)
+// gets the Apple Pay button, everything else Google Pay. ApplePaySession kept
+// as a positive signal for odd UAs.
 function detectApple(): boolean {
   if (typeof window === "undefined") return false;
   const w = window as ApplePayWindow;
@@ -16,7 +16,7 @@ function detectApple(): boolean {
     if (w.ApplePaySession) return true;
   }
   const ua = navigator.userAgent;
-  return /iPhone|iPod|iPad/.test(ua) || (/Mac/.test(ua) && navigator.maxTouchPoints > 1);
+  return /iPhone|iPod|iPad|Macintosh|Mac OS X/.test(ua) || (/Mac/.test(ua) && navigator.maxTouchPoints > 1);
 }
 
 // No external source to subscribe to — the device doesn't change mid-session.
