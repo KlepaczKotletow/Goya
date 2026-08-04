@@ -209,7 +209,11 @@ export function ProductView({ product }: { product: Product }) {
           {/* DESKTOP — main image + thumbnails */}
           <div className="hidden md:block">
             <div className="relative aspect-square overflow-hidden rounded-[20px]" style={{ backgroundColor: tint }}>
-              <AnimatePresence mode="wait">
+              {/* initial={false}: the first image must render visible straight from the server.
+                  Without it the main product shot (the LCP element) ships at opacity:0 and only
+                  appears after hydration — slow LCP, and no image at all if JS fails.
+                  Switching between images still crossfades. */}
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={shown?.src ?? "x"}
                   initial={{ opacity: 0, scale: 1.02 }}

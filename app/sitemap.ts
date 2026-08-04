@@ -40,7 +40,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.7,
     lastModified: catalogMod,
-    images: p.images[0]?.src ? [p.images[0].src] : undefined,
+    // Self-hosted paths need absolutising for image sitemap entries.
+    images: p.images[0]?.src
+      ? [p.images[0].src.startsWith("http") ? p.images[0].src : `${base}${p.images[0].src}`]
+      : undefined,
   }));
 
   return [...staticRoutes, ...collections, ...guides, ...products];
