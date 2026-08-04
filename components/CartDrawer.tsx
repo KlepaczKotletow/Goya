@@ -218,7 +218,7 @@ export function CartDrawer() {
                       onClick={() => setOpen(false)}
                       className={cn(
                         "group flex h-[3.4rem] flex-[3] items-center justify-center gap-2 rounded-full bg-terracotta text-[0.95rem] font-medium text-paper",
-                        "shadow-[0_10px_28px_-10px_rgba(217,119,87,0.6)] transition-all duration-300 ease-out",
+                        "shadow-[0_10px_28px_-10px_rgba(217,119,87,0.6)] transition-shadow duration-300 ease-out",
                         "hover:-translate-y-px hover:bg-rust active:scale-[0.99]",
                       )}
                     >

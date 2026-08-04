@@ -200,7 +200,7 @@ export function ProductView({ product }: { product: Product }) {
             {gallery.length > 1 && (
               <div className="mt-3 flex justify-center gap-1.5">
                 {gallery.map((g, i) => (
-                  <span key={g.src} className={cn("h-1.5 rounded-full transition-all duration-300", i === slide ? "w-5 bg-ink" : "w-1.5 bg-ink/25")} />
+                  <span key={g.src} className={cn("h-1.5 rounded-full transition-[width,background-color] duration-300", i === slide ? "w-5 bg-ink" : "w-1.5 bg-ink/25")} />
                 ))}
               </div>
             )}

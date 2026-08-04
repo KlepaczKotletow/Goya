@@ -74,10 +74,10 @@ export const COLOR_HEX: Record<string, string> = {
 };
 
 export const REASSURANCE = [
-  { title: "Filtr polaryzacyjny", text: "Realna redukcja odblasków - nie tylko ciemniejsze szkło." },
+  { title: "Filtr polaryzacyjny", text: "Realna redukcja odblasków – nie tylko ciemniejsze szkło." },
   { title: "100% ochrona UV400", text: "Pełna bariera dla promieni UVA i UVB w każdej parze." },
   { title: "Polska marka", text: "Projektujemy i kompletujemy Goyę w Polsce." },
-  { title: "30 dni na zwrot", text: "Przymierz w domu. Nie pasują - odsyłasz bez pytań." },
+  { title: "30 dni na zwrot", text: "Przymierz w domu. Nie pasują – odsyłasz bez pytań." },
 ];
 
 // What's in the box
@@ -102,7 +102,7 @@ export const REVIEWS = [
 ];
 
 export const FAQS = [
-  { q: "Czy okulary mają filtr UV?", a: "Tak - każda para Goya zapewnia 100% ochrony UV400 przed promieniowaniem UVA i UVB." },
+  { q: "Czy okulary mają filtr UV?", a: "Tak – każda para Goya zapewnia 100% ochrony UV400 przed promieniowaniem UVA i UVB." },
   { q: "Czym jest filtr polaryzacyjny?", a: "Filtr polaryzacyjny eliminuje odblaski od wody, śniegu i jezdni, zwiększając kontrast i komfort widzenia. To realna technologia, nie tylko ciemniejsze szkło." },
   { q: "Jaki jest czas dostawy?", a: "Zamówienia wysyłamy w 1–2 dni robocze kurierem lub do paczkomatu. Wysyłka jest darmowa dla każdego zamówienia." },
   { q: "Czy mogę zwrócić okulary?", a: "Masz 30 dni na zwrot bez podawania przyczyny. Wystarczy odesłać produkt w stanie nienaruszonym wraz z etui." },

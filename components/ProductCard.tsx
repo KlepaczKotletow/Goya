@@ -27,7 +27,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
     <div className="group relative">
       <Link href={`/okulary/${product.slug}`} className="block">
         <div
-          className="relative aspect-square overflow-hidden rounded-[var(--radius)] shadow-card ring-1 ring-ink/[0.06] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-lift"
+          className="relative aspect-square overflow-hidden rounded-[var(--radius)] shadow-card ring-1 ring-ink/[0.06] transition-[transform,box-shadow] duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-lift"
           style={{ backgroundColor: tint }}
         >
           {img && (
@@ -65,7 +65,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
               −{pct}%
             </span>
           )}
-          <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-all duration-300 ease-out [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 max-md:hidden">
+          <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-[transform,opacity] duration-300 ease-out [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 max-md:hidden">
             {hasVariants ? (
               <span className="block w-full rounded-full bg-ink py-3 text-center text-xs font-medium tracking-wide text-paper shadow-lg transition group-hover:bg-rust">
                 Wybierz model

@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { getAllProducts, facets } from "@/lib/products";
 import { Catalog } from "@/components/Catalog";
+import { CatalogFallback } from "@/components/CatalogFallback";
 import { JsonLd } from "@/components/JsonLd";
 import { itemListLd } from "@/lib/seo";
 
@@ -20,8 +21,12 @@ export default function Page() {
   return (
     <>
       <JsonLd data={itemListLd(products, { name: "Wszystkie okulary Goya", path: "/okulary" })} />
-      <Suspense>
-        <Catalog products={products} title="Wszystkie okulary" subtitle={`${facets.count} modeli`} intro={INTRO} />
+      <Suspense
+        fallback={
+          <CatalogFallback products={products} title="Wszystkie okulary" subtitle={`${products.length} modeli`} intro={INTRO} />
+        }
+      >
+        <Catalog products={products} title="Wszystkie okulary" subtitle={`${products.length} modeli`} intro={INTRO} />
       </Suspense>
     </>
   );
