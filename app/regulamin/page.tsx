@@ -26,7 +26,7 @@ export default function Page() {
       <h2>3. Dostawa i płatność</h2>
       <ul>
         <li>Wysyłka kurierem lub do paczkomatu, realizacja w 1-2 dni robocze.</li>
-        <li>Darmowa wysyłka dla zamówień od 199 zł.</li>
+        <li>Darmowa wysyłka dla każdego zamówienia.</li>
         <li>Płatność online, BLIK lub za pobraniem.</li>
       </ul>
 

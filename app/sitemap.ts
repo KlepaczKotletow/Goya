@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/okulary`, changeFrequency: "weekly", priority: 0.9, lastModified: catalogMod },
     { url: `${base}/przeciwsloneczne`, changeFrequency: "weekly", priority: 0.9, lastModified: catalogMod },
     { url: `${base}/korekcyjne`, changeFrequency: "weekly", priority: 0.9, lastModified: catalogMod },
+    { url: `${base}/kolekcje`, changeFrequency: "weekly", priority: 0.7, lastModified: catalogMod },
     { url: `${base}/poradnik`, changeFrequency: "monthly", priority: 0.6, lastModified: catalogMod },
     { url: `${base}/o-marce`, changeFrequency: "yearly", priority: 0.5, lastModified: catalogMod },
     { url: `${base}/regulamin`, changeFrequency: "yearly", priority: 0.3, lastModified: catalogMod },

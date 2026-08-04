@@ -6,10 +6,14 @@ import type { Product, Facets } from "./types";
 // Swap the imported WooCommerce SKU names ("G 9496") for Goya's Mediterranean
 // model names ("Lince"), keeping the original SKU as `code` for traceability.
 // See scripts/rename-models.mjs and docs/model-names.md for the full directory.
-const products = (data as unknown as Product[]).map((p) => {
-  const name = MODEL_NAMES[p.id];
-  return name ? { ...p, code: p.name, name } : p;
-});
+// Out-of-stock products are excluded everywhere (listing, PDP, sitemap): the
+// source shop can't fulfill them, so we must not sell them.
+const products = (data as unknown as Product[])
+  .filter((p) => p.stockStatus === "instock")
+  .map((p) => {
+    const name = MODEL_NAMES[p.id];
+    return name ? { ...p, code: p.name, name } : p;
+  });
 export const facets = facetsData as unknown as Facets;
 
 export function getAllProducts(): Product[] {

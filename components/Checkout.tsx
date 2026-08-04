@@ -11,13 +11,38 @@ export function Checkout() {
   const { lines, subtotal, setQty, remove, clear, hydrated } = useCart();
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const placeOrder = (e: React.FormEvent) => {
+  // No payment processor wired yet: the order (address + items) is stored via
+  // /api/order so it can be confirmed manually; payment happens off-site for now.
+  const placeOrder = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    // Demo order flow — no payment processor wired yet. Record intent and confirm.
-    clear();
-    router.push("/kasa/sukces");
+    setError(null);
+    const f = new FormData(e.currentTarget);
+    try {
+      const res = await fetch("/api/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: f.get("email"),
+          firstName: f.get("firstName"),
+          lastName: f.get("lastName"),
+          street: f.get("street"),
+          postalCode: f.get("postalCode"),
+          city: f.get("city"),
+          phone: f.get("phone"),
+          items: lines.map((l) => ({ slug: l.slug, name: l.name, variant: l.variant, qty: l.qty, price: l.price })),
+          subtotal,
+        }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      clear();
+      router.push("/kasa/sukces");
+    } catch {
+      setSubmitting(false);
+      setError("Nie udało się złożyć zamówienia. Spróbuj ponownie za chwilę.");
+    }
   };
 
   if (!hydrated) return <div className="py-20 text-center text-stone">Ładowanie koszyka…</div>;
@@ -41,17 +66,17 @@ export function Checkout() {
       <form onSubmit={placeOrder} className="order-2 md:order-1">
         <h2 className="mb-5 font-display text-2xl">Dane do wysyłki</h2>
         <div className="grid gap-3">
-          <input required type="email" placeholder="E-mail" className={field} />
+          <input required type="email" name="email" autoComplete="email" placeholder="E-mail" className={field} />
           <div className="grid gap-3 sm:grid-cols-2">
-            <input required placeholder="Imię" className={field} />
-            <input required placeholder="Nazwisko" className={field} />
+            <input required name="firstName" autoComplete="given-name" placeholder="Imię" className={field} />
+            <input required name="lastName" autoComplete="family-name" placeholder="Nazwisko" className={field} />
           </div>
-          <input required placeholder="Ulica i numer" className={field} />
+          <input required name="street" autoComplete="street-address" placeholder="Ulica i numer" className={field} />
           <div className="grid gap-3 sm:grid-cols-[1fr_2fr]">
-            <input required placeholder="Kod" className={field} />
-            <input required placeholder="Miasto" className={field} />
+            <input required name="postalCode" autoComplete="postal-code" placeholder="Kod" className={field} />
+            <input required name="city" autoComplete="address-level2" placeholder="Miasto" className={field} />
           </div>
-          <input placeholder="Telefon (opcjonalnie)" className={field} />
+          <input type="tel" name="phone" autoComplete="tel" placeholder="Telefon (opcjonalnie)" className={field} />
         </div>
 
         <button
@@ -61,6 +86,11 @@ export function Checkout() {
         >
           {submitting ? "Składanie zamówienia…" : `Złóż zamówienie — ${formatPLN(subtotal)}`}
         </button>
+        {error && (
+          <p role="alert" className="mt-3 text-center text-sm text-terracotta">
+            {error}
+          </p>
+        )}
         <p className="mt-3 text-center text-[0.7rem] text-stone">
           Składając zamówienie, akceptujesz regulamin i politykę prywatności.
         </p>

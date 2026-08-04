@@ -1983,7 +1983,7 @@
       "templeLength": 136
     },
     "priceWoo": 179,
-    "stockStatus": "instock",
+    "stockStatus": "outofstock",
     "totalSales": 11,
     "images": [
       {
@@ -2930,7 +2930,7 @@
       "templeLength": 140
     },
     "priceWoo": 179,
-    "stockStatus": "instock",
+    "stockStatus": "outofstock",
     "totalSales": 8,
     "images": [
       {
@@ -3265,7 +3265,7 @@
       "templeLength": 130
     },
     "priceWoo": 149,
-    "stockStatus": "instock",
+    "stockStatus": "outofstock",
     "totalSales": 7,
     "images": [
       {

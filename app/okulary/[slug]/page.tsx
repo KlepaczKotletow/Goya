@@ -21,7 +21,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!p) return {};
   const desc = productMetaDescription(p);
   return {
-    title: `${p.name} — okulary ${p.category === "sun" ? "przeciwsłoneczne" : "korekcyjne"} Goya`,
+    // Layout template appends " · Goya" — keep the brand out of the page part.
+    title: `${p.name} — ${p.category === "sun" ? "okulary przeciwsłoneczne z polaryzacją" : "oprawki korekcyjne"}`,
     description: desc,
     alternates: { canonical: `/okulary/${slug}` },
     openGraph: {
