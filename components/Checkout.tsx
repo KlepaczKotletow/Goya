@@ -58,7 +58,8 @@ export function Checkout() {
     );
   }
 
-  const field = "w-full rounded-[12px] border border-line bg-paper px-4 py-3 text-sm outline-none focus:border-ink";
+  // text-base below md: fonts under 16px make iOS Safari zoom the viewport on focus.
+  const field = "w-full rounded-[12px] border border-line bg-paper px-4 py-3 text-base outline-none focus:border-ink md:text-sm";
 
   return (
     <div className="grid gap-10 md:grid-cols-[1fr_1fr] lg:grid-cols-[1.2fr_1fr]">
@@ -113,9 +114,9 @@ export function Checkout() {
                 {l.variant && <p className="mt-0.5 text-xs text-stone">{l.variant}</p>}
                 <div className="mt-auto flex items-center justify-between">
                   <div className="flex items-center rounded-full border border-line">
-                    <button onClick={() => setQty(l.key, l.qty - 1)} className="px-3 py-1 text-stone hover:text-ink" aria-label="Mniej">−</button>
+                    <button onClick={() => setQty(l.key, l.qty - 1)} className="px-3 py-1.5 text-stone hover:text-ink" aria-label="Mniej">−</button>
                     <span className="w-6 text-center text-sm tabular-nums">{l.qty}</span>
-                    <button onClick={() => setQty(l.key, l.qty + 1)} className="px-3 py-1 text-stone hover:text-ink" aria-label="Więcej">+</button>
+                    <button onClick={() => setQty(l.key, l.qty + 1)} className="px-3 py-1.5 text-stone hover:text-ink" aria-label="Więcej">+</button>
                   </div>
                   <span className="text-sm tabular-nums">{formatPLN(l.price * l.qty)}</span>
                 </div>

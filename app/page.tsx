@@ -28,7 +28,8 @@ export default function Home() {
       {/* HERO - sky / freedom */}
       <section className="relative h-[90vh] min-h-[560px] w-full overflow-hidden">
         <Image src="/hero/sky-hero.jpg" alt="Goya - okulary z polaryzacją" fill priority sizes="100vw" className="object-cover object-[72%_center]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/45 via-ink/10 to-transparent" />
+        {/* Stronger scrim below md: the copy and price sit over bright parts of the photo on narrow screens. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/25 to-ink/10 md:from-ink/45 md:via-ink/10 md:to-transparent" />
         <div className="absolute inset-0 flex items-center">
           <div className="wrap w-full">
             <div className="max-w-2xl">

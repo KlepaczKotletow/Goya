@@ -61,7 +61,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
             <HeartIcon filled={wished} className="h-[17px] w-[17px]" />
           </button>
           {pct > 0 && (
-            <span className="absolute left-3 top-3 rounded-full bg-terracotta px-2.5 py-1 text-[0.6rem] font-semibold tracking-wide text-paper">
+            <span className="absolute left-3 top-3 rounded-full bg-terracotta px-2.5 py-1 text-[0.7rem] font-semibold tracking-wide text-paper">
               −{pct}%
             </span>
           )}
@@ -118,14 +118,14 @@ export function ProductCard({ product, priority = false }: { product: Product; p
       {hasVariants ? (
         <Link
           href={`/okulary/${product.slug}`}
-          className="mt-3 block w-full rounded-full border border-ink/15 py-2.5 text-center text-xs font-medium tracking-wide text-ink transition hover:border-ink hover:bg-ink hover:text-paper md:hidden"
+          className="mt-3 block w-full rounded-full border border-ink/15 py-3 text-center text-[0.8rem] font-medium tracking-wide text-ink transition hover:border-ink hover:bg-ink hover:text-paper md:hidden"
         >
           Wybierz model
         </Link>
       ) : (
         <button
           onClick={() => add({ slug: product.slug, name: product.name, price, image: img })}
-          className="mt-3 w-full rounded-full border border-ink/15 py-2.5 text-xs font-medium tracking-wide text-ink transition hover:border-ink hover:bg-ink hover:text-paper md:hidden"
+          className="mt-3 w-full rounded-full border border-ink/15 py-3 text-[0.8rem] font-medium tracking-wide text-ink transition hover:border-ink hover:bg-ink hover:text-paper md:hidden"
         >
           Dodaj do koszyka
         </button>

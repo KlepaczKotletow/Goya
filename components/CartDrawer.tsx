@@ -62,7 +62,7 @@ export function CartDrawer() {
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Zamknij koszyk"
-                className="grid h-9 w-9 place-items-center rounded-full text-stone transition-colors hover:bg-linen hover:text-ink"
+                className="grid h-10 w-10 place-items-center rounded-full text-stone transition-colors hover:bg-linen hover:text-ink"
               >
                 <CloseIcon />
               </button>
