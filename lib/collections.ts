@@ -293,7 +293,7 @@ export function collectionFacts(def: CollectionDef, products: Product[]): string
   return parts.join(" ");
 }
 
-function plural(n: number, one: string, few: string, many: string): string {
+export function plural(n: number, one: string, few: string, many: string): string {
   if (n === 1) return one;
   const m10 = n % 10;
   const m100 = n % 100;

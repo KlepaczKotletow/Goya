@@ -11,7 +11,7 @@ export default function Page() {
       <h2>Dostawa</h2>
       <ul>
         <li>Wysyłka w 1-2 dni robocze kurierem lub do paczkomatu.</li>
-        <li>Darmowa dostawa dla zamówień od 199 zł.</li>
+        <li>Darmowa dostawa każdego zamówienia — bez progu.</li>
         <li>Do każdej pary dołączamy twarde etui, ściereczkę z mikrofibry i kartę gwarancyjną.</li>
       </ul>
 

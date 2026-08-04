@@ -79,8 +79,8 @@ export default function Home() {
           </div>
         )}
 
-        {/* Signature - the rotating Goya seal */}
-        <div className="absolute bottom-10 left-[6%] z-10 hidden lg:block">
+        {/* Signature - the rotating Goya seal (decorative: must never intercept clicks on the CTAs underneath) */}
+        <div className="pointer-events-none absolute bottom-10 left-[6%] z-10 hidden lg:block">
           <Reveal immediate delay={0.6}>
             <Seal className="h-28 w-28 text-paper/85" letterSizeClassName="text-3xl" />
           </Reveal>

@@ -15,6 +15,7 @@ const cols = [
       { label: "Okulary Aviator", href: "/kolekcje/okulary-aviator" },
       { label: "Okulary kocie oko", href: "/kolekcje/okulary-kocie-oko" },
       { label: "Polaryzacyjne", href: "/kolekcje/okulary-polaryzacyjne" },
+      { label: "Wszystkie kolekcje", href: "/kolekcje" },
     ],
   },
   {
@@ -39,6 +40,28 @@ const cols = [
 
 export function Footer() {
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
+
+  const subscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setBusy(true);
+    setFailed(false);
+    const email = new FormData(e.currentTarget).get("email");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setSent(true);
+    } catch {
+      setFailed(true);
+    } finally {
+      setBusy(false);
+    }
+  };
   return (
     <footer className="mt-24 border-t border-line bg-paper">
       <div className="wrap grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr_1.4fr]">
@@ -67,19 +90,21 @@ export function Footer() {
           {sent ? (
             <p className="text-sm text-sage">Dzięki! Trzymaj oko na skrzynce.</p>
           ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-              className="flex items-center gap-2 border-b border-ink/30 pb-2"
-            >
-              <input required type="email" placeholder="Twój e-mail" className="w-full bg-transparent text-sm outline-none placeholder:text-stone" />
-              <button aria-label="Zapisz się" className="text-ink transition hover:text-terracotta">
+            <form onSubmit={subscribe} className="flex items-center gap-2 border-b border-ink/30 pb-2">
+              <input
+                required
+                type="email"
+                name="email"
+                autoComplete="email"
+                placeholder="Twój e-mail"
+                className="w-full bg-transparent text-sm outline-none placeholder:text-stone"
+              />
+              <button aria-label="Zapisz się" disabled={busy} className="text-ink transition hover:text-terracotta disabled:opacity-50">
                 <ArrowIcon />
               </button>
             </form>
           )}
+          {failed && <p className="mt-2 text-xs text-terracotta">Nie udało się zapisać. Spróbuj ponownie.</p>}
           <p className="mt-2.5 text-[0.7rem] leading-snug text-stone">
             Zapisując się akceptujesz <Link href="/polityka-prywatnosci" className="link-underline">Politykę prywatności</Link>.
           </p>

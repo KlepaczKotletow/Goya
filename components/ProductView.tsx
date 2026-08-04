@@ -454,12 +454,12 @@ export function ProductView({ product }: { product: Product }) {
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
                 <span>
                   <span className="block text-[0.95rem] font-medium text-ink">Dostawa i zwroty</span>
-                  <span className="mt-0.5 block text-xs text-stone">Darmowa wysyłka od 199 zł · 30 dni na zwrot</span>
+                  <span className="mt-0.5 block text-xs text-stone">Darmowa wysyłka · 30 dni na zwrot</span>
                 </span>
                 <ChevronIcon className="shrink-0 text-stone transition-transform duration-300 group-open:rotate-180" />
               </summary>
               <ul className="space-y-1.5 border-t border-line px-5 pb-5 pt-4 text-sm leading-relaxed text-ink-soft">
-                <li>Darmowa wysyłka od 199 zł (kurier lub paczkomat).</li>
+                <li>Darmowa wysyłka każdego zamówienia (kurier lub paczkomat).</li>
                 <li>Wysyłka w 1–2 dni robocze.</li>
                 <li>30 dni na zwrot bez podawania przyczyny.</li>
                 <li>24 miesiące gwarancji.</li>
