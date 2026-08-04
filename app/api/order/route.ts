@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabaseInsert } from "@/lib/supabase";
+import { recordOrder } from "@/lib/intake";
 
 type OrderItem = { slug: string; name: string; variant?: string | null; qty: number; price: number };
 
@@ -34,17 +34,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "missing fields" }, { status: 400 });
   }
 
-  const ok = await supabaseInsert("goya_orders", {
-    email,
-    first_name: firstName,
-    last_name: lastName,
-    street,
-    postal_code: postalCode,
-    city,
-    phone: phone || null,
-    items,
-    subtotal,
-  });
+  const ok = await recordOrder({ email, firstName, lastName, street, postalCode, city, phone, items, subtotal });
   if (!ok) return NextResponse.json({ error: "store failed" }, { status: 502 });
   return NextResponse.json({ ok: true }, { status: 201 });
 }
