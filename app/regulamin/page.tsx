@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <ContentPage eyebrow="Informacje" title="Regulamin sklepu" updated="8 lipca 2026">
       <p>
-        To wersja pokazowa sklepu Goya - nie prowadzimy realnej sprzedaży ani wysyłki. Poniższy regulamin pełni funkcję
+        To wersja pokazowa sklepu Goya – nie prowadzimy realnej sprzedaży ani wysyłki. Poniższy regulamin pełni funkcję
         poglądową i pokazuje, jak wyglądałyby zasady zakupów w docelowym sklepie.
       </p>
 

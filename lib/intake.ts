@@ -38,6 +38,7 @@ async function toSheet(kind: Kind, payload: Record<string, unknown>): Promise<bo
 export async function recordOrder(order: {
   email: string; firstName: string; lastName: string; street: string;
   postalCode: string; city: string; phone: string;
+  delivery: "paczkomat" | "kurier"; lockerCode: string;
   items: { slug: string; name: string; variant: string | null; qty: number; price: number }[];
   subtotal: number;
 }): Promise<boolean> {
@@ -50,7 +51,9 @@ export async function recordOrder(order: {
     postal_code: order.postalCode,
     city: order.city,
     phone: order.phone || null,
-    items: order.items,
+    // The Supabase fallback predates delivery options; keep the columns it has
+    // and carry the new fields inside items' sibling payload so nothing is lost.
+    items: { lines: order.items, delivery: order.delivery, lockerCode: order.lockerCode || null },
     subtotal: order.subtotal,
   });
 }

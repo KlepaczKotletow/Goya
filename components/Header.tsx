@@ -102,7 +102,18 @@ export function Header() {
             </nav>
           </div>
 
-          <Link href="/" aria-label={SITE.name} className={cn("absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display tracking-tight transition-all duration-300", scrolled ? "text-xl md:text-2xl" : "text-2xl md:text-[1.9rem]")}>
+          {/* Viewport-centring only from sm: at 320px the burger + three 40px icons
+              leave no room, and the absolutely-centred wordmark lands under the
+              search icon. Below sm it sits in normal flow between them instead. */}
+          <Link
+            href="/"
+            aria-label={SITE.name}
+            className={cn(
+              "font-display tracking-tight transition-[font-size] duration-300",
+              "sm:absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2",
+              scrolled ? "text-xl md:text-2xl" : "text-2xl md:text-[1.9rem]",
+            )}
+          >
             {SITE.name}
           </Link>
 

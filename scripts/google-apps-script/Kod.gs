@@ -21,7 +21,8 @@ var TABS = {
   order: {
     name: 'Zamówienia',
     headers: ['Data', 'E-mail', 'Imię', 'Nazwisko', 'Ulica i numer', 'Kod',
-              'Miasto', 'Telefon', 'Produkty', 'Suma (zł)', 'Status'],
+              'Miasto', 'Telefon', 'Dostawa', 'Paczkomat', 'Produkty',
+              'Suma (zł)', 'Status'],
   },
   newsletter: {
     name: 'Newsletter',
@@ -76,6 +77,8 @@ function doPost(e) {
       String(body.postalCode || ''),
       String(body.city || ''),
       String(body.phone || ''),
+      body.delivery === 'kurier' ? 'Kurier' : 'Paczkomat InPost',
+      String(body.lockerCode || ''),
       items,
       Number(body.subtotal || 0),
       'nowe',
