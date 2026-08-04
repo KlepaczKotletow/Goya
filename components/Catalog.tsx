@@ -192,7 +192,7 @@ export function Catalog({
             </button>
             <span className="text-sm text-stone">{filtered.length} modeli</span>
             <div className="relative">
-              <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="appearance-none rounded-full border border-ink/20 bg-transparent py-2 pl-4 pr-9 text-sm">
+              <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="appearance-none rounded-full border border-ink/20 bg-transparent py-2 pl-4 pr-9 text-base md:text-sm">
                 <option value="popular">Popularne</option>
                 <option value="price-asc">Cena: rosnąco</option>
                 <option value="price-desc">Cena: malejąco</option>

@@ -64,7 +64,8 @@ export function Header() {
   return (
     <>
       <div className="bg-ink px-4 py-2 text-center text-[0.72rem] tracking-wider text-paper">
-        Darmowa wysyłka &nbsp;·&nbsp; 30 dni na zwrot &nbsp;·&nbsp; Polaryzacja w każdej parze
+        Darmowa wysyłka &nbsp;·&nbsp; 30 dni na zwrot
+        <span className="hidden sm:inline"> &nbsp;·&nbsp; Polaryzacja w każdej parze</span>
       </div>
       <header
         className={cn(
@@ -75,7 +76,7 @@ export function Header() {
       >
         <div className={cn("wrap relative flex items-center justify-between gap-4 transition-[height] duration-300", scrolled ? "h-14 md:h-16" : "h-16 md:h-20")}>
           <div className="flex items-center gap-2 md:w-1/3">
-            <button className="-ml-2 p-2 md:hidden" onClick={() => setMenu(true)} aria-label="Menu">
+            <button className="-ml-2.5 p-2.5 md:hidden" onClick={() => setMenu(true)} aria-label="Menu">
               <BurgerIcon />
             </button>
             <nav className="hidden items-center gap-5 text-sm md:flex lg:gap-6">
@@ -104,14 +105,14 @@ export function Header() {
           </Link>
 
           <div className="flex items-center justify-end gap-0.5 md:w-1/3">
-            <button className="p-2 transition hover:text-terracotta" onClick={() => setSearch((s) => !s)} aria-label="Szukaj">
+            <button className="p-2.5 transition hover:text-terracotta md:p-2" onClick={() => setSearch((s) => !s)} aria-label="Szukaj">
               <SearchIcon />
             </button>
-            <Link href="/ulubione" className="relative p-2 transition hover:text-terracotta" aria-label="Ulubione">
+            <Link href="/ulubione" className="relative p-2.5 transition hover:text-terracotta md:p-2" aria-label="Ulubione">
               <HeartIcon />
               {hydrated && wishlist.length > 0 && <Badge n={wishlist.length} />}
             </Link>
-            <button className="relative p-2 transition hover:text-terracotta" onClick={() => setOpen(true)} aria-label="Koszyk">
+            <button className="relative p-2.5 transition hover:text-terracotta md:p-2" onClick={() => setOpen(true)} aria-label="Koszyk">
               <BagIcon />
               {hydrated && count > 0 && <Badge n={count} />}
             </button>

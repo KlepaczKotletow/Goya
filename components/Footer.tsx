@@ -76,7 +76,7 @@ export function Footer() {
             <ul className="flex flex-col gap-2.5 text-sm">
               {c.links.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-ink-soft transition hover:text-ink">
+                  <Link href={l.href} className="inline-block py-0.5 text-ink-soft transition hover:text-ink">
                     {l.label}
                   </Link>
                 </li>
@@ -97,7 +97,7 @@ export function Footer() {
                 name="email"
                 autoComplete="email"
                 placeholder="Twój e-mail"
-                className="w-full bg-transparent text-sm outline-none placeholder:text-stone"
+                className="w-full bg-transparent text-base outline-none placeholder:text-stone md:text-sm"
               />
               <button aria-label="Zapisz się" disabled={busy} className="text-ink transition hover:text-terracotta disabled:opacity-50">
                 <ArrowIcon />
