@@ -137,7 +137,8 @@ export function productLd(p: Product) {
     mpn: String(p.id),
     category: CATEGORY_LABELS[p.category],
     description: cleanText(p.description, 500) || productMetaDescription(p),
-    image: p.images.map((i) => i.src),
+    // Images are self-hosted ("/products/…"); schema.org requires absolute URLs.
+    image: p.images.map((i) => (i.src.startsWith("http") ? i.src : absUrl(i.src))),
     ...(p.material ? { material: p.material } : {}),
     ...(p.frameColors.length ? { color: p.frameColors.join(", ") } : {}),
     brand: { "@type": "Brand", name: "Goya" },

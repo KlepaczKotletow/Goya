@@ -89,7 +89,9 @@ export function Header() {
                     aria-current={active ? "page" : undefined}
                     className={cn(
                       "link-underline whitespace-nowrap",
-                      i >= 4 && "hidden lg:inline-block",
+                      // Only the two category links fit beside the centred logo at md;
+                      // any more and "Męskie" collides with it. Full nav from lg.
+                      i >= 2 && "hidden lg:inline-block",
                       active && "text-terracotta [background-size:100%_1px]",
                     )}
                   >

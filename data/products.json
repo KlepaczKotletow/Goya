@@ -30,7 +30,7 @@
     "totalSales": 58,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/194_1.jpg",
+        "src": "/products/194_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 15217"
       }
     ],
@@ -40,7 +40,7 @@
         "id": 253565,
         "sku": "Goya G 15217 CZ",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/194_1.jpg",
+        "image": "/products/194_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -53,7 +53,7 @@
         "id": 253564,
         "sku": "Goya G 15217 ZX",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/193_1.jpg",
+        "image": "/products/193_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -93,11 +93,11 @@
     "totalSales": 57,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3132_1.jpg",
+        "src": "/products/3132_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 189"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3132_6.jpg",
+        "src": "/products/3132_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 189"
       }
     ],
@@ -107,7 +107,7 @@
         "id": 253226,
         "sku": "GOYA G 189 CZM",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3132_1.jpg",
+        "image": "/products/3132_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -120,7 +120,7 @@
         "id": 253225,
         "sku": "GOYA G 189 CZ",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3131_1.jpg",
+        "image": "/products/3131_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -161,11 +161,11 @@
     "totalSales": 47,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-A0736-CZ-A.jpg",
+        "src": "/products/GOYA-A0736-CZ-A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0736"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA_A0736_CZ_mod.jpg",
+        "src": "/products/GOYA_A0736_CZ_mod.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0736"
       }
     ],
@@ -175,7 +175,7 @@
         "id": 256176,
         "sku": "GOYA A 0736 BR",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/3427_1.jpg",
+        "image": "/products/3427_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -188,7 +188,7 @@
         "id": 256175,
         "sku": "GOYA A 0736 CZ",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-A0736-CZ-A.jpg",
+        "image": "/products/GOYA-A0736-CZ-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -230,7 +230,7 @@
     "totalSales": 41,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/1615_2.jpg",
+        "src": "/products/1615_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55T001"
       }
     ],
@@ -240,7 +240,7 @@
         "id": 253711,
         "sku": "G 55T001 CZ",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1614_2.jpg",
+        "image": "/products/1614_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -253,7 +253,7 @@
         "id": 253710,
         "sku": "G 55T001 GR",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1615_2.jpg",
+        "image": "/products/1615_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -266,7 +266,7 @@
         "id": 253709,
         "sku": "G 55T001 BR",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1616_2.jpg",
+        "image": "/products/1616_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -308,7 +308,7 @@
     "totalSales": 38,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3127_1.jpg",
+        "src": "/products/3127_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 195"
       }
     ],
@@ -318,7 +318,7 @@
         "id": 253232,
         "sku": "Goya G 195 ZX",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3126_1.jpg",
+        "image": "/products/3126_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -331,7 +331,7 @@
         "id": 253233,
         "sku": "GOYA G 195 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3127_1.jpg",
+        "image": "/products/3127_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -344,7 +344,7 @@
         "id": 253231,
         "sku": "Goya G 195 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3125_1.jpg",
+        "image": "/products/3125_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -386,11 +386,11 @@
     "totalSales": 37,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3160_6.jpg",
+        "src": "/products/3160_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 172"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3158_1.jpg",
+        "src": "/products/3158_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 172"
       }
     ],
@@ -400,7 +400,7 @@
         "id": 253193,
         "sku": "Goya G 172 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3160_6.jpg",
+        "image": "/products/3160_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -413,7 +413,7 @@
         "id": 253192,
         "sku": "Goya G 172 ZX",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3159_6.jpg",
+        "image": "/products/3159_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -426,7 +426,7 @@
         "id": 253191,
         "sku": "Goya G 172 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3158_5.jpg",
+        "image": "/products/3158_5.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -467,7 +467,7 @@
     "totalSales": 37,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/1867_4.jpg",
+        "src": "/products/1867_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 217"
       }
     ],
@@ -477,7 +477,7 @@
         "id": 253536,
         "sku": "G 217 N",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/1869_1.jpg",
+        "image": "/products/1869_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -490,7 +490,7 @@
         "id": 253533,
         "sku": "G 217 CZ",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/1867_4.jpg",
+        "image": "/products/1867_4.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -532,7 +532,7 @@
     "totalSales": 32,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2467_1.jpg",
+        "src": "/products/2467_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 9496"
       }
     ],
@@ -542,7 +542,7 @@
         "id": 253460,
         "sku": "G 9496 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2468_1.jpg",
+        "image": "/products/2468_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -555,7 +555,7 @@
         "id": 253459,
         "sku": "G 9496 GR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2467_1.jpg",
+        "image": "/products/2467_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -568,7 +568,7 @@
         "id": 253458,
         "sku": "G 9496 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2466_1.jpg",
+        "image": "/products/2466_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -612,11 +612,11 @@
     "totalSales": 28,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-PG3026-P-A.jpg",
+        "src": "/products/GOYA-PG3026-P-A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA PG 3026"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA_PG3026_R_MOD-e1681296586339.jpg",
+        "src": "/products/GOYA_PG3026_R_MOD-e1681296586339.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA PG 3026"
       }
     ],
@@ -626,7 +626,7 @@
         "id": 255985,
         "sku": "GOYA PG 3026 P",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-PG3026-P-A.jpg",
+        "image": "/products/GOYA-PG3026-P-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -639,7 +639,7 @@
         "id": 255984,
         "sku": "GOYA PG 3026 F",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/3419_1.jpg",
+        "image": "/products/3419_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -652,7 +652,7 @@
         "id": 255983,
         "sku": "GOYA PG 3026 Z",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/3418_1.jpg",
+        "image": "/products/3418_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -665,7 +665,7 @@
         "id": 255982,
         "sku": "GOYA PG 3026 R",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-PG3026-R-A.jpg",
+        "image": "/products/GOYA-PG3026-R-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -707,11 +707,11 @@
     "totalSales": 24,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/prof-479.jpeg",
+        "src": "/products/prof-479.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55T002"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/GOYA-55T002-BR-1.jpg",
+        "src": "/products/GOYA-55T002-BR-1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55T002"
       }
     ],
@@ -721,7 +721,7 @@
         "id": 253716,
         "sku": "G 55T002 CZ",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1617_2.jpg",
+        "image": "/products/1617_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -734,7 +734,7 @@
         "id": 253718,
         "sku": "G 55T002 BR",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1619_2.jpg",
+        "image": "/products/1619_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -747,7 +747,7 @@
         "id": 253717,
         "sku": "G 55T002 GR",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1618_2.jpg",
+        "image": "/products/1618_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -789,11 +789,11 @@
     "totalSales": 21,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-21609-BR-A.jpg",
+        "src": "/products/G-21609-BR-A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 21609"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/GOYA_G21609_cz_mod.jpg",
+        "src": "/products/GOYA_G21609_cz_mod.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 21609"
       }
     ],
@@ -803,7 +803,7 @@
         "id": 253969,
         "sku": "GOYA G 21609 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/G-21609-CZ-A.jpg",
+        "image": "/products/G-21609-CZ-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -816,7 +816,7 @@
         "id": 253967,
         "sku": "GOYA G 21609 S",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/G-21609-S-A.jpg",
+        "image": "/products/G-21609-S-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -829,7 +829,7 @@
         "id": 253968,
         "sku": "GOYA G 21609 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/G-21609-BR-A.jpg",
+        "image": "/products/G-21609-BR-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -872,11 +872,11 @@
     "totalSales": 20,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/3518_1.jpg",
+        "src": "/products/3518_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0711"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA_A0711_CZ_MOD.jpg",
+        "src": "/products/GOYA_A0711_CZ_MOD.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0711"
       }
     ],
@@ -886,7 +886,7 @@
         "id": 256195,
         "sku": "GOYA A 0711 BR",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/3518_1.jpg",
+        "image": "/products/3518_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -899,7 +899,7 @@
         "id": 256194,
         "sku": "GOYA A 0711 CZ",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/Goya-A-0711-Cz-A.jpg",
+        "image": "/products/Goya-A-0711-Cz-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -941,11 +941,11 @@
     "totalSales": 19,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3163_1.jpg",
+        "src": "/products/3163_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 171"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3161_6.jpg",
+        "src": "/products/3161_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 171"
       }
     ],
@@ -955,7 +955,7 @@
         "id": 253189,
         "sku": "Goya G 171 ZX",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3163_1.jpg",
+        "image": "/products/3163_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -968,7 +968,7 @@
         "id": 253188,
         "sku": "Goya G 171 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3162_1.jpg",
+        "image": "/products/3162_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -981,7 +981,7 @@
         "id": 253187,
         "sku": "Goya G 171 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3161_1.jpg",
+        "image": "/products/3161_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1024,11 +1024,11 @@
     "totalSales": 18,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-A0710-CZ-A.jpg",
+        "src": "/products/GOYA-A0710-CZ-A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0710"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA_A0710_gr_mod2.jpg",
+        "src": "/products/GOYA_A0710_gr_mod2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0710"
       }
     ],
@@ -1038,7 +1038,7 @@
         "id": 256211,
         "sku": "GOYA A 0710 GR",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-A0710-GR-A.jpg",
+        "image": "/products/GOYA-A0710-GR-A.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1051,7 +1051,7 @@
         "id": 256210,
         "sku": "GOYA A 0710 CZ",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-A0710-CZ-A.jpg",
+        "image": "/products/GOYA-A0710-CZ-A.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1092,11 +1092,11 @@
     "totalSales": 18,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2604_1.jpg",
+        "src": "/products/2604_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G CP3718"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/GOYA-CP3718-CZ.jpg",
+        "src": "/products/GOYA-CP3718-CZ.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G CP3718"
       }
     ],
@@ -1106,7 +1106,7 @@
         "id": 253449,
         "sku": "G CP3718 R",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2604_1.jpg",
+        "image": "/products/2604_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -1119,7 +1119,7 @@
         "id": 253448,
         "sku": "G CP3718 BR",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2603_1.jpg",
+        "image": "/products/2603_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -1132,7 +1132,7 @@
         "id": 253447,
         "sku": "G CP3718 CZ",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2602_1.jpg",
+        "image": "/products/2602_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -1171,47 +1171,47 @@
     "totalSales": 18,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/prof-298.jpeg",
+        "src": "/products/prof-298.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/G_55004_CZ_MOD1pkw.jpg",
+        "src": "/products/G_55004_CZ_MOD1pkw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1808_1.jpeg",
+        "src": "/products/1808_1.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1808_3.jpeg",
+        "src": "/products/1808_3.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1808_4.jpeg",
+        "src": "/products/1808_4.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1808_5.jpeg",
+        "src": "/products/1808_5.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1808_6.jpeg",
+        "src": "/products/1808_6.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1808_7.jpeg",
+        "src": "/products/1808_7.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1808_8.jpeg",
+        "src": "/products/1808_8.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1808_9.jpeg",
+        "src": "/products/1808_9.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1808_11.jpeg",
+        "src": "/products/1808_11.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 CZ"
       }
     ],
@@ -1247,31 +1247,31 @@
     "totalSales": 17,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-A0709-CZ-A.jpg",
+        "src": "/products/GOYA-A0709-CZ-A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0709 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA_A0709_CZ_mod.jpg",
+        "src": "/products/GOYA_A0709_CZ_mod.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0709 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-A0709-CZ-Z.jpg",
+        "src": "/products/GOYA-A0709-CZ-Z.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0709 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-A0709-CZ-b.jpg",
+        "src": "/products/GOYA-A0709-CZ-b.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0709 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-A0709-CZ-f.jpg",
+        "src": "/products/GOYA-A0709-CZ-f.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0709 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-A0709-CZ-s.jpg",
+        "src": "/products/GOYA-A0709-CZ-s.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0709 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-A0709-CZ-t.jpg",
+        "src": "/products/GOYA-A0709-CZ-t.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA A 0709 CZ"
       }
     ],
@@ -1307,11 +1307,11 @@
     "totalSales": 16,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/3414_1.jpg",
+        "src": "/products/3414_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA CP 806632"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/3413_7-e1681286823562.jpg",
+        "src": "/products/3413_7-e1681286823562.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA CP 806632"
       }
     ],
@@ -1321,7 +1321,7 @@
         "id": 256085,
         "sku": "GOYA CP 806632 ZL",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP806632-ZL-A.jpg",
+        "image": "/products/GOYA-CP806632-ZL-A.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1334,7 +1334,7 @@
         "id": 256084,
         "sku": "GOYA CP 806632 CZ",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP806632-CZ-A.jpg",
+        "image": "/products/GOYA-CP806632-CZ-A.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1374,7 +1374,7 @@
     "totalSales": 15,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/181_1.jpg",
+        "src": "/products/181_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 0901S"
       }
     ],
@@ -1384,7 +1384,7 @@
         "id": 253559,
         "sku": "Goya G 0901S P",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/181_1.jpg",
+        "image": "/products/181_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -1397,7 +1397,7 @@
         "id": 253558,
         "sku": "Goya G 0901S N",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/180_1.jpg",
+        "image": "/products/180_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -1436,27 +1436,27 @@
     "totalSales": 14,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3154_6.jpg",
+        "src": "/products/3154_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 177 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3154_1.jpg",
+        "src": "/products/3154_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 177 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3154_5.jpg",
+        "src": "/products/3154_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 177 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3154_4.jpg",
+        "src": "/products/3154_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 177 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3154_3.jpg",
+        "src": "/products/3154_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 177 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3154_2.jpg",
+        "src": "/products/3154_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 177 CZ"
       }
     ],
@@ -1494,11 +1494,11 @@
     "totalSales": 14,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2642_1.jpg",
+        "src": "/products/2642_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 6232"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/GOYA-6232-N-1.jpg",
+        "src": "/products/GOYA-6232-N-1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 6232"
       }
     ],
@@ -1508,7 +1508,7 @@
         "id": 253252,
         "sku": "G 6232 CZ",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2642_1.jpg",
+        "image": "/products/2642_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1521,7 +1521,7 @@
         "id": 253251,
         "sku": "G 6232 N",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2641_1.jpg",
+        "image": "/products/2641_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1534,7 +1534,7 @@
         "id": 253250,
         "sku": "G 6232 GR",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2639_1.jpg",
+        "image": "/products/2639_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1574,7 +1574,7 @@
     "totalSales": 14,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/prof-235.jpeg",
+        "src": "/products/prof-235.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 214"
       }
     ],
@@ -1584,7 +1584,7 @@
         "id": 253513,
         "sku": "GOYA G 214 N",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/03/1875_1.jpeg",
+        "image": "/products/1875_1.jpeg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1597,7 +1597,7 @@
         "id": 253512,
         "sku": "GOYA G 214 CZ",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/03/1874_1.jpeg",
+        "image": "/products/1874_1.jpeg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1636,31 +1636,31 @@
     "totalSales": 14,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/prof-233.jpeg",
+        "src": "/products/prof-233.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 221"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1865_2.jpeg",
+        "src": "/products/1865_2.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 221"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1865_3.jpeg",
+        "src": "/products/1865_3.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 221"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1865_4.jpeg",
+        "src": "/products/1865_4.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 221"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1865_5.jpeg",
+        "src": "/products/1865_5.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 221"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1865_6.jpeg",
+        "src": "/products/1865_6.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 221"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1865_7.jpeg",
+        "src": "/products/1865_7.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 221"
       }
     ],
@@ -1696,11 +1696,11 @@
     "totalSales": 13,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3156_6.jpg",
+        "src": "/products/3156_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 176"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3156_1.jpg",
+        "src": "/products/3156_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 176"
       }
     ],
@@ -1710,7 +1710,7 @@
         "id": 253197,
         "sku": "GOYA G 176 S",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3156_6.jpg",
+        "image": "/products/3156_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1723,7 +1723,7 @@
         "id": 253196,
         "sku": "GOYA G 176 GR",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3155_6.jpg",
+        "image": "/products/3155_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1765,11 +1765,11 @@
     "totalSales": 13,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3147_6.jpg",
+        "src": "/products/3147_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 183"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3144_1.jpg",
+        "src": "/products/3144_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 183"
       }
     ],
@@ -1779,7 +1779,7 @@
         "id": 253210,
         "sku": "GOYA G 183 ZX",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3147_6.jpg",
+        "image": "/products/3147_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1792,7 +1792,7 @@
         "id": 253209,
         "sku": "Goya G 183 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3146_6.jpg",
+        "image": "/products/3146_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1805,7 +1805,7 @@
         "id": 253208,
         "sku": "Goya G 183 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3144_6.jpg",
+        "image": "/products/3144_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1847,7 +1847,7 @@
     "totalSales": 13,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3119_1.jpg",
+        "src": "/products/3119_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 205"
       }
     ],
@@ -1857,7 +1857,7 @@
         "id": 253242,
         "sku": "Goya G 205 Z",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3119_1.jpg",
+        "image": "/products/3119_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -1870,7 +1870,7 @@
         "id": 253241,
         "sku": "Goya G 205 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3118_1.jpg",
+        "image": "/products/3118_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -1912,7 +1912,7 @@
     "totalSales": 13,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/prof-380.jpeg",
+        "src": "/products/prof-380.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55007"
       }
     ],
@@ -1922,7 +1922,7 @@
         "id": 253730,
         "sku": "G 55007 CZ",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1636_2.jpg",
+        "image": "/products/1636_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1935,7 +1935,7 @@
         "id": 253732,
         "sku": "G 55007 BR",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1638_2.jpg",
+        "image": "/products/1638_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1948,7 +1948,7 @@
         "id": 253731,
         "sku": "G 55007 GR",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1637_2.jpg",
+        "image": "/products/1637_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -1987,43 +1987,43 @@
     "totalSales": 11,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_CZ_A.jpg",
+        "src": "/products/G_55012_CZ_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_CZ_MODkw-1.jpg",
+        "src": "/products/G_55012_CZ_MODkw-1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_CZ_G.jpg",
+        "src": "/products/G_55012_CZ_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_CZ_MOD1-1.jpg",
+        "src": "/products/G_55012_CZ_MOD1-1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_CZ_B.jpg",
+        "src": "/products/G_55012_CZ_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_CZ_MOD-1.jpg",
+        "src": "/products/G_55012_CZ_MOD-1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_CZ_F.jpg",
+        "src": "/products/G_55012_CZ_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_CZ_S.jpg",
+        "src": "/products/G_55012_CZ_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_CZ_F1.jpg",
+        "src": "/products/G_55012_CZ_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_CZ_T.jpg",
+        "src": "/products/G_55012_CZ_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 CZ"
       }
     ],
@@ -2058,47 +2058,47 @@
     "totalSales": 10,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_CZ_A.jpg",
+        "src": "/products/G_55054_CZ_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_CZ_MOD2kw.jpg",
+        "src": "/products/G_55054_CZ_MOD2kw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_CZ_G.jpg",
+        "src": "/products/G_55054_CZ_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_CZ_MOD1.jpg",
+        "src": "/products/G_55054_CZ_MOD1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_CZ_F.jpg",
+        "src": "/products/G_55054_CZ_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_CZ_MOD.jpg",
+        "src": "/products/G_55054_CZ_MOD.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_CZ_B.jpg",
+        "src": "/products/G_55054_CZ_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_CZ_MOD2.jpg",
+        "src": "/products/G_55054_CZ_MOD2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_CZ_S.jpg",
+        "src": "/products/G_55054_CZ_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_CZ_F1.jpg",
+        "src": "/products/G_55054_CZ_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_CZ_T.jpg",
+        "src": "/products/G_55054_CZ_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 CZ"
       }
     ],
@@ -2134,11 +2134,11 @@
     "totalSales": 10,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CJ1943-P-A.jpg",
+        "src": "/products/GOYA-CJ1943-P-A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA CJ 1943"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/3431_7-e1681285160954.jpg",
+        "src": "/products/3431_7-e1681285160954.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA CJ 1943"
       }
     ],
@@ -2148,7 +2148,7 @@
         "id": 256123,
         "sku": "GOYA CJ 1943 CZ",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/3430_1.jpg",
+        "image": "/products/3430_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -2161,7 +2161,7 @@
         "id": 256122,
         "sku": "GOYA CJ 1943 P",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CJ1943-P-A.jpg",
+        "image": "/products/GOYA-CJ1943-P-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -2202,11 +2202,11 @@
     "totalSales": 10,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3171_1.jpg",
+        "src": "/products/3171_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 162"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3172_5-1.jpg",
+        "src": "/products/3172_5-1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 162"
       }
     ],
@@ -2244,11 +2244,11 @@
     "totalSales": 10,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3150_6.jpg",
+        "src": "/products/3150_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 182"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3148_1.jpg",
+        "src": "/products/3148_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 182"
       }
     ],
@@ -2258,7 +2258,7 @@
         "id": 253206,
         "sku": "GOYA G 182 ZX",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3150_6.jpg",
+        "image": "/products/3150_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2271,7 +2271,7 @@
         "id": 253205,
         "sku": "Goya G 182 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3149_6.jpg",
+        "image": "/products/3149_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2284,7 +2284,7 @@
         "id": 253204,
         "sku": "Goya G 182 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3148_6.jpg",
+        "image": "/products/3148_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2326,7 +2326,7 @@
     "totalSales": 10,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2465_1.jpg",
+        "src": "/products/2465_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55042"
       }
     ],
@@ -2336,7 +2336,7 @@
         "id": 253463,
         "sku": "G 55042 GR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2464_1.jpg",
+        "image": "/products/2464_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2349,7 +2349,7 @@
         "id": 253462,
         "sku": "G 55042 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2463_1.jpg",
+        "image": "/products/2463_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2362,7 +2362,7 @@
         "id": 253464,
         "sku": "G 55042 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2465_1.jpg",
+        "image": "/products/2465_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2401,35 +2401,35 @@
     "totalSales": 9,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_CZ_A.jpg",
+        "src": "/products/G_55029_CZ_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_CZ_MOD1kw.jpg",
+        "src": "/products/G_55029_CZ_MOD1kw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_CZ_G.jpg",
+        "src": "/products/G_55029_CZ_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_CZ_B.jpg",
+        "src": "/products/G_55029_CZ_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_CZ_F.jpg",
+        "src": "/products/G_55029_CZ_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_CZ_S.jpg",
+        "src": "/products/G_55029_CZ_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_CZ_F1.jpg",
+        "src": "/products/G_55029_CZ_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_CZ_T.jpg",
+        "src": "/products/G_55029_CZ_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 CZ"
       }
     ],
@@ -2465,27 +2465,27 @@
     "totalSales": 9,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3124_1.jpg",
+        "src": "/products/3124_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczn z filtrem polaryzacyjnym - G 196 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3124_6.jpg",
+        "src": "/products/3124_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczn z filtrem polaryzacyjnym - G 196 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3124_2.jpg",
+        "src": "/products/3124_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczn z filtrem polaryzacyjnym - G 196 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3124_3.jpg",
+        "src": "/products/3124_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczn z filtrem polaryzacyjnym - G 196 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3124_4.jpg",
+        "src": "/products/3124_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczn z filtrem polaryzacyjnym - G 196 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3124_5.jpg",
+        "src": "/products/3124_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczn z filtrem polaryzacyjnym - G 196 BR"
       }
     ],
@@ -2522,7 +2522,7 @@
     "totalSales": 9,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2649_1.jpg",
+        "src": "/products/2649_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 7107"
       }
     ],
@@ -2532,7 +2532,7 @@
         "id": 253244,
         "sku": "G 7107 CZ",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2647_1.jpg",
+        "image": "/products/2647_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -2545,7 +2545,7 @@
         "id": 253245,
         "sku": "G 7107 Z",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2649_1.jpg",
+        "image": "/products/2649_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -2587,11 +2587,11 @@
     "totalSales": 9,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2607_1.jpg",
+        "src": "/products/2607_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G CP3717"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/GOYA-CP-3717-BR.jpg",
+        "src": "/products/GOYA-CP-3717-BR.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G CP3717"
       }
     ],
@@ -2601,7 +2601,7 @@
         "id": 253445,
         "sku": "G CP3717 R",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2607_1.jpg",
+        "image": "/products/2607_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -2614,7 +2614,7 @@
         "id": 253444,
         "sku": "G CP3717 BR",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2606_1.jpg",
+        "image": "/products/2606_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -2627,7 +2627,7 @@
         "id": 253443,
         "sku": "G CP3717 CZ",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2605_1.jpg",
+        "image": "/products/2605_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -2669,7 +2669,7 @@
     "totalSales": 9,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2445_1.jpg",
+        "src": "/products/2445_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55006"
       }
     ],
@@ -2679,7 +2679,7 @@
         "id": 253497,
         "sku": "G 55006 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2447_1.jpg",
+        "image": "/products/2447_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2692,7 +2692,7 @@
         "id": 253496,
         "sku": "G 55006 GR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2446_1.jpg",
+        "image": "/products/2446_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2705,7 +2705,7 @@
         "id": 253495,
         "sku": "G 55006 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2445_1.jpg",
+        "image": "/products/2445_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2746,7 +2746,7 @@
     "totalSales": 9,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/971_3.jpg",
+        "src": "/products/971_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G100"
       }
     ],
@@ -2756,7 +2756,7 @@
         "id": 253699,
         "sku": "Goya G100 C2",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/970_3.jpg",
+        "image": "/products/970_3.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -2769,7 +2769,7 @@
         "id": 253700,
         "sku": "GOYA G100 C1",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/971_3.jpg",
+        "image": "/products/2023-02-971_3.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -2809,7 +2809,7 @@
     "totalSales": 9,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/683_4.jpg",
+        "src": "/products/683_4.jpg",
         "alt": "GGOYA okulary korekcyjne - G 96303"
       }
     ],
@@ -2819,7 +2819,7 @@
         "id": 253688,
         "sku": "Goya G 96303 C3",
         "price": 189,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/693_4.jpg",
+        "image": "/products/693_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2832,7 +2832,7 @@
         "id": 253687,
         "sku": "Goya G 96303 C1",
         "price": 189,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/683_4.jpg",
+        "image": "/products/683_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2872,7 +2872,7 @@
     "totalSales": 9,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/prof-230.jpeg",
+        "src": "/products/prof-230.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym  - G 218"
       }
     ],
@@ -2882,7 +2882,7 @@
         "id": 253760,
         "sku": "GOYA G 218 C",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1857_2.jpg",
+        "image": "/products/1857_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2895,7 +2895,7 @@
         "id": 253759,
         "sku": "GOYA G 218 A",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1855_2.jpg",
+        "image": "/products/1855_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -2934,43 +2934,43 @@
     "totalSales": 8,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_CZ_A.jpg",
+        "src": "/products/G_55001_CZ_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_CZ_MODkw.jpg",
+        "src": "/products/G_55001_CZ_MODkw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_CZ_G.jpg",
+        "src": "/products/G_55001_CZ_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_CZ_MOD1.jpg",
+        "src": "/products/G_55001_CZ_MOD1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_CZ_F.jpg",
+        "src": "/products/G_55001_CZ_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_CZ_MOD.jpg",
+        "src": "/products/G_55001_CZ_MOD.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_CZ_B.jpg",
+        "src": "/products/G_55001_CZ_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_CZ_S.jpg",
+        "src": "/products/G_55001_CZ_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_CZ_T.jpg",
+        "src": "/products/G_55001_CZ_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_CZ_F1.jpg",
+        "src": "/products/G_55001_CZ_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 CZ"
       }
     ],
@@ -3007,11 +3007,11 @@
     "totalSales": 8,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3191_1.jpg",
+        "src": "/products/3191_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 148"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3190_6.jpg",
+        "src": "/products/3190_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 148"
       }
     ],
@@ -3021,7 +3021,7 @@
         "id": 253073,
         "sku": "Goya G 148 ZX B",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/3191_1.jpg",
+        "image": "/products/3191_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -3034,7 +3034,7 @@
         "id": 253072,
         "sku": "Goya G 148 CZ C",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/3190_1.jpg",
+        "image": "/products/3190_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -3076,11 +3076,11 @@
     "totalSales": 8,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3142_6.jpg",
+        "src": "/products/3142_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 185"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3140_1.jpg",
+        "src": "/products/3140_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 185"
       }
     ],
@@ -3090,7 +3090,7 @@
         "id": 253215,
         "sku": "GOYA G 185 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3142_6.jpg",
+        "image": "/products/3142_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3103,7 +3103,7 @@
         "id": 253214,
         "sku": "Goya G 185 ZX",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3140_6.jpg",
+        "image": "/products/3140_6.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3116,7 +3116,7 @@
         "id": 253213,
         "sku": "Goya G 185 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3139_1.jpg",
+        "image": "/products/3139_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3156,7 +3156,7 @@
     "totalSales": 8,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/967_1.jpg",
+        "src": "/products/967_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1904"
       }
     ],
@@ -3166,7 +3166,7 @@
         "id": 254474,
         "sku": "GOYA G1904 C2",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/967_1.jpg",
+        "image": "/products/967_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -3179,7 +3179,7 @@
         "id": 254473,
         "sku": "Goya G1904 C5",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/978_6.jpg",
+        "image": "/products/978_6.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -3218,23 +3218,23 @@
     "totalSales": 7,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-201-CZ-A.jpg",
+        "src": "/products/G-201-CZ-A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 201 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-201-CZ-f.jpg",
+        "src": "/products/G-201-CZ-f.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 201 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-201-CZ-s.jpg",
+        "src": "/products/G-201-CZ-s.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 201 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-201-CZ-t.jpg",
+        "src": "/products/G-201-CZ-t.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 201 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-201-CZ-b.jpg",
+        "src": "/products/G-201-CZ-b.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 201 CZ"
       }
     ],
@@ -3269,27 +3269,27 @@
     "totalSales": 7,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3168_1.jpg",
+        "src": "/products/3168_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 166 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3168_6.jpg",
+        "src": "/products/3168_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 166 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3168_2.jpg",
+        "src": "/products/3168_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 166 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3168_3.jpg",
+        "src": "/products/3168_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 166 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3168_4.jpg",
+        "src": "/products/3168_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 166 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3168_5.jpg",
+        "src": "/products/3168_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 166 GR"
       }
     ],
@@ -3326,7 +3326,7 @@
     "totalSales": 7,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3123_1.jpg",
+        "src": "/products/3123_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 199"
       }
     ],
@@ -3336,7 +3336,7 @@
         "id": 253237,
         "sku": "GOYA G 199 GR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3122_1.jpg",
+        "image": "/products/3122_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -3349,7 +3349,7 @@
         "id": 253236,
         "sku": "GOYA G 199 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3123_1.jpg",
+        "image": "/products/3123_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -3388,7 +3388,7 @@
     "totalSales": 7,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/635_4.jpg",
+        "src": "/products/635_4.jpg",
         "alt": "GOYA okulary korekcyjne - GK 7107"
       }
     ],
@@ -3398,7 +3398,7 @@
         "id": 253645,
         "sku": "Goya GK 7107 C1",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/635_4.jpg",
+        "image": "/products/635_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3411,7 +3411,7 @@
         "id": 253644,
         "sku": "Goya GK 7107 C5",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/634_4.jpg",
+        "image": "/products/634_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3453,11 +3453,11 @@
     "totalSales": 6,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP806639-BR-A.jpg",
+        "src": "/products/GOYA-CP806639-BR-A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA CP 806639"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/CP_806639_ZL_mod.jpg",
+        "src": "/products/CP_806639_ZL_mod.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA CP 806639"
       }
     ],
@@ -3467,7 +3467,7 @@
         "id": 256058,
         "sku": "GOYA CP 806639 BR",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP806639-BR-A.jpg",
+        "image": "/products/GOYA-CP806639-BR-A.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3480,7 +3480,7 @@
         "id": 256057,
         "sku": "GOYA CP 806639 ZL",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP806639-ZL-A.jpg",
+        "image": "/products/GOYA-CP806639-ZL-A.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3493,7 +3493,7 @@
         "id": 256056,
         "sku": "GOYA CP 806639 CZ",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP806639-CZ-A.jpg",
+        "image": "/products/GOYA-CP806639-CZ-A.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3535,11 +3535,11 @@
     "totalSales": 6,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3167_1.jpg",
+        "src": "/products/3167_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 170"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3165_6.jpg",
+        "src": "/products/3165_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 170"
       }
     ],
@@ -3549,7 +3549,7 @@
         "id": 253185,
         "sku": "Goya G 170 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3167_1.jpg",
+        "image": "/products/3167_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3562,7 +3562,7 @@
         "id": 253180,
         "sku": "Goya G 170 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3165_1.jpg",
+        "image": "/products/3165_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3575,7 +3575,7 @@
         "id": 253179,
         "sku": "Goya G 170 CZ/ZX",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3166_1.jpg",
+        "image": "/products/3166_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3617,11 +3617,11 @@
     "totalSales": 6,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3136_1.jpg",
+        "src": "/products/3136_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 187"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3135_6.jpg",
+        "src": "/products/3135_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 187"
       }
     ],
@@ -3631,7 +3631,7 @@
         "id": 253222,
         "sku": "GOYA G 187 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3136_1.jpg",
+        "image": "/products/3136_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3644,7 +3644,7 @@
         "id": 253221,
         "sku": "Goya G 187 ZX",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3135_1.jpg",
+        "image": "/products/3135_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3657,7 +3657,7 @@
         "id": 253220,
         "sku": "Goya G 187 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3134_1.jpg",
+        "image": "/products/3134_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3696,27 +3696,27 @@
     "totalSales": 6,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3133_1.jpg",
+        "src": "/products/3133_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 188 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3133_6.jpg",
+        "src": "/products/3133_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 188 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3133_2.jpg",
+        "src": "/products/3133_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 188 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3133_3.jpg",
+        "src": "/products/3133_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 188 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3133_4.jpg",
+        "src": "/products/3133_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 188 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3133_5.jpg",
+        "src": "/products/3133_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 188 GR"
       }
     ],
@@ -3751,27 +3751,27 @@
     "totalSales": 6,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3128_1.jpg",
+        "src": "/products/3128_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 190 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3128_6.jpg",
+        "src": "/products/3128_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 190 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3128_3.jpg",
+        "src": "/products/3128_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 190 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3128_2.jpg",
+        "src": "/products/3128_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 190 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3128_5.jpg",
+        "src": "/products/3128_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 190 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3128_4.jpg",
+        "src": "/products/3128_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 190 CZ"
       }
     ],
@@ -3806,27 +3806,27 @@
     "totalSales": 5,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3180_1.jpg",
+        "src": "/products/3180_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 157 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3180_6.jpg",
+        "src": "/products/3180_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 157 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3180_5.jpg",
+        "src": "/products/3180_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 157 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3180_4.jpg",
+        "src": "/products/3180_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 157 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3180_3.jpg",
+        "src": "/products/3180_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 157 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3180_2.jpg",
+        "src": "/products/3180_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 157 BR"
       }
     ],
@@ -3861,27 +3861,27 @@
     "totalSales": 5,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3129_1.jpg",
+        "src": "/products/3129_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 191 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3129_6.jpg",
+        "src": "/products/3129_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 191 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3129_2.jpg",
+        "src": "/products/3129_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 191 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3129_3.jpg",
+        "src": "/products/3129_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 191 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3129_4.jpg",
+        "src": "/products/3129_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 191 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3129_5.jpg",
+        "src": "/products/3129_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 191 BR"
       }
     ],
@@ -3919,7 +3919,7 @@
     "totalSales": 5,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2460_1.jpg",
+        "src": "/products/2460_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55032"
       }
     ],
@@ -3929,7 +3929,7 @@
         "id": 253468,
         "sku": "G 55032 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2462_1.jpg",
+        "image": "/products/2462_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3942,7 +3942,7 @@
         "id": 253467,
         "sku": "G 55032 GR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2461_1.jpg",
+        "image": "/products/2461_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3955,7 +3955,7 @@
         "id": 253466,
         "sku": "G 55032 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2460_1.jpg",
+        "image": "/products/2460_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -3997,7 +3997,7 @@
     "totalSales": 5,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2449_1.jpg",
+        "src": "/products/2449_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55010"
       }
     ],
@@ -4007,7 +4007,7 @@
         "id": 253489,
         "sku": "G 55010 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2449_1.jpg",
+        "image": "/products/2449_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4020,7 +4020,7 @@
         "id": 253488,
         "sku": "G 55010 GR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2448_1.jpg",
+        "image": "/products/2448_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4033,7 +4033,7 @@
         "id": 253487,
         "sku": "G 55010 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/1809_2.jpg",
+        "image": "/products/1809_2.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4072,23 +4072,23 @@
     "totalSales": 5,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/977_6.jpg",
+        "src": "/products/977_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1905 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/977_3.jpg",
+        "src": "/products/977_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1905 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/977_7.jpg",
+        "src": "/products/977_7.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1905 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/977_2.jpg",
+        "src": "/products/977_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1905 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/977_1.jpg",
+        "src": "/products/977_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1905 C1"
       }
     ],
@@ -4122,19 +4122,19 @@
     "totalSales": 5,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_4.jpg",
+        "src": "/products/575_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 1014 C8"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_1.jpg",
+        "src": "/products/575_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 1014 C8"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_3.jpg",
+        "src": "/products/575_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 1014 C8"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_2.jpg",
+        "src": "/products/575_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 1014 C8"
       }
     ],
@@ -4169,35 +4169,35 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_CZ_A.jpg",
+        "src": "/products/G_55051_CZ_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_CZ_MODkw.jpg",
+        "src": "/products/G_55051_CZ_MODkw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_CZ_G.jpg",
+        "src": "/products/G_55051_CZ_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_CZ_B.jpg",
+        "src": "/products/G_55051_CZ_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_CZ_F.jpg",
+        "src": "/products/G_55051_CZ_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_CZ_S.jpg",
+        "src": "/products/G_55051_CZ_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_CZ_F1.jpg",
+        "src": "/products/G_55051_CZ_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_CZ_T.jpg",
+        "src": "/products/G_55051_CZ_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 CZ"
       }
     ],
@@ -4232,47 +4232,47 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_BR_A.jpg",
+        "src": "/products/G_55015_BR_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_BR_MODkw.jpg",
+        "src": "/products/G_55015_BR_MODkw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_BR_G.jpg",
+        "src": "/products/G_55015_BR_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_BR_MOD2.jpg",
+        "src": "/products/G_55015_BR_MOD2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_BR_B.jpg",
+        "src": "/products/G_55015_BR_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_BR_MOD3.jpg",
+        "src": "/products/G_55015_BR_MOD3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_BR_F.jpg",
+        "src": "/products/G_55015_BR_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_BR_MOD1.jpg",
+        "src": "/products/G_55015_BR_MOD1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_BR_S.jpg",
+        "src": "/products/G_55015_BR_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_BR_F1.jpg",
+        "src": "/products/G_55015_BR_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_BR_T.jpg",
+        "src": "/products/G_55015_BR_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 BR"
       }
     ],
@@ -4309,11 +4309,11 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP8802-S-A.jpg",
+        "src": "/products/GOYA-CP8802-S-A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA CP 8802"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/3425_7-e1681287007440.jpg",
+        "src": "/products/3425_7-e1681287007440.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA CP 8802"
       }
     ],
@@ -4323,7 +4323,7 @@
         "id": 256039,
         "sku": "GOYA CP 8802 S",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP8802-S-A.jpg",
+        "image": "/products/GOYA-CP8802-S-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -4336,7 +4336,7 @@
         "id": 256038,
         "sku": "GOYA CP 8802 ZL",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP8802-ZL-A.jpg",
+        "image": "/products/GOYA-CP8802-ZL-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -4376,11 +4376,11 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3185_1.jpg",
+        "src": "/products/3185_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 151"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3186_6.jpg",
+        "src": "/products/3186_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 151"
       }
     ],
@@ -4390,7 +4390,7 @@
         "id": 253110,
         "sku": "Goya G 151 ZX C",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/3186_1.jpg",
+        "image": "/products/3186_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4403,7 +4403,7 @@
         "id": 253111,
         "sku": "Goya G 151 S B",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/3185_1.jpg",
+        "image": "/products/3185_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4442,27 +4442,27 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3157_6.jpg",
+        "src": "/products/3157_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 175 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3157_1.jpg",
+        "src": "/products/3157_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 175 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3157_5.jpg",
+        "src": "/products/3157_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 175 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3157_4.jpg",
+        "src": "/products/3157_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 175 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3157_3.jpg",
+        "src": "/products/3157_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 175 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3157_2.jpg",
+        "src": "/products/3157_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 175 CZ"
       }
     ],
@@ -4500,7 +4500,7 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2454_1.jpg",
+        "src": "/products/2454_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55016"
       }
     ],
@@ -4510,7 +4510,7 @@
         "id": 253476,
         "sku": "G 55016 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2456_1.jpg",
+        "image": "/products/2456_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4523,7 +4523,7 @@
         "id": 253475,
         "sku": "G 55016 GR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2455_1.jpg",
+        "image": "/products/2455_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4536,7 +4536,7 @@
         "id": 253474,
         "sku": "G 55016 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2454_1.jpg",
+        "image": "/products/2454_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4575,19 +4575,19 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/974_3.jpg",
+        "src": "/products/974_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1923 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/974_2.jpg",
+        "src": "/products/974_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1923 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/974_6.jpg",
+        "src": "/products/974_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1923 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/974_1.jpg",
+        "src": "/products/974_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1923 C1"
       }
     ],
@@ -4623,19 +4623,19 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/652_4.jpg",
+        "src": "/products/652_4.jpg",
         "alt": "GOYA okulary korekcyjne - MA 3021 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/652_1.jpg",
+        "src": "/products/652_1.jpg",
         "alt": "GOYA okulary korekcyjne - MA 3021 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/652_3.jpg",
+        "src": "/products/652_3.jpg",
         "alt": "GOYA okulary korekcyjne - MA 3021 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/652_2.jpg",
+        "src": "/products/652_2.jpg",
         "alt": "GOYA okulary korekcyjne - MA 3021 C3"
       }
     ],
@@ -4672,7 +4672,7 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/649_4.jpg",
+        "src": "/products/649_4.jpg",
         "alt": "GOYA okulary korekcyjne - M 9004"
       }
     ],
@@ -4682,7 +4682,7 @@
         "id": 253655,
         "sku": "Goya M 9004 C1",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/649_4.jpg",
+        "image": "/products/649_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4695,7 +4695,7 @@
         "id": 253654,
         "sku": "Goya M 9004 C3",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/648_3.jpg",
+        "image": "/products/648_3.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4708,7 +4708,7 @@
         "id": 253653,
         "sku": "Goya M 9004 C4",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/647_4.jpg",
+        "image": "/products/647_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4749,7 +4749,7 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/628_4.jpg",
+        "src": "/products/628_4.jpg",
         "alt": "GOYA okulary korekcyjne - GH 5001"
       }
     ],
@@ -4759,7 +4759,7 @@
         "id": 253636,
         "sku": "Goya GH 5001 C4",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/627_3.jpg",
+        "image": "/products/627_3.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4772,7 +4772,7 @@
         "id": 253637,
         "sku": "Goya GH 5001 C1",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/628_4.jpg",
+        "image": "/products/628_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4785,7 +4785,7 @@
         "id": 253635,
         "sku": "Goya GH 5001 C5",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/626_4.jpg",
+        "image": "/products/626_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -4823,11 +4823,11 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/587_2.jpg",
+        "src": "/products/587_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/587_1.jpg",
+        "src": "/products/587_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C4"
       }
     ],
@@ -4864,11 +4864,11 @@
     "totalSales": 4,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/prof-368.jpeg",
+        "src": "/products/prof-368.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 8004"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1650_6.jpeg",
+        "src": "/products/1650_6.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 8004"
       }
     ],
@@ -4878,7 +4878,7 @@
         "id": 253738,
         "sku": "G 8004 BR",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1649_2.jpg",
+        "image": "/products/1649_2.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -4891,7 +4891,7 @@
         "id": 253737,
         "sku": "G 8004 CZ",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/1650_2.jpg",
+        "image": "/products/1650_2.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -4930,43 +4930,43 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55021_CZ_A.jpg",
+        "src": "/products/G_55021_CZ_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55021 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55021_CZ_MOD1kw.jpg",
+        "src": "/products/G_55021_CZ_MOD1kw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55021 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55021_CZ_G.jpg",
+        "src": "/products/G_55021_CZ_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55021 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55021_CZ_MOD.jpg",
+        "src": "/products/G_55021_CZ_MOD.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55021 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55021_CZ_B.jpg",
+        "src": "/products/G_55021_CZ_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55021 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55021_CZ_MOD1.jpg",
+        "src": "/products/G_55021_CZ_MOD1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55021 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55021_CZ_F.jpg",
+        "src": "/products/G_55021_CZ_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55021 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55021_CZ_S.jpg",
+        "src": "/products/G_55021_CZ_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55021 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55021_CZ_F1.jpg",
+        "src": "/products/G_55021_CZ_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55021 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55021_CZ_T.jpg",
+        "src": "/products/G_55021_CZ_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55021 CZ"
       }
     ],
@@ -5001,35 +5001,35 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_CZ_A.jpg",
+        "src": "/products/G_55015_CZ_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_CZ_MOD2kw.jpg",
+        "src": "/products/G_55015_CZ_MOD2kw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_CZ_G.jpg",
+        "src": "/products/G_55015_CZ_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_CZ_B.jpg",
+        "src": "/products/G_55015_CZ_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_CZ_F.jpg",
+        "src": "/products/G_55015_CZ_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_CZ_S.jpg",
+        "src": "/products/G_55015_CZ_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_CZ_F1.jpg",
+        "src": "/products/G_55015_CZ_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_CZ_T.jpg",
+        "src": "/products/G_55015_CZ_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 CZ"
       }
     ],
@@ -5064,31 +5064,31 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_BR_A.jpg",
+        "src": "/products/G_55001_BR_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_BR_G.jpg",
+        "src": "/products/G_55001_BR_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_BR_F1.jpg",
+        "src": "/products/G_55001_BR_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_BR_B.jpg",
+        "src": "/products/G_55001_BR_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_BR_S.jpg",
+        "src": "/products/G_55001_BR_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_BR_T.jpg",
+        "src": "/products/G_55001_BR_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_BR_F.jpg",
+        "src": "/products/G_55001_BR_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 BR"
       }
     ],
@@ -5125,11 +5125,11 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP8803-CZ-A.jpg",
+        "src": "/products/GOYA-CP8803-CZ-A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA CP 8803"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/04/3422_7-e1681287259505.jpg",
+        "src": "/products/3422_7-e1681287259505.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - GOYA CP 8803"
       }
     ],
@@ -5139,7 +5139,7 @@
         "id": 256022,
         "sku": "GOYA CP 8803 CZ",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP8803-CZ-A.jpg",
+        "image": "/products/GOYA-CP8803-CZ-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -5152,7 +5152,7 @@
         "id": 256021,
         "sku": "GOYA CP 8803 N",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2023/04/GOYA-CP8803-N-A.jpg",
+        "image": "/products/GOYA-CP8803-N-A.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -5195,11 +5195,11 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/1877_2.jpg",
+        "src": "/products/1877_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 210"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/03/1876_7.jpeg",
+        "src": "/products/1876_7.jpeg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 210"
       }
     ],
@@ -5209,7 +5209,7 @@
         "id": 253508,
         "sku": "Goya G 210 CZ",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/1876_2.jpg",
+        "image": "/products/1876_2.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -5222,7 +5222,7 @@
         "id": 253507,
         "sku": "Goya G 210 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/1877_2.jpg",
+        "image": "/products/1877_2.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -5264,11 +5264,11 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3177_1.jpg",
+        "src": "/products/3177_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 160"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3178_6.jpg",
+        "src": "/products/3178_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 160"
       }
     ],
@@ -5278,7 +5278,7 @@
         "id": 253169,
         "sku": "Goya G 160 CZ A",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3177_1.jpg",
+        "image": "/products/3177_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -5291,7 +5291,7 @@
         "id": 253168,
         "sku": "Goya G 160 BR B",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3178_1.jpg",
+        "image": "/products/3178_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -5304,7 +5304,7 @@
         "id": 253167,
         "sku": "Goya G 160 ZX C",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3179_1.jpg",
+        "image": "/products/3179_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -5346,11 +5346,11 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3189_1.jpg",
+        "src": "/products/3189_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 149"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3188_5.jpg",
+        "src": "/products/3188_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 149"
       }
     ],
@@ -5360,7 +5360,7 @@
         "id": 253088,
         "sku": "Goya G 149 BR A",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/3188_1.jpg",
+        "image": "/products/3188_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -5373,7 +5373,7 @@
         "id": 253087,
         "sku": "Goya G 149 ZOL B",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/3189_1.jpg",
+        "image": "/products/3189_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -5414,11 +5414,11 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3138_6.jpg",
+        "src": "/products/3138_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 186"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3137_1.jpg",
+        "src": "/products/3137_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 186"
       }
     ],
@@ -5428,7 +5428,7 @@
         "id": 253218,
         "sku": "GOYA G 186 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3138_6.jpg",
+        "image": "/products/3138_6.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -5441,7 +5441,7 @@
         "id": 253217,
         "sku": "Goya G 186 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3137_6.jpg",
+        "image": "/products/3137_6.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -5483,7 +5483,7 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2457_1.jpg",
+        "src": "/products/2457_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55017"
       }
     ],
@@ -5493,7 +5493,7 @@
         "id": 253472,
         "sku": "G 55017 BR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2459_1.jpg",
+        "image": "/products/2459_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -5506,7 +5506,7 @@
         "id": 253471,
         "sku": "G 55017 GR",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2458_1.jpg",
+        "image": "/products/2458_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -5519,7 +5519,7 @@
         "id": 253470,
         "sku": "G 55017 CZ",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/2457_1.jpg",
+        "image": "/products/2457_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -5559,7 +5559,7 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/975_6.jpg",
+        "src": "/products/975_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1921"
       }
     ],
@@ -5569,7 +5569,7 @@
         "id": 254468,
         "sku": "GOYA G1921 C2",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/975_6.jpg",
+        "image": "/products/975_6.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -5582,7 +5582,7 @@
         "id": 254467,
         "sku": "Goya G1921 C1",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/976_6.jpg",
+        "image": "/products/976_6.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -5621,23 +5621,23 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/968_6.jpg",
+        "src": "/products/968_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1835 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/968_2.jpg",
+        "src": "/products/968_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1835 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/968_1.jpg",
+        "src": "/products/968_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1835 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/968_7.jpg",
+        "src": "/products/968_7.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1835 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/968_3.jpg",
+        "src": "/products/968_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1835 C3"
       }
     ],
@@ -5673,7 +5673,7 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/689_4.jpg",
+        "src": "/products/689_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne - G 96514S C21"
       }
     ],
@@ -5683,7 +5683,7 @@
         "id": 253693,
         "sku": "Goya G 96514S C2",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/689_4.jpg",
+        "image": "/products/689_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -5696,7 +5696,7 @@
         "id": 253692,
         "sku": "Goya G 96514S C1",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/690_4.jpg",
+        "image": "/products/690_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -5735,7 +5735,7 @@
     "totalSales": 3,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/580_4.jpg",
+        "src": "/products/580_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 942115"
       }
     ],
@@ -5745,7 +5745,7 @@
         "id": 253622,
         "sku": "Goya G 942115 C1",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/580_4.jpg",
+        "image": "/products/580_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -5758,7 +5758,7 @@
         "id": 253621,
         "sku": "Goya G 942115 C2",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/579_4.jpg",
+        "image": "/products/579_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -5771,7 +5771,7 @@
         "id": 253620,
         "sku": "Goya G 942115 C4",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/578_3.jpg",
+        "image": "/products/578_3.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -5811,31 +5811,31 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_GR_A.jpg",
+        "src": "/products/G_55054_GR_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_GR_G.jpg",
+        "src": "/products/G_55054_GR_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_GR_B.jpg",
+        "src": "/products/G_55054_GR_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_GR_F.jpg",
+        "src": "/products/G_55054_GR_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_GR_S.jpg",
+        "src": "/products/G_55054_GR_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_GR_F1.jpg",
+        "src": "/products/G_55054_GR_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55054_GR_T.jpg",
+        "src": "/products/G_55054_GR_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55054 GR"
       }
     ],
@@ -5871,31 +5871,31 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_GR_A.jpg",
+        "src": "/products/G_55012_GR_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_GR_G.jpg",
+        "src": "/products/G_55012_GR_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_GR_B.jpg",
+        "src": "/products/G_55012_GR_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_GR_F.jpg",
+        "src": "/products/G_55012_GR_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_GR_S.jpg",
+        "src": "/products/G_55012_GR_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_GR_F1.jpg",
+        "src": "/products/G_55012_GR_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55012_GR_T.jpg",
+        "src": "/products/G_55012_GR_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55012 GR"
       }
     ],
@@ -5930,43 +5930,43 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55004_BR_A.jpg",
+        "src": "/products/G_55004_BR_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55004_BR_MODkw.jpg",
+        "src": "/products/G_55004_BR_MODkw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55004_BR_G.jpg",
+        "src": "/products/G_55004_BR_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55004_BR_MOD1.jpg",
+        "src": "/products/G_55004_BR_MOD1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55004_BR_F.jpg",
+        "src": "/products/G_55004_BR_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55004_BR_MOD.jpg",
+        "src": "/products/G_55004_BR_MOD.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55004_BR_B.jpg",
+        "src": "/products/G_55004_BR_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55004_BR_S.jpg",
+        "src": "/products/G_55004_BR_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55004_BR_T.jpg",
+        "src": "/products/G_55004_BR_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55004_BR_F1.jpg",
+        "src": "/products/G_55004_BR_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55004 BR"
       }
     ],
@@ -6002,31 +6002,31 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-21611-CZ-A.jpg",
+        "src": "/products/G-21611-CZ-A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 21611 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/GOYA_G21611_cz_mod.jpg",
+        "src": "/products/GOYA_G21611_cz_mod.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 21611 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-21611-CZ-Z.jpg",
+        "src": "/products/G-21611-CZ-Z.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 21611 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-21611-CZ-t.jpg",
+        "src": "/products/G-21611-CZ-t.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 21611 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-21611-CZ-s.jpg",
+        "src": "/products/G-21611-CZ-s.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 21611 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-21611-CZ-f.jpg",
+        "src": "/products/G-21611-CZ-f.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 21611 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/02/G-21611-CZ-b.jpg",
+        "src": "/products/G-21611-CZ-b.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 21611 CZ"
       }
     ],
@@ -6062,11 +6062,11 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3175_1.jpg",
+        "src": "/products/3175_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 161"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3176_6.jpg",
+        "src": "/products/3176_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 161"
       }
     ],
@@ -6076,7 +6076,7 @@
         "id": 253172,
         "sku": "Goya G 161 S A",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3175_1.jpg",
+        "image": "/products/3175_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6089,7 +6089,7 @@
         "id": 253173,
         "sku": "Goya G 161 GR B",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/3176_1.jpg",
+        "image": "/products/3176_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6130,11 +6130,11 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3194_1.jpg",
+        "src": "/products/3194_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 146"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3193_6.jpg",
+        "src": "/products/3193_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 146"
       }
     ],
@@ -6144,7 +6144,7 @@
         "id": 253056,
         "sku": "Goya G 146 ZX A",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/3193_1.jpg",
+        "image": "/products/3193_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -6157,7 +6157,7 @@
         "id": 253057,
         "sku": "Goya G 146 CZ C",
         "price": 149,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/3194_1.jpg",
+        "image": "/products/3194_1.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -6196,27 +6196,27 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3170_1.jpg",
+        "src": "/products/3170_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 164"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3170_6.jpg",
+        "src": "/products/3170_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 164"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3170_2.jpg",
+        "src": "/products/3170_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 164"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3170_3.jpg",
+        "src": "/products/3170_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 164"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3170_4.jpg",
+        "src": "/products/3170_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 164"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3170_5.jpg",
+        "src": "/products/3170_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 164"
       }
     ],
@@ -6251,27 +6251,27 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3130_1.jpg",
+        "src": "/products/3130_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 193 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3130_5.jpg",
+        "src": "/products/3130_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 193 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3130_2.jpg",
+        "src": "/products/3130_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 193 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3130_3.jpg",
+        "src": "/products/3130_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 193 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3130_4.jpg",
+        "src": "/products/3130_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 193 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3130_6.jpg",
+        "src": "/products/3130_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 193 CZ"
       }
     ],
@@ -6306,7 +6306,7 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/688_4.jpg",
+        "src": "/products/688_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 95551"
       }
     ],
@@ -6316,7 +6316,7 @@
         "id": 253675,
         "sku": "Goya G 95551 C2",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/688_4.jpg",
+        "image": "/products/688_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6329,7 +6329,7 @@
         "id": 253674,
         "sku": "Goya G 95551 C1",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/677_1.jpg",
+        "image": "/products/677_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6369,7 +6369,7 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/687_4.jpg",
+        "src": "/products/687_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 96301"
       }
     ],
@@ -6379,7 +6379,7 @@
         "id": 253690,
         "sku": "Goya G 96301 C1",
         "price": 189,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/687_4.jpg",
+        "image": "/products/687_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6392,7 +6392,7 @@
         "id": 253689,
         "sku": "Goya G 96301 C2",
         "price": 189,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/686_4.jpg",
+        "image": "/products/686_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6430,7 +6430,7 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/684_1.jpg",
+        "src": "/products/684_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 96302"
       }
     ],
@@ -6440,7 +6440,7 @@
         "id": 253682,
         "sku": "Goya G 96302 C4",
         "price": 189,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/684_1.jpg",
+        "image": "/products/684_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6453,7 +6453,7 @@
         "id": 253681,
         "sku": "Goya G 96302 C3",
         "price": 189,
-        "image": "https://okulary.pl/wp-content/uploads/2023/02/685_4.jpg",
+        "image": "/products/685_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6493,7 +6493,7 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/650_4.jpg",
+        "src": "/products/650_4.jpg",
         "alt": "GOYA okulary korekcyjne - M 8209"
       }
     ],
@@ -6503,7 +6503,7 @@
         "id": 253650,
         "sku": "Goya M 8209 C4",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/650_4.jpg",
+        "image": "/products/650_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6516,7 +6516,7 @@
         "id": 253649,
         "sku": "Goya M 8209 C2",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/639_4.jpg",
+        "image": "/products/639_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6555,7 +6555,7 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/637_4.jpg",
+        "src": "/products/637_4.jpg",
         "alt": "GOYA okulary korekcyjne - GK 7078"
       }
     ],
@@ -6565,7 +6565,7 @@
         "id": 253648,
         "sku": "Goya GK 7078 C1",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/637_4.jpg",
+        "image": "/products/637_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6578,7 +6578,7 @@
         "id": 253647,
         "sku": "Goya GK 7078 C5",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/636_1.jpg",
+        "image": "/products/636_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6617,7 +6617,7 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/631_4.jpg",
+        "src": "/products/631_4.jpg",
         "alt": "GOYA okulary korekcyjne - DC 8039"
       }
     ],
@@ -6627,7 +6627,7 @@
         "id": 253640,
         "sku": "Goya DC 8039 C1",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/631_4.jpg",
+        "image": "/products/631_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6640,7 +6640,7 @@
         "id": 253639,
         "sku": "Goya DC 8039 C4",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/630_4.jpg",
+        "image": "/products/630_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6681,7 +6681,7 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/617_4.jpg",
+        "src": "/products/617_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2740"
       }
     ],
@@ -6691,7 +6691,7 @@
         "id": 253628,
         "sku": "Goya G 2740 C4",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/616_4.jpg",
+        "image": "/products/616_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6704,7 +6704,7 @@
         "id": 253629,
         "sku": "Goya G 2740 C2",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/617_4.jpg",
+        "image": "/products/617_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -6743,19 +6743,19 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/605_4.jpg",
+        "src": "/products/605_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2655 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/605_1.jpg",
+        "src": "/products/605_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2655 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/605_3.jpg",
+        "src": "/products/605_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2655 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/605_2.jpg",
+        "src": "/products/605_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2655 C1"
       }
     ],
@@ -6789,19 +6789,19 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/589_4.jpg",
+        "src": "/products/589_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/589_3.jpg",
+        "src": "/products/589_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/589_2.jpg",
+        "src": "/products/589_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/589_1.jpg",
+        "src": "/products/589_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C2"
       }
     ],
@@ -6835,19 +6835,19 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/588_4.jpg",
+        "src": "/products/588_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/588_3.jpg",
+        "src": "/products/588_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/588_2.jpg",
+        "src": "/products/588_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/588_1.jpg",
+        "src": "/products/588_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C3"
       }
     ],
@@ -6881,19 +6881,19 @@
     "totalSales": 2,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/583_4.jpg",
+        "src": "/products/583_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/583_3.jpg",
+        "src": "/products/583_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/583_2.jpg",
+        "src": "/products/583_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/583_1.jpg",
+        "src": "/products/583_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C1"
       }
     ],
@@ -6929,43 +6929,43 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_GR_A.jpg",
+        "src": "/products/G_55051_GR_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_GR_MODkw.jpg",
+        "src": "/products/G_55051_GR_MODkw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_GR_G.jpg",
+        "src": "/products/G_55051_GR_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_GR_MOD.jpg",
+        "src": "/products/G_55051_GR_MOD.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_GR_B.jpg",
+        "src": "/products/G_55051_GR_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_GR_MOD1.jpg",
+        "src": "/products/G_55051_GR_MOD1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_GR_F.jpg",
+        "src": "/products/G_55051_GR_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_GR_S.jpg",
+        "src": "/products/G_55051_GR_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_GR_F1.jpg",
+        "src": "/products/G_55051_GR_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55051_GR_T.jpg",
+        "src": "/products/G_55051_GR_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55051 GR"
       }
     ],
@@ -7001,43 +7001,43 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_GR_A.jpg",
+        "src": "/products/G_55029_GR_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_GR_MODkw.jpg",
+        "src": "/products/G_55029_GR_MODkw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_GR_G.jpg",
+        "src": "/products/G_55029_GR_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_GR_MOD1.jpg",
+        "src": "/products/G_55029_GR_MOD1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_GR_B.jpg",
+        "src": "/products/G_55029_GR_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_GR_MOD.jpg",
+        "src": "/products/G_55029_GR_MOD.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_GR_F.jpg",
+        "src": "/products/G_55029_GR_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_GR_S.jpg",
+        "src": "/products/G_55029_GR_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_GR_F1.jpg",
+        "src": "/products/G_55029_GR_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/02/G_55029_GR_T.jpg",
+        "src": "/products/G_55029_GR_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55029 GR"
       }
     ],
@@ -7073,11 +7073,11 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3184_1.jpg",
+        "src": "/products/3184_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 153"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3184_6.jpg",
+        "src": "/products/3184_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 153"
       }
     ],
@@ -7087,7 +7087,7 @@
         "id": 253127,
         "sku": "GOYA G 153 S A",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/3183_1.jpg",
+        "image": "/products/3183_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -7100,7 +7100,7 @@
         "id": 253126,
         "sku": "GOYA G 153 GR B",
         "price": 129,
-        "image": "https://okulary.pl/wp-content/uploads/2023/01/3184_1.jpg",
+        "image": "/products/3184_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -7139,27 +7139,27 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3187_1.jpg",
+        "src": "/products/3187_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 150 GR C"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3187_6.jpg",
+        "src": "/products/3187_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 150 GR C"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3187_5.jpg",
+        "src": "/products/3187_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 150 GR C"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3187_4.jpg",
+        "src": "/products/3187_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 150 GR C"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3187_3.jpg",
+        "src": "/products/3187_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 150 GR C"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3187_2.jpg",
+        "src": "/products/3187_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 150 GR C"
       }
     ],
@@ -7194,27 +7194,27 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3153_6.jpg",
+        "src": "/products/3153_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 180 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3153_1.jpg",
+        "src": "/products/3153_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 180 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3153_5.jpg",
+        "src": "/products/3153_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 180 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3153_3.jpg",
+        "src": "/products/3153_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 180 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3153_4.jpg",
+        "src": "/products/3153_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 180 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3153_2.jpg",
+        "src": "/products/3153_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 180 GR"
       }
     ],
@@ -7250,27 +7250,27 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3143_6.jpg",
+        "src": "/products/3143_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 184 C"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3143_1.jpg",
+        "src": "/products/3143_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 184 C"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3143_4.jpg",
+        "src": "/products/3143_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 184 C"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3143_5.jpg",
+        "src": "/products/3143_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 184 C"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3143_3.jpg",
+        "src": "/products/3143_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 184 C"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/3143_2.jpg",
+        "src": "/products/3143_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 184 C"
       }
     ],
@@ -7306,35 +7306,35 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2638_1.jpg",
+        "src": "/products/2638_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 6230 R"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2638_2.jpg",
+        "src": "/products/2638_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 6230 R"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2638_3.jpg",
+        "src": "/products/2638_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 6230 R"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2638_4.jpg",
+        "src": "/products/2638_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 6230 R"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2638_5.jpg",
+        "src": "/products/2638_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 6230 R"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2638_7.jpg",
+        "src": "/products/2638_7.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 6230 R"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2638_6.jpg",
+        "src": "/products/2638_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 6230 R"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/2638_8.jpg",
+        "src": "/products/2638_8.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 6230 R"
       }
     ],
@@ -7370,23 +7370,23 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/973_6.jpg",
+        "src": "/products/973_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1926 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/973_2.jpg",
+        "src": "/products/973_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1926 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/973_7.jpg",
+        "src": "/products/973_7.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1926 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/973_3.jpg",
+        "src": "/products/973_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1926 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/973_1.jpg",
+        "src": "/products/973_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G1926 C1"
       }
     ],
@@ -7422,7 +7422,7 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/692_4.jpg",
+        "src": "/products/692_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne - G 96512S"
       }
     ],
@@ -7432,7 +7432,7 @@
         "id": 253696,
         "sku": "Goya G 96512S C2",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/692_4.jpg",
+        "image": "/products/692_4.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -7445,7 +7445,7 @@
         "id": 253695,
         "sku": "Goya G 96512S C3",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/691_4.jpg",
+        "image": "/products/691_4.jpg",
         "attributes": [
           {
             "name": "Kolor soczewki",
@@ -7484,7 +7484,7 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/680_4.jpg",
+        "src": "/products/680_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 95541"
       }
     ],
@@ -7494,7 +7494,7 @@
         "id": 253678,
         "sku": "Goya G 95541 C1",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/680_4.jpg",
+        "image": "/products/680_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -7507,7 +7507,7 @@
         "id": 253677,
         "sku": "Goya G 95541 C2",
         "price": 179,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/679_4.jpg",
+        "image": "/products/679_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -7545,19 +7545,19 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/676_4.jpg",
+        "src": "/products/676_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 94317 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/676_1.jpg",
+        "src": "/products/676_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 94317 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/676_3.jpg",
+        "src": "/products/676_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 94317 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/676_2.jpg",
+        "src": "/products/676_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 94317 C2"
       }
     ],
@@ -7594,7 +7594,7 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/674_4.jpg",
+        "src": "/products/674_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 94402"
       }
     ],
@@ -7604,7 +7604,7 @@
         "id": 253673,
         "sku": "Goya G 94402 C1",
         "price": 199,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/674_4.jpg",
+        "image": "/products/674_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -7617,7 +7617,7 @@
         "id": 253672,
         "sku": "Goya G 94402 C2",
         "price": 199,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/673_4.jpg",
+        "image": "/products/673_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -7657,7 +7657,7 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/672_4.jpg",
+        "src": "/products/672_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 94411"
       }
     ],
@@ -7667,7 +7667,7 @@
         "id": 253671,
         "sku": "Goya G 94411 C2",
         "price": 199,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/672_4.jpg",
+        "image": "/products/672_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -7680,7 +7680,7 @@
         "id": 253670,
         "sku": "Goya G 94411 C4",
         "price": 199,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/671_4.jpg",
+        "image": "/products/671_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -7719,7 +7719,7 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/665_4.jpg",
+        "src": "/products/665_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 93205"
       }
     ],
@@ -7729,7 +7729,7 @@
         "id": 253662,
         "sku": "Goya G 93205 C1",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/665_4.jpg",
+        "image": "/products/665_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -7742,7 +7742,7 @@
         "id": 253660,
         "sku": "Goya G 93205 C4",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/663.jpg",
+        "image": "/products/663.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -7755,7 +7755,7 @@
         "id": 253661,
         "sku": "Goya G 93205 C2",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/664_4.jpg",
+        "image": "/products/664_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -7792,19 +7792,19 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/659_4.jpg",
+        "src": "/products/659_4.jpg",
         "alt": "GOYA okulary korekcyjne - SD 1368 C8"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/659_1.jpg",
+        "src": "/products/659_1.jpg",
         "alt": "GOYA okulary korekcyjne - SD 1368 C8"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/659_3.jpg",
+        "src": "/products/659_3.jpg",
         "alt": "GOYA okulary korekcyjne - SD 1368 C8"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/659_2.jpg",
+        "src": "/products/659_2.jpg",
         "alt": "GOYA okulary korekcyjne - SD 1368 C8"
       }
     ],
@@ -7839,19 +7839,19 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/658_4.jpg",
+        "src": "/products/658_4.jpg",
         "alt": "GOYA okulary korekcyjne - T 1013 C6"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/658_1.jpg",
+        "src": "/products/658_1.jpg",
         "alt": "GOYA okulary korekcyjne - T 1013 C6"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/658_3.jpg",
+        "src": "/products/658_3.jpg",
         "alt": "GOYA okulary korekcyjne - T 1013 C6"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/658_2.jpg",
+        "src": "/products/658_2.jpg",
         "alt": "GOYA okulary korekcyjne - T 1013 C6"
       }
     ],
@@ -7885,11 +7885,11 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne - RD 150 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne - RD 150 C4"
       }
     ],
@@ -7923,19 +7923,19 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/642_4.jpg",
+        "src": "/products/642_4.jpg",
         "alt": "GOYA okulary korekcyjne - LB 8936 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/642_1.jpg",
+        "src": "/products/642_1.jpg",
         "alt": "GOYA okulary korekcyjne - LB 8936 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/642_3.jpg",
+        "src": "/products/642_3.jpg",
         "alt": "GOYA okulary korekcyjne - LB 8936 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/642_2.jpg",
+        "src": "/products/642_2.jpg",
         "alt": "GOYA okulary korekcyjne - LB 8936 C3"
       }
     ],
@@ -7968,19 +7968,19 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/618_4.jpg",
+        "src": "/products/618_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2717 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/618_1.jpg",
+        "src": "/products/618_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2717 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/618_3.jpg",
+        "src": "/products/618_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2717 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/618_2.jpg",
+        "src": "/products/618_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2717 C4"
       }
     ],
@@ -8014,27 +8014,27 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/593_4.jpg",
+        "src": "/products/593_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2652 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/593_1.jpg",
+        "src": "/products/593_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2652 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/593_2.jpg",
+        "src": "/products/593_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2652 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/593_3.jpg",
+        "src": "/products/593_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2652 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne - G 2652 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne - G 2652 C3"
       }
     ],
@@ -8068,19 +8068,19 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/585_4.jpg",
+        "src": "/products/585_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2611 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/585_1.jpg",
+        "src": "/products/585_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2611 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/585_3.jpg",
+        "src": "/products/585_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2611 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/585_2.jpg",
+        "src": "/products/585_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2611 C2"
       }
     ],
@@ -8114,19 +8114,19 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/582_3.jpg",
+        "src": "/products/582_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/582_4.jpg",
+        "src": "/products/582_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/582_2.jpg",
+        "src": "/products/582_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/582_1.jpg",
+        "src": "/products/582_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C2"
       }
     ],
@@ -8160,7 +8160,7 @@
     "totalSales": 1,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/577_4.jpg",
+        "src": "/products/577_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 942117"
       }
     ],
@@ -8170,7 +8170,7 @@
         "id": 253619,
         "sku": "Goya G 942117 C1",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/577_4.jpg",
+        "image": "/products/577_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -8183,7 +8183,7 @@
         "id": 253618,
         "sku": "Goya G 942117 C4",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/576_4.jpg",
+        "image": "/products/576_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -8223,27 +8223,27 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2026/04/goya_A.jpg",
+        "src": "/products/goya_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem UV- G 1000 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2026/04/goya-1000-model.png",
+        "src": "/products/goya-1000-model.png",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem UV- G 1000 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2026/04/goya_AA.jpg",
+        "src": "/products/goya_AA.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem UV- G 1000 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2026/04/goya_F.jpg",
+        "src": "/products/goya_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem UV- G 1000 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2026/04/goya_B.jpg",
+        "src": "/products/goya_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem UV- G 1000 BR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2026/04/goya_S.jpg",
+        "src": "/products/goya_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem UV- G 1000 BR"
       }
     ],
@@ -8279,35 +8279,35 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_GR_A.jpg",
+        "src": "/products/G_55015_GR_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_GR_MOD2kw.jpg",
+        "src": "/products/G_55015_GR_MOD2kw.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_GR_G.jpg",
+        "src": "/products/G_55015_GR_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_GR_B.jpg",
+        "src": "/products/G_55015_GR_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_GR_F.jpg",
+        "src": "/products/G_55015_GR_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_GR_S.jpg",
+        "src": "/products/G_55015_GR_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_GR_F1.jpg",
+        "src": "/products/G_55015_GR_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55015_GR_T.jpg",
+        "src": "/products/G_55015_GR_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55015 GR"
       }
     ],
@@ -8343,31 +8343,31 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_GR_A.jpg",
+        "src": "/products/G_55001_GR_A.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_GR_T.jpg",
+        "src": "/products/G_55001_GR_T.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_GR_S.jpg",
+        "src": "/products/G_55001_GR_S.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_GR_G.jpg",
+        "src": "/products/G_55001_GR_G.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_GR_F1.jpg",
+        "src": "/products/G_55001_GR_F1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_GR_F.jpg",
+        "src": "/products/G_55001_GR_F.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 GR"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2025/01/G_55001_GR_B.jpg",
+        "src": "/products/G_55001_GR_B.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 55001 GR"
       }
     ],
@@ -8402,27 +8402,27 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3182_1.jpg",
+        "src": "/products/3182_1.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 154 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3182_6.jpg",
+        "src": "/products/3182_6.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 154 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3182_5.jpg",
+        "src": "/products/3182_5.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 154 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3182_4.jpg",
+        "src": "/products/3182_4.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 154 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3182_3.jpg",
+        "src": "/products/3182_3.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 154 CZ"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2023/01/3182_2.jpg",
+        "src": "/products/3182_2.jpg",
         "alt": "GOYA okulary przeciwsłoneczne z filtrem polaryzacyjnym - G 154 CZ"
       }
     ],
@@ -8456,7 +8456,7 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/694_4.jpg",
+        "src": "/products/694_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 93305"
       }
     ],
@@ -8466,7 +8466,7 @@
         "id": 253668,
         "sku": "Goya G 93305 C2",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/694_4.jpg",
+        "image": "/products/694_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -8479,7 +8479,7 @@
         "id": 253667,
         "sku": "Goya G 93305 C3",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/669_4.jpg",
+        "image": "/products/669_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -8517,19 +8517,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/682_4.jpg",
+        "src": "/products/682_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 1478 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/682_1.jpg",
+        "src": "/products/682_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 1478 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/682_3.jpg",
+        "src": "/products/682_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 1478 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/682_2.jpg",
+        "src": "/products/682_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 1478 C2"
       }
     ],
@@ -8563,19 +8563,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/678_4.jpg",
+        "src": "/products/678_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 95544 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/678_1.jpg",
+        "src": "/products/678_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 95544 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/678_3.jpg",
+        "src": "/products/678_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 95544 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/678_2.jpg",
+        "src": "/products/678_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 95544 C3"
       }
     ],
@@ -8609,19 +8609,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/675_4.jpg",
+        "src": "/products/675_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 94319 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/675_1.jpg",
+        "src": "/products/675_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 94319 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/675_3.jpg",
+        "src": "/products/675_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 94319 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/675_2.jpg",
+        "src": "/products/675_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 94319 C2"
       }
     ],
@@ -8658,7 +8658,7 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/670_4.jpg",
+        "src": "/products/670_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 93304"
       }
     ],
@@ -8668,7 +8668,7 @@
         "id": 253658,
         "sku": "Goya G 93304 C2",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/670_4.jpg",
+        "image": "/products/670_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -8681,7 +8681,7 @@
         "id": 253657,
         "sku": "Goya G 93304 C1",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/660_4.jpg",
+        "image": "/products/660_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -8719,19 +8719,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/667_4.jpg",
+        "src": "/products/667_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 94312 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/667_1.jpg",
+        "src": "/products/667_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 94312 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/667_3.jpg",
+        "src": "/products/667_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 94312 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/667_2.jpg",
+        "src": "/products/667_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 94312 C1"
       }
     ],
@@ -8766,7 +8766,7 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/666_4.jpg",
+        "src": "/products/666_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 94313"
       }
     ],
@@ -8776,7 +8776,7 @@
         "id": 253665,
         "sku": "Goya G 94313 C4",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/666_4.jpg",
+        "image": "/products/666_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -8789,7 +8789,7 @@
         "id": 253664,
         "sku": "Goya G 94313 C3",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/668_4.jpg",
+        "image": "/products/668_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -8827,19 +8827,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/662_4.jpg",
+        "src": "/products/662_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 93212 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/662_1.jpg",
+        "src": "/products/662_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 93212 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/662_3.jpg",
+        "src": "/products/662_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 93212 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/662_2.jpg",
+        "src": "/products/662_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 93212 C1"
       }
     ],
@@ -8872,19 +8872,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/661_4.jpg",
+        "src": "/products/661_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 93234 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/661_1.jpg",
+        "src": "/products/661_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 93234 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/661_3.jpg",
+        "src": "/products/661_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 93234 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/661_2.jpg",
+        "src": "/products/661_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 93234 C2"
       }
     ],
@@ -8918,11 +8918,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne TJ 032 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne TJ 032 C3"
       }
     ],
@@ -8956,11 +8956,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne - RD 396 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne - RD 396 C3"
       }
     ],
@@ -8994,19 +8994,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/655_4.jpg",
+        "src": "/products/655_4.jpg",
         "alt": "GOYA okulary korekcyjne - RD 654 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/655_1.jpg",
+        "src": "/products/655_1.jpg",
         "alt": "GOYA okulary korekcyjne - RD 654 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/655_3.jpg",
+        "src": "/products/655_3.jpg",
         "alt": "GOYA okulary korekcyjne - RD 654 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/655_2.jpg",
+        "src": "/products/655_2.jpg",
         "alt": "GOYA okulary korekcyjne - RD 654 C3"
       }
     ],
@@ -9041,11 +9041,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne - MA 3021 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne - MA 3021 C2"
       }
     ],
@@ -9079,7 +9079,7 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/646_4.jpg",
+        "src": "/products/646_4.jpg",
         "alt": "GOYA okulary korekcyjne - M 9010"
       }
     ],
@@ -9089,7 +9089,7 @@
         "id": 253652,
         "sku": "Goya M 9010 C2",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/646_4.jpg",
+        "image": "/products/646_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -9102,7 +9102,7 @@
         "id": 253651,
         "sku": "Goya M 9010 C4",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/645_4.jpg",
+        "image": "/products/645_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -9140,7 +9140,7 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/644_4.jpg",
+        "src": "/products/644_4.jpg",
         "alt": "GOYA okulary korekcyjne - GM 7080"
       }
     ],
@@ -9150,7 +9150,7 @@
         "id": 253643,
         "sku": "Goya GM 7080 C5",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/644_4.jpg",
+        "image": "/products/644_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -9163,7 +9163,7 @@
         "id": 253642,
         "sku": "Goya GM 7080 C3",
         "price": 119,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/632_4.jpg",
+        "image": "/products/632_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -9203,19 +9203,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/643_4.jpg",
+        "src": "/products/643_4.jpg",
         "alt": "GOYA okulary korekcyjne - LA 9910 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/643_1.jpg",
+        "src": "/products/643_1.jpg",
         "alt": "GOYA okulary korekcyjne - LA 9910 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/643_3.jpg",
+        "src": "/products/643_3.jpg",
         "alt": "GOYA okulary korekcyjne - LA 9910 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/643_2.jpg",
+        "src": "/products/643_2.jpg",
         "alt": "GOYA okulary korekcyjne - LA 9910 C4"
       }
     ],
@@ -9249,11 +9249,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne - LB 8936 C5"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne - LB 8936 C5"
       }
     ],
@@ -9286,11 +9286,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne - LF 81209 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne - LF 81209 C4"
       }
     ],
@@ -9324,11 +9324,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne - RD 396 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne - RD 396 C2"
       }
     ],
@@ -9362,11 +9362,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne - GL 6503 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne - GL 6503 C3"
       }
     ],
@@ -9401,7 +9401,7 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/625_4.jpg",
+        "src": "/products/625_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 89020"
       }
     ],
@@ -9411,7 +9411,7 @@
         "id": 253634,
         "sku": "Goya G 89020 C4",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/625_4.jpg",
+        "image": "/products/625_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -9424,7 +9424,7 @@
         "id": 253633,
         "sku": "Goya G 89020 C5",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/612_1.jpg",
+        "image": "/products/612_1.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -9464,7 +9464,7 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/624_4.jpg",
+        "src": "/products/624_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 89083"
       }
     ],
@@ -9474,7 +9474,7 @@
         "id": 253632,
         "sku": "Goya G 89083 C1",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/624_4.jpg",
+        "image": "/products/624_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -9487,7 +9487,7 @@
         "id": 253631,
         "sku": "Goya G 89083 C4",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/622_4.jpg",
+        "image": "/products/622_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -9500,7 +9500,7 @@
         "id": 253630,
         "sku": "Goya G 89083 C5",
         "price": 159,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/621_3.jpg",
+        "image": "/products/621_3.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -9538,11 +9538,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 89087 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 89087 C2"
       }
     ],
@@ -9576,19 +9576,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/619_4.jpg",
+        "src": "/products/619_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 89087 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/619_1.jpg",
+        "src": "/products/619_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 89087 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/619_3.jpg",
+        "src": "/products/619_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 89087 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/619_2.jpg",
+        "src": "/products/619_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 89087 C3"
       }
     ],
@@ -9621,11 +9621,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2742 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2742 C2"
       }
     ],
@@ -9659,11 +9659,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2742 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2742 C4"
       }
     ],
@@ -9697,7 +9697,7 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/611_4.jpg",
+        "src": "/products/611_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2682"
       }
     ],
@@ -9707,7 +9707,7 @@
         "id": 253626,
         "sku": "Goya G 2682 C4",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/611_4.jpg",
+        "image": "/products/611_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -9720,7 +9720,7 @@
         "id": 253625,
         "sku": "Goya G 2682 C2",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/600_4.jpg",
+        "image": "/products/600_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -9757,27 +9757,27 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/610_4.jpg",
+        "src": "/products/610_4.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/610_1.jpg",
+        "src": "/products/610_1.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/610_3.jpg",
+        "src": "/products/610_3.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/610_2.jpg",
+        "src": "/products/610_2.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C1"
       }
     ],
@@ -9812,27 +9812,27 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/609_1.jpg",
+        "src": "/products/609_1.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/609_2.jpg",
+        "src": "/products/609_2.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/609_4.jpg",
+        "src": "/products/609_4.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/609_3.jpg",
+        "src": "/products/609_3.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2694 C2"
       }
     ],
@@ -9866,19 +9866,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/608_3.jpg",
+        "src": "/products/608_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2714 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/608_1.jpg",
+        "src": "/products/608_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2714 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/608_4.jpg",
+        "src": "/products/608_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2714 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/608_2.jpg",
+        "src": "/products/608_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2714 C1"
       }
     ],
@@ -9911,11 +9911,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2714 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2714 C4"
       }
     ],
@@ -9949,19 +9949,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/606_4.jpg",
+        "src": "/products/606_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2716 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/606_1.jpg",
+        "src": "/products/606_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2716 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/606_3.jpg",
+        "src": "/products/606_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2716 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/606_2.jpg",
+        "src": "/products/606_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2716 C1"
       }
     ],
@@ -9995,11 +9995,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2657 C2"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2657 C2"
       }
     ],
@@ -10033,19 +10033,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/603_4.jpg",
+        "src": "/products/603_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2659 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/603_1.jpg",
+        "src": "/products/603_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2659 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/603_3.jpg",
+        "src": "/products/603_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2659 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/603_2.jpg",
+        "src": "/products/603_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2659 C1"
       }
     ],
@@ -10080,11 +10080,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne - G 2659 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne - G 2659 C4"
       }
     ],
@@ -10118,11 +10118,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2672 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2672 C1"
       }
     ],
@@ -10155,11 +10155,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2635 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2635 C1"
       }
     ],
@@ -10193,11 +10193,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2635 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2635 C3"
       }
     ],
@@ -10232,11 +10232,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2635 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2635 C4"
       }
     ],
@@ -10272,7 +10272,7 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/595_4.jpg",
+        "src": "/products/595_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2637"
       }
     ],
@@ -10282,7 +10282,7 @@
         "id": 253624,
         "sku": "Goya G 2637 C2",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/595_4.jpg",
+        "image": "/products/595_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -10295,7 +10295,7 @@
         "id": 253623,
         "sku": "Goya G 2637 C3",
         "price": 109,
-        "image": "https://okulary.pl/wp-content/uploads/2022/11/594_4.jpg",
+        "image": "/products/594_4.jpg",
         "attributes": [
           {
             "name": "Kolor oprawki",
@@ -10333,11 +10333,11 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2619 C3"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2619 C3"
       }
     ],
@@ -10371,27 +10371,27 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/GOYA-2619-C4-prof.jpg",
+        "src": "/products/GOYA-2619-C4-prof.jpg",
         "alt": "GOYA okulary korekcyjne G 2619 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/GOYA-2619-C4-bok.jpg",
+        "src": "/products/GOYA-2619-C4-bok.jpg",
         "alt": "GOYA okulary korekcyjne G 2619 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_6.jpg",
+        "src": "/products/575_6.jpg",
         "alt": "GOYA okulary korekcyjne G 2619 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/575_5.jpg",
+        "src": "/products/575_5.jpg",
         "alt": "GOYA okulary korekcyjne G 2619 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/GOYA-2619-C4-frg.jpg",
+        "src": "/products/GOYA-2619-C4-frg.jpg",
         "alt": "GOYA okulary korekcyjne G 2619 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/GOYA-2619-C4-fr.jpg",
+        "src": "/products/GOYA-2619-C4-fr.jpg",
         "alt": "GOYA okulary korekcyjne G 2619 C4"
       }
     ],
@@ -10425,19 +10425,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/590_3.jpg",
+        "src": "/products/590_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/590_4.jpg",
+        "src": "/products/590_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/590_2.jpg",
+        "src": "/products/590_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/590_1.jpg",
+        "src": "/products/590_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2622 C1"
       }
     ],
@@ -10471,19 +10471,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/586_3.jpg",
+        "src": "/products/586_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2603 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/586_4.jpg",
+        "src": "/products/586_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2603 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/586_2.jpg",
+        "src": "/products/586_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2603 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/586_1.jpg",
+        "src": "/products/586_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2603 C1"
       }
     ],
@@ -10518,19 +10518,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/584_4.jpg",
+        "src": "/products/584_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2615 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/584_1.jpg",
+        "src": "/products/584_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2615 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/584_2.jpg",
+        "src": "/products/584_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2615 C1"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/584_3.jpg",
+        "src": "/products/584_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2615 C1"
       }
     ],
@@ -10564,19 +10564,19 @@
     "totalSales": 0,
     "images": [
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/581_4.jpg",
+        "src": "/products/581_4.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/581_3.jpg",
+        "src": "/products/581_3.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/581_2.jpg",
+        "src": "/products/581_2.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C4"
       },
       {
-        "src": "https://okulary.pl/wp-content/uploads/2022/11/581_1.jpg",
+        "src": "/products/581_1.jpg",
         "alt": "GOYA okulary korekcyjne - G 2618 C4"
       }
     ],
