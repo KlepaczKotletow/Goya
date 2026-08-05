@@ -89,68 +89,12 @@ function doPost(e) {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Catalogue feed — the website reads live prices/stock from the sheet.
-// ---------------------------------------------------------------------------
-
-// The product tab. First match wins; falls back to the first sheet in the file.
-var CATALOG_TABS = ['Katalog', 'Model reference', 'goya-model-reference-google-sheets'];
-
-// ONLY these columns are ever returned. old_regular_price / old_live_price are
-// deliberately absent: they are okulary.pl's cost/selling prices and must never
-// leave the spreadsheet, even if this URL is discovered.
-var PUBLIC_FIELDS = [
-  'product_id', 'new_name', 'collection', 'new_regular_price', 'new_live_price',
-  'lowest_price_30d', 'stock_status', 'category',
-];
-
-function catalogSheet() {
-  var ss = SpreadsheetApp.getActive();
-  for (var i = 0; i < CATALOG_TABS.length; i++) {
-    var sh = ss.getSheetByName(CATALOG_TABS[i]);
-    if (sh) return sh;
-  }
-  return ss.getSheets()[0];
-}
-
-function readCatalog() {
-  var sh = catalogSheet();
-  var values = sh.getDataRange().getValues();
-  if (values.length < 2) return [];
-  // Map by header NAME so re-ordering or inserting columns can't shift the data.
-  var header = values[0].map(function (h) { return String(h).trim(); });
-  var idx = {};
-  PUBLIC_FIELDS.forEach(function (f) { idx[f] = header.indexOf(f); });
-  if (idx.product_id < 0) return [];
-
-  var out = [];
-  for (var r = 1; r < values.length; r++) {
-    var row = values[r];
-    var id = parseInt(row[idx.product_id], 10);
-    if (!id) continue;
-    var rec = { product_id: id };
-    PUBLIC_FIELDS.forEach(function (f) {
-      if (f === 'product_id' || idx[f] < 0) return;
-      var v = row[idx[f]];
-      rec[f] = v === '' || v === null ? null : v;
-    });
-    out.push(rec);
-  }
-  return out;
-}
-
-/**
- * GET ?secret=…            → {ok, count, rows:[…]}  the catalogue feed
- * GET (no params)          → {ok, service}          deployment sanity check
- */
-function doGet(e) {
-  try {
-    var p = (e && e.parameter) || {};
-    if (!p.secret) return reply({ ok: true, service: 'goya-intake' });
-    if (p.secret !== SECRET) return reply({ ok: false, error: 'unauthorized' });
-    var rows = readCatalog();
-    return reply({ ok: true, count: rows.length, rows: rows });
-  } catch (err) {
-    return reply({ ok: false, error: String(err) });
-  }
+// Lets you sanity-check the deployment in a browser — visiting the /exec URL
+// should show {"ok":true,"service":"goya-intake"}.
+//
+// NOTE: this script handles ORDERS and NEWSLETTER only. The product catalogue
+// lives in Supabase (goya_products / goya_product_images / goya_product_variations)
+// because images and variations are one-to-many and cannot fit in a flat sheet.
+function doGet() {
+  return reply({ ok: true, service: 'goya-intake' });
 }
