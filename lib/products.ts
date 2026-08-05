@@ -1,7 +1,7 @@
 import data from "@/data/products.json";
 import facetsData from "@/data/facets.json";
 import { MODEL_NAMES } from "@/content/model-names";
-import { getInventory } from "./inventory";
+import { fetchCatalog } from "./catalog";
 import type { Product, Facets } from "./types";
 
 // Two stock photos of an empty case (closed, and open with the pouch) are reused
@@ -16,43 +16,33 @@ const isPlaceholder = (src: string) => PLACEHOLDER_IMAGES.has(src);
 // See scripts/rename-models.mjs and docs/model-names.md for the full directory.
 // This is the *baseline* — structure that must never depend on a spreadsheet:
 // images, slugs, specs, variations.
-const baseline = (data as unknown as Product[])
-  .filter((p) => p.images.some((i) => !isPlaceholder(i.src)))
-  .map((p) => {
-    // Keep the real photography first so the hero, thumbnail, OG image and
-    // JSON-LD primary image never land on the empty case.
-    const images = [...p.images].sort((a, b) => Number(isPlaceholder(a.src)) - Number(isPlaceholder(b.src)));
-    const name = MODEL_NAMES[p.id];
-    return { ...p, images, ...(name ? { code: p.name, name } : {}) };
-  });
+const baseline = (data as unknown as Product[]).map((p) => {
+  const name = MODEL_NAMES[p.id];
+  return { ...p, ...(name ? { code: p.name, name } : {}) };
+});
 
 export const facets = facetsData as unknown as Facets;
 
 /**
- * The catalogue, with the inventory sheet layered over the committed snapshot.
+ * The catalogue. Supabase is the source of truth; the committed snapshot is the
+ * fallback when it is unreachable, so the shop degrades to yesterday's data
+ * rather than to an empty grid. Cached for an hour by lib/catalog.ts, so this
+ * stays cheap even though every page calls it.
  *
- * Commercial fields (price, stock, name, collection) come from the sheet when it
- * is reachable; everything structural stays local. Out-of-stock products are
- * excluded everywhere — listing, PDP and sitemap — because the source shop can't
- * fulfil them. Cached for an hour by lib/inventory.ts, so this stays cheap even
- * though every page calls it.
+ * Out-of-stock products and products with no real photograph are excluded
+ * everywhere — listing, PDP and sitemap. Both filters clear themselves as soon
+ * as the underlying data improves; nothing needs un-hiding by hand.
  */
 async function catalogue(): Promise<Product[]> {
-  const inventory = await getInventory();
-  return baseline
-    .map((p) => {
-      const row = inventory.get(p.id);
-      if (!row) return p;
-      return {
-        ...p,
-        ...(row.name ? { name: row.name } : {}),
-        ...(row.stockStatus ? { stockStatus: row.stockStatus } : {}),
-        price: row.price,
-        regularPrice: row.regularPrice,
-        lowestPrice30d: row.lowestPrice30d,
-      };
-    })
-    .filter((p) => p.stockStatus === "instock");
+  const live = await fetchCatalog();
+  const source = live ?? baseline;
+  return source
+    .filter((p) => p.stockStatus === "instock")
+    .filter((p) => p.images.some((i) => !isPlaceholder(i.src)))
+    .map((p) => ({
+      ...p,
+      images: [...p.images].sort((a, b) => Number(isPlaceholder(a.src)) - Number(isPlaceholder(b.src))),
+    }));
 }
 
 export async function getAllProducts(): Promise<Product[]> {
