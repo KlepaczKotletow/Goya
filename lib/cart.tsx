@@ -13,6 +13,8 @@ export type CartLine = {
   slug: string;
   name: string;
   price: number;
+  /** Real list price when one exists — never a computed fake discount. */
+  regularPrice?: number | null;
   image: string | null;
   variant?: string | null;
   qty: number;

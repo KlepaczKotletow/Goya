@@ -55,8 +55,8 @@ export default async function Page({ params }: Params) {
   const orgId = `${absUrl("/")}#organization`;
   const wordCount = [g.lead, ...g.sections.flatMap((sec) => [sec.h2, ...sec.body])].join(" ").trim().split(/\s+/).length;
 
-  const products = guideProducts(g);
-  const related = (g.relatedCollections ?? []).map(getCollection).filter(Boolean);
+  const products = await guideProducts(g);
+  const related = (await Promise.all((g.relatedCollections ?? []).map(getCollection))).filter(Boolean);
   const relatedGuides = [
     ...listGuides().filter((x) => x.slug !== g.slug && x.kind === "pillar"),
     ...listGuides().filter((x) => x.slug !== g.slug && x.kind === "face-shape"),

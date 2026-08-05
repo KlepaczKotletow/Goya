@@ -4,7 +4,7 @@ import { listCollections } from "@/lib/collections";
 import { listGuides } from "@/lib/guides";
 import { SITE_URL } from "@/content/site";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = SITE_URL;
   const catalogMod = new Date(facets.generatedAt);
 
@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/zwroty`, changeFrequency: "yearly", priority: 0.3, lastModified: catalogMod },
   ];
 
-  const collections: MetadataRoute.Sitemap = listCollections().map((c) => ({
+  const collections: MetadataRoute.Sitemap = (await listCollections()).map((c) => ({
     url: `${base}/kolekcje/${c.slug}`,
     changeFrequency: "weekly",
     priority: 0.8,
@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(`${g.updated}-01`),
   }));
 
-  const products: MetadataRoute.Sitemap = getAllProducts().map((p) => ({
+  const products: MetadataRoute.Sitemap = (await getAllProducts()).map((p) => ({
     url: `${base}/okulary/${p.slug}`,
     changeFrequency: "monthly",
     priority: 0.7,

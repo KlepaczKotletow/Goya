@@ -11,13 +11,13 @@ import { CATEGORY_LABELS } from "@/content/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return getProductSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  return (await getProductSlugs()).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
-  const p = getProduct(slug);
+  const p = await getProduct(slug);
   if (!p) return {};
   const desc = productMetaDescription(p);
   return {
@@ -37,10 +37,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function Page({ params }: Params) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProduct(slug);
   if (!product) notFound();
-  const related = getRelated(product, 4);
-  const recommended = getBestsellers(8).filter((p) => p.slug !== product.slug).slice(0, 4);
+  const related = await getRelated(product, 4);
+  const recommended = (await getBestsellers(8)).filter((p) => p.slug !== product.slug).slice(0, 4);
 
   const categoryPath = product.category === "sun" ? "/przeciwsloneczne" : "/korekcyjne";
   const crumbs = [

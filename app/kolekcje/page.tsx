@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { listCollections, collectionProducts, plural, type CollectionDef } from "@/lib/collections";
+import { listCollections, plural, type CollectionDef } from "@/lib/collections";
+import { getAllProducts } from "@/lib/products";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbLd } from "@/lib/seo";
 
@@ -21,8 +22,10 @@ const KIND_LABELS: Record<CollectionDef["kind"], string> = {
 };
 const KIND_ORDER: CollectionDef["kind"][] = ["shape", "gender", "category", "polarized", "usecase", "color"];
 
-export default function Page() {
-  const all = listCollections();
+export default async function Page() {
+  const all = await listCollections();
+  const catalogue = await getAllProducts();
+  const countFor = new Map(all.map((c) => [c.slug, catalogue.filter(c.filter).length]));
   const groups = KIND_ORDER.map((kind) => ({
     kind,
     items: all.filter((c) => c.kind === kind),
@@ -56,7 +59,7 @@ export default function Page() {
           <h2 className="mb-5 font-display text-2xl">{KIND_LABELS[g.kind]}</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {g.items.map((c) => {
-              const count = collectionProducts(c).length;
+              const count = countFor.get(c.slug) ?? 0;
               return (
                 <Link
                   key={c.slug}

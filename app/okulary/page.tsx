@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 const INTRO =
   "Pełny katalog okularów Goya — przeciwsłoneczne z filtrem polaryzacyjnym i pełną ochroną UV400 oraz lekkie oprawki korekcyjne. Filtruj po fasonie, płci i kolorze, żeby szybko znaleźć swój model.";
 
-export default function Page() {
-  const products = getAllProducts();
+export default async function Page() {
+  const products = await getAllProducts();
   return (
     <>
       <JsonLd data={itemListLd(products, { name: "Wszystkie okulary Goya", path: "/okulary" })} />

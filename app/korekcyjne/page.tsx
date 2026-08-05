@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/korekcyjne" },
 };
 
-export default function Page() {
-  const products = getByCategory("optical");
+export default async function Page() {
+  const products = await getByCategory("optical");
   return (
     <>
       <JsonLd data={itemListLd(products, { name: "Okulary korekcyjne Goya", path: "/korekcyjne" })} />

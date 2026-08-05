@@ -7,7 +7,7 @@ import { ProductGrid } from "./ProductGrid";
 import { ColorSwatch } from "./ColorSwatch";
 import { CloseIcon, ChevronIcon, SearchIcon } from "./icons";
 import { SHAPE_LABELS } from "@/content/site";
-import { premiumPrice } from "@/lib/pricing";
+import { priceOf } from "@/lib/pricing";
 import { cn } from "@/lib/utils";
 
 type Sort = "popular" | "price-asc" | "price-desc";
@@ -70,8 +70,8 @@ export function Catalog({
       return true;
     });
     const byPop = (a: Product, b: Product) => b.totalSales - a.totalSales;
-    if (sort === "price-asc") list = [...list].sort((a, b) => premiumPrice(a.priceWoo) - premiumPrice(b.priceWoo) || byPop(a, b));
-    else if (sort === "price-desc") list = [...list].sort((a, b) => premiumPrice(b.priceWoo) - premiumPrice(a.priceWoo) || byPop(a, b));
+    if (sort === "price-asc") list = [...list].sort((a, b) => priceOf(a) - priceOf(b) || byPop(a, b));
+    else if (sort === "price-desc") list = [...list].sort((a, b) => priceOf(b) - priceOf(a) || byPop(a, b));
     else list = [...list].sort(byPop);
     return list;
   }, [products, lockCategory, category, genders, shapes, colors, q, sort]);

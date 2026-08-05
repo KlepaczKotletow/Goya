@@ -2,7 +2,7 @@
 // Structured data is a primary AI-citation signal (ChatGPT, Perplexity, Google AI Mode),
 // not just rich snippets — so coverage here directly affects organic + AI visibility.
 import type { Product } from "./types";
-import { premiumPrice } from "./pricing";
+import { priceOf } from "./pricing";
 import { SITE, SITE_URL, absUrl, SOCIALS } from "@/content/site";
 import { CATEGORY_LABELS, SHAPE_LABELS, FAQS } from "@/content/site";
 
@@ -128,7 +128,7 @@ const returnPolicy = {
 };
 
 export function productLd(p: Product) {
-  const price = premiumPrice(p.priceWoo);
+  const price = priceOf(p);
   return {
     "@context": "https://schema.org",
     "@type": "Product",

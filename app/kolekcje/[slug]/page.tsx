@@ -10,13 +10,13 @@ import { FAQS } from "@/content/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return listCollections().map((c) => ({ slug: c.slug }));
+export async function generateStaticParams() {
+  return (await listCollections()).map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
-  const def = getCollection(slug);
+  const def = await getCollection(slug);
   if (!def) return {};
   return {
     title: def.title,
@@ -28,15 +28,15 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function Page({ params }: Params) {
   const { slug } = await params;
-  const def = getCollection(slug);
+  const def = await getCollection(slug);
   if (!def) notFound();
 
-  const products = collectionProducts(def);
+  const products = await collectionProducts(def);
   const facts = collectionFacts(def, products);
   const faqs = [...(def.faqs ?? []), ...FAQS];
 
   // Cross-links to sibling collections (internal PageRank + discovery).
-  const related = listCollections()
+  const related = (await listCollections())
     .filter((c) => c.slug !== def.slug && (c.parent.path === def.parent.path || c.kind === def.kind))
     .slice(0, 8);
 
