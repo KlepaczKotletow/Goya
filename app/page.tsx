@@ -13,14 +13,15 @@ import { ArrowIcon, SunIcon, ShieldIcon, CheckIcon, ReturnIcon } from "@/compone
 import { SHAPE_LABELS, REASSURANCE } from "@/content/site";
 import { SHAPE_COLLECTION } from "@/lib/collections";
 
-export default function Home() {
-  const bestsellers = getBestsellers(8);
+export default async function Home() {
+  const bestsellers = await getBestsellers(8);
   const hero = bestsellers[0];
   const heroImg = hero ? imageAt(hero.images, 0) : null;
-  const sun = getByCategory("sun", 1)[0];
-  const optical = getByCategory("optical", 1)[0];
+  const sun = (await getByCategory("sun", 1))[0];
+  const optical = (await getByCategory("optical", 1))[0];
+  const all = await getBestsellers(200);
   const shapeTiles = ["Aviator", "Kocie", "Prostokątne", "Okrągłe", "Muchy", "Nerdy"]
-    .map((s) => ({ shape: s, product: getBestsellers(200).find((p) => p.shape === s && imageAt(p.images, 0)) }))
+    .map((s) => ({ shape: s, product: all.find((p) => p.shape === s && imageAt(p.images, 0)) }))
     .filter((t) => t.product);
 
   return (

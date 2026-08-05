@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/types";
-import { premiumPrice, compareAtPrice, discountPct, formatPLN } from "@/lib/pricing";
+import { priceOf, regularOf, discountOf, formatPLN } from "@/lib/pricing";
 import { useCart } from "@/lib/cart";
 import { Stars } from "./Stars";
 import { HeartIcon, CheckIcon, ChevronIcon, ReturnIcon, ShieldIcon, SunIcon, EyeIcon, PackageIcon, ClothIcon } from "./icons";
@@ -22,10 +22,10 @@ const BUNDLE_ICONS = [PackageIcon, ClothIcon, ShieldIcon];
 
 export function ProductView({ product }: { product: Product }) {
   const { add, setOpen, toggleWish, isWished } = useCart();
-  const price = premiumPrice(product.priceWoo);
-  const compareAt = compareAtPrice(price);
-  const pct = discountPct(price, compareAt);
-  const savings = compareAt - price;
+  const price = priceOf(product);
+  const compareAt = regularOf(product);
+  const pct = discountOf(product);
+  const savings = compareAt ? compareAt - price : 0;
   const installment = (price / 3).toLocaleString("pl-PL", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const tint = fieldTint(product.id);
   const rating = 4.6 + (product.id % 4) * 0.1;
@@ -106,6 +106,7 @@ export function ProductView({ product }: { product: Product }) {
       slug: product.slug,
       name: product.name,
       price,
+      regularPrice: compareAt,
       image: (selected?.image ?? product.images[0]?.src) || null,
       variant: variantLabel ?? null,
     });
@@ -289,7 +290,7 @@ export function ProductView({ product }: { product: Product }) {
               <span className="text-4xl font-medium tabular-nums leading-none">{formatPLN(price)}</span>
               {pct > 0 && (
                 <>
-                  <span className="text-lg text-stone line-through tabular-nums">{formatPLN(compareAt)}</span>
+                  <span className="text-lg text-stone line-through tabular-nums">{formatPLN(compareAt as number)}</span>
                   <span className="rounded-[6px] bg-terracotta px-2 py-1 text-[0.7rem] font-semibold leading-none text-paper">−{pct}%</span>
                 </>
               )}

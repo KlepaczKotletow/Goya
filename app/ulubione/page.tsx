@@ -8,6 +8,6 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-export default function Page() {
-  return <WishlistView products={getAllProducts()} />;
+export default async function Page() {
+  return <WishlistView products={await getAllProducts()} />;
 }

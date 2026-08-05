@@ -1,6 +1,6 @@
 import type { Product } from "./types";
 import { getAllProducts } from "./products";
-import { premiumPrice, formatPLN } from "./pricing";
+import { priceOf, formatPLN } from "./pricing";
 import { SHAPE_LABELS } from "@/content/site";
 
 // SEO landing pages at /kolekcje/<slug>. PDPs occupy /okulary/<slug>, so facet pages
@@ -263,26 +263,28 @@ export const SHAPE_COLLECTION: Record<string, string> = {
 /** Only surface collections with enough inventory to avoid thin pages. */
 const MIN_PRODUCTS = 4;
 
-export function collectionProducts(def: CollectionDef): Product[] {
-  return getAllProducts()
+export async function collectionProducts(def: CollectionDef): Promise<Product[]> {
+  return (await getAllProducts())
     .filter(def.filter)
     .sort((a, b) => b.totalSales - a.totalSales);
 }
 
-export function listCollections(): CollectionDef[] {
-  return COLLECTIONS.filter((def) => collectionProducts(def).length >= MIN_PRODUCTS);
+export async function listCollections(): Promise<CollectionDef[]> {
+  // One catalogue read, then filter in memory — not one read per collection.
+  const all = await getAllProducts();
+  return COLLECTIONS.filter((def) => all.filter(def.filter).length >= MIN_PRODUCTS);
 }
 
-export function getCollection(slug: string): CollectionDef | undefined {
+export async function getCollection(slug: string): Promise<CollectionDef | undefined> {
   const def = COLLECTIONS.find((c) => c.slug === slug);
   if (!def) return undefined;
-  return collectionProducts(def).length >= MIN_PRODUCTS ? def : undefined;
+  return (await collectionProducts(def)).length >= MIN_PRODUCTS ? def : undefined;
 }
 
 /** Data-driven second paragraph — unique per collection because the product mix differs. */
 export function collectionFacts(def: CollectionDef, products: Product[]): string {
   if (!products.length) return "";
-  const from = Math.min(...products.map((p) => premiumPrice(p.priceWoo)));
+  const from = Math.min(...products.map((p) => priceOf(p)));
   const shapes = [...new Set(products.map((p) => p.shape).filter(Boolean))] as string[];
   const topShapes = shapes.slice(0, 4).map((s) => (SHAPE_LABELS[s] ?? s).toLowerCase());
   const polarized = products.filter((p) => p.polarized).length;

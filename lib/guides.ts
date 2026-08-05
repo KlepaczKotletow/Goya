@@ -243,10 +243,10 @@ export function getGuide(slug: string): GuideDef | undefined {
   return GUIDES.find((g) => g.slug === slug);
 }
 
-export function guideProducts(guide: GuideDef, n = 8): Product[] {
+export async function guideProducts(guide: GuideDef, n = 8): Promise<Product[]> {
   if (!guide.recommendedShapes?.length) return [];
   const shapes = new Set(guide.recommendedShapes);
-  return getAllProducts()
+  return (await getAllProducts())
     .filter((p) => p.shape && shapes.has(p.shape))
     .sort((a, b) => b.totalSales - a.totalSales)
     .slice(0, n);

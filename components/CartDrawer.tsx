@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCart } from "@/lib/cart";
-import { compareAtPrice, formatPLN } from "@/lib/pricing";
+import { formatPLN } from "@/lib/pricing";
 import { INCLUDED } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { PayLogo, useIsAppleDevice } from "./pdp/ExpressPay";
@@ -30,8 +30,8 @@ export function CartDrawer() {
     };
   }, [open]);
 
-  // Savings vs. the crossed-out compare-at price — the "you're getting a deal" signal.
-  const compareTotal = lines.reduce((s, l) => s + compareAtPrice(l.price) * l.qty, 0);
+  // Savings shown only where a real list price was carried over from the product.
+  const compareTotal = lines.reduce((s, l) => s + (l.regularPrice ?? l.price) * l.qty, 0);
   const savings = Math.max(0, compareTotal - subtotal);
 
   return (
@@ -87,7 +87,7 @@ export function CartDrawer() {
                   <motion.ul layout className="divide-y divide-line/60">
                     <AnimatePresence initial={false} mode="popLayout">
                       {lines.map((l) => {
-                        const wasPrice = compareAtPrice(l.price);
+                        const wasPrice = l.regularPrice ?? null;
                         return (
                           <motion.li
                             key={l.key}
@@ -157,7 +157,7 @@ export function CartDrawer() {
                                 </div>
                                 <div className="text-right leading-tight">
                                   <p className="text-[0.95rem] font-medium tabular-nums text-ink">{formatPLN(l.price * l.qty)}</p>
-                                  {wasPrice > l.price && (
+                                  {wasPrice !== null && wasPrice > l.price && (
                                     <p className="text-xs tabular-nums text-stone line-through">{formatPLN(wasPrice * l.qty)}</p>
                                   )}
                                 </div>

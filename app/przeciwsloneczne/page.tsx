@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/przeciwsloneczne" },
 };
 
-export default function Page() {
-  const products = getByCategory("sun");
+export default async function Page() {
+  const products = await getByCategory("sun");
   return (
     <>
       <JsonLd data={itemListLd(products, { name: "Okulary przeciwsłoneczne Goya", path: "/przeciwsloneczne" })} />

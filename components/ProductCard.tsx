@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/lib/types";
-import { premiumPrice, compareAtPrice, discountPct, formatPLN } from "@/lib/pricing";
+import { priceOf, regularOf, discountOf, formatPLN } from "@/lib/pricing";
 import { imageAt, fieldTint } from "@/lib/utils";
 import { useCart } from "@/lib/cart";
 import { SHAPE_LABELS, COLOR_HEX } from "@/content/site";
@@ -14,9 +14,9 @@ export function ProductCard({ product, priority = false }: { product: Product; p
   const img2 = imageAt(product.images, 1);
   const hasSecond = Boolean(img2 && img2 !== img);
   const wished = isWished(product.slug);
-  const price = premiumPrice(product.priceWoo);
-  const compareAt = compareAtPrice(price);
-  const pct = discountPct(price, compareAt);
+  const price = priceOf(product);
+  const compareAt = regularOf(product);
+  const pct = discountOf(product);
   const meta = [product.shape ? SHAPE_LABELS[product.shape] ?? product.shape : "Okulary", product.gender].filter(Boolean).join(" · ");
   const colors = product.frameColors.slice(0, 5);
   const tint = fieldTint(product.id);
@@ -74,7 +74,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  add({ slug: product.slug, name: product.name, price, image: img });
+                  add({ slug: product.slug, name: product.name, price, regularPrice: compareAt, image: img });
                 }}
                 className="w-full rounded-full bg-ink py-3 text-xs font-medium tracking-wide text-paper shadow-lg transition hover:bg-rust"
               >
@@ -94,7 +94,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
         <div className="flex shrink-0 flex-col items-end pt-0.5 leading-tight">
           <span className="text-sm tabular-nums">{formatPLN(price)}</span>
           {pct > 0 && (
-            <span className="text-xs text-stone line-through tabular-nums">{formatPLN(compareAt)}</span>
+            <span className="text-xs text-stone line-through tabular-nums">{formatPLN(compareAt as number)}</span>
           )}
         </div>
       </div>
@@ -124,7 +124,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
         </Link>
       ) : (
         <button
-          onClick={() => add({ slug: product.slug, name: product.name, price, image: img })}
+          onClick={() => add({ slug: product.slug, name: product.name, price, regularPrice: compareAt, image: img })}
           className="mt-3 w-full rounded-full border border-ink/15 py-3 text-[0.8rem] font-medium tracking-wide text-ink transition hover:border-ink hover:bg-ink hover:text-paper md:hidden"
         >
           Dodaj do koszyka
