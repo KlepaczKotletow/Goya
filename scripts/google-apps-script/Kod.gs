@@ -1,6 +1,9 @@
 /**
  * Goya — order + newsletter intake for Google Sheets.
  *
+ * Only PAID orders arrive here: the shop posts from the Stripe webhook, after
+ * the money has actually landed. Abandoned carts never reach the sheet.
+ *
  * Paste this into the spreadsheet "Goya — Zamówienia i newsletter":
  *   Rozszerzenia → Apps Script → replace everything with this file → Zapisz
  *   Wdróż → Nowe wdrożenie → typ: Aplikacja internetowa
@@ -22,7 +25,7 @@ var TABS = {
     name: 'Zamówienia',
     headers: ['Data', 'E-mail', 'Imię', 'Nazwisko', 'Ulica i numer', 'Kod',
               'Miasto', 'Telefon', 'Dostawa', 'Paczkomat', 'Produkty',
-              'Suma (zł)', 'Status'],
+              'Suma (zł)', 'Status', 'Nr zamówienia', 'Płatność', 'Stripe'],
   },
   newsletter: {
     name: 'Newsletter',
@@ -44,10 +47,14 @@ function sheetFor(kind) {
   }
   if (sh.getLastRow() === 0) {
     sh.appendRow(cfg.headers);
-    sh.getRange(1, 1, 1, cfg.headers.length).setFontWeight('bold')
-      .setBackground('#B85C38').setFontColor('#FFFFFF');
     sh.setFrozenRows(1);
+  } else if (sh.getLastColumn() < cfg.headers.length) {
+    // Payment columns were added after the first orders came in; widen the
+    // existing header row in place rather than asking anyone to edit it by hand.
+    sh.getRange(1, 1, 1, cfg.headers.length).setValues([cfg.headers]);
   }
+  sh.getRange(1, 1, 1, cfg.headers.length).setFontWeight('bold')
+    .setBackground('#B85C38').setFontColor('#FFFFFF');
   return sh;
 }
 
@@ -81,7 +88,10 @@ function doPost(e) {
       String(body.lockerCode || ''),
       items,
       Number(body.subtotal || 0),
-      'nowe',
+      'opłacone',
+      String(body.orderNumber || ''),
+      String(body.paymentStatus || ''),
+      String(body.stripeSessionId || ''),
     ]);
     return reply({ ok: true });
   } catch (err) {

@@ -22,3 +22,30 @@ export async function supabaseInsert(table: string, row: Record<string, unknown>
   if (!res.ok) console.error(`supabase insert ${table} failed: ${res.status} ${await res.text()}`);
   return res.ok;
 }
+
+/**
+ * Insert a row whose primary key must not repeat.
+ *
+ * PostgREST answers a unique violation with 409, which is how the payment
+ * webhook tells "already handled" apart from "storage is down" without needing
+ * read access the anon key deliberately does not have.
+ */
+export async function supabaseInsertUnique(
+  table: string,
+  row: Record<string, unknown>,
+): Promise<"inserted" | "duplicate" | "failed"> {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      "Content-Type": "application/json",
+      Prefer: "return=minimal",
+    },
+    body: JSON.stringify(row),
+  });
+  if (res.ok) return "inserted";
+  if (res.status === 409) return "duplicate";
+  console.error(`supabase insert ${table} failed: ${res.status} ${await res.text()}`);
+  return "failed";
+}

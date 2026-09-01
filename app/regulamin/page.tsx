@@ -27,7 +27,10 @@ export default function Page() {
       <ul>
         <li>Wysyłka kurierem lub do paczkomatu, realizacja w 1-2 dni robocze.</li>
         <li>Darmowa wysyłka dla każdego zamówienia.</li>
-        <li>Płatność online, BLIK lub za pobraniem.</li>
+        <li>
+          Płatności online obsługuje Stripe Payments Europe Ltd.: BLIK, Przelewy24, karta płatnicza, Apple Pay i Google
+          Pay. Nie oferujemy płatności za pobraniem.
+        </li>
       </ul>
 
       <h2>4. Zwroty i reklamacje</h2>
