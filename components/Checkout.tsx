@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
 import { formatPLN } from "@/lib/pricing";
@@ -9,23 +8,27 @@ import { cn } from "@/lib/utils";
 import { TruckIcon, ReturnIcon, ShieldIcon } from "./icons";
 
 export function Checkout() {
-  const { lines, subtotal, setQty, remove, clear, hydrated } = useCart();
-  const router = useRouter();
+  const { lines, subtotal, setQty, remove, hydrated } = useCart();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   // Paczkomaty are the default delivery expectation in Poland, so offer them
   // first — not having the option at all is a bigger drop-off than the extra field.
   const [delivery, setDelivery] = useState<"paczkomat" | "kurier">("paczkomat");
 
-  // No payment processor wired yet: the order (address + items) is stored via
-  // /api/order so it can be confirmed manually; payment happens off-site for now.
+  // Hands the order to Stripe Checkout, which collects the money (BLIK,
+  // Przelewy24, karta, Apple/Google Pay) and sends the customer back to
+  // /kasa/sukces. Only slugs and quantities travel — the server re-prices the
+  // whole cart from the catalogue, so a tampered localStorage buys nothing.
+  //
+  // The cart is deliberately NOT cleared here: until Stripe confirms payment the
+  // customer may still come back, and an emptied cart would mean starting over.
   const placeOrder = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
     setError(null);
     const f = new FormData(e.currentTarget);
     try {
-      const res = await fetch("/api/order", {
+      const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -38,16 +41,25 @@ export function Checkout() {
           phone: f.get("phone"),
           delivery,
           lockerCode: delivery === "paczkomat" ? String(f.get("lockerCode") ?? "").toUpperCase() : "",
-          items: lines.map((l) => ({ slug: l.slug, name: l.name, variant: l.variant, qty: l.qty, price: l.price })),
-          subtotal,
+          items: lines.map((l) => ({ slug: l.slug, variationId: l.variationId ?? null, qty: l.qty })),
         }),
       });
-      if (!res.ok) throw new Error(String(res.status));
-      clear();
-      router.push("/kasa/sukces");
-    } catch {
+      const data = (await res.json().catch(() => null)) as { url?: string; error?: string } | null;
+      if (res.status === 409) throw new Error("unavailable");
+      if (res.status === 503) throw new Error("payments_unavailable");
+      if (!res.ok || !data?.url) throw new Error("failed");
+      // A full page load, not router.push — the destination is Stripe's domain.
+      window.location.href = data.url;
+    } catch (err) {
       setSubmitting(false);
-      setError("Nie udało się złożyć zamówienia. Spróbuj ponownie za chwilę.");
+      const reason = err instanceof Error ? err.message : "failed";
+      setError(
+        reason === "unavailable"
+          ? "Któraś z pozycji w koszyku przestała być dostępna. Odśwież stronę i spróbuj ponownie."
+          : reason === "payments_unavailable"
+            ? "Płatności są chwilowo niedostępne. Spróbuj ponownie za kilka minut."
+            : "Nie udało się rozpocząć płatności. Spróbuj ponownie za chwilę.",
+      );
     }
   };
 
@@ -153,7 +165,7 @@ export function Checkout() {
           disabled={submitting}
           className="mt-6 w-full rounded-full bg-terracotta py-3.5 text-sm font-medium text-paper transition hover:bg-rust disabled:opacity-60"
         >
-          {submitting ? "Składanie zamówienia…" : `Złóż zamówienie — ${formatPLN(subtotal)}`}
+          {submitting ? "Przekierowanie do płatności…" : `Zapłać — ${formatPLN(subtotal)}`}
         </button>
         {error && (
           <p role="alert" className="mt-3 text-center text-sm text-terracotta">
@@ -161,7 +173,17 @@ export function Checkout() {
           </p>
         )}
         <p className="mt-3 text-center text-[0.7rem] text-stone">
-          Składając zamówienie, akceptujesz regulamin i politykę prywatności.
+          Płatność obsługuje Stripe — BLIK, Przelewy24, karta, Apple&nbsp;Pay i Google&nbsp;Pay.
+          <br />
+          Składając zamówienie, akceptujesz{" "}
+          <Link href="/regulamin" className="link-underline">
+            regulamin
+          </Link>{" "}
+          i{" "}
+          <Link href="/polityka-prywatnosci" className="link-underline">
+            politykę prywatności
+          </Link>
+          .
         </p>
       </form>
 

@@ -17,6 +17,8 @@ export type CartLine = {
   regularPrice?: number | null;
   image: string | null;
   variant?: string | null;
+  /** Which variation was chosen, so the server can re-price and stock-check it. */
+  variationId?: number | null;
   qty: number;
 };
 

@@ -109,6 +109,7 @@ export function ProductView({ product }: { product: Product }) {
       regularPrice: compareAt,
       image: (selected?.image ?? product.images[0]?.src) || null,
       variant: variantLabel ?? null,
+      variationId: selected?.id ?? null,
     });
     setOpen(true);
   };
