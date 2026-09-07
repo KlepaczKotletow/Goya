@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Elements, ExpressCheckoutElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import type { StripeExpressCheckoutElementConfirmEvent } from "@stripe/stripe-js";
@@ -64,20 +64,11 @@ function ExpressInner({ lines, amount, fallback, className }: Props) {
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
+  // The only state that matters: has Stripe confirmed a usable wallet. Until it
+  // has, the fallback holds the space — so there is never a moment with neither
+  // a wallet button nor a working buy button, whatever Stripe does or does not
+  // call. That also makes a silent onReady (no wallet at all) a non-event.
   const [ready, setReady] = useState(false);
-  // Stripe never calls onReady when the visitor has no wallet, so "not ready
-  // yet" and "will never be ready" look identical. Time-box it.
-  const [gaveUp, setGaveUp] = useState(false);
-  const mounted = useRef(true);
-
-  useEffect(() => {
-    mounted.current = true;
-    const t = setTimeout(() => mounted.current && setGaveUp(true), 6000);
-    return () => {
-      mounted.current = false;
-      clearTimeout(t);
-    };
-  }, []);
 
   const options = useMemo(
     () =>
@@ -169,15 +160,20 @@ function ExpressInner({ lines, amount, fallback, className }: Props) {
         <ExpressCheckoutElement
           options={options}
           onReady={({ availablePaymentMethods }) => {
-            // Undefined/empty means this visitor has no wallet at all.
-            if (availablePaymentMethods && Object.keys(availablePaymentMethods).length > 0) setReady(true);
-            else setGaveUp(true);
+            // Stripe reports availability as { applePay: false, googlePay: false,
+            // link: false } — the keys are always present, so counting them says
+            // nothing. Only a truthy VALUE means a usable wallet. Getting this
+            // wrong renders an empty element and suppresses the fallback, i.e.
+            // blank space where the buy button should be.
+            const usable =
+              !!availablePaymentMethods && Object.values(availablePaymentMethods).some(Boolean);
+            setReady(usable);
           }}
-          onLoadError={() => setGaveUp(true)}
+          onLoadError={() => setReady(false)}
           onConfirm={onConfirm}
         />
       </div>
-      {!ready && gaveUp && fallback}
+      {!ready && fallback}
       {ready && (
         <p className="mt-1.5 text-center text-[0.68rem] leading-snug text-stone">
           Szybka płatność – dostawa kurierem. Paczkomat wybierzesz w kasie.
