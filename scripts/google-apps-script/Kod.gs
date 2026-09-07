@@ -23,9 +23,11 @@ var SECRET = 'REPLACE_WITH_THE_SECRET_FROM_VERCEL';
 var TABS = {
   order: {
     name: 'Zamówienia',
-    headers: ['Data', 'E-mail', 'Imię', 'Nazwisko', 'Ulica i numer', 'Kod',
-              'Miasto', 'Telefon', 'Dostawa', 'Paczkomat', 'Produkty',
-              'Suma (zł)', 'Status', 'Nr zamówienia', 'Płatność', 'Stripe'],
+    headers: ['Data', 'Nr zamówienia', 'E-mail', 'Imię', 'Nazwisko', 'Telefon',
+              'Dostawa', 'Paczkomat', 'Adres paczkomatu',
+              'Ulica i numer', 'Mieszkanie', 'Kod', 'Miasto',
+              'Firma', 'NIP', 'Uwagi', 'Newsletter',
+              'Produkty', 'Suma (zł)', 'Status', 'Płatność', 'Stripe'],
   },
   newsletter: {
     name: 'Newsletter',
@@ -48,9 +50,11 @@ function sheetFor(kind) {
   if (sh.getLastRow() === 0) {
     sh.appendRow(cfg.headers);
     sh.setFrozenRows(1);
-  } else if (sh.getLastColumn() < cfg.headers.length) {
-    // Payment columns were added after the first orders came in; widen the
-    // existing header row in place rather than asking anyone to edit it by hand.
+  } else {
+    // Columns have been added and reordered since the first orders came in, so
+    // rewrite the header row every time rather than only when it is too narrow —
+    // a same-width but differently-ordered header would otherwise go unnoticed
+    // and silently mislabel every column.
     sh.getRange(1, 1, 1, cfg.headers.length).setValues([cfg.headers]);
   }
   sh.getRange(1, 1, 1, cfg.headers.length).setFontWeight('bold')
@@ -77,19 +81,25 @@ function doPost(e) {
 
     sheetFor('order').appendRow([
       stamp,
+      String(body.orderNumber || ''),
       String(body.email || ''),
       String(body.firstName || ''),
       String(body.lastName || ''),
-      String(body.street || ''),
-      String(body.postalCode || ''),
-      String(body.city || ''),
       String(body.phone || ''),
       body.delivery === 'kurier' ? 'Kurier' : 'Paczkomat InPost',
       String(body.lockerCode || ''),
+      String(body.lockerAddress || ''),
+      String(body.street || ''),
+      String(body.apartment || ''),
+      String(body.postalCode || ''),
+      String(body.city || ''),
+      String(body.company || ''),
+      String(body.nip || ''),
+      String(body.notes || ''),
+      body.newsletter ? 'tak' : 'nie',
       items,
       Number(body.subtotal || 0),
       'opłacone',
-      String(body.orderNumber || ''),
       String(body.paymentStatus || ''),
       String(body.stripeSessionId || ''),
     ]);
