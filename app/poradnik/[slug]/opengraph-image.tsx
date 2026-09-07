@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { SITE } from "@/content/site";
 import { getGuide, listGuides } from "@/lib/guides";
 
 export const alt = "Goya — poradnik o okularach";
@@ -45,7 +46,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 28, color: "#66635b" }}>
           <span>Jak dobrac dobre okulary</span>
-          <span>goya.pl</span>
+          <span>{SITE.domain}</span>
         </div>
       </div>
     ),

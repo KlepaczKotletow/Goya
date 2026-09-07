@@ -68,16 +68,24 @@ export async function POST(req: Request) {
       })),
       success_url: `${origin}/kasa/sukces?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/kasa?platnosc=anulowana`,
+      // Stripe allows 50 keys of 500 characters each; the cart is the only part
+      // that can grow, and chunkMetadata bounds it to 8 keys.
       metadata: {
         order_number: orderNumber,
         first_name: customer.firstName,
         last_name: customer.lastName,
+        company: customer.company,
+        nip: customer.nip,
         street: customer.street,
+        apartment: customer.apartment,
         postal_code: customer.postalCode,
         city: customer.city,
         phone: customer.phone,
+        notes: customer.notes,
+        newsletter: customer.newsletter ? "tak" : "nie",
         delivery: customer.delivery,
         locker_code: customer.lockerCode,
+        locker_address: customer.lockerAddress,
         ...chunkMetadata("lines_", encodeLines(priced.lines)),
       },
       payment_intent_data: {

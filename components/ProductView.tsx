@@ -6,9 +6,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/types";
 import { priceOf, regularOf, discountOf, formatPLN } from "@/lib/pricing";
 import { useCart } from "@/lib/cart";
-import { Stars } from "./Stars";
 import { HeartIcon, CheckIcon, ChevronIcon, ReturnIcon, ShieldIcon, SunIcon, EyeIcon, PackageIcon, ClothIcon } from "./icons";
-import { PayLogo, useIsAppleDevice } from "./pdp/ExpressPay";
+import { ExpressPay, type ExpressLine } from "./pdp/ExpressPay";
 import { SHAPE_LABELS, CATEGORY_LABELS, INCLUDED } from "@/content/site";
 import { cn, fieldTint } from "@/lib/utils";
 
@@ -28,10 +27,7 @@ export function ProductView({ product }: { product: Product }) {
   const savings = compareAt ? compareAt - price : 0;
   const installment = (price / 3).toLocaleString("pl-PL", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const tint = fieldTint(product.id);
-  const rating = 4.6 + (product.id % 4) * 0.1;
-  const reviewCount = 60 + (product.id % 200);
   const wished = isWished(product.slug);
-  const isApple = useIsAppleDevice();
 
   const variantOptions = useMemo(
     () => product.variations.map((v) => ({ id: v.id, label: v.attributes.map((a) => a.option).join(" / ") || v.sku || "Wariant", image: v.image })),
@@ -39,6 +35,12 @@ export function ProductView({ product }: { product: Product }) {
   );
   const [variantId, setVariantId] = useState<number | null>(variantOptions[0]?.id ?? null);
   const selected = product.variations.find((v) => v.id === variantId) ?? null;
+
+  // What the express button charges for: this product, one unit, current variant.
+  const expressLines: ExpressLine[] = useMemo(
+    () => [{ slug: product.slug, variationId: variantId, qty: 1 }],
+    [product.slug, variantId],
+  );
 
   const gallery: GItem[] = useMemo(() => {
     const items: GItem[] = [];
@@ -281,9 +283,28 @@ export function ProductView({ product }: { product: Product }) {
             <span className="block text-terracotta">{product.name}</span>
           </h1>
 
-          <div className="mt-3 flex items-center gap-2 text-sm">
-            <Stars rating={rating} />
-            <span className="text-stone">{rating.toFixed(1)} · {reviewCount} opinii</span>
+          {/* Was a star rating invented from the product id. Replaced with claims we
+              can actually stand behind, read from the catalogue row.
+              `uv` holds the lens filter category ("kat. 3"), not a UV rating, and is
+              null on 81 products — so it is shown as a category and never as UV.
+              UV400 is claimed for sunglasses only: corrective frames ship without
+              lenses, so the brand's UV promise does not apply to them. */}
+          <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-stone">
+            {product.polarized && (
+              <span className="inline-flex items-center gap-1.5">
+                <CheckIcon className="h-4 w-4 text-sage" /> Filtr polaryzacyjny
+              </span>
+            )}
+            {product.category === "sun" && (
+              <span className="inline-flex items-center gap-1.5">
+                <CheckIcon className="h-4 w-4 text-sage" /> 100% UV400
+              </span>
+            )}
+            {product.uv && (
+              <span className="inline-flex items-center gap-1.5">
+                <CheckIcon className="h-4 w-4 text-sage" /> Filtr {product.uv}
+              </span>
+            )}
           </div>
 
           <div className="mt-5">
@@ -341,13 +362,20 @@ export function ProductView({ product }: { product: Product }) {
             >
               Dodaj do koszyka
             </button>
-            <button
-              onClick={addToBag}
-              aria-label={isApple ? "Kup z Apple Pay" : "Kup z Google Pay"}
-              className="flex h-14 flex-[3] items-center justify-center rounded-full bg-ink text-paper transition hover:-translate-y-px hover:opacity-90"
-            >
-              <PayLogo isApple={isApple} />
-            </button>
+            <div className="flex-[3]">
+              <ExpressPay
+                lines={expressLines}
+                amount={price}
+                fallback={
+                  <button
+                    onClick={addToBag}
+                    className="flex h-14 w-full items-center justify-center rounded-full bg-ink text-[0.95rem] text-paper transition hover:-translate-y-px hover:opacity-90"
+                  >
+                    Kup teraz
+                  </button>
+                }
+              />
+            </div>
           </div>
 
           {/* bundle */}
@@ -490,13 +518,20 @@ export function ProductView({ product }: { product: Product }) {
           Dodaj do koszyka
           <span className="border-l border-paper/30 pl-2.5 text-sm tabular-nums opacity-95">{formatPLN(price)}</span>
         </button>
-        <button
-          onClick={addToBag}
-          aria-label={isApple ? "Kup z Apple Pay" : "Kup z Google Pay"}
-          className="flex flex-[3] items-center justify-center rounded-full bg-ink text-paper shadow-[0_6px_18px_rgba(20,20,19,0.35)] transition active:scale-[0.96]"
-        >
-          <PayLogo isApple={isApple} />
-        </button>
+        <div className="flex-[3]">
+          <ExpressPay
+            lines={expressLines}
+            amount={price}
+            fallback={
+              <button
+                onClick={addToBag}
+                className="flex h-[58px] w-full items-center justify-center rounded-full bg-ink text-sm text-paper shadow-[0_6px_18px_rgba(20,20,19,0.35)] transition active:scale-[0.96]"
+              >
+                Kup teraz
+              </button>
+            }
+          />
+        </div>
       </div>
     </>
   );

@@ -43,7 +43,9 @@ export type PaidOrder = {
   paymentStatus: string;
   email: string; firstName: string; lastName: string; street: string;
   postalCode: string; city: string; phone: string;
-  delivery: "paczkomat" | "kurier"; lockerCode: string;
+  company: string; nip: string; apartment: string; notes: string;
+  newsletter: boolean;
+  delivery: "paczkomat" | "kurier"; lockerCode: string; lockerAddress: string;
   items: { slug: string; name: string; variant: string | null; qty: number; price: number }[];
   subtotal: number;
 };
@@ -80,9 +82,20 @@ export async function recordOrder(order: PaidOrder): Promise<boolean> {
     postal_code: order.postalCode,
     city: order.city,
     phone: order.phone || null,
-    // The Supabase fallback predates delivery options; keep the columns it has
-    // and carry the new fields inside items' sibling payload so nothing is lost.
-    items: { lines: order.items, delivery: order.delivery, lockerCode: order.lockerCode || null },
+    // The Supabase fallback predates delivery options and company data; keep the
+    // columns it has and carry everything newer inside the items payload so no
+    // field is silently dropped when the sheet is unavailable.
+    items: {
+      lines: order.items,
+      delivery: order.delivery,
+      lockerCode: order.lockerCode || null,
+      lockerAddress: order.lockerAddress || null,
+      company: order.company || null,
+      nip: order.nip || null,
+      apartment: order.apartment || null,
+      notes: order.notes || null,
+      newsletter: order.newsletter,
+    },
     subtotal: order.subtotal,
   });
 }

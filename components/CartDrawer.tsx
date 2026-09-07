@@ -7,7 +7,7 @@ import { useCart } from "@/lib/cart";
 import { formatPLN } from "@/lib/pricing";
 import { INCLUDED } from "@/content/site";
 import { cn } from "@/lib/utils";
-import { PayLogo, useIsAppleDevice } from "./pdp/ExpressPay";
+import { ExpressPay, type ExpressLine } from "./pdp/ExpressPay";
 import { CloseIcon, ArrowIcon, CheckIcon, TruckIcon, ReturnIcon, ShieldIcon, BagIcon } from "./icons";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -21,7 +21,12 @@ const TRUST = [
 export function CartDrawer() {
   const { open, setOpen, lines, remove, setQty, subtotal, count } = useCart();
   const reduce = useReducedMotion();
-  const isApple = useIsAppleDevice();
+  // The whole cart, not a single product, is what the express button charges for.
+  const expressLines: ExpressLine[] = lines.map((l) => ({
+    slug: l.slug,
+    variationId: l.variationId ?? null,
+    qty: l.qty,
+  }));
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -225,14 +230,21 @@ export function CartDrawer() {
                       Przejdź do kasy
                       <ArrowIcon className="h-4 w-4 shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" />
                     </Link>
-                    <Link
-                      href="/kasa"
-                      onClick={() => setOpen(false)}
-                      aria-label={isApple ? "Zapłać z Apple Pay" : "Zapłać z Google Pay"}
-                      className="flex h-[3.4rem] flex-[2] items-center justify-center rounded-full bg-ink text-paper transition-transform duration-200 ease-out hover:-translate-y-px active:scale-[0.99]"
-                    >
-                      <PayLogo isApple={isApple} />
-                    </Link>
+                    <div className="flex-[2]">
+                      <ExpressPay
+                        lines={expressLines}
+                        amount={subtotal}
+                        fallback={
+                          <Link
+                            href="/kasa"
+                            onClick={() => setOpen(false)}
+                            className="flex h-[3.4rem] w-full items-center justify-center rounded-full bg-ink text-[0.9rem] text-paper transition-transform duration-200 ease-out hover:-translate-y-px active:scale-[0.99]"
+                          >
+                            Kup teraz
+                          </Link>
+                        }
+                      />
+                    </div>
                   </div>
 
                   <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[0.7rem] text-stone">

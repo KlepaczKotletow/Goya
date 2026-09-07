@@ -2,7 +2,7 @@ import type Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { stripe, readChunked } from "@/lib/stripe";
 import { decodeLines } from "@/lib/order";
-import { claimPayment, recordOrder } from "@/lib/intake";
+import { claimPayment, recordNewsletter, recordOrder } from "@/lib/intake";
 
 // Stripe's word on what actually got paid.
 //
@@ -53,8 +53,14 @@ async function fulfil(session: Stripe.Checkout.Session): Promise<void> {
     postalCode: meta.postal_code ?? "",
     city: meta.city ?? "",
     phone: meta.phone ?? "",
+    company: meta.company ?? "",
+    nip: meta.nip ?? "",
+    apartment: meta.apartment ?? "",
+    notes: meta.notes ?? "",
+    newsletter: meta.newsletter === "tak",
     delivery: meta.delivery === "kurier" ? "kurier" : "paczkomat",
     lockerCode: meta.locker_code ?? "",
+    lockerAddress: meta.locker_address ?? "",
     items: lines.map((l) => ({
       slug: l.slug,
       name: l.name,
@@ -69,6 +75,70 @@ async function fulfil(session: Stripe.Checkout.Session): Promise<void> {
   // down — the claim above keeps the retry from double-posting.
   if (!ok) throw new Error(`order ${orderNumber} could not be recorded`);
   console.log(`stripe webhook: recorded ${orderNumber} (${total} zł)`);
+
+  // Honour the newsletter tick. Deliberately after the order is safely stored
+  // and deliberately not thrown from: consent collected and then ignored is
+  // both a broken feature and a promise we made in the checkout, but a failed
+  // signup must never make Stripe retry a payment we have already recorded.
+  const email = session.customer_details?.email ?? session.customer_email ?? "";
+  if (meta.newsletter === "tak" && email) {
+    const subscribed = await recordNewsletter(email).catch(() => false);
+    if (!subscribed) console.error(`stripe webhook: newsletter signup failed for ${orderNumber}`);
+  }
+}
+
+/**
+ * Express (Apple/Google Pay) orders arrive as a PaymentIntent rather than a
+ * Checkout Session, so they need their own path to the same order log.
+ *
+ * Guarded on metadata.checkout === "express": hosted Checkout also emits
+ * payment_intent.succeeded for every order, and recording both would write each
+ * hosted order twice. claimPayment is a second line of defence, keyed on the
+ * intent id rather than the session id.
+ */
+async function fulfilExpress(intent: Stripe.PaymentIntent): Promise<void> {
+  const meta = (intent.metadata ?? {}) as Record<string, string>;
+  if (meta.checkout !== "express") return;
+
+  const orderNumber = meta.order_number || intent.id;
+  const total = (intent.amount_received || intent.amount) / 100;
+
+  const claim = await claimPayment(intent.id, orderNumber, total);
+  if (claim === "duplicate") {
+    console.log(`stripe webhook: express ${intent.id} already fulfilled, skipping`);
+    return;
+  }
+  if (claim === "failed") {
+    console.error(`stripe webhook: could not claim express ${intent.id}, recording anyway`);
+  }
+
+  const lines = decodeLines(readChunked("lines_", meta));
+  const ok = await recordOrder({
+    orderNumber,
+    stripeSessionId: intent.id,
+    paymentStatus: intent.status,
+    email: meta.email || intent.receipt_email || "",
+    firstName: meta.first_name ?? "",
+    lastName: meta.last_name ?? "",
+    street: meta.street ?? "",
+    postalCode: meta.postal_code ?? "",
+    city: meta.city ?? "",
+    phone: meta.phone ?? "",
+    company: "",
+    nip: "",
+    apartment: "",
+    notes: "",
+    newsletter: false,
+    // The wallet sheet has no locker field, so express is always courier.
+    delivery: "kurier",
+    lockerCode: "",
+    lockerAddress: "",
+    items: lines.map((l) => ({ slug: l.slug, name: l.name, variant: l.variant, qty: l.qty, price: l.price })),
+    subtotal: total,
+  });
+
+  if (!ok) throw new Error(`express order ${orderNumber} could not be recorded`);
+  console.log(`stripe webhook: recorded express ${orderNumber} (${total} zł)`);
 }
 
 export async function POST(req: Request) {
@@ -105,6 +175,14 @@ export async function POST(req: Request) {
         break;
       case "checkout.session.async_payment_failed":
         console.warn(`stripe webhook: async payment failed for ${event.data.object.id}`);
+        break;
+      case "payment_intent.succeeded":
+        // Ignored unless it carries the express marker — hosted Checkout emits
+        // this too, and is already handled above.
+        await fulfilExpress(event.data.object);
+        break;
+      case "payment_intent.payment_failed":
+        console.warn(`stripe webhook: payment failed for ${event.data.object.id}`);
         break;
       default:
         break;

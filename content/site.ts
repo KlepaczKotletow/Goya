@@ -1,18 +1,39 @@
 // Single source of truth for the production origin (no trailing slash).
-// Drives metadataBase, canonicals, sitemap, robots and JSON-LD. Flip to the
-// real domain at launch by setting NEXT_PUBLIC_SITE_URL=https://goya.pl in Vercel.
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://goya-eight.vercel.app").replace(/\/+$/, "");
+// Drives metadataBase, canonicals, sitemap, robots and JSON-LD.
+//
+// The default is the real domain, not the vercel.app one: a missing
+// NEXT_PUBLIC_SITE_URL used to make production publish canonicals pointing at
+// goya-eight.vercel.app, which hands Google the preview host as the canonical
+// site. Defaulting here means the worst case is a preview deployment naming
+// production, which costs nothing, instead of production naming a preview.
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://okularygoya.pl").replace(/\/+$/, "");
 
 /** Build an absolute URL from a site-relative path. */
 export const absUrl = (path = "/") => `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 
+// Seller of record. Same legal entity as the sister store okulary.pl, which has
+// represented the GOYA brand since 2001. Polish law requires these details to be
+// identifiable from the shop (ustawa o świadczeniu usług drogą elektroniczną
+// art. 5, ustawa o prawach konsumenta art. 12), so they are rendered verbatim in
+// the regulamin, the privacy policy and the Organization JSON-LD.
+export const SELLER = {
+  person: "Adrian Głębowski",
+  company: "Adrian Głębowski OKULARY.PL",
+  registeredAddress: "ul. Grunwaldzka 62, 60-311 Poznań",
+  mailingAddress: "ul. Obornicka 229B/9, 60-650 Poznań",
+  nip: "7791485427",
+  regon: "631116790",
+  phones: ["+48 510 130 140", "+48 618 687 352"],
+  hours: "8:00–16:00",
+} as const;
+
 export const SITE = {
   name: "Goya",
-  domain: "goya.pl",
+  domain: "okularygoya.pl",
   tagline: "Spójrz inaczej.",
   shortIntro:
     "Polska marka okularów z filtrem polaryzacyjnym. Czysty design, soczewki, które naprawdę chronią, i cena bez metki za logo.",
-  email: "kontakt@goya.pl",
+  email: "kontakt@okularygoya.pl",
   founded: "2019",
 };
 

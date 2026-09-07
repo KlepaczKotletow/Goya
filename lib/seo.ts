@@ -142,9 +142,12 @@ export function productLd(p: Product) {
     ...(p.material ? { material: p.material } : {}),
     ...(p.frameColors.length ? { color: p.frameColors.join(", ") } : {}),
     brand: { "@type": "Brand", name: "Goya" },
-    // NOTE: per current business decision, rating data is left as-is pending a real
-    // review system. Do not present these as verified until backed by genuine reviews.
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: String(60 + (p.id % 200)) },
+    // No aggregateRating here on purpose. It previously emitted a fixed 4.8 with a
+    // review count derived from the product id — i.e. review markup for reviews that
+    // do not exist. Google treats fabricated review snippets as a structured-data
+    // policy violation, which risks a manual action against the whole domain, not
+    // just the loss of star snippets. Add this back only when it reads from a real
+    // review store, and only for products that actually have reviews.
     offers: {
       "@type": "Offer",
       url: absUrl(`/okulary/${p.slug}`),

@@ -7,6 +7,7 @@
 import { getAllProducts } from "./products";
 import { priceOf } from "./pricing";
 import { absUrl } from "@/content/site";
+import { vCity, vCompany, vEmail, vName, vNip, vPhone, vPostcode, vStreet } from "./validate";
 
 export type CartRequestItem = { slug: string; variationId: number | null; qty: number };
 
@@ -25,12 +26,21 @@ export type Customer = {
   email: string;
   firstName: string;
   lastName: string;
+  /** "" unless the buyer chose Firma. */
+  company: string;
+  /** Digits only, "" unless the buyer chose Firma. */
+  nip: string;
   street: string;
+  apartment: string;
   postalCode: string;
   city: string;
   phone: string;
+  notes: string;
+  newsletter: boolean;
   delivery: "paczkomat" | "kurier";
   lockerCode: string;
+  /** Human-readable locker address, resolved client-side from the map picker. */
+  lockerAddress: string;
 };
 
 /** One cart may not carry more distinct lines than this; the metadata budget is finite. */
@@ -39,25 +49,63 @@ const MAX_QTY = 10;
 
 const str = (v: unknown, max = 200) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 
+/** InPost locker / PaczkoPunkt code. Kept in sync with the client-side pattern. */
+export const LOCKER_CODE = /^[A-Z0-9]{3,12}(-[A-Z0-9]{1,10})?$/;
+
 export function parseCustomer(body: Record<string, unknown>): Customer | null {
   const delivery = body.delivery === "kurier" ? "kurier" : "paczkomat";
+  const isCompany = body.customerType === "company";
+  // A company buying to a Paczkomat still gets an invoice, which needs an
+  // address — so the address is required whenever either condition holds.
+  const needsAddress = delivery === "kurier" || isCompany;
+
+  const locker = (body.locker ?? null) as Record<string, unknown> | null;
+  const lockerAddress =
+    locker && typeof locker.street === "string"
+      ? str(`${locker.street}, ${str(locker.postCode, 10)} ${str(locker.city, 60)}`.trim(), 160)
+      : "";
+
   const customer: Customer = {
     email: str(body.email),
     firstName: str(body.firstName, 80),
     lastName: str(body.lastName, 80),
-    street: str(body.street),
-    postalCode: str(body.postalCode, 12),
-    city: str(body.city, 80),
+    company: isCompany ? str(body.company, 120) : "",
+    nip: isCompany ? str(body.nip, 20).replace(/\D/g, "") : "",
+    street: needsAddress ? str(body.street, 120) : "",
+    apartment: needsAddress ? str(body.apartment, 40) : "",
+    postalCode: needsAddress ? str(body.postalCode, 12) : "",
+    city: needsAddress ? str(body.city, 80) : "",
     phone: str(body.phone, 30),
+    notes: str(body.notes, 300),
+    newsletter: body.newsletter === true,
     delivery,
-    lockerCode: delivery === "paczkomat" ? str(body.lockerCode, 12).toUpperCase() : "",
+    // Truncate above the pattern's ceiling, never below it: clipping first and
+    // validating second would turn a long-but-valid code into an invalid one.
+    lockerCode: delivery === "paczkomat" ? str(body.lockerCode, 24).toUpperCase() : "",
+    lockerAddress: delivery === "paczkomat" ? lockerAddress : "",
   };
 
-  if (!/.+@.+\..+/.test(customer.email)) return null;
-  if (!customer.firstName || !customer.lastName || !customer.street || !customer.postalCode || !customer.city) return null;
-  // A paczkomat order without a locker code cannot be shipped, so reject it here
-  // rather than accepting an order we can't fulfil.
-  if (customer.delivery === "paczkomat" && !/^[A-Z]{3}[0-9]{2,3}[A-Z]?$/.test(customer.lockerCode)) return null;
+  // Re-run the client's own validators here. The browser is not a trust
+  // boundary, and sharing the functions means a rule can never drift between
+  // the two sides.
+  const invalid =
+    vEmail(customer.email) ??
+    vName("imię")(customer.firstName) ??
+    vName("nazwisko")(customer.lastName) ??
+    vPhone(customer.phone) ??
+    (isCompany ? (vCompany(customer.company) ?? vNip(customer.nip)) : null) ??
+    (needsAddress
+      ? (vStreet(customer.street) ?? vPostcode(customer.postalCode) ?? vCity(customer.city))
+      : null);
+  if (invalid) return null;
+
+  // Accepting an order we cannot ship is worse than rejecting it here.
+  if (customer.delivery === "paczkomat" && !LOCKER_CODE.test(customer.lockerCode)) return null;
+
+  // The terms checkbox is a legal record, not a UI nicety — an order that
+  // reaches the server without it was not placed through our checkout.
+  if (body.terms !== true) return null;
+
   return customer;
 }
 
