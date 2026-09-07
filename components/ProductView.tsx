@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/types";
@@ -21,6 +22,7 @@ const BUNDLE_ICONS = [PackageIcon, ClothIcon, ShieldIcon];
 
 export function ProductView({ product }: { product: Product }) {
   const { add, setOpen, toggleWish, isWished } = useCart();
+  const router = useRouter();
   const price = priceOf(product);
   const compareAt = regularOf(product);
   const pct = discountOf(product);
@@ -101,9 +103,10 @@ export function ProductView({ product }: { product: Product }) {
   }, [gallery.length]);
 
   const shown = gallery[Math.min(active, gallery.length - 1)];
-  const addToBag = () => {
+  /** The cart line for the current product + variant. */
+  const cartLine = () => {
     const variantLabel = selected ? variantOptions.find((o) => o.id === selected.id)?.label : null;
-    add({
+    return {
       key: `${product.slug}-${selected?.id ?? "x"}`,
       slug: product.slug,
       name: product.name,
@@ -112,8 +115,23 @@ export function ProductView({ product }: { product: Product }) {
       image: (selected?.image ?? product.images[0]?.src) || null,
       variant: variantLabel ?? null,
       variationId: selected?.id ?? null,
-    });
+    };
+  };
+
+  const addToBag = () => {
+    add(cartLine());
     setOpen(true);
+  };
+
+  /**
+   * What the express slot does when no wallet is available. It used to run
+   * addToBag, i.e. the identical action to the button beside it — two controls,
+   * one behaviour. "Buy now" should mean buy now: add the item and go straight
+   * to checkout, skipping the cart drawer.
+   */
+  const buyNow = () => {
+    add(cartLine());
+    router.push("/kasa");
   };
 
   const isSun = product.category === "sun";
@@ -373,7 +391,7 @@ export function ProductView({ product }: { product: Product }) {
                 amount={price}
                 fallback={
                   <button
-                    onClick={addToBag}
+                    onClick={buyNow}
                     className="flex h-14 w-full items-center justify-center rounded-full bg-ink text-[0.95rem] text-paper transition hover:-translate-y-px hover:opacity-90"
                   >
                     Kup teraz
@@ -529,7 +547,7 @@ export function ProductView({ product }: { product: Product }) {
             amount={price}
             fallback={
               <button
-                onClick={addToBag}
+                onClick={buyNow}
                 className="flex h-[58px] w-full items-center justify-center rounded-full bg-ink text-sm text-paper shadow-[0_6px_18px_rgba(20,20,19,0.35)] transition active:scale-[0.96]"
               >
                 Kup teraz
