@@ -222,7 +222,7 @@ export function CartDrawer() {
                       href="/kasa"
                       onClick={() => setOpen(false)}
                       className={cn(
-                        "group flex h-[3.4rem] flex-[3] items-center justify-center gap-2 rounded-full bg-terracotta text-[0.95rem] font-medium text-paper",
+                        "group flex h-12 flex-[3] items-center justify-center gap-2 rounded-full bg-terracotta text-[0.95rem] font-medium text-paper",
                         "shadow-[0_10px_28px_-10px_rgba(217,119,87,0.6)] transition-[transform,box-shadow,background-color] duration-300 ease-out",
                         "hover:-translate-y-px hover:bg-rust active:scale-[0.99]",
                       )}
@@ -234,11 +234,15 @@ export function CartDrawer() {
                       <ExpressPay
                         lines={expressLines}
                         amount={subtotal}
+                        // Beside "Przejdź do kasy" in a flex row: the caption
+                        // would grow this item only and leave dead space under
+                        // the shorter sibling.
+                        note={false}
                         fallback={
                           <Link
                             href="/kasa"
                             onClick={() => setOpen(false)}
-                            className="flex h-[3.4rem] w-full items-center justify-center rounded-full bg-ink text-[0.9rem] text-paper transition-transform duration-200 ease-out hover:-translate-y-px active:scale-[0.99]"
+                            className="flex h-12 w-full items-center justify-center rounded-full bg-ink text-[0.9rem] text-paper transition-transform duration-200 ease-out hover:-translate-y-px active:scale-[0.99]"
                           >
                             Kup teraz
                           </Link>

@@ -381,7 +381,7 @@ export function ProductView({ product }: { product: Product }) {
           <div className="mt-7 hidden gap-2.5 md:flex">
             <button
               onClick={addToBag}
-              className="h-14 flex-[7] rounded-full bg-terracotta text-[0.95rem] font-medium text-paper shadow-[0_6px_20px_rgba(217,119,87,0.35)] transition hover:-translate-y-px hover:bg-rust"
+              className="h-12 flex-[7] rounded-full bg-terracotta text-[0.95rem] font-medium text-paper shadow-[0_6px_20px_rgba(217,119,87,0.35)] transition hover:-translate-y-px hover:bg-rust"
             >
               Dodaj do koszyka
             </button>
@@ -392,7 +392,7 @@ export function ProductView({ product }: { product: Product }) {
                 fallback={
                   <button
                     onClick={buyNow}
-                    className="flex h-14 w-full items-center justify-center rounded-full bg-ink text-[0.95rem] text-paper transition hover:-translate-y-px hover:opacity-90"
+                    className="flex h-12 w-full items-center justify-center rounded-full bg-ink text-[0.95rem] text-paper transition hover:-translate-y-px hover:opacity-90"
                   >
                     Kup teraz
                   </button>
@@ -531,7 +531,7 @@ export function ProductView({ product }: { product: Product }) {
 
       {/* STICKY MOBILE CTA — 70/30 split, always visible below md */}
       <div
-        className="fixed inset-x-3 z-30 flex h-[58px] gap-2 md:hidden"
+        className="fixed inset-x-3 z-30 flex h-[52px] gap-2 md:hidden"
         style={{ bottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
       >
         <button
@@ -545,10 +545,11 @@ export function ProductView({ product }: { product: Product }) {
           <ExpressPay
             lines={expressLines}
             amount={price}
+            note={false}
             fallback={
               <button
                 onClick={buyNow}
-                className="flex h-[58px] w-full items-center justify-center rounded-full bg-ink text-sm text-paper shadow-[0_6px_18px_rgba(20,20,19,0.35)] transition active:scale-[0.96]"
+                className="flex h-full w-full items-center justify-center rounded-full bg-ink text-sm text-paper shadow-[0_6px_18px_rgba(20,20,19,0.35)] transition active:scale-[0.96]"
               >
                 Kup teraz
               </button>

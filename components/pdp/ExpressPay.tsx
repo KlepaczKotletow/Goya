@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Elements, ExpressCheckoutElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import type { StripeExpressCheckoutElementConfirmEvent } from "@stripe/stripe-js";
@@ -31,13 +31,19 @@ type Props = {
   amount: number;
   /** Rendered when no wallet is available — never leave a dead space. */
   fallback: React.ReactNode;
+  /**
+   * Show the "courier only" caption under the button. Off where the slot sits in
+   * a flex row beside another button: the caption adds ~30px to this item only,
+   * so the whole row grows and leaves dead space under its shorter sibling.
+   */
+  note?: boolean;
   className?: string;
 };
 
 /** Stripe wants the smallest unit; PLN has two decimals. */
 const toMinor = (pln: number) => Math.round(pln * 100);
 
-export function ExpressPay({ lines, amount, fallback, className }: Props) {
+export function ExpressPay({ lines, amount, fallback, note = true, className }: Props) {
   const stripePromise = getStripe();
 
   // No publishable key at build time — the button can never work, so don't
@@ -60,12 +66,12 @@ export function ExpressPay({ lines, amount, fallback, className }: Props) {
         appearance: { variables: { borderRadius: "9999px" } },
       }}
     >
-      <ExpressInner lines={lines} amount={amount} fallback={fallback} className={className} />
+      <ExpressInner lines={lines} amount={amount} fallback={fallback} note={note} className={className} />
     </Elements>
   );
 }
 
-function ExpressInner({ lines, amount, fallback, className }: Props) {
+function ExpressInner({ lines, amount, fallback, note = true, className }: Props) {
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
@@ -74,6 +80,15 @@ function ExpressInner({ lines, amount, fallback, className }: Props) {
   // a wallet button nor a working buy button, whatever Stripe does or does not
   // call. That also makes a silent onReady (no wallet at all) a non-event.
   const [ready, setReady] = useState(false);
+  // Brief grace before painting the fallback. Stripe's ready fires in a few
+  // hundred ms, so on a wallet device Apple Pay wins the race and there is no
+  // visible swap; without this the fallback paints first and is replaced, which
+  // reads as a flicker. The slot has a min-height, so nothing shifts either way.
+  const [settling, setSettling] = useState(true);
+  useEffect(() => {
+    const t = setTimeout(() => setSettling(false), 600);
+    return () => clearTimeout(t);
+  }, []);
 
   const options = useMemo(
     () =>
@@ -82,8 +97,10 @@ function ExpressInner({ lines, amount, fallback, className }: Props) {
         // is what the main checkout is for.
         buttonType: { applePay: "buy", googlePay: "buy" } as const,
         buttonTheme: { applePay: "black", googlePay: "black" } as const,
-        // buttonHeight must be 40-55; Stripe throws outside that range.
-        buttonHeight: 54,
+        // buttonHeight must be 40-55; Stripe throws outside that range. The Apple
+        // Pay wordmark scales with it, so this also sizes the label. Matches the
+        // 48px of the buy buttons it sits beside.
+        buttonHeight: 48,
         // NEVER set overflow:"never" together with maxRows > 0. Stripe rejects the
         // combination — and rejects it SILENTLY: no throw, no console warning, no
         // loaderror, and `ready` never fires. Since the button is only revealed in
@@ -180,7 +197,7 @@ function ExpressInner({ lines, amount, fallback, className }: Props) {
   );
 
   return (
-    <div className={cn("relative min-h-[3.4rem]", className)}>
+    <div className={cn("relative min-h-12", className)}>
       {/* The element must always occupy a real box, because Stripe measures its
           container to lay the wallet button out and will render nothing into a
           zero-height one.
@@ -210,8 +227,8 @@ function ExpressInner({ lines, amount, fallback, className }: Props) {
           onConfirm={onConfirm}
         />
       </div>
-      {!ready && fallback}
-      {ready && (
+      {!ready && !settling && fallback}
+      {ready && note && (
         <p className="mt-1.5 text-center text-[0.68rem] leading-snug text-stone">
           Szybka płatność – dostawa kurierem. Paczkomat wybierzesz w kasie.
         </p>
