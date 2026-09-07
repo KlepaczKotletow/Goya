@@ -153,10 +153,20 @@ function ExpressInner({ lines, amount, fallback, className }: Props) {
   );
 
   return (
-    <div className={cn("relative", className)}>
-      {/* Kept mounted but visually collapsed until ready, so Stripe can measure
-          it. Rendering it conditionally makes the element never initialise. */}
-      <div className={cn(ready ? "block" : "pointer-events-none absolute opacity-0")}>
+    <div className={cn("relative min-h-[3.4rem]", className)}>
+      {/* The element must always occupy a real box, because Stripe measures its
+          container to lay the wallet button out and will render nothing into a
+          zero-height one.
+
+          This was `absolute` with no inset, which collapses to 0 height (measured
+          on production: 176x0, and 0x0 in the cart). So Stripe rendered no button,
+          reported no available wallet, and this component concluded "no wallet"
+          and kept it hidden — hidden because not ready, never ready because
+          hidden. It failed on every device, Apple Pay included.
+
+          `inset-0` pins it to the slot, whose height comes from the fallback
+          rendered underneath, so there is always something real to measure. */}
+      <div className={cn(ready ? "relative" : "pointer-events-none absolute inset-0 opacity-0")}>
         <ExpressCheckoutElement
           options={options}
           onReady={({ availablePaymentMethods }) => {
