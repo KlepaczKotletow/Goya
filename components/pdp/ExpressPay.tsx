@@ -44,6 +44,11 @@ export function ExpressPay({ lines, amount, fallback, className }: Props) {
   // render an Elements tree at all.
   if (!stripePromise) return <>{fallback}</>;
 
+  // Stripe throws "Invalid value for elements(): amount must be greater than 0",
+  // which would take the tree down. An empty cart or an unpriced product is a
+  // normal state, so degrade instead of crashing.
+  if (!Number.isFinite(amount) || amount <= 0) return <>{fallback}</>;
+
   return (
     <Elements
       stripe={stripePromise}
@@ -77,8 +82,14 @@ function ExpressInner({ lines, amount, fallback, className }: Props) {
         // is what the main checkout is for.
         buttonType: { applePay: "buy", googlePay: "buy" } as const,
         buttonTheme: { applePay: "black", googlePay: "black" } as const,
+        // buttonHeight must be 40-55; Stripe throws outside that range.
         buttonHeight: 54,
-        layout: { maxColumns: 1, maxRows: 1, overflow: "never" } as const,
+        // NEVER set overflow:"never" together with maxRows > 0. Stripe rejects the
+        // combination — and rejects it SILENTLY: no throw, no console warning, no
+        // loaderror, and `ready` never fires. Since the button is only revealed in
+        // onReady, that left the wallet permanently hidden on every browser,
+        // iPhone Safari included. Omitting overflow defaults it to "auto".
+        layout: { maxColumns: 1, maxRows: 1 } as const,
         paymentMethods: {
           applePay: "auto",
           googlePay: "auto",
@@ -93,6 +104,22 @@ function ExpressInner({ lines, amount, fallback, className }: Props) {
         billingAddressRequired: true,
         shippingAddressRequired: true,
         allowedShippingCountries: ["PL"],
+        // Required by contract whenever shippingAddressRequired is true: "you must
+        // also supply a valid shippingRates option". It does not affect rendering,
+        // but Apple Pay's sheet needs a shipping method to display and Stripe
+        // supplies no default — the first entry becomes the preselected one.
+        // Delivery is free here, so the amount is 0 gr.
+        shippingRates: [
+          {
+            id: "goya-free",
+            displayName: "Dostawa kurierem",
+            amount: 0,
+            deliveryEstimate: {
+              minimum: { unit: "business_day" as const, value: 1 },
+              maximum: { unit: "business_day" as const, value: 2 },
+            },
+          },
+        ],
       }),
     [],
   );
