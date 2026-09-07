@@ -5,6 +5,7 @@ import type { Map as LeafletMap, Marker } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { LockerPoint } from "@/lib/inpost";
 import { cn } from "@/lib/utils";
+import InPostGeowidget, { hasGeowidget } from "./InPostGeowidget";
 
 // Map + list picker for InPost lockers.
 //
@@ -37,6 +38,14 @@ type Props = {
 };
 
 export default function LockerPicker({ value, onSelect }: Props) {
+  // When a geowidget token is configured, show InPost's own map instead of
+  // ours. Both hand back the same LockerPoint shape, so nothing downstream —
+  // the checkout, the order payload, the webhook — knows which one ran.
+  if (hasGeowidget) return <InPostGeowidget onSelect={onSelect} />;
+  return <SelfHostedPicker value={value} onSelect={onSelect} />;
+}
+
+function SelfHostedPicker({ value, onSelect }: Props) {
   const [query, setQuery] = useState("");
   const [points, setPoints] = useState<LockerPoint[]>([]);
   const [place, setPlace] = useState<string | null>(null);

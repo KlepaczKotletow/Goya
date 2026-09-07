@@ -265,7 +265,12 @@ export function ProductView({ product }: { product: Product }) {
         </div>
 
         {/* INFO — sticky buy box on desktop */}
-        <div className="px-5 pt-6 sm:px-9 md:sticky md:top-24 md:self-start md:px-0 md:pt-0">
+        {/* No horizontal padding here: the parent .wrap already supplies it
+            (20px, 36px from sm). This column used to add px-5 sm:px-9 on top,
+            which doubled it — 40px a side on a 390px phone and 72px between
+            640px and md, eating a fifth of the screen. The gallery above is the
+            one that legitimately breaks out, via -mx-5. */}
+        <div className="pt-6 md:sticky md:top-24 md:self-start md:pt-0">
           <nav className="text-xs text-stone">
             <Link href="/okulary" className="hover:text-ink">Okulary</Link>
             {" / "}

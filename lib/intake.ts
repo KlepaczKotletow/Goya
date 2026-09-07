@@ -82,20 +82,17 @@ export async function recordOrder(order: PaidOrder): Promise<boolean> {
     postal_code: order.postalCode,
     city: order.city,
     phone: order.phone || null,
-    // The Supabase fallback predates delivery options and company data; keep the
-    // columns it has and carry everything newer inside the items payload so no
-    // field is silently dropped when the sheet is unavailable.
-    items: {
-      lines: order.items,
-      delivery: order.delivery,
-      lockerCode: order.lockerCode || null,
-      lockerAddress: order.lockerAddress || null,
-      company: order.company || null,
-      nip: order.nip || null,
-      apartment: order.apartment || null,
-      notes: order.notes || null,
-      newsletter: order.newsletter,
-    },
+    // First-class columns, not buried in the items blob: where the parcel goes
+    // is the one thing you must be able to read at a glance to ship it.
+    delivery: order.delivery,
+    locker_code: order.lockerCode || null,
+    locker_address: order.lockerAddress || null,
+    company: order.company || null,
+    nip: order.nip || null,
+    apartment: order.apartment || null,
+    notes: order.notes || null,
+    newsletter: order.newsletter,
+    items: { lines: order.items },
     subtotal: order.subtotal,
   });
 }
