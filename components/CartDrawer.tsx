@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCart } from "@/lib/cart";
 import { formatPLN } from "@/lib/pricing";
@@ -15,6 +15,23 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 export function CartDrawer() {
   const { open, setOpen, lines, remove, setQty, subtotal, count } = useCart();
   const reduce = useReducedMotion();
+  // Stripe waits until the drawer has stopped moving.
+  //
+  // Mounting <ExpressPay> renders an <Elements> provider, which is what first
+  // calls loadStripe() — and since lib/stripe-client switched to the `/pure`
+  // build (so that js.stripe.com no longer loads on every route), that download
+  // now happens on demand. On demand was landing inside the same commit that
+  // starts this drawer's 0.5s slide: fetching and parsing ~200KB of third-party
+  // script and creating two cross-origin iframes while an animation runs is
+  // exactly the stutter you feel when adding to the bag on a phone.
+  //
+  // The slot is not empty while we wait: the same "Kup teraz" link that is
+  // ExpressPay's own fallback holds the space during the slide. ExpressPay is
+  // then mounted with grace={false}, because its 600ms anti-flicker delay only
+  // exists to cover a mount that races the first paint — keeping it here would
+  // punch a 48px hole in a footer that has already stopped moving, which is the
+  // very flicker it was added to prevent.
+  const [settled, setSettled] = useState(false);
   // The whole cart, not a single product, is what the express button charges for.
   const expressLines: ExpressLine[] = lines.map((l) => ({
     slug: l.slug,
@@ -34,11 +51,21 @@ export function CartDrawer() {
   const savings = Math.max(0, compareTotal - subtotal);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={() => setSettled(false)}>
       {open && (
         <>
+          {/* A plain scrim, not a blurred one.
+              This was `bg-ink/40 backdrop-blur-[3px]`, i.e. a full-viewport
+              backdrop-filter whose opacity framer-motion tweens over 400ms — the
+              single worst thing you can ask iOS Safari to do. Animating opacity
+              on an element that has a backdrop-filter forces the whole blurred
+              region to be re-rasterised every frame, and here the region behind
+              it is a catalogue page of blend groups. It also ran at the same time
+              as the drawer's own slide.
+              The 3px blur was barely legible under 40% ink; 55% ink separates the
+              drawer from the page just as well and composites as a flat fill. */}
           <motion.div
-            className="fixed inset-0 z-50 bg-ink/40 backdrop-blur-[3px]"
+            className="fixed inset-0 z-50 bg-ink/55"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -51,6 +78,7 @@ export function CartDrawer() {
             animate={reduce ? { opacity: 1 } : { x: 0 }}
             exit={reduce ? { opacity: 0 } : { x: "100%" }}
             transition={{ type: "tween", duration: 0.5, ease: EASE }}
+            onAnimationComplete={() => setSettled(true)}
           >
             {/* HEADER */}
             <header className="flex items-center justify-between px-5 pb-3 pt-5">
@@ -246,7 +274,9 @@ export function CartDrawer() {
                       <ArrowIcon className="h-4 w-4 shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" />
                     </Link>
                     <div className="flex-[2]">
+                      {settled ? (
                       <ExpressPay
+                        grace={false}
                         lines={expressLines}
                         amount={subtotal}
                         // Beside "Przejdź do kasy" in a flex row: the caption
@@ -263,6 +293,15 @@ export function CartDrawer() {
                           </Link>
                         }
                       />
+                      ) : (
+                        <Link
+                          href="/kasa"
+                          onClick={() => setOpen(false)}
+                          className="flex h-12 w-full items-center justify-center rounded-full bg-ink text-[0.9rem] text-paper"
+                        >
+                          Kup teraz
+                        </Link>
+                      )}
                     </div>
                   </div>
 

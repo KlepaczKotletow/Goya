@@ -4,16 +4,19 @@ import Link from "next/link";
 import type { Product } from "@/lib/types";
 import { priceOf, regularOf, discountOf, formatPLN } from "@/lib/pricing";
 import { imageAt, fieldTint } from "@/lib/utils";
-import { useCart } from "@/lib/cart";
+import { useCartActions, useIsWished } from "@/lib/cart";
 import { SHAPE_LABELS, COLOR_HEX } from "@/content/site";
 import { HeartIcon } from "./icons";
 
 export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
-  const { toggleWish, isWished, add } = useCart();
+  // Narrow subscriptions on purpose: this component exists once per product, so
+  // it must not re-render when a line is added or the drawer opens. Actions are
+  // stable, and the wishlist hook watches one boolean about this product.
+  const { toggleWish, add } = useCartActions();
   const img = imageAt(product.images, 0);
   const img2 = imageAt(product.images, 1);
   const hasSecond = Boolean(img2 && img2 !== img);
-  const wished = isWished(product.slug);
+  const wished = useIsWished(product.slug);
   const price = priceOf(product);
   const compareAt = regularOf(product);
   const pct = discountOf(product);
@@ -41,12 +44,20 @@ export function ProductCard({ product, priority = false }: { product: Product; p
             />
           )}
           {hasSecond && (
+            /* Hover-swap image, and only where hover exists. It is revealed by
+               group-hover, so on a touch device it can never be seen — but it was
+               still a DOM node, a mix-blend-multiply blend group, and a real image
+               download: measured on the live catalogue, 100 of these on top of the
+               149 primary images. `hidden` gives it no layout box, so iOS neither
+               composites it nor fetches it. The same [@media(hover:hover)] query
+               already gates the hover CTA below, so an iPad — touch, but wider
+               than md — is handled correctly too. */
             <Image
               src={img2 as string}
               alt=""
               fill
               sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
-              className="absolute inset-0 object-contain p-6 mix-blend-multiply opacity-0 transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.05] group-hover:opacity-100"
+              className="absolute inset-0 hidden object-contain p-6 mix-blend-multiply opacity-0 transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.05] group-hover:opacity-100 [@media(hover:hover)]:block"
             />
           )}
           <button
@@ -55,7 +66,14 @@ export function ProductCard({ product, priority = false }: { product: Product; p
               toggleWish(product.slug);
             }}
             aria-label={wished ? "Usuń z ulubionych" : "Dodaj do ulubionych"}
-            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-paper/80 text-ink backdrop-blur transition hover:bg-paper"
+            // No backdrop-blur. This button repeats once per card, so a catalogue
+            // page carried 149 backdrop-filter layers — measured on the live site.
+            // Each one is a region iOS Safari must sample and blur, and they are
+            // also the backdrop that the cart drawer's overlay then has to blur
+            // through, which is why they hurt a flow they are not even part of.
+            // At 90% paper over a tinted card the blur was doing almost nothing
+            // visible anyway; the extra 10% opacity replaces it.
+            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-paper/90 text-ink transition hover:bg-paper"
             style={{ color: wished ? "var(--color-terracotta)" : undefined }}
           >
             <HeartIcon filled={wished} className="h-[17px] w-[17px]" />
