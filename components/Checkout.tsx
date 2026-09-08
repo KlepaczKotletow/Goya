@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useState } from "react";
 import { useCart } from "@/lib/cart";
 import { formatPLN } from "@/lib/pricing";
 import { cn } from "@/lib/utils";
 import { ShieldIcon, TruckIcon, ArrowIcon } from "./icons";
-import { Field, TextArea, Segmented, CheckRow, OptionCard, ReviewRow } from "./checkout/Field";
+import { Field, TextArea, Segmented, CheckRow, OptionCard } from "./checkout/Field";
 import { Summary } from "./checkout/Summary";
 import {
   maskNip, maskPhone, maskPostcode,
@@ -23,36 +23,13 @@ const LockerPicker = dynamic(() => import("./checkout/LockerPicker"), {
 });
 
 type Errors = Record<string, string | null>;
-const STEPS = ["Twoje dane", "Dostawa", "Płatność"] as const;
-
-/**
- * Desktop is a single screen; mobile is three steps. The two differ in what is
- * *visible*, which CSS handles on its own — this hook is read only inside event
- * handlers and effects, where hydration has certainly finished. The server
- * snapshot is `false` so the server HTML and the first client render agree by
- * construction rather than by a user-agent guess.
- */
-function useIsDesktop(): boolean {
-  return useSyncExternalStore(
-    (cb) => {
-      const mq = window.matchMedia("(min-width: 1024px)");
-      mq.addEventListener("change", cb);
-      return () => mq.removeEventListener("change", cb);
-    },
-    () => window.matchMedia("(min-width: 1024px)").matches,
-    () => false,
-  );
-}
 
 export function Checkout() {
   const { lines, subtotal, hydrated } = useCart();
-  const desktop = useIsDesktop();
 
-  const [step, setStep] = useState<0 | 1 | 2>(0);
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [err, setErr] = useState<Errors>({});
-  const headingRef = useRef<HTMLHeadingElement>(null);
 
   // step 0 — who
   const [customerType, setCustomerType] = useState<"private" | "company">("private");
@@ -115,12 +92,6 @@ export function Checkout() {
     [firstName, lastName, email, phone, customerType, company, nip, delivery, locker, needsAddress, street, postalCode, city, terms],
   );
 
-  // Move focus to the new step's heading so a screen reader announces it and a
-  // keyboard user does not land back at the top of the document.
-  useEffect(() => {
-    if (!desktop) headingRef.current?.focus();
-  }, [step, desktop]);
-
   const submit = async () => {
     setSubmitting(true);
     setServerError(null);
@@ -165,11 +136,11 @@ export function Checkout() {
     }
   };
 
+  // One page at every width, so everything is validated at once and the first
+  // thing that failed is scrolled to. `block: "center"` keeps it clear of both
+  // the sticky header above and the sticky action bar below.
   const advance = () => {
-    // On desktop every section is on screen, so everything is validated at once.
-    const found = desktop
-      ? { ...validateStep(0), ...validateStep(1), ...validateStep(2) }
-      : validateStep(step);
+    const found = { ...validateStep(0), ...validateStep(1), ...validateStep(2) };
     setErr((prev) => ({ ...prev, ...found }));
 
     if (Object.values(found).some(Boolean)) {
@@ -179,10 +150,6 @@ export function Checkout() {
           block: "center",
         });
       });
-      return;
-    }
-    if (!desktop && step < 2) {
-      setStep((s) => (s + 1) as 0 | 1 | 2);
       return;
     }
     void submit();
@@ -201,9 +168,6 @@ export function Checkout() {
     );
   }
 
-  // Visibility is CSS, not JS: a ≥1024px viewport shows all three sections on
-  // the first paint, before any JavaScript runs, and a phone shows one.
-  const section = (s: 0 | 1 | 2) => cn(step === s ? "block" : "hidden", "lg:block");
   const deliveryLabel = delivery === "paczkomat" ? "Paczkomat InPost" : "Kurier";
 
   const addressBlock = (
@@ -270,44 +234,22 @@ export function Checkout() {
       </aside>
 
       <div className="lg:col-start-1 lg:row-start-1">
-        {/* Mobile progress. Hidden on desktop, where nothing is sequential.
-            This line is now the step's visible heading — the section <h2> below
-            said exactly the same words 24px further down, so on a phone it is
-            sr-only and this carries the name. */}
-        <div className="mb-4 lg:hidden">
-          <div className="flex gap-1.5" role="presentation">
-            {STEPS.map((s, i) => (
-              <span key={s} className={cn("h-1 flex-1 rounded-full transition-colors", i <= step ? "bg-terracotta" : "bg-line")} />
-            ))}
-          </div>
-          <p className="mt-2 text-[0.82rem] text-stone">
-            <span className="font-medium text-ink">{STEPS[step]}</span> · krok {step + 1} z 3
-          </p>
-        </div>
-
         {/* pb-24 is what guarantees the sticky bar can always be scrolled clear
-            of the content above it. Without it, landing on step 3 of a short
-            phone screen put the bar directly over the mandatory "Akceptuję
-            regulamin" checkbox: elementFromPoint over the checkbox returned the
-            "Kupuję i płacę" button, so the customer tapped buy, got an error
-            about a control they could not see, and only then was it scrolled
-            into view. This is trailing space below the last section, so it does
-            not push any content further down.
-
-            No `key={step}` here: re-keying threw away and rebuilt all three
-            sections on every Dalej/Wróć, which also destroyed the locker map
-            and any search the customer had already run. Every field's value
-            lives in this component's state, so nothing needs resetting. */}
+            of the content above it. Without it, the bar came to rest directly
+            over the mandatory "Akceptuję regulamin" checkbox at the bottom of
+            the form: elementFromPoint over the checkbox returned the "Kupuję i
+            płacę" button, so the customer tapped buy, got an error about a
+            control they could not see, and only then was it scrolled into view.
+            This is trailing space below the last section, so it does not push
+            any content further down. */}
         <div className="pb-24 lg:pb-0">
           {/* ---------- 1 · Twoje dane ---------- */}
-          <section className={section(0)} aria-labelledby="ck-dane">
+          <section aria-labelledby="ck-dane">
             <h2
               id="ck-dane"
-              ref={step === 0 ? headingRef : null}
-              tabIndex={-1}
-              className="sr-only font-display text-2xl outline-none lg:not-sr-only lg:mb-4"
+              className="mb-4 font-display text-xl lg:text-2xl"
             >
-              <span className="hidden lg:inline text-stone">1 · </span>Twoje dane
+              <span className="text-stone">1 · </span>Twoje dane
             </h2>
 
             <div className="mb-4">
@@ -376,14 +318,12 @@ export function Checkout() {
           </section>
 
           {/* ---------- 2 · Dostawa ---------- */}
-          <section className={cn(section(1), "lg:mt-10")} aria-labelledby="ck-dostawa">
+          <section className="mt-9 border-t border-line pt-8 lg:mt-10 lg:border-0 lg:pt-0" aria-labelledby="ck-dostawa">
             <h2
               id="ck-dostawa"
-              ref={step === 1 ? headingRef : null}
-              tabIndex={-1}
-              className="sr-only font-display text-2xl outline-none lg:not-sr-only lg:mb-4"
+              className="mb-4 font-display text-xl lg:text-2xl"
             >
-              <span className="hidden lg:inline text-stone">2 · </span>Dostawa
+              <span className="text-stone">2 · </span>Dostawa
             </h2>
 
             <div role="radiogroup" aria-label="Sposób dostawy" className="grid gap-3">
@@ -428,24 +368,21 @@ export function Checkout() {
                   </div>
                 ) : (
                   <>
-                    {/* Mount the map only once this step is actually on screen.
-                        The three sections are all in the DOM at once and hidden
-                        with CSS, so on a phone the picker used to mount during
-                        step 1: measured on a production build, /kasa loaded
-                        Leaflet, constructed a .leaflet-container at 0x0 and
-                        fetched a map tile before the customer had typed their
-                        name. Initialising Leaflet against a zero-size box also
-                        left it with a stale viewport, so fitBounds computed its
-                        zoom from the wrong dimensions. */}
-                    {(desktop || step === 1) && (
-                      <LockerPicker
-                        value={locker}
-                        onSelect={(p) => {
-                          setLocker(p);
-                          setFieldError("locker")(null);
-                        }}
-                      />
-                    )}
+                    {/* Mounted outright. While the checkout was three steps
+                        this picker was gated on the delivery step being on
+                        screen, because otherwise Leaflet and a map tile loaded
+                        behind a display:none section during step 1. On one page
+                        the map is genuinely part of the page — roughly a screen
+                        below the fold — so there is nothing left to defer that
+                        `dynamic()` does not already handle by keeping Leaflet in
+                        its own chunk. */}
+                    <LockerPicker
+                      value={locker}
+                      onSelect={(p) => {
+                        setLocker(p);
+                        setFieldError("locker")(null);
+                      }}
+                    />
                     {err.locker && (
                       <p role="alert" className="mt-2 text-xs text-terracotta">
                         {err.locker}
@@ -504,14 +441,12 @@ export function Checkout() {
           </section>
 
           {/* ---------- 3 · Płatność ---------- */}
-          <section className={cn(section(2), "lg:mt-10")} aria-labelledby="ck-platnosc">
+          <section className="mt-9 border-t border-line pt-8 lg:mt-10 lg:border-0 lg:pt-0" aria-labelledby="ck-platnosc">
             <h2
               id="ck-platnosc"
-              ref={step === 2 ? headingRef : null}
-              tabIndex={-1}
-              className="sr-only font-display text-2xl outline-none lg:not-sr-only lg:mb-4"
+              className="mb-4 font-display text-xl lg:text-2xl"
             >
-              <span className="hidden lg:inline text-stone">3 · </span>Płatność
+              <span className="text-stone">3 · </span>Płatność
             </h2>
 
             <div className="rounded-[12px] border border-line bg-paper px-4 py-3.5 text-sm text-ink-soft">
@@ -525,34 +460,11 @@ export function Checkout() {
               </p>
             </div>
 
-            {/* Mobile-only recap: on desktop every answer is already on screen. */}
-            {!desktop && (
-              <div className="mt-5 rounded-[12px] border border-line px-4">
-                <ReviewRow label="Odbiorca" onEdit={() => setStep(0)}>
-                  {firstName} {lastName}
-                  {customerType === "company" && company && (
-                    <span className="mt-0.5 block text-xs text-stone">{company} · NIP {nip}</span>
-                  )}
-                  <span className="mt-0.5 block text-xs text-stone">
-                    {email}
-                    {phone && ` · +48 ${phone}`}
-                  </span>
-                </ReviewRow>
-                <ReviewRow label="Dostawa" onEdit={() => setStep(1)}>
-                  {deliveryLabel}
-                  <span className="mt-0.5 block text-xs text-stone">
-                    {delivery === "paczkomat" && locker
-                      ? `${locker.code} · ${locker.street}, ${locker.city}`
-                      : [street, apartment].filter(Boolean).join(", ") + `, ${postalCode} ${city}`}
-                  </span>
-                </ReviewRow>
-                {notes && (
-                  <ReviewRow label="Uwagi" onEdit={() => setStep(1)}>
-                    {notes}
-                  </ReviewRow>
-                )}
-              </div>
-            )}
+            {/* No recap block. It existed because a phone showed one step at a
+                time and could not see the answers behind it; now every answer is
+                on the same page, a few hundred pixels up, and a summary that
+                restates them is 179px of duplication with an "edit" link that
+                scrolls to something already visible. */}
 
             <div className="mt-5 grid gap-1">
               {/* Two separate consents, and the newsletter box stays unticked:
@@ -593,44 +505,31 @@ export function Checkout() {
               {serverError}
             </p>
           )}
-          {/* "Wróć" shares the row with the primary action instead of stacking
-              under it. Stacked, this bar measured 123px on steps 2 and 3 — on a
-              375x667 phone that is a fifth of the screen permanently parked over
-              the map and the consent checkboxes. */}
-          <div className="flex items-center gap-2.5">
-            {!desktop && step > 0 && (
-              <button
-                type="button"
-                onClick={() => setStep((s) => (s - 1) as 0 | 1 | 2)}
-                className="h-[3.25rem] shrink-0 rounded-full border border-line px-5 text-sm text-stone transition-colors hover:border-ink hover:text-ink"
-              >
-                Wróć
-              </button>
+          {/* One action, at every width. There is no "Dalej" and no "Wróć" any
+              more: the form is a single page, so the only thing left to do is
+              buy. */}
+          <button
+            type="button"
+            onClick={advance}
+            disabled={submitting}
+            aria-label={submitting ? "Przekierowujemy do płatności" : undefined}
+            className={cn(
+              "group flex h-[3.25rem] w-full items-center justify-center gap-2 rounded-full bg-terracotta text-[0.95rem] font-medium text-paper",
+              "shadow-[0_10px_28px_-10px_rgba(217,119,87,0.6)] transition hover:-translate-y-px hover:bg-rust",
+              "active:scale-[0.995] disabled:opacity-60 disabled:hover:translate-y-0",
             )}
-            <button
-              type="button"
-              onClick={advance}
-              disabled={submitting}
-              aria-label={submitting ? "Przekierowujemy do płatności" : undefined}
-              className={cn(
-                "group flex h-[3.25rem] flex-1 items-center justify-center gap-2 rounded-full bg-terracotta text-[0.95rem] font-medium text-paper",
-                "shadow-[0_10px_28px_-10px_rgba(217,119,87,0.6)] transition hover:-translate-y-px hover:bg-rust",
-                "active:scale-[0.995] disabled:opacity-60 disabled:hover:translate-y-0",
-              )}
-            >
-              {submitting ? (
-                <span className="h-5 w-5 animate-spin rounded-full border-2 border-paper/30 border-t-paper" />
-              ) : (
-                <>
-                  <span className="lg:hidden">{step < 2 ? "Dalej" : "Kupuję i płacę"}</span>
-                  <span className="hidden lg:inline">Kupuję i płacę</span>
-                  <span aria-hidden="true">·</span>
-                  <span className="tabular-nums">{formatPLN(subtotal)}</span>
-                  <ArrowIcon className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
-                </>
-              )}
-            </button>
-          </div>
+          >
+            {submitting ? (
+              <span className="h-5 w-5 animate-spin rounded-full border-2 border-paper/30 border-t-paper" />
+            ) : (
+              <>
+                Kupuję i płacę
+                <span aria-hidden="true">·</span>
+                <span className="tabular-nums">{formatPLN(subtotal)}</span>
+                <ArrowIcon className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+              </>
+            )}
+          </button>
         </div>
 
         {/* One line, not three stacked rows. As three rows this block was 88px

@@ -278,20 +278,3 @@ export function OptionCard({
     </button>
   );
 }
-
-/** Used by the mobile review block: a labelled row with a "Zmień" jump. */
-export function ReviewRow({
-  label, onEdit, children,
-}: {
-  label: string; onEdit: () => void; children: React.ReactNode;
-}) {
-  return (
-    <div className="flex gap-4 border-b border-line py-3 last:border-0">
-      <span className="w-24 shrink-0 text-xs text-stone">{label}</span>
-      <span className="min-w-0 flex-1 text-sm text-ink">{children}</span>
-      <button type="button" onClick={onEdit} className="shrink-0 self-start text-xs text-stone underline underline-offset-2 hover:text-ink">
-        Zmień
-      </button>
-    </div>
-  );
-}
