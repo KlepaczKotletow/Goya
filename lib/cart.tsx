@@ -38,7 +38,31 @@ type CartApi = {
   subtotal: number;
 };
 
-const Ctx = createContext<CartApi | null>(null);
+/**
+ * Three contexts, not one.
+ *
+ * Everything used to live in a single value, so any change to it re-rendered
+ * every `useCart()` consumer. On the catalogue that is one ProductCard per
+ * product — measured on the live site: 136 of them. Adding a pair to the bag, or
+ * merely opening and closing the drawer, re-rendered all 136, on a phone, in the
+ * same frame as the drawer's opening animation. That is the "adding to cart is
+ * not smooth" the shop actually feels.
+ *
+ * Split by how often each part changes:
+ *   Actions   — stable for the life of the app; a component that only acts on
+ *               the cart never re-renders because of it.
+ *   Wishlist  — changes only when a heart is tapped.
+ *   State     — lines / open / totals: changes on every cart mutation.
+ *
+ * A card needs actions plus one boolean about itself, so it now subscribes to
+ * the two quiet contexts and is untouched by add/remove/open entirely.
+ */
+type CartActions = Pick<CartApi, "add" | "remove" | "setQty" | "clear" | "toggleWish" | "setOpen">;
+type CartState = Omit<CartApi, keyof CartActions | "wishlist" | "isWished">;
+
+const ActionsCtx = createContext<CartActions | null>(null);
+const WishlistCtx = createContext<string[] | null>(null);
+const StateCtx = createContext<CartState | null>(null);
 const LS_KEY = "goya-cart-v1";
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
@@ -95,21 +119,55 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     (slug: string) => setWishlist((p) => (p.includes(slug) ? p.filter((s) => s !== slug) : [...p, slug])),
     [],
   );
-  const isWished = useCallback((slug: string) => wishlist.includes(slug), [wishlist]);
-
   const count = lines.reduce((s, l) => s + l.qty, 0);
   const subtotal = lines.reduce((s, l) => s + l.price * l.qty, 0);
 
-  const value = useMemo<CartApi>(
-    () => ({ lines, wishlist, open, hydrated, add, remove, setQty, clear, toggleWish, isWished, setOpen, count, subtotal }),
-    [lines, wishlist, open, hydrated, add, remove, setQty, clear, toggleWish, isWished, count, subtotal],
+  // Every member is stable, so this object is created once and never again —
+  // that is what keeps action-only consumers out of the re-render.
+  const actions = useMemo<CartActions>(
+    () => ({ add, remove, setQty, clear, toggleWish, setOpen }),
+    [add, remove, setQty, clear, toggleWish],
   );
 
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+  const state = useMemo<CartState>(
+    () => ({ lines, open, hydrated, count, subtotal }),
+    [lines, open, hydrated, count, subtotal],
+  );
+
+  return (
+    <ActionsCtx.Provider value={actions}>
+      <WishlistCtx.Provider value={wishlist}>
+        <StateCtx.Provider value={state}>{children}</StateCtx.Provider>
+      </WishlistCtx.Provider>
+    </ActionsCtx.Provider>
+  );
 }
 
-export function useCart(): CartApi {
-  const c = useContext(Ctx);
-  if (!c) throw new Error("useCart must be used within CartProvider");
+/** Cart mutators only. Subscribing to this never causes a re-render. */
+export function useCartActions(): CartActions {
+  const c = useContext(ActionsCtx);
+  if (!c) throw new Error("useCartActions must be used within CartProvider");
   return c;
+}
+
+/** Is this one product wished? Re-renders only when the wishlist changes. */
+export function useIsWished(slug: string): boolean {
+  const w = useContext(WishlistCtx);
+  if (!w) throw new Error("useIsWished must be used within CartProvider");
+  return w.includes(slug);
+}
+
+/**
+ * The whole cart. Re-renders on any change, so reach for the narrow hooks above
+ * in anything that renders once per product.
+ */
+export function useCart(): CartApi {
+  const actions = useContext(ActionsCtx);
+  const wishlist = useContext(WishlistCtx);
+  const state = useContext(StateCtx);
+  if (!actions || !wishlist || !state) throw new Error("useCart must be used within CartProvider");
+  return useMemo(
+    () => ({ ...state, ...actions, wishlist, isWished: (slug: string) => wishlist.includes(slug) }),
+    [state, actions, wishlist],
+  );
 }

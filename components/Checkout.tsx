@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useCart } from "@/lib/cart";
 import { formatPLN } from "@/lib/pricing";
 import { cn } from "@/lib/utils";
@@ -24,12 +24,51 @@ const LockerPicker = dynamic(() => import("./checkout/LockerPicker"), {
 
 type Errors = Record<string, string | null>;
 
+/**
+ * True once `el` has come within `rootMargin` of the viewport, and stays true.
+ *
+ * Used for the locker map. Measured on the live checkout at 375x667: the map
+ * slot sits 1044px down the document, i.e. 377px below the fold, and mounting
+ * it costs a three-hop serial waterfall after hydration — the picker chunk and
+ * its CSS, then Leaflet itself (~45KB brotli / 148KB parsed), then four
+ * OpenStreetMap tiles totalling ~195KB from a host the page has never contacted,
+ * so a cold DNS + TCP + TLS handshake as well. All of it to draw a zoom-5 view
+ * of Poland from which no locker can be picked. On a phone on cellular that is
+ * the checkout's biggest single load, and it is behind the fold.
+ *
+ * The margin is 200px, and that number is load-bearing. A first attempt used
+ * 300px and appeared not to defer at all. It was not broken: traced frame by
+ * frame at 375x667, the slot sits 261px below the fold on the first painted
+ * frame and only settles to 377px about 300ms later, as the fields and summary
+ * above it finish laying out. 261 is inside a 300px margin, so the observer
+ * fired correctly — on a measurement that was about to become stale, and
+ * `near` latches. 200px sits below both the initial and the settled distance,
+ * so it arms on scroll instead of on a transient layout.
+ */
+function useNearViewport(el: HTMLElement | null, rootMargin = "200px"): boolean {
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    if (!el || near) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) setNear(true);
+      },
+      { rootMargin },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [el, near, rootMargin]);
+  return near;
+}
+
 export function Checkout() {
   const { lines, subtotal, hydrated } = useCart();
 
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [err, setErr] = useState<Errors>({});
+  const [lockerSlot, setLockerSlot] = useState<HTMLDivElement | null>(null);
+  const lockerNear = useNearViewport(lockerSlot);
 
   // step 0 — who
   const [customerType, setCustomerType] = useState<"private" | "company">("private");
@@ -368,21 +407,23 @@ export function Checkout() {
                   </div>
                 ) : (
                   <>
-                    {/* Mounted outright. While the checkout was three steps
-                        this picker was gated on the delivery step being on
-                        screen, because otherwise Leaflet and a map tile loaded
-                        behind a display:none section during step 1. On one page
-                        the map is genuinely part of the page — roughly a screen
-                        below the fold — so there is nothing left to defer that
-                        `dynamic()` does not already handle by keeping Leaflet in
-                        its own chunk. */}
-                    <LockerPicker
-                      value={locker}
-                      onSelect={(p) => {
-                        setLocker(p);
-                        setFieldError("locker")(null);
-                      }}
-                    />
+                    {/* Mounted a screenful before it is reached — see
+                        useNearViewport for the measured cost. The placeholder is
+                        the same box dynamic()'s own `loading` uses, so the swap
+                        shifts nothing, and it happens off-screen anyway. */}
+                    <div ref={setLockerSlot}>
+                      {lockerNear ? (
+                        <LockerPicker
+                          value={locker}
+                          onSelect={(p) => {
+                            setLocker(p);
+                            setFieldError("locker")(null);
+                          }}
+                        />
+                      ) : (
+                        <div className="mt-3 h-[280px] rounded-[14px] bg-linen/60 md:h-[320px]" />
+                      )}
+                    </div>
                     {err.locker && (
                       <p role="alert" className="mt-2 text-xs text-terracotta">
                         {err.locker}
@@ -494,10 +535,14 @@ export function Checkout() {
             layout, so it cannot cover content. */}
         <div
           className={cn(
-            "sticky bottom-0 z-30 -mx-5 mt-6 border-t border-line bg-bg/92 px-5 pt-3 backdrop-blur-md",
+            // bg-bg/96, not bg-bg/92 + backdrop-blur-md: this bar is stuck to the
+            // bottom of a scrolling page, so the blur was re-rasterised every
+            // frame of every scroll — over the Leaflet map, which is the most
+            // expensive backdrop on the page.
+            "sticky bottom-0 z-30 -mx-5 mt-6 border-t border-line bg-bg/96 px-5 pt-3",
             "pb-[calc(0.75rem+env(safe-area-inset-bottom))]",
             "sm:-mx-9 sm:px-9",
-            "lg:static lg:mx-0 lg:mt-8 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none",
+            "lg:static lg:mx-0 lg:mt-8 lg:border-0 lg:bg-transparent lg:p-0",
           )}
         >
           {serverError && (

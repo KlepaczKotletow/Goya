@@ -71,7 +71,11 @@ export function Header() {
         className={cn(
           "sticky top-0 z-40 transition-[transform,background-color,border-color] duration-300",
           hidden ? "-translate-y-full" : "translate-y-0",
-          scrolled ? "border-b border-line bg-bg/90 backdrop-blur-md" : "border-b border-transparent bg-bg",
+          // No backdrop-blur. This header is sticky, so on iOS Safari the blurred
+          // region was re-rasterised on every scroll frame — and while the cart
+          // drawer's scrim was open it became a blur nested inside another blur.
+          // At 96% the cream reads as the same soft bar without the filter.
+          scrolled ? "border-b border-line bg-bg/96" : "border-b border-transparent bg-bg",
         )}
       >
         <div className={cn("wrap relative flex items-center justify-between gap-4 transition-[height] duration-300", scrolled ? "h-14 md:h-16" : "h-16 md:h-20")}>

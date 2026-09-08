@@ -37,13 +37,21 @@ type Props = {
    * so the whole row grows and leaves dead space under its shorter sibling.
    */
   note?: boolean;
+  /**
+   * Wait 600ms before painting the fallback. That grace exists to stop a mount
+   * that races the first paint from flashing the fallback and then swapping it
+   * for a wallet button. A caller that already delays mounting until its own
+   * animation has finished has nothing to hide, and the grace would instead
+   * leave a visible hole while the page sits still — so it can opt out.
+   */
+  grace?: boolean;
   className?: string;
 };
 
 /** Stripe wants the smallest unit; PLN has two decimals. */
 const toMinor = (pln: number) => Math.round(pln * 100);
 
-export function ExpressPay({ lines, amount, fallback, note = true, className }: Props) {
+export function ExpressPay({ lines, amount, fallback, note = true, grace = true, className }: Props) {
   const stripePromise = getStripe();
 
   // No publishable key at build time — the button can never work, so don't
@@ -66,12 +74,12 @@ export function ExpressPay({ lines, amount, fallback, note = true, className }: 
         appearance: { variables: { borderRadius: "9999px" } },
       }}
     >
-      <ExpressInner lines={lines} amount={amount} fallback={fallback} note={note} className={className} />
+      <ExpressInner lines={lines} amount={amount} fallback={fallback} note={note} grace={grace} className={className} />
     </Elements>
   );
 }
 
-function ExpressInner({ lines, amount, fallback, note = true, className }: Props) {
+function ExpressInner({ lines, amount, fallback, note = true, grace = true, className }: Props) {
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
@@ -84,11 +92,12 @@ function ExpressInner({ lines, amount, fallback, note = true, className }: Props
   // hundred ms, so on a wallet device Apple Pay wins the race and there is no
   // visible swap; without this the fallback paints first and is replaced, which
   // reads as a flicker. The slot has a min-height, so nothing shifts either way.
-  const [settling, setSettling] = useState(true);
+  const [settling, setSettling] = useState(grace);
   useEffect(() => {
+    if (!grace) return;
     const t = setTimeout(() => setSettling(false), 600);
     return () => clearTimeout(t);
-  }, []);
+  }, [grace]);
 
   const options = useMemo(
     () =>
