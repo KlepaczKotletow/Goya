@@ -8,7 +8,19 @@
 //
 // NEXT_PUBLIC_* is inlined at build time, so changing this key in Vercel needs a
 // redeploy, not just a save.
-import { loadStripe, type Stripe } from "@stripe/stripe-js";
+//
+// `/pure`, not the package root. The root module injects Stripe.js from a
+// top-level `Promise.resolve().then(...)`, i.e. as an import side effect — so
+// merely importing this file downloaded js.stripe.com and opened its
+// fraud-detection iframe on EVERY route, homepage included, and did it even
+// when no key is configured and the guard below returns null. Measured on a
+// production build: `js.stripe.com/dahlia/stripe.js` + an `m-outer` iframe on
+// `/` with no publishable key present. The `/pure` build only loads the script
+// when loadStripe() is actually called.
+import { loadStripe } from "@stripe/stripe-js/pure";
+// Types only — `import type` is erased at compile time, so this does not pull
+// the side-effecting root module back in.
+import type { Stripe } from "@stripe/stripe-js";
 
 const KEY = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 

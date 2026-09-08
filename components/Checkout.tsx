@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "
 import { useCart } from "@/lib/cart";
 import { formatPLN } from "@/lib/pricing";
 import { cn } from "@/lib/utils";
-import { ShieldIcon, TruckIcon, ReturnIcon, ArrowIcon } from "./icons";
+import { ShieldIcon, TruckIcon, ArrowIcon } from "./icons";
 import { Field, TextArea, Segmented, CheckRow, OptionCard, ReviewRow } from "./checkout/Field";
 import { Summary } from "./checkout/Summary";
 import {
@@ -213,7 +213,8 @@ export function Checkout() {
         hint="np. Kwiatowa 12" autoComplete="address-line1" maxLength={120}
         validate={vStreet} error={err.street} setError={setFieldError("street")}
       />
-      <div className="grid gap-3 sm:grid-cols-[9rem_1fr]">
+      {/* A 6-character postcode does not need a full row of its own. */}
+      <div className="grid grid-cols-[7rem_1fr] gap-3 sm:grid-cols-[9rem_1fr]">
         <Field
           label="Kod pocztowy" value={postalCode} name="postalCode"
           onChange={(v) => {
@@ -269,26 +270,42 @@ export function Checkout() {
       </aside>
 
       <div className="lg:col-start-1 lg:row-start-1">
-        {/* Mobile progress. Hidden on desktop, where nothing is sequential. */}
-        <div className="mb-6 lg:hidden">
+        {/* Mobile progress. Hidden on desktop, where nothing is sequential.
+            This line is now the step's visible heading — the section <h2> below
+            said exactly the same words 24px further down, so on a phone it is
+            sr-only and this carries the name. */}
+        <div className="mb-4 lg:hidden">
           <div className="flex gap-1.5" role="presentation">
             {STEPS.map((s, i) => (
               <span key={s} className={cn("h-1 flex-1 rounded-full transition-colors", i <= step ? "bg-terracotta" : "bg-line")} />
             ))}
           </div>
-          <p className="mt-2 text-xs text-stone">
-            Krok {step + 1} z 3 · {STEPS[step]}
+          <p className="mt-2 text-[0.82rem] text-stone">
+            <span className="font-medium text-ink">{STEPS[step]}</span> · krok {step + 1} z 3
           </p>
         </div>
 
-        <div key={step}>
+        {/* pb-24 is what guarantees the sticky bar can always be scrolled clear
+            of the content above it. Without it, landing on step 3 of a short
+            phone screen put the bar directly over the mandatory "Akceptuję
+            regulamin" checkbox: elementFromPoint over the checkbox returned the
+            "Kupuję i płacę" button, so the customer tapped buy, got an error
+            about a control they could not see, and only then was it scrolled
+            into view. This is trailing space below the last section, so it does
+            not push any content further down.
+
+            No `key={step}` here: re-keying threw away and rebuilt all three
+            sections on every Dalej/Wróć, which also destroyed the locker map
+            and any search the customer had already run. Every field's value
+            lives in this component's state, so nothing needs resetting. */}
+        <div className="pb-24 lg:pb-0">
           {/* ---------- 1 · Twoje dane ---------- */}
           <section className={section(0)} aria-labelledby="ck-dane">
             <h2
               id="ck-dane"
               ref={step === 0 ? headingRef : null}
               tabIndex={-1}
-              className="mb-4 font-display text-2xl outline-none"
+              className="sr-only font-display text-2xl outline-none lg:not-sr-only lg:mb-4"
             >
               <span className="hidden lg:inline text-stone">1 · </span>Twoje dane
             </h2>
@@ -306,7 +323,11 @@ export function Checkout() {
             </div>
 
             <div className="grid gap-3">
-              <div className="grid gap-3 sm:grid-cols-2">
+              {/* Two short words side by side even on a phone. Stacked they
+                  spent 128px of a 375px screen; at 375 each column is still
+                  161px, which fits "Nazwisko" at both its resting and lifted
+                  label sizes. */}
+              <div className="grid grid-cols-2 gap-3">
                 <Field
                   label="Imię" value={firstName} onChange={setFirstName} name="firstName"
                   autoComplete="given-name" autoCapitalize="words" maxLength={80}
@@ -360,7 +381,7 @@ export function Checkout() {
               id="ck-dostawa"
               ref={step === 1 ? headingRef : null}
               tabIndex={-1}
-              className="mb-4 font-display text-2xl outline-none"
+              className="sr-only font-display text-2xl outline-none lg:not-sr-only lg:mb-4"
             >
               <span className="hidden lg:inline text-stone">2 · </span>Dostawa
             </h2>
@@ -407,13 +428,24 @@ export function Checkout() {
                   </div>
                 ) : (
                   <>
-                    <LockerPicker
-                      value={locker}
-                      onSelect={(p) => {
-                        setLocker(p);
-                        setFieldError("locker")(null);
-                      }}
-                    />
+                    {/* Mount the map only once this step is actually on screen.
+                        The three sections are all in the DOM at once and hidden
+                        with CSS, so on a phone the picker used to mount during
+                        step 1: measured on a production build, /kasa loaded
+                        Leaflet, constructed a .leaflet-container at 0x0 and
+                        fetched a map tile before the customer had typed their
+                        name. Initialising Leaflet against a zero-size box also
+                        left it with a stale viewport, so fitBounds computed its
+                        zoom from the wrong dimensions. */}
+                    {(desktop || step === 1) && (
+                      <LockerPicker
+                        value={locker}
+                        onSelect={(p) => {
+                          setLocker(p);
+                          setFieldError("locker")(null);
+                        }}
+                      />
+                    )}
                     {err.locker && (
                       <p role="alert" className="mt-2 text-xs text-terracotta">
                         {err.locker}
@@ -477,7 +509,7 @@ export function Checkout() {
               id="ck-platnosc"
               ref={step === 2 ? headingRef : null}
               tabIndex={-1}
-              className="mb-4 font-display text-2xl outline-none"
+              className="sr-only font-display text-2xl outline-none lg:not-sr-only lg:mb-4"
             >
               <span className="hidden lg:inline text-stone">3 · </span>Płatność
             </h2>
@@ -561,46 +593,58 @@ export function Checkout() {
               {serverError}
             </p>
           )}
-          <button
-            type="button"
-            onClick={advance}
-            disabled={submitting}
-            aria-label={submitting ? "Przekierowujemy do płatności" : undefined}
-            className={cn(
-              "group flex h-[3.4rem] w-full items-center justify-center gap-2 rounded-full bg-terracotta text-[0.95rem] font-medium text-paper",
-              "shadow-[0_10px_28px_-10px_rgba(217,119,87,0.6)] transition hover:-translate-y-px hover:bg-rust",
-              "active:scale-[0.995] disabled:opacity-60 disabled:hover:translate-y-0",
+          {/* "Wróć" shares the row with the primary action instead of stacking
+              under it. Stacked, this bar measured 123px on steps 2 and 3 — on a
+              375x667 phone that is a fifth of the screen permanently parked over
+              the map and the consent checkboxes. */}
+          <div className="flex items-center gap-2.5">
+            {!desktop && step > 0 && (
+              <button
+                type="button"
+                onClick={() => setStep((s) => (s - 1) as 0 | 1 | 2)}
+                className="h-[3.25rem] shrink-0 rounded-full border border-line px-5 text-sm text-stone transition-colors hover:border-ink hover:text-ink"
+              >
+                Wróć
+              </button>
             )}
-          >
-            {submitting ? (
-              <span className="h-5 w-5 animate-spin rounded-full border-2 border-paper/30 border-t-paper" />
-            ) : (
-              <>
-                <span className="lg:hidden">{step < 2 ? "Dalej" : "Kupuję i płacę"}</span>
-                <span className="hidden lg:inline">Kupuję i płacę</span>
-                <span aria-hidden="true">·</span>
-                <span className="tabular-nums">{formatPLN(subtotal)}</span>
-                <ArrowIcon className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
-              </>
-            )}
-          </button>
-
-          {!desktop && step > 0 && (
             <button
               type="button"
-              onClick={() => setStep((s) => (s - 1) as 0 | 1 | 2)}
-              className="mt-2 w-full py-2 text-center text-sm text-stone hover:text-ink"
+              onClick={advance}
+              disabled={submitting}
+              aria-label={submitting ? "Przekierowujemy do płatności" : undefined}
+              className={cn(
+                "group flex h-[3.25rem] flex-1 items-center justify-center gap-2 rounded-full bg-terracotta text-[0.95rem] font-medium text-paper",
+                "shadow-[0_10px_28px_-10px_rgba(217,119,87,0.6)] transition hover:-translate-y-px hover:bg-rust",
+                "active:scale-[0.995] disabled:opacity-60 disabled:hover:translate-y-0",
+              )}
             >
-              Wróć
+              {submitting ? (
+                <span className="h-5 w-5 animate-spin rounded-full border-2 border-paper/30 border-t-paper" />
+              ) : (
+                <>
+                  <span className="lg:hidden">{step < 2 ? "Dalej" : "Kupuję i płacę"}</span>
+                  <span className="hidden lg:inline">Kupuję i płacę</span>
+                  <span aria-hidden="true">·</span>
+                  <span className="tabular-nums">{formatPLN(subtotal)}</span>
+                  <ArrowIcon className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+                </>
+              )}
             </button>
-          )}
+          </div>
         </div>
 
-        <div className="mt-5 grid gap-2.5 text-xs text-ink-soft lg:hidden">
-          <p className="flex items-center gap-2.5"><TruckIcon className="h-4 w-4 shrink-0 text-stone" /> Darmowa dostawa · 1–2 dni robocze</p>
-          <p className="flex items-center gap-2.5"><ReturnIcon className="h-4 w-4 shrink-0 text-stone" /> 30 dni na zwrot bez podania przyczyny</p>
-          <p className="flex items-center gap-2.5"><ShieldIcon className="h-4 w-4 shrink-0 text-stone" /> 24 miesiące gwarancji</p>
-        </div>
+        {/* One line, not three stacked rows. As three rows this block was 88px
+            tall and sat below the sticky bar — measured 135px past the fold on
+            an 844px phone, i.e. reassurance nobody ever saw. The same three
+            promises still get a row each in the desktop summary rail. */}
+        <p className="mt-3 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[0.7rem] text-stone lg:hidden">
+          <TruckIcon className="h-3.5 w-3.5 shrink-0" />
+          Darmowa dostawa
+          <span aria-hidden="true">·</span>
+          30 dni na zwrot
+          <span aria-hidden="true">·</span>
+          24 mies. gwarancji
+        </p>
       </div>
     </div>
   );

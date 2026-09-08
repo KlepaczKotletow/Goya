@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/types";
 import { priceOf, regularOf, discountOf, formatPLN } from "@/lib/pricing";
@@ -20,9 +20,37 @@ type GItem = { src: string; alt: string };
 
 const BUNDLE_ICONS = [PackageIcon, ClothIcon, ShieldIcon];
 
+/**
+ * Which of the two buy rows is on screen — the `md:flex` one or the `md:hidden`
+ * sticky bar.
+ *
+ * Both rows exist in the DOM at all times (Tailwind `hidden` is display:none,
+ * not conditional rendering), so mounting <ExpressPay> in both gave every
+ * product page TWO <Elements> providers and two cross-origin Stripe wallet
+ * iframes where only one can ever be seen. The hidden one can never even become
+ * ready, because Stripe cannot measure a display:none box — it was pure cost.
+ *
+ * Server snapshot is `false` so the server HTML and the first client render
+ * agree by construction: the phone layout is the one that gets the real wallet,
+ * and the desktop row shows the ordinary "Kup teraz" until hydration says
+ * otherwise. Neither slot is ever empty.
+ */
+function useIsWide(): boolean {
+  return useSyncExternalStore(
+    (cb) => {
+      const mq = window.matchMedia("(min-width: 768px)");
+      mq.addEventListener("change", cb);
+      return () => mq.removeEventListener("change", cb);
+    },
+    () => window.matchMedia("(min-width: 768px)").matches,
+    () => false,
+  );
+}
+
 export function ProductView({ product }: { product: Product }) {
   const { add, setOpen, toggleWish, isWished } = useCart();
   const router = useRouter();
+  const wide = useIsWide();
   const price = priceOf(product);
   const compareAt = regularOf(product);
   const pct = discountOf(product);
@@ -201,7 +229,14 @@ export function ProductView({ product }: { product: Product }) {
               <div ref={railRef} className="ig-rail" style={{ scrollPaddingLeft: 0, scrollPaddingRight: 0 }}>
                 {gallery.map((g, i) => (
                   <div key={g.src} className="relative aspect-[4/5] w-full shrink-0 basis-full" style={{ backgroundColor: tint }}>
-                    <Image src={g.src} alt={g.alt} fill priority={i === 0} sizes="100vw" className="object-contain p-8 mix-blend-multiply" />
+                    {/* `sizes` is deliberately identical to the desktop gallery's below.
+                        Both galleries are always in the DOM (only CSS-hidden), so two
+                        different `sizes` made the browser resolve two different widths
+                        of the SAME photograph and fetch both — measured on a production
+                        build at 390px: /products/3132_1.jpg requested at w=384, w=640
+                        and w=828. One shared descriptor collapses that to one request,
+                        and only this copy carries `priority`, so there is one preload. */}
+                    <Image src={g.src} alt={g.alt} fill priority={i === 0} sizes="(min-width: 768px) 45vw, 100vw" className="object-contain p-8 mix-blend-multiply" />
                   </div>
                 ))}
               </div>
@@ -248,7 +283,7 @@ export function ProductView({ product }: { product: Product }) {
                   {/* Tint must live ON the animated layer: animating opacity creates a stacking
                       context that isolates mix-blend-multiply from any backdrop outside it,
                       flashing the raw white packshot during the crossfade. */}
-                  {shown && <Image src={shown.src} alt={shown.alt} fill priority sizes="45vw" className="object-contain p-10 mix-blend-multiply" />}
+                  {shown && <Image src={shown.src} alt={shown.alt} fill sizes="(min-width: 768px) 45vw, 100vw" className="object-contain p-10 mix-blend-multiply" />}
                 </motion.div>
               </AnimatePresence>
               {pct > 0 && (
@@ -386,18 +421,12 @@ export function ProductView({ product }: { product: Product }) {
               Dodaj do koszyka
             </button>
             <div className="flex-[3]">
-              <ExpressPay
-                lines={expressLines}
-                amount={price}
-                fallback={
-                  <button
-                    onClick={buyNow}
-                    className="flex h-12 w-full items-center justify-center rounded-full bg-ink text-[0.95rem] text-paper transition hover:-translate-y-px hover:opacity-90"
-                  >
-                    Kup teraz
-                  </button>
-                }
-              />
+              {/* Only the row that is actually on screen mounts Stripe — see useIsWide. */}
+              {wide ? (
+                <ExpressPay lines={expressLines} amount={price} fallback={<BuyNowButton onClick={buyNow} />} />
+              ) : (
+                <BuyNowButton onClick={buyNow} />
+              )}
             </div>
           </div>
 
@@ -542,21 +571,35 @@ export function ProductView({ product }: { product: Product }) {
           <span className="border-l border-paper/30 pl-2.5 text-sm tabular-nums opacity-95">{formatPLN(price)}</span>
         </button>
         <div className="flex-[3]">
-          <ExpressPay
-            lines={expressLines}
-            amount={price}
-            note={false}
-            fallback={
-              <button
-                onClick={buyNow}
-                className="flex h-full w-full items-center justify-center rounded-full bg-ink text-sm text-paper shadow-[0_6px_18px_rgba(20,20,19,0.35)] transition active:scale-[0.96]"
-              >
-                Kup teraz
-              </button>
-            }
-          />
+          {wide ? (
+            <StickyBuyNowButton onClick={buyNow} />
+          ) : (
+            <ExpressPay lines={expressLines} amount={price} note={false} fallback={<StickyBuyNowButton onClick={buyNow} />} />
+          )}
         </div>
       </div>
     </>
+  );
+}
+
+function BuyNowButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className="flex h-12 w-full items-center justify-center rounded-full bg-ink text-[0.95rem] text-paper transition hover:-translate-y-px hover:opacity-90"
+    >
+      Kup teraz
+    </button>
+  );
+}
+
+function StickyBuyNowButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className="flex h-full w-full items-center justify-center rounded-full bg-ink text-sm text-paper shadow-[0_6px_18px_rgba(20,20,19,0.35)] transition active:scale-[0.96]"
+    >
+      Kup teraz
+    </button>
   );
 }
