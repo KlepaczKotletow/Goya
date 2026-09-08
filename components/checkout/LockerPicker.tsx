@@ -56,6 +56,18 @@ function SelfHostedPicker({ value, onSelect }: Props) {
   const map = useRef<LeafletMap | null>(null);
   const markers = useRef<Marker[]>([]);
 
+  // The checkout passes a fresh arrow for onSelect on every one of its renders,
+  // and it re-renders on every keystroke in the form. With onSelect in the
+  // marker effect's dependency list that meant: tear down every marker, rebuild
+  // every marker (each one parsing a divIcon HTML string), and re-run fitBounds
+  // — which visibly re-zooms the map — once per character typed. Reading it
+  // through a ref keeps the click handler current without making identity a
+  // dependency.
+  const onSelectRef = useRef(onSelect);
+  useEffect(() => {
+    onSelectRef.current = onSelect;
+  }, [onSelect]);
+
   const search = useCallback(async (params: string) => {
     setState("loading");
     try {
@@ -142,7 +154,7 @@ function SelfHostedPicker({ value, onSelect }: Props) {
           alt: `${p.code}, ${p.street}`,
         })
           .addTo(m)
-          .on("click", () => onSelect(p));
+          .on("click", () => onSelectRef.current(p));
         markers.current.push(marker);
       });
 
@@ -154,7 +166,7 @@ function SelfHostedPicker({ value, onSelect }: Props) {
     return () => {
       cancelled = true;
     };
-  }, [points, value, onSelect]);
+  }, [points, value]);
 
   // Pan to a point chosen from the list so the map agrees with the list.
   useEffect(() => {

@@ -110,7 +110,13 @@ export function Footer() {
           </p>
         </div>
       </div>
-      <div className="wrap flex flex-col items-center justify-between gap-3 border-t border-line py-6 text-xs text-stone md:flex-row">
+      {/* pb-20 on phones clears the product page's fixed buy bar. That bar is
+          64px tall including its offset and lives outside <main>, so the PDP's
+          own pb-24 reserve cannot reach the footer: measured at the bottom of a
+          product page, the bar sat directly over "© Goya", Regulamin,
+          Prywatność and Kontakt. The extra space costs nothing on other routes —
+          it is the last row of the document. */}
+      <div className="wrap flex flex-col items-center justify-between gap-3 border-t border-line pb-20 pt-6 text-xs text-stone md:flex-row md:pb-6">
         <p>© {new Date().getFullYear()} {SITE.name}. Zaprojektowane w Polsce.</p>
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
           <Link href="/regulamin" className="transition hover:text-ink">Regulamin</Link>

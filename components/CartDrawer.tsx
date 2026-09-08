@@ -8,15 +8,9 @@ import { formatPLN } from "@/lib/pricing";
 import { INCLUDED } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { ExpressPay, type ExpressLine } from "./pdp/ExpressPay";
-import { CloseIcon, ArrowIcon, CheckIcon, TruckIcon, ReturnIcon, ShieldIcon, BagIcon } from "./icons";
+import { CloseIcon, ArrowIcon, CheckIcon, TruckIcon, ShieldIcon, BagIcon } from "./icons";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-
-const TRUST = [
-  { icon: TruckIcon, label: "Darmowa\nwysyłka" },
-  { icon: ReturnIcon, label: "30 dni\nna zwrot" },
-  { icon: ShieldIcon, label: "24 mies.\ngwarancji" },
-];
 
 export function CartDrawer() {
   const { open, setOpen, lines, remove, setQty, subtotal, count } = useCart();
@@ -59,7 +53,7 @@ export function CartDrawer() {
             transition={{ type: "tween", duration: 0.5, ease: EASE }}
           >
             {/* HEADER */}
-            <header className="flex items-center justify-between px-6 pb-4 pt-6">
+            <header className="flex items-center justify-between px-5 pb-3 pt-5">
               <div className="flex items-baseline gap-2.5">
                 <h2 className="font-display text-2xl leading-none">Koszyk</h2>
                 {count > 0 && <span className="text-sm tabular-nums text-stone">{count} {count === 1 ? "produkt" : "produkty"}</span>}
@@ -78,7 +72,7 @@ export function CartDrawer() {
             ) : (
               <>
                 {/* FREE-SHIPPING REASSURANCE — always free, no threshold, no surprises */}
-                <div className="mx-6 mb-2 flex items-center gap-3 rounded-2xl bg-sage/[0.12] px-4 py-3 ring-1 ring-inset ring-sage/25">
+                <div className="mx-5 mb-2 flex items-center gap-3 rounded-2xl bg-sage/[0.12] px-3.5 py-2.5 ring-1 ring-inset ring-sage/25">
                   <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-sage/20 text-sage">
                     <TruckIcon />
                   </span>
@@ -88,9 +82,19 @@ export function CartDrawer() {
                 </div>
 
                 {/* LINES */}
-                <div className="flex-1 overflow-y-auto px-6 [scrollbar-width:thin]">
+                <div className="flex-1 overflow-y-auto overscroll-contain px-5 [scrollbar-width:thin]">
+                  {/* Removal collapses in place. It used to run `mode="popLayout"`
+                      with an `x: 40` exit, which measured badly: deleting the
+                      first of three rows made that row jump from y=148 to y=371
+                      — popLayout pulls the exiting child out of flow and pins it
+                      with offsets that the sibling `layout` animation has already
+                      invalidated — and then slide 63.8px to the right while the
+                      rows below travelled up through it. That sideways lurch is
+                      the "moves to the right or left" the drawer was doing.
+                      Animating height/opacity keeps the row where it is and lets
+                      the list close over it. */}
                   <motion.ul layout className="divide-y divide-line/60">
-                    <AnimatePresence initial={false} mode="popLayout">
+                    <AnimatePresence initial={false}>
                       {lines.map((l) => {
                         const wasPrice = l.regularPrice ?? null;
                         return (
@@ -99,9 +103,13 @@ export function CartDrawer() {
                             layout
                             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 14 }}
                             animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
-                            exit={reduce ? { opacity: 0 } : { opacity: 0, x: 40, transition: { duration: 0.25 } }}
+                            exit={
+                              reduce
+                                ? { opacity: 0 }
+                                : { opacity: 0, height: 0, paddingTop: 0, paddingBottom: 0, transition: { duration: 0.28, ease: EASE } }
+                            }
                             transition={{ duration: 0.45, ease: EASE }}
-                            className="flex gap-4 py-4"
+                            className="flex gap-4 overflow-hidden py-4"
                           >
                             {/* Double-bezel image tile */}
                             <Link
@@ -131,10 +139,15 @@ export function CartDrawer() {
                                 >
                                   {l.name}
                                 </Link>
+                                {/* 32px circle, 44px hit region (HIG minimum) —
+                                    the pseudo-element grows the target without
+                                    growing the row. 6px of bleed stays inside
+                                    the gap-2 next to the product name, so it
+                                    never steals a tap meant for the link. */}
                                 <button
                                   onClick={() => remove(l.key)}
                                   aria-label={`Usuń ${l.name}`}
-                                  className="-mr-1 -mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full text-stone transition-colors hover:bg-linen hover:text-terracotta"
+                                  className="relative -mr-1 -mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full text-stone transition-colors after:absolute after:-inset-1.5 after:content-[''] hover:bg-linen hover:text-terracotta"
                                 >
                                   <CloseIcon className="h-3.5 w-3.5" />
                                 </button>
@@ -143,10 +156,15 @@ export function CartDrawer() {
 
                               <div className="mt-auto flex items-center justify-between pt-3">
                                 {/* Quantity stepper */}
+                                {/* Same trick as the remove button: the pill stays
+                                    34px tall so the row does not grow, but each
+                                    stepper answers to a 44x44 tap. The 28px gap
+                                    between them (the quantity readout) keeps the
+                                    two expanded regions from overlapping. */}
                                 <div className="flex items-center rounded-full bg-linen/70 p-0.5 ring-1 ring-inset ring-line">
                                   <button
                                     onClick={() => setQty(l.key, l.qty - 1)}
-                                    className="grid h-7 w-7 place-items-center rounded-full text-stone transition-colors hover:bg-paper hover:text-ink active:scale-95"
+                                    className="relative grid h-7 w-7 place-items-center rounded-full text-stone transition-colors after:absolute after:-inset-2 after:content-[''] hover:bg-paper hover:text-ink active:scale-95"
                                     aria-label="Zmniejsz ilość"
                                   >
                                     −
@@ -154,7 +172,7 @@ export function CartDrawer() {
                                   <span className="w-7 text-center text-sm font-medium tabular-nums">{l.qty}</span>
                                   <button
                                     onClick={() => setQty(l.key, l.qty + 1)}
-                                    className="grid h-7 w-7 place-items-center rounded-full text-stone transition-colors hover:bg-paper hover:text-ink active:scale-95"
+                                    className="relative grid h-7 w-7 place-items-center rounded-full text-stone transition-colors after:absolute after:-inset-2 after:content-[''] hover:bg-paper hover:text-ink active:scale-95"
                                     aria-label="Zwiększ ilość"
                                   >
                                     +
@@ -174,34 +192,31 @@ export function CartDrawer() {
                     </AnimatePresence>
                   </motion.ul>
 
-                  {/* FREE GIFTS — reinforces value, feels generous */}
-                  <div className="mb-2 mt-4 rounded-2xl bg-paper/60 p-4 ring-1 ring-inset ring-line/70">
-                    <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-ink">W zestawie — gratis</p>
-                    <ul className="mt-2.5 space-y-1.5">
-                      {INCLUDED.map((it) => (
-                        <li key={it.label} className="flex items-center gap-2.5 text-[0.82rem] text-ink-soft">
-                          <span className="grid h-4 w-4 shrink-0 place-items-center rounded-full bg-terracotta text-paper">
-                            <CheckIcon className="h-2.5 w-2.5" />
-                          </span>
-                          {it.label}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* TRUST ROW */}
-                  <div className="mb-4 grid grid-cols-3 gap-2">
-                    {TRUST.map(({ icon: Icon, label }) => (
-                      <div key={label} className="flex flex-col items-center gap-1.5 rounded-xl px-1 py-3 text-center">
-                        <span className="text-terracotta"><Icon /></span>
-                        <span className="whitespace-pre-line text-[0.62rem] font-medium uppercase leading-tight tracking-wide text-stone">{label}</span>
-                      </div>
-                    ))}
+                  {/* What's in the box, on one line.
+                      As a titled card with three icon rows this was 130px, and
+                      the 3-up trust row under it another 91px — together 221px
+                      of static reassurance inside a scroll region that is only
+                      301px tall on a 375x667 phone. Measured there: a cart with
+                      a SINGLE item overflowed by 49px, with the item itself
+                      taking 105 of the 350px of content. The promises did not
+                      go away, they stopped being furniture: free shipping is
+                      the banner above, returns and warranty are one line in the
+                      footer. (HIG: don't obscure the essential by crowding it
+                      with nonessential detail — and the old 9.92px uppercase
+                      labels were below the 11pt iOS minimum anyway.) */}
+                  <div className="mb-4 mt-3 flex items-start gap-2.5 rounded-2xl bg-paper/60 px-3.5 py-2.5 ring-1 ring-inset ring-line/70">
+                    <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-terracotta text-paper">
+                      <CheckIcon className="h-2.5 w-2.5" />
+                    </span>
+                    <p className="text-[0.78rem] leading-snug text-ink-soft">
+                      <span className="font-semibold text-ink">W zestawie gratis:</span>{" "}
+                      {INCLUDED.map((it) => it.label.toLowerCase()).join(", ")}.
+                    </p>
                   </div>
                 </div>
 
                 {/* FOOTER — sticky summary + checkout */}
-                <footer className="border-t border-line/80 bg-bg/95 px-6 pb-6 pt-4 backdrop-blur">
+                <footer className="border-t border-line/80 bg-bg/95 px-5 pb-5 pt-3.5">
                   {savings > 0 && (
                     <div className="mb-2 flex items-center justify-between rounded-full bg-terracotta/[0.08] px-3.5 py-2 text-[0.8rem]">
                       <span className="font-medium text-terracotta">Twoja oszczędność</span>
@@ -211,7 +226,7 @@ export function CartDrawer() {
                   <div className="flex items-end justify-between">
                     <div>
                       <p className="text-xs text-stone">Suma</p>
-                      <p className="font-display text-[1.7rem] leading-none tabular-nums">{formatPLN(subtotal)}</p>
+                      <p className="font-display text-2xl leading-none tabular-nums">{formatPLN(subtotal)}</p>
                     </div>
                     <p className="pb-1 text-xs text-stone">z VAT · darmowa wysyłka</p>
                   </div>
@@ -251,9 +266,10 @@ export function CartDrawer() {
                     </div>
                   </div>
 
-                  <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[0.7rem] text-stone">
-                    <ShieldIcon className="h-3.5 w-3.5" />
-                    Bezpieczne płatności · zamów dziś, wyślemy jutro
+                  {/* Carries the two promises the trust row used to spend 91px on. */}
+                  <p className="mt-2.5 flex items-center justify-center gap-1.5 text-center text-[0.7rem] text-stone">
+                    <ShieldIcon className="h-3.5 w-3.5 shrink-0" />
+                    Bezpieczne płatności · 30 dni na zwrot · 24 mies. gwarancji
                   </p>
                 </footer>
               </>
