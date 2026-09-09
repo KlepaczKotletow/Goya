@@ -7,6 +7,7 @@ import { NAV, SITE } from "@/content/site";
 import { useCart } from "@/lib/cart";
 import { cn } from "@/lib/utils";
 import { SearchIcon, BagIcon, HeartIcon, BurgerIcon, CloseIcon } from "./icons";
+import { Wordmark } from "./Logo";
 import { SocialLinks } from "./SocialLinks";
 
 function Badge({ n }: { n: number }) {
@@ -93,9 +94,19 @@ export function Header() {
                     aria-current={active ? "page" : undefined}
                     className={cn(
                       "link-underline whitespace-nowrap",
-                      // Only the two category links fit beside the centred logo at md;
-                      // any more and "Męskie" collides with it. Full nav from lg.
-                      i >= 2 && "hidden lg:inline-block",
+                      // The logo is centred on the viewport, so the nav only gets the
+                      // half-width left of it minus the mark: measured, the row needs
+                      // 968px for four links, 1132 for five and ~1292 for all six.
+                      // Anything hidden here is still one tap away in the burger menu.
+                      // Ternary, not three && clauses: overlapping display utilities
+                      // would let lg:inline-block un-hide a link xl was still hiding.
+                      i >= 5
+                        ? "hidden 2xl:inline-block"
+                        : i >= 4
+                          ? "hidden xl:inline-block"
+                          : i >= 2
+                            ? "hidden lg:inline-block"
+                            : "",
                       active && "text-terracotta [background-size:100%_1px]",
                     )}
                   >
@@ -111,14 +122,15 @@ export function Header() {
               search icon. Below sm it sits in normal flow between them instead. */}
           <Link
             href="/"
-            aria-label={SITE.name}
             className={cn(
-              "font-display tracking-tight transition-[font-size] duration-300",
+              // The mark is GOYA-only, not the full lockup: at this size the lockup's
+              // HAND MADE rule renders under 5px tall and reads as a smudge.
+              "block text-terracotta transition-[width] duration-300",
               "sm:absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2",
-              scrolled ? "text-xl md:text-2xl" : "text-2xl md:text-[1.9rem]",
+              scrolled ? "w-[92px] md:w-[108px]" : "w-[104px] md:w-[124px]",
             )}
           >
-            {SITE.name}
+            <Wordmark />
           </Link>
 
           <div className="flex items-center justify-end gap-0.5 md:w-1/3">
@@ -173,7 +185,9 @@ export function Header() {
               transition={{ type: "tween", duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="mb-8 flex items-center justify-between">
-                <span className="font-display text-2xl">{SITE.name}</span>
+                <span className="block w-[104px] text-terracotta">
+                  <Wordmark />
+                </span>
                 <button onClick={() => setMenu(false)} aria-label="Zamknij" className="p-2 text-stone">
                   <CloseIcon />
                 </button>

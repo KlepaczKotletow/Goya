@@ -66,8 +66,23 @@ export function Footer() {
     <footer className="mt-24 border-t border-line bg-paper">
       <div className="wrap grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr_1.4fr]">
         <div>
-          <p className="font-display text-3xl">{SITE.name}</p>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-soft">{SITE.shortIntro}</p>
+          {/* A file, not an inline <svg> like the header: the lockup is 6.8 kB of path
+              data, it sits below the fold on every route, and as a static asset it is
+              fetched once and cached instead of riding along in each page's HTML.
+              Width and height are the intrinsic 1280x443 ratio, so nothing shifts. */}
+          {/* eslint-disable-next-line @next/next/no-img-element -- next/image would
+              route a vector through the raster optimizer, which needs
+              dangerouslyAllowSVG and gains nothing on a 7 kB SVG. */}
+          <img
+            src="/logo-goya.svg"
+            alt="Goya — hand made"
+            width={172}
+            height={60}
+            loading="lazy"
+            decoding="async"
+            className="w-[172px]"
+          />
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-soft">{SITE.shortIntro}</p>
           <SocialLinks className="mt-5" />
         </div>
         {cols.map((c) => (

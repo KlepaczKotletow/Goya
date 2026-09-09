@@ -37,11 +37,13 @@ export const SITE = {
   founded: "2019",
 };
 
-// Social profiles. Placeholder handles — swap for the real Goya URLs at launch.
+// Social profiles. Instagram is the brand's real account; Goya has no Facebook page,
+// so none is linked. The TikTok entry that used to sit here pointed at @goya, which is
+// not ours — a placeholder in `sameAs` tells Google the wrong account is the brand, so
+// it is gone until a real handle exists. Add one back as a single line when it does.
 // Rendered by <SocialLinks /> (footer + mobile menu) and fed into Organization JSON-LD `sameAs`.
 export const SOCIALS: { platform: "instagram" | "tiktok"; label: string; href: string }[] = [
-  { platform: "instagram", label: "Instagram", href: "https://www.instagram.com/goya" },
-  { platform: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@goya" },
+  { platform: "instagram", label: "Instagram", href: "https://www.instagram.com/goya_okulary/" },
 ];
 
 export const NAV = [

@@ -34,7 +34,7 @@ export function organizationLd() {
     "@id": `${SITE_URL}/#organization`,
     name: SITE.name,
     url: SITE_URL,
-    logo: absUrl("/favicon.svg"),
+    logo: absUrl("/logo-goya.svg"),
     image: absUrl("/opengraph-image"),
     email: SITE.email,
     foundingDate: SITE.founded,
